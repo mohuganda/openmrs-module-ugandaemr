@@ -1,0 +1,240 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.openmrs.module</groupId>
+		<artifactId>ugandaemr</artifactId>
+		<version>3.1.4-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>ugandaemr-api</artifactId>
+	<packaging>jar</packaging>
+	<name>Ugandaemr Module API</name>
+	<description>API project for ugandaemr</description>
+
+	<dependencies>
+
+		<!--
+		Add other dependencies from parent's pom:
+		<dependency>
+			<groupId>org.other.library</groupId>
+			<artifactId>library-name</artifactId>
+		</dependency>
+		-->
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		
+		<!-- Begin OpenMRS core -->
+
+		<dependency>
+			<groupId>org.openmrs.api</groupId>
+			<artifactId>openmrs-api</artifactId>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.web</groupId>
+			<artifactId>openmrs-web</artifactId>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.api</groupId>
+			<artifactId>openmrs-api</artifactId>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.test</groupId>
+			<artifactId>openmrs-test</artifactId>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- End OpenMRS core -->
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>addresshierarchy-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>appframework-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>calculation-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>dataexchange-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>dataintegrity-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>emrapi-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>emrapi-api-1.12</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>emrapi-api-pre2.2</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs</groupId>
+			<artifactId>event-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>formentryapp-omod</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>htmlformentry-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>htmlformentry-api-1.10</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>htmlformentry-api-2.0</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>htmlformentry-api-2.3</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>htmlformentryui-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>idgen-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>pl.pragmatists</groupId>
+			<artifactId>JUnitParams</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>legacyui-omod</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>metadatadeploy-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>metadatamapping-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>metadatasharing-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>providermanagement-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>patientflags-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>registrationcore-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>registrationapp-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>reporting-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>serialization.xstream-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>serialization.xstream-api-2.0</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>uiframework-api</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>patientqueueing-api</artifactId>
+        </dependency>
+    </dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<!-- exclude binary files from filtering as this causes corruption of the files -->
+					<exclude>*.zip</exclude>
+					<exclude>metadata/*.zip</exclude>
+				</excludes>
+			</resource>
+			<!-- Add the binary files to the omod without filtering -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>*.zip</include>
+					<include>metadata/*.zip</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+	</build>
+
+</project>
