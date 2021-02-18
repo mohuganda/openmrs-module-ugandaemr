@@ -239,6 +239,12 @@
         <description>A comma separated list of location uuids for locations that clinicians operate from</description>
     </globalProperty>
 
+    <globalProperty>
+        <property>ugandaemr.enablePatientQueueSelection</property>
+        <defaultValue>false</defaultValue>
+        <description>when value is "true", it allows picking of patients from queue</description>
+    </globalProperty>
+
 
 
     <privilege>

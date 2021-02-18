@@ -64,7 +64,7 @@
 	</changeSet>
 
 
-	<changeSet id="35ef129f-2b7f-4d17-a0b2-d305327c8fd8" author="solemabrothers">
+	<changeSet id="35ef129f-2b7f-4d17-a0b2-d305327c8fde" author="solemabrothers">
 		<preConditions onFail="MARK_RAN">
 			<sqlCheck expectedResult="1">
 				SELECT COUNT(*) FROM scheduler_task_config  WHERE uuid = '415b8d70-6b45-41d8-a0ba-41b1a6b8aa1f'
@@ -73,11 +73,10 @@
 		<comment>Clear the tasks named aijar</comment>
 			<sql>
 				Delete  from liquibasechangelog where ID in ('ugandaemr-06232017-1639','ugandaemr-06232017-1638','ugandaemr-06232017-1637','uganademr-10202017-2138','551c4d8d-8d33-4bcf-bee7-5aeeadc47775','ugandaemr-2019-16-16-1425');
-				DELETE FROM scheduler_task_config where uuid in ('29584cdf-37c0-46ec-b942-3b98274e30d8','d1147982-1fd3-4d03-8b6c-6345a8187b28','d356a6fd-8426-40d4-9cf2-13d699c6cbc3','1434dd72-1ff7-11ea-978f-2e728ce88125','8b5caeea-2c3b-11e8-b467-0ed5f89f718b','415b8d70-6b45-41d8-a0ba-41b1a6b8aa1f');
 			</sql>
 	</changeSet>
 
-	<changeSet id="ff4cc3ce-7ba8-4077-8dc4-f6af15cddd10" author="ssmusoke">
+	<changeSet id="ugandaemr-08022021-3" author="ssmusoke">
 		<preConditions onFail="MARK_RAN">
 			<sqlCheck expectedResult="0">
                 SELECT COUNT(*) FROM scheduler_task_config
@@ -85,6 +84,7 @@
             </sqlCheck>
 		</preConditions>
 		<comment>Inserting Exposed Infant Link to Mother Task into 'schedule_task_config' table</comment>
+		<sql>DELETE FROM scheduler_task_config where uuid='29584cdf-37c0-46ec-b942-3b98274e30d8'</sql>
 		<insert tableName="scheduler_task_config">
 			<column name="name" value="Link infants to mothers via ART Number" />
 			<column name="description" value="Links exposed infants to mothers through their ART numbers" />
@@ -100,13 +100,14 @@
 		</insert>
 
 	</changeSet>
-	<changeSet id="ff4cc3ce-7ba8-4077-8dc4-f6af15cddd1e" author="ssmusoke">
+	<changeSet id="ugandaemr-08022021-2" author="ssmusoke">
 		<preConditions onFail="MARK_RAN">
 			<sqlCheck expectedResult="0">
                 SELECT COUNT(*) FROM scheduler_task_config
                 WHERE schedulable_class = 'org.openmrs.module.ugandaemr.tasks.ExitTBProgramASLostToFollowUpTask'
             </sqlCheck>
 		</preConditions>
+		<sql>DELETE FROM scheduler_task_config where uuid='415b8d70-6b45-41d8-a0ba-41b1a6b8aa1f'</sql>
 		<comment>Inserting TB Lost to Followup Exit Task into 'schedule_task_config' table</comment>
 		<insert tableName="scheduler_task_config">
 			<column name="name" value="TB Lost to Followup Exit Task" />
@@ -123,13 +124,14 @@
 		</insert>
 
 	</changeSet>
-	<changeSet id="ugandaemr-06232019" author="ssmusoke">
+	<changeSet id="ugandaemr-08022021-1" author="ssmusoke">
 		<preConditions onFail="MARK_RAN">
 			<sqlCheck expectedResult="0">
                 SELECT COUNT(*) FROM scheduler_task_config
                 WHERE schedulable_class = 'org.openmrs.module.ugandaemr.tasks.ExitMCHProgramASLostToFollowUpTask'
             </sqlCheck>
 		</preConditions>
+		<sql>DELETE FROM scheduler_task_config where uuid='d1147982-1fd3-4d03-8b6c-6345a8187b28'</sql>
 		<comment>Inserting MCH Lost to Followup Exit Task into 'schedule_task_config' table</comment>
 		<insert tableName="scheduler_task_config">
 			<column name="name" value="MCH Lost to Followup Exit Task" />
@@ -265,13 +267,14 @@
         </sql>
     </changeSet>
 
-	<changeSet id="551c4d8d-8d33-4bcf-bee7-5aeeadc48775" author="dbaluku">
+	<changeSet id="ugandaemr-08022021-5" author="dbaluku">
 		<preConditions onFail="MARK_RAN">
 			<sqlCheck expectedResult="0">
                 SELECT COUNT(*) FROM scheduler_task_config
                 WHERE schedulable_class = 'org.openmrs.module.ugandaemr.tasks.GenerateUniqueIdentifierCodeTask'
             </sqlCheck>
 		</preConditions>
+		<sql>DELETE FROM scheduler_task_config where uuid='d356a6fd-8426-40d4-9cf2-13d699c6cbc3'</sql>
 		<comment>Inserting Unique identifier code in patient identifier table</comment>
 		<insert tableName="scheduler_task_config">
 			<column name="name" value="UIC_generator_task" />
@@ -289,7 +292,7 @@
 
 	</changeSet>
 
-	<changeSet id="ugandaemr-2020-01-01" author="slubwama">
+	<changeSet id="ugandaemr-08022021-7" author="slubwama">
 		<preConditions onFail="MARK_RAN">
 			<sqlCheck expectedResult="0">
                 SELECT COUNT(*) FROM scheduler_task_config
@@ -297,6 +300,7 @@
             </sqlCheck>
 		</preConditions>
 		<comment>Close all active facility visits</comment>
+		<sql>DELETE FROM scheduler_task_config where uuid='1434dd72-1ff7-11ea-978f-2e728ce88125'</sql>
 		<insert tableName="scheduler_task_config">
 			<column name="name" value="Close Active Facility Visits" />
 			<column name="description" value="generates_uics into patient identifier table" />
@@ -312,14 +316,15 @@
 		</insert>
 	</changeSet>
 
-    <changeSet id="2c181fd7-1f64-46fc-9c24-176499c91b68 " author="slubwama">
+    <changeSet id="ugandaemr-08022021-4" author="slubwama">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 SELECT COUNT(*) FROM scheduler_task_config
                 WHERE schedulable_class = 'org.openmrs.module.ugandaemr.tasks.MigrateARTPatientTransfersTask'
             </sqlCheck>
         </preConditions>
-        <comment>Inserting ART Summary Patient Transfer Migration into 'schedule_task_config' table</comment>
+		<sql>DELETE FROM scheduler_task_config where uuid='8b5caeea-2c3b-11e8-b467-0ed5f89f718b'</sql>
+		<comment>Inserting ART Summary Patient Transfer Migration into 'schedule_task_config' table</comment>
         <insert tableName="scheduler_task_config">
             <column name="name" value="ART Summary Patient Transfer Migration" />
             <column name="description" value="Migrates Patients Transfer Data and Created a new Transfer out encounter" />
