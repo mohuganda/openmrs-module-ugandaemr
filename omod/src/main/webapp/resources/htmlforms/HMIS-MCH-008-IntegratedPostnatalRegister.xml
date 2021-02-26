@@ -984,5 +984,5 @@
         </div>
     </div>
      <postSubmissionAction 
-        class="org.openmrs.module.ugandaemr.htmlformentry.PostnatalEncounterPostSubmissionAction"/>
+        class="org.openmrs.module.ugandaemr.htmlformentry.PostnatalPostSubmissionAction"/>
 </htmlform>
