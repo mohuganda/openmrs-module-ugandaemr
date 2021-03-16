@@ -539,7 +539,7 @@ VALUES
 				SELECT COUNT(*) FROM global_property where property = "ugandaemr.dhis2.organizationuuid" AND property_value="eg d06ace3e-9c46-11e7-abc4-cec278b6b50a"
 			</sqlCheck>
 		</preConditions>
-		<comment>Delete value of property ugandaemr.dhis2.organizationuuid when it is set to eg d06ace3e-9c46-11e7-abc4-cec278b6b50a</comment>
+		<comment>Change the default value of the global property gandaemr.dhis2.organizationuuid from 'eg d06ace3e-9c46-11e7-abc4-cec278b6b50a' to an empty string</comment>
 		<sql>
 			UPDATE global_property SET property_value = ""  WHERE property = "ugandaemr.dhis2.organizationuuid" AND property_value="eg d06ace3e-9c46-11e7-abc4-cec278b6b50a"
 		</sql>
