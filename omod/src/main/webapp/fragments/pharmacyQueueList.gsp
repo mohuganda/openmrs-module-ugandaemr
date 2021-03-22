@@ -83,6 +83,9 @@ button, input {
                 var patientQueueListElement = element;
 
 
+                var isPatientPicked = isQueueIsPicked(element.patientQueueId);
+
+
                 var ordersNo = noOfDrugPrescriptions(element);
 
                 var waitingTime = getWaitingTime(patientQueueListElement.dateCreated, patientQueueListElement.dateChanged);
@@ -100,9 +103,12 @@ button, input {
                     prescriptions += "<td>" + patientQueueListElement.providerNames + " - " + patientQueueListElement.locationFrom + "</td>";
                     prescriptions += "<td>" + waitingTime + "</td>";
                     prescriptions += "<td>";
-                    prescriptions += "<a title=\"Dispense Medication\" onclick='showEditPrescriptionForm(" + patientQueueListElement.encounterId + "," + patientQueueListElement.patientQueueId + "," + index + ")'>Dispense Medication <i class=\"icon-list-ul small\"></i></a> <span style=\"color: red;\">" + ordersNo + "</span>";
 
-                    if ("${enablePatientQueueSelection}".trim() === "true") {
+                    if (isPatientPicked || "${enablePatientQueueSelection}".trim() === "false") {
+                        prescriptions += "<a title=\"Dispense Medication\" onclick='showEditPrescriptionForm(" + patientQueueListElement.encounterId + "," + patientQueueListElement.patientQueueId + "," + index + ")'>Dispense Medication <i class=\"icon-list-ul small\"></i></a> <span style=\"color: red;\">" + ordersNo + "</span>";
+                    }
+
+                    if (!isPatientPicked  && "${enablePatientQueueSelection}".trim() === "true") {
                         prescriptions += "<i  style=\"font-size: 25px;\" class=\"icon-signin view-action\" title=\"Select Patient\" data-toggle=\"modal\" data-target=\"#pick_patient_queue_dialog\" data-id=\"\" data-patientqueueid='" + patientQueueListElement.patientQueueId + "' data-url=\"\"></i>";
                     }
 
@@ -151,6 +157,23 @@ button, input {
         jq("#pharmacy-completed-list-table").append(completed);
         jq("#pharmacy-completed-number").html("");
         jq("#pharmacy-completed-number").append("   " + completedCount);
+    }
+
+    function isQueueIsPicked(patientQueueId) {
+        var isQueuePicked = false;
+        jq.ajax({
+            type: "GET",
+            url: '/' + OPENMRS_CONTEXT_PATH + "/ws/rest/v1/patientqueue/" + patientQueueId + "",
+            dataType: "json",
+            contentType: "application/json;",
+            async: false,
+            success: function (data) {
+                if (data.status === "PICKED") {
+                    isQueuePicked = true;
+                }
+            }
+        });
+        return isQueuePicked;
     }
 
     function noOfDrugPrescriptions(drugList) {
