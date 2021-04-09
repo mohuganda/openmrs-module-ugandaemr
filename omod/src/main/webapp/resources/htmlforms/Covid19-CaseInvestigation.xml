@@ -34,10 +34,13 @@
                 disable_fields("165853");
                 disable_fields("165929");
                 //disable_fields("166301"); countries travelled
-                disable_fields("166316");
+                disable_fields("admit-to-hospital-specify-other");
+                disable_fields("162983");
+                disable_fields("166292");
                 disable_fields("166308");
                 disable_fields("166309");
                 disable_fields("166310");
+                disable_fields("166288");
 
                 jq("#1542").change(function () {
                     if (jq(this).find("select").find(":selected").val() == "5622") {
@@ -82,12 +85,45 @@
                         disable_fields("166296"); 
                     }
                 });
+                <!--bleeding site-->
+                jq(".90251").change(function () {
+                    if (jq(this).find('#147241').find(':checkbox').prop('checked')) {
+                        enable_fields("166288");
+                    } else {
+                        disable_fields("166288");
+                    }
+                });
+
+                <!--pregnancy status-->
+                jq(".90041-a").change(function () {
+                    if (jq(this).find('#90041').find(':checkbox').prop('checked')) {
+                        enable_fields("166291");
+                        enable_fields("99601");
+                        enable_fields("162983");
+                        enable_fields("166292");
+                    } else {
+                        disable_fields("166291");
+                        disable_fields("99601");
+                        disable_fields("162983");
+                        disable_fields("166292");
+                    }
+                });
 
                 jq(".166319").change(function () {
                     if (jq(this).find('#90002').find(':checkbox').prop('checked')) {
                         enable_fields("166297");
                     } else {
                         disable_fields("166297"); 
+                    }
+
+                    if (jq(this).find('#hiv-status-check').find(':checkbox').prop('checked')) {
+                        enable_fields("on-art");
+                        enable_fields("not-on-art");
+                        enable_fields("unknown-hiv");
+                    } else {
+                        disable_fields("on-art");
+                        disable_fields("not-on-art");
+                        disable_fields("unknown-hiv");
                     }
                 });
 
@@ -124,10 +160,24 @@
                 });
 
                 jq(".166317").change(function () {
-                    if (jq(this).find('#90002').find(':checkbox').prop('checked')) {
-                        enable_fields("166316");
+                    if (jq(this).find('#admit-to-hospital').find(':checkbox').prop('checked')) {
+                        enable_fields("isolation-ward-for-suspect-cases");
+                        enable_fields("isolation-ward-for-confirmed-cases");
+                        enable_fields("high-dependency-unit");
+                        enable_fields("icu");
+                        enable_fields("admit-to-hospital-other");
                     } else {
-                        disable_fields("166316"); 
+                        disable_fields("isolation-ward-for-suspect-cases");
+                        disable_fields("isolation-ward-for-confirmed-cases");
+                        disable_fields("high-dependency-unit");
+                        disable_fields("icu");
+                        disable_fields("admit-to-hospital-other");
+                    }
+
+                    if (jq(this).find('#admit-to-hospital-other').find(':checkbox').prop('checked')) {
+                        enable_fields("admit-to-hospital-specify-other");
+                    } else {
+                        disable_fields("admit-to-hospital-specify-other");
                     }
                 });
             });
@@ -290,7 +340,7 @@
                                     </div>
                                     <div class="card-body 90251">
                                         <div class="row">
-                                            <obs conceptId="90251" answerConceptId="871" answerLabel="History of Fever or Chils" style="checkbox" class="col-md-2"/>
+                                            <obs conceptId="90251" answerConceptId="871" answerLabel="History of Fever/Chills" style="checkbox" class="col-md-2"/>
                                             <obs conceptId="90251" answerConceptId="90132" answerLabel="Cough" style="checkbox" class="col-md-2" />
                                             <obs conceptId="90251" answerConceptId="158843" answerLabel="Sore Throat" style="checkbox" class="col-md-2" />
                                             <obs conceptId="90251" answerConceptId="165501" answerLabel="Runny Nose" style="checkbox" class="col-md-2"/>
@@ -310,9 +360,12 @@
                                             <obs conceptId="90251" answerConceptId="5226" answerLabel="General Weakness" style="checkbox" class="col-md-2" />
                                             <obs conceptId="90251" answerConceptId="90105" answerLabel="Confusion/Altered Consciousness" style="checkbox" class="col-md-3"/>
                                         </div>
-                                        <div class="row">    
-                                            <obs conceptId="90251" answerConceptId="147241" answerLabel="Bleeding" style="checkbox" class="col-md-2" />
-                                            <obs conceptId="90251" answerConceptId="166288" answerLabel="Bleeding Site" class="col-md-2"/>
+                                        <div class="row">
+                                            <obs id="147241" conceptId="90251" answerConceptId="147241" answerLabel="Bleeding" style="checkbox" class="col-md-2" />
+                                            <div class="col-md-2">
+                                                <label>Bleeding Site</label>
+                                                <obs id="166288" conceptId="166288" />
+                                            </div>
                                             <obs conceptId="90251" answerConceptId="166287" answerLabel="Recent Inability to Walk" style="checkbox" class="col-md-2" />
                                             <obs conceptId="90251" answerConceptId="206" answerLabel="Seizures" style="checkbox" class="col-md-2" />
 
@@ -351,22 +404,30 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header"> 
-                                        Underlying Conditions
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <obs conceptId="90251" answerConceptId="90041" answerLabel="Pregnancy" style="checkbox" class="col-md-2"/>
+                                <excludeIf velocityTest="$patient.gender =='M' || $patient.age &lt; 9">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Underlying Conditions
                                         </div>
-                                        <div class="row">
-                                            <obs conceptId="90251" answerConceptId="166291" answerLabel="Post-Partum (&lt;6 Weeks)" style="checkbox" class="col-md-2"/>
-                                            <obs conceptId="90251" answerConceptId="99601" answerLabel="Breast Feeding" style="checkbox" class="col-md-2" />
-                                            <obs conceptId="90251" answerConceptId="162983" answerLabel="Est Gestational Age (weeks)" class="col-md-2" />
-                                            <obs conceptId="90251" answerConceptId="166292" answerLabel="OR Trimester" class="col-md-2"/>
+                                        <div class="card-body 90041-a ">
+                                            <div class="row">
+                                                <obs id="90041" conceptId="90251" answerConceptId="90041" answerLabel="Pregnancy" style="checkbox" class="col-md-2"/>
+                                            </div>
+                                            <div class="row">
+                                                <obs id="166291" conceptId="90251" answerConceptId="166291" answerLabel="Post-Partum (&lt;6 Weeks)" style="checkbox" class="col-md-2"/>
+                                                <obs id="99601" conceptId="90251" answerConceptId="99601" answerLabel="Breast Feeding" style="checkbox" class="col-md-2" />
+                                                <div class="col-md-3">
+                                                    <label>Est Gestational Age (weeks)</label>
+                                                    <obs id="162983" conceptId="162983" />
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>OR Trimester</label>
+                                                    <obs id="166292" conceptId="166292" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </excludeIf>
                                 <div class="card">
                                     <div class="card-header"> 
                                         Comorbidities
@@ -395,11 +456,11 @@
                                                 <obs conceptId="166297" id="166297"/>
                                             </div>
                                         </div>
-                                        <div class="row"> <!-- conceptIDs  miss match 
-                                            <obs conceptId="90251" answerConceptId="1169" answerLabel="HIV" style="checkbox" class="col-md-1"/>  attach answers to HIV concept -->
-                                            <!-- <obs conceptId="165169" answerConceptId="99415" answerLabel="On ART" style="checkbox" class="col-md-1"/>
-                                            <obs conceptId="165169" answerConceptId="165904" answerLabel="Not On ART" style="checkbox" class="col-md-2"/>
-                                            <obs conceptId="165169" answerConceptId="90001" answerLabel="Unknown" style="checkbox" class="col-md-2"/> -->
+                                        <div class="row"> <!-- conceptIDs  miss match attach answers to HIV concept -->
+                                            <obs id="hiv-status-check" conceptId="90251" answerConceptId="1169" answerLabel="HIV" style="checkbox" class="col-md-2"/>
+                                            <obs id="on-art" conceptId="165169" answerConceptId="99415" answerLabel="On ART" style="checkbox" class="col-md-2"/>
+                                            <obs id="not-on-art" conceptId="165169" answerConceptId="165904" answerLabel="Not On ART" style="checkbox" class="col-md-2"/>
+                                            <obs id="unknown-hiv" conceptId="165169" answerConceptId="90001" answerLabel="Unknown" style="checkbox" class="col-md-2"/>
                                         </div>
 
                                      </div>
@@ -413,10 +474,8 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Did patient travel out of town in 2 weeks before on set (or sample taking, if no symptoms) </label>
-                                            </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-8">
+                                                <label>Did patient travel out of town in 2 weeks before onset (or sample taking, if no symptoms) </label>
                                                 <obs id="166322" conceptId="166322" answerConceptIds="90003,90004" answerLabels="Yes, No"
                                                      style="radio" class="horizontal"/>
                                             </div>
@@ -445,10 +504,10 @@
                                                 <div class="row mt-3">
                                                 <obs conceptId="166307" answerConceptId="166303" answerLabel="Air" style="checkbox" class="col-md-2"/>
                                                 <obs id="166304" conceptId="166307" answerConceptId="166304" answerLabel="Public Road" style="checkbox" class="col-md-3" />
-                                                <obs conceptId="166307" answerConceptId="166305" answerLabel="Private Road" style="checkbox" class="col-md-3" />
-                                                <obs conceptId="166307" answerConceptId="166306" answerLabel="Water" style="checkbox" class="col-md-2"/>
+                                                <obs conceptId="166307" answerConceptId="166305" answerLabel="Private Road" style="checkbox" class="col-md-4" />
+                                                <obs conceptId="166307" answerConceptId="166306" answerLabel="Water" style="checkbox" class="col-md-3"/>
                                                 </div>
-                                            </div>   
+                                            </div>
                                             <div class="col-md-6">
                                                 <label>Public transport means</label>
                                                 <div class="row mt-3 166304">
@@ -489,22 +548,29 @@
                                     </div>
                                     <div class="card-body 166317">
                                         <div class="row">
-                                            <obs conceptId="166323" answerConceptId="166317" answerLabel="Admit to hospital" style="checkbox" class="col-md-3"/>
-                                                <obs conceptId="166323" answerConceptId="166311" answerLabel="Admit to non-traditional isolation facility" style="checkbox" class="col-md-3" />
-                                                <obs conceptId="166323" answerConceptId="166312" answerLabel="Home Isolation" style="checkbox" class="col-md-2" />
-                                                <obs conceptId="166323" answerConceptId="160034" answerLabel="Died" style="checkbox" class="col-md-2" />
-                                        </div>
-                                        <div class="row"> <!-- if admitted to hospital -->
-                                            <obs conceptId="166317" answerConceptId="166313" answerLabel="Isolation ward for suspect cases" style="checkbox"
-                                                 class="col-md-3"/> 
-                                            <obs conceptId="166317" answerConceptId="166314" answerLabel="Isolation ward for confirmed cases" style="checkbox" class="col-md-3" />
-                                            <obs conceptId="166317" answerConceptId="166315" answerLabel="High dependency unit" style="checkbox" class="col-md-2" />
-                                            <obs conceptId="166317" answerConceptId="161936" answerLabel="ICU" style="checkbox" class="col-md-2" />
+                                            <obs id="admit-to-hospital" conceptId="166323" answerConceptId="166317" answerLabel="Admit to hospital" style="checkbox" class="col-md-3"/>
                                         </div>
                                         <div class="row">
-                                            <obs id="90002" conceptId="166317" answerConceptId="90002" answerLabel="Other" style="checkbox" class="col-md-3" />
-                                            <obs id="166316" conceptId="166316" labelText="Specify Other" class="col-md-4"/> <!-- Not attached to parent -->
+                                            <obs id="isolation-ward-for-suspect-cases" conceptId="166317" answerConceptId="166313" answerLabel="Isolation ward for suspect cases" style="checkbox"
+                                                 class="col-md-4"/>
+                                            <obs id="isolation-ward-for-confirmed-cases" conceptId="166317" answerConceptId="166314" answerLabel="Isolation ward for confirmed cases" style="checkbox" class="col-md-4" />
+                                            <obs id="high-dependency-unit" conceptId="166317" answerConceptId="166315" answerLabel="High dependency unit" style="checkbox" class="col-md-4" />
                                         </div>
+                                        <div class="row">
+                                            <obs id="icu" conceptId="166317" answerConceptId="161936" answerLabel="ICU" style="checkbox" class="col-md-4" />
+                                            <obs id="admit-to-hospital-other" conceptId="166317" answerConceptId="90002" answerLabel="Other" style="checkbox" class="col-md-4" />
+                                            <obs id="admit-to-hospital-specify-other" conceptId="166316" labelText="Specify Other" class="col-md-4"/> <!-- Not attached to parent -->
+                                        </div>
+                                        <div class="row"> <!-- Admit to non-traditional isolation facility -->
+                                            <obs conceptId="166323" answerConceptId="166311" answerLabel="Admit to non-traditional isolation facility" style="checkbox" class="col-md-4" />
+                                        </div>
+                                        <div class="row"> <!--Home Isolation-->
+                                            <obs conceptId="166323" answerConceptId="166312" answerLabel="Home Isolation" style="checkbox" class="col-md-4" />
+                                        </div>
+                                        <div class="row"> <!--Died-->
+                                            <obs conceptId="166323" answerConceptId="160034" answerLabel="Died" style="checkbox" class="col-md-2" />
+                                        </div>
+
                                     </div>    
                                 </div>
                             </div>
