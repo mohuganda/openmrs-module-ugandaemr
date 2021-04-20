@@ -5742,10 +5742,7 @@
     <concept_name  concept_name_id="162601"  concept_id="166352"  name="route"      								   locale="en"  locale_preferred="1"  creator="1"  date_created="2021-03-23 11:36:17"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="4789181f-ee23-4fd8-a026-4f92b78d0696"/>
     <concept_name  concept_name_id="162602"  concept_id="166353"  name="Corticosteroid"  							   locale="en"  locale_preferred="1"  creator="1"  date_created="2021-03-23 11:38:03"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="8b4d8bd4-a44a-49d9-b7b9-a672daa5f0e6"/>
     <concept_name  concept_name_id="162603"  concept_id="166354"  name="Novel/experimental therapeutics"  			   locale="en"  locale_preferred="1"  creator="1"  date_created="2021-03-23 11:40:52"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="eb3523fc-e58a-46fb-aa43-e6b363d260f6"/>
-    <concept_name  concept_name_id="162604"  concept_id="166355"  name="other anticoagulation 1"  				       locale="en"  locale_preferred="1"  creator="1"  date_created="2021-03-23 11:51:20"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="0031733e-8f12-4681-b04a-261fcf137737"/>
-    <concept_name  concept_name_id="162605"  concept_id="166356"  name="other anticoagulation 2"  				       locale="en"  locale_preferred="1"  creator="1"  date_created="2021-03-23 11:51:56"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="161eef4f-7376-49ad-98a3-b85f9dc5c1ad"/>
-    <concept_name  concept_name_id="162606"  concept_id="166357"  name="other anticoagulation 3"  				       locale="en"  locale_preferred="1"  creator="1"  date_created="2021-03-23 11:52:26"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="93c412b6-1b05-40f3-8b9f-8f198dbe4217"/>
-    <concept_name  concept_name_id="162607"  concept_id="166358"  name="other anticoagulation 4"  				       locale="en"  locale_preferred="1"  creator="1"  date_created="2021-03-23 11:52:47"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="78bb18b3-8cf3-4ff6-b269-c02abf41304c"/>
+    <concept_name  concept_name_id="162604"  concept_id="166355"  name="Specify Anticoagulation"  				       locale="en"  locale_preferred="1"  creator="1"  date_created="2021-03-23 11:51:20"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="0031733e-8f12-4681-b04a-261fcf137737"/>
     <concept_name  concept_name_id="162608"  concept_id="166359"  name="Anticoagulation"  			    			   locale="en"  locale_preferred="1"  creator="1"  date_created="2021-03-23 11:54:12"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="371441b7-b489-4972-9c28-96a60867bbda"/>
     <concept_name  concept_name_id="162609"  concept_id="166360"  name="Other Hypertension medication"  			   locale="en"  locale_preferred="1"  creator="1"  date_created="2021-03-23 12:02:47"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="022d6928-a823-4f00-a7c4-89a08828efda"/>
     <concept_name  concept_name_id="162610"  concept_id="166361"  name="malaria treatment"              			   locale="en"  locale_preferred="1"  creator="1"  date_created="2021-03-23 12:12:12"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="4a01a2e8-6ce9-4a48-b33d-14f926c6c7f9"/>
@@ -7527,11 +7524,6 @@
     <concept_answer  concept_answer_id="7367563"  concept_id="166351"  answer_concept="166350"  creator="1"  date_created="2021-03-23 11:28:13"  sort_weight="1"  uuid="9d35b30a-5717-435a-aa6e-9d020cd0c682"/>
     <concept_answer  concept_answer_id="7367564"  concept_id="166351"  answer_concept="166349"  creator="1"  date_created="2021-03-23 11:28:13"  sort_weight="3"  uuid="a64776a5-d682-42a8-b696-a2190082dd85"/>
     <concept_answer  concept_answer_id="7367565"  concept_id="166351"  answer_concept="794"     creator="1"  date_created="2021-03-23 11:28:13"  sort_weight="2"  uuid="f8d2112b-a3a5-4a08-a19a-5981748c429f"/>
-
-    <concept_answer  concept_answer_id="7367573"  concept_id="166359"  answer_concept="166355"  creator="1"  date_created="2021-03-23 11:54:12"  sort_weight="1"  uuid="76199d6d-f825-4f0e-8d7d-59cac7df848e"/>
-    <concept_answer  concept_answer_id="7367574"  concept_id="166359"  answer_concept="166356"  creator="1"  date_created="2021-03-23 11:54:12"  sort_weight="2"  uuid="ea1d1ae8-83cd-463c-8add-3cfd7449f38b"/>
-    <concept_answer  concept_answer_id="7367575"  concept_id="166359"  answer_concept="166358"  creator="1"  date_created="2021-03-23 11:54:12"  sort_weight="4"  uuid="3fab2a34-c667-4ab3-aff1-915a494ea598"/>
-    <concept_answer  concept_answer_id="7367576"  concept_id="166359"  answer_concept="166357"  creator="1"  date_created="2021-03-23 11:54:12"  sort_weight="3"  uuid="b277b0f7-fed5-4555-91d5-d9e84cb48032"/>
     <concept_answer  concept_answer_id="7367577"  concept_id="166361"  answer_concept="90003"   creator="1"  date_created="2021-03-23 12:17:17"  sort_weight="1"  uuid="80123ad8-8a41-427a-8d18-6f674576c3f7"/>
     <concept_answer  concept_answer_id="7367578"  concept_id="166361"  answer_concept="90004"   creator="1"  date_created="2021-03-23 12:17:17"  sort_weight="2"  uuid="21e9c5e0-774c-4ce1-aad6-7b26ec60fac5"/>
     <concept_answer  concept_answer_id="7367579"  concept_id="166361"  answer_concept="166362"  creator="1"  date_created="2021-03-23 12:17:17"  sort_weight="3"  uuid="954c0443-c1d7-4c8b-941f-7a63753d1973"/>
@@ -7706,9 +7698,6 @@
     <concept_answer  concept_answer_id="7367670"  concept_id="166354"  answer_concept="166351" creator="1"  date_created="2021-03-30 10:52:32"  sort_weight="2"  uuid="0561806a-78e4-4973-8cd7-89b75de5abc9"/>
     <concept_answer  concept_answer_id="7367671"  concept_id="166354"  answer_concept="166353" creator="1"  date_created="2021-03-30 10:52:32"  sort_weight="3"  uuid="2b901df5-760b-4750-a7de-847d9aefb8bb"/>
     <concept_answer  concept_answer_id="7367573"  concept_id="166359"  answer_concept="166355" creator="1"  date_created="2021-03-23 11:54:12"  sort_weight="1"  uuid="76199d6d-f825-4f0e-8d7d-59cac7df848e"/>
-    <concept_answer  concept_answer_id="7367574"  concept_id="166359"  answer_concept="166356" creator="1"  date_created="2021-03-23 11:54:12"  sort_weight="2"  uuid="ea1d1ae8-83cd-463c-8add-3cfd7449f38b"/>
-    <concept_answer  concept_answer_id="7367575"  concept_id="166359"  answer_concept="166358" creator="1"  date_created="2021-03-23 11:54:12"  sort_weight="4"  uuid="3fab2a34-c667-4ab3-aff1-915a494ea598"/>
-    <concept_answer  concept_answer_id="7367576"  concept_id="166359"  answer_concept="166357" creator="1"  date_created="2021-03-23 11:54:12"  sort_weight="3"  uuid="b277b0f7-fed5-4555-91d5-d9e84cb48032"/>
     <concept_answer  concept_answer_id="7367577"  concept_id="166361"  answer_concept="90003"  creator="1"  date_created="2021-03-23 12:17:17"  sort_weight="1"  uuid="80123ad8-8a41-427a-8d18-6f674576c3f7"/>
     <concept_answer  concept_answer_id="7367578"  concept_id="166361"  answer_concept="90004"  creator="1"  date_created="2021-03-23 12:17:17"  sort_weight="2"  uuid="21e9c5e0-774c-4ce1-aad6-7b26ec60fac5"/>
     <concept_answer  concept_answer_id="7367579"  concept_id="166361"  answer_concept="166362" creator="1"  date_created="2021-03-23 12:17:17"  sort_weight="3"  uuid="954c0443-c1d7-4c8b-941f-7a63753d1973"/>
@@ -7908,6 +7897,8 @@
     <concept_answer  concept_answer_id="7367771"  concept_id="166372"  answer_concept="90003"  creator="1"  date_created="2021-04-20 15:14:04"  sort_weight="1"  uuid="67da95f9-e484-4f16-85e7-7b65b91badd5"/>
     <concept_answer  concept_answer_id="7367772"  concept_id="166372"  answer_concept="90004"  creator="1"  date_created="2021-04-20 15:14:04"  sort_weight="2"  uuid="a2b62669-0909-4c75-a3bf-ea84768e8bd5"/>
     <concept_answer  concept_answer_id="7367773"  concept_id="166372"  answer_concept="90001"  creator="1"  date_created="2021-04-20 15:14:04"  sort_weight="3"  uuid="5d533d48-ebe0-46ac-a170-67cd053851f8"/>
+    <concept_answer  concept_answer_id="7367774"  concept_id="166359"  answer_concept="90003"  creator="1"  date_created="2021-04-20 16:09:43"  sort_weight="2"  uuid="3bce6346-4079-49aa-9672-377441878e52"/>
+    <concept_answer  concept_answer_id="7367775"  concept_id="166359"  answer_concept="90004"  creator="1"  date_created="2021-04-20 16:09:43"  sort_weight="3"  uuid="1530fb5c-2853-4938-a3b9-2c2ade5cdd7a"/>
 
 
 
