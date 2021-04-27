@@ -532,6 +532,18 @@ VALUES
 			UPDATE obs SET value_coded=165165 WHERE concept_id = 165275 and value_coded=90001 and obs_group_id is not null;
 		</sql>
 	</changeSet>
+
+	<changeSet id="ugandaemr-2021-03-15-1756" author="slubwama">
+		<preConditions onFail="MARK_RAN">
+			<sqlCheck expectedResult="1">
+				SELECT COUNT(*) FROM global_property where property = "ugandaemr.dhis2.organizationuuid" AND property_value="eg d06ace3e-9c46-11e7-abc4-cec278b6b50a"
+			</sqlCheck>
+		</preConditions>
+		<comment>Change the default value of the global property gandaemr.dhis2.organizationuuid from 'eg d06ace3e-9c46-11e7-abc4-cec278b6b50a' to an empty string</comment>
+		<sql>
+			UPDATE global_property SET property_value = ""  WHERE property = "ugandaemr.dhis2.organizationuuid" AND property_value="eg d06ace3e-9c46-11e7-abc4-cec278b6b50a"
+		</sql>
+	</changeSet>
 </databaseChangeLog>
 
 
