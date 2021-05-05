@@ -16,7 +16,6 @@
         if (jQuery) {
 
         jq(document).ready(function () {
-        disable_fields("specify-other-facility-details");
         disable_fields("specify-other-anti-biotics");
         disable_fields("specify-other-malaria-treatment");
         disable_fields("specify-other-anti-biotics");
@@ -25,14 +24,12 @@
         disable_fields("specify-other-art-regimens");
         disable_fields("specify-other-therapeutic");
         disable_fields("specify-other-satin");
-        disable_fields("worst-pressure-support");
         disable_fields("worst-spo-fio-ratio");
         disable_fields("pH");
         disable_fields("PaO2");
         disable_fields("PCO2");
         disable_fields("HCO3");
         disable_fields("corticosteroid-route")
-        disable_fields("specify-other-anticoagulation");
         disable_fields("Haemoglobin-results");
         disable_fields("WBC-Count-results");
         disable_fields("Haematocrit-results");
@@ -60,22 +57,108 @@
         disable_fields("aIL-6-results");
         disable_fields("infiltrates-present");
 
+        disable_fields("corona-virus-result");
+        disable_fields("malaria-falciparum-result");
+        disable_fields("hiv-result");
+        disable_fields("other-diagnostic-result");
+        disable_fields("specify-novel-experimental-therapeutic-agent");
 
-        jq(".facility-details").change(function () {
-        if (jq(this).find('#other-facility-details').find(':checkbox').prop('checked')) {
-        enable_fields("specify-other-facility-details");
-        } else {
-        disable_fields("specify-other-facility-details");
-        }
+        disable_fields("ribavirin");
+        disable_fields("lopinavir-ritonavir");
+        disable_fields("neuraminidase-inhibitor");
+        disable_fields("other-corticosteroid");
+        disable_fields("specify-other-therapy");
+
+        disable_fields("02-flow");
+        disable_fields("interface");
+
+        jq("#corona-virus-test").click(function () {
+            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                enable_fields("corona-virus-result");
+            } else {
+                disable_fields("corona-virus-result");
+            }
+        });
+
+        jq("#malaria-falciparum-test").click(function () {
+            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                enable_fields("malaria-falciparum-result");
+            } else {
+                disable_fields("malaria-falciparum-result");
+            }
+        });
+
+        jq("#hiv-test").click(function () {
+            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                enable_fields("hiv-result");
+            } else {
+                disable_fields("hiv-result");
+            }
+        });
+
+        jq("#other-diagnostic-test").click(function () {
+            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                enable_fields("other-diagnostic-result");
+            } else {
+                disable_fields("other-diagnostic-result");
+            }
+        });
+
+        jq("#novel-experimental-therapeutic-agent").click(function () {
+            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                enable_fields("specify-novel-experimental-therapeutic-agent");
+            } else {
+                disable_fields("specify-novel-experimental-therapeutic-agent");
+            }
+        });
+
+        jq("#antiviral").click(function () {
+            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                enable_fields("ribavirin");
+                enable_fields("lopinavir-ritonavir");
+                enable_fields("neuraminidase-inhibitor");
+            } else {
+                disable_fields("ribavirin");
+                disable_fields("lopinavir-ritonavir");
+                disable_fields("neuraminidase-inhibitor");
+            }
         });
 
         jq("#corticosteroid").click(function () {
-        if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-        enable_fields("corticosteroid-route");
-        } else {
-        disable_fields("corticosteroid-route");
-        }
+            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                enable_fields("corticosteroid-route");
+                enable_fields("other-corticosteroid");
+            } else {
+                disable_fields("corticosteroid-route");
+                disable_fields("other-corticosteroid");
+            }
         });
+        jq("#other-therapy").click(function () {
+            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                enable_fields("specify-other-therapy");
+            } else {
+                disable_fields("specify-other-therapy");
+            }
+        });
+        jq("#oxygen-therapy").click(function () {
+            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                enable_fields("02-flow");
+                enable_fields("interface");
+            } else {
+                disable_fields("02-flow");
+                disable_fields("interface");
+            }
+        });
+
+
+
+
+
+
+
+
+
+
 
         jq("#malaria-treatment").click(function () {
         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
@@ -111,29 +194,6 @@
         }
         });
 
-        jq("#anticoagulation").click(function () {
-        if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-        enable_fields("specify-other-anticoagulation");
-        } else {
-        disable_fields("specify-other-anticoagulation");
-        }
-        });
-
-        jq("#non-invasive-ventilation").click(function () {
-        if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-        enable_fields("worst-pressure-support");
-        } else {
-        disable_fields("worst-pressure-support");
-        }
-        });
-
-        jq("#invasive-ventilation").click(function () {
-        if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-        enable_fields("worst-spo-fio-ratio");
-        } else {
-        disable_fields("worst-spo-fio-ratio");
-        }
-        });
 
         jq("#blood-gas-done").click(function () {
         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
@@ -475,12 +535,12 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>Corona Virus test</label>
-                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                <obs id="corona-virus-test" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-6">
                                                 <label>if Yes</label>
-                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
+                                                <obs id="corona-virus-result" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                         </div>
@@ -492,12 +552,12 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>Malaria (Falciparum) test</label>
-                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                <obs id="malaria-falciparum-test" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-6">
                                                 <label>if Yes</label>
-                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
+                                                <obs id="malaria-falciparum-result" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                         </div>
@@ -509,12 +569,12 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>HIV test</label>
-                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                <obs id="hiv-test" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-6">
                                                 <label>if Yes</label>
-                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
+                                                <obs id="hiv-result" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                         </div>
@@ -526,12 +586,12 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>Other Diagnostic test</label>
-                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                <obs id="other-diagnostic-test" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-6">
                                                 <label>if Yes</label>
-                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
+                                                <obs id="other-diagnostic-result" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                         </div>
@@ -566,7 +626,7 @@
                                                      style="radio" class="horizontal" id="novel-experimental-therapeutic-agent"/>
                                             </div>
                                             <div class="col-md-6">
-                                                <label>Specify</label>
+                                                <label>Specify Novel/Experimental Therapeutic agent</label>
                                                 <obs id="specify-novel-experimental-therapeutic-agent" conceptId="166344" />
                                             </div>
                                         </div>
@@ -574,19 +634,19 @@
                                             <div class="col-md-2">
                                                 <label>Hydroxychloroquine</label> <!-- wrong concept -->
                                                 <obs conceptId="166351" answerConceptIds="99353,99112" answerLabels="Yes, No"
-                                                     style="radio" class="horizontal"/> <!-- add yes no to concept -->
+                                                     style="radio" class="horizontal" id="hydroxychloroquine"/> <!-- add yes no to concept -->
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Antiviral</label>
                                                 <obs conceptId="166351" answerConceptIds="99353,99112,90001" answerLabels="Yes, No, Unknown"
-                                                     style="radio" class="horizontal"/><!-- add yes no unknown -->
+                                                     style="radio" class="horizontal" id="antiviral"/><!-- add yes no unknown -->
                                             </div>
                                             <div class="col-md-8">
                                                     <label>Antivirals</label>
                                                     <div class="row">
-                                                        <obs conceptId="166351" answerConceptId="166350" answerLabel="Ribavirin" style="checkbox" class="col-md-2"/>
-                                                        <obs conceptId="166351" answerConceptId="794" answerLabel="Lopinavir/Ritonavir" style="checkbox" class="col-md-3"/>
-                                                        <obs conceptId="166351" answerConceptId="166349" answerLabel="Neuraminidase Inhibitor" style="checkbox" class="col-md-4"/>
+                                                        <obs id="ribavirin" conceptId="166351" answerConceptId="166350" answerLabel="Ribavirin" style="checkbox" class="col-md-2"/>
+                                                        <obs id="lopinavir-ritonavir" conceptId="166351" answerConceptId="794" answerLabel="Lopinavir/Ritonavir" style="checkbox" class="col-md-3"/>
+                                                        <obs id="neuraminidase-inhibitor" conceptId="166351" answerConceptId="166349" answerLabel="Neuraminidase Inhibitor" style="checkbox" class="col-md-4"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -603,8 +663,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label>Specify</label>
-                                                <obs id="specify-novel-experimental-therapeutic-agent" conceptId="166344" />
+                                                <label>Specify Corticosteroid</label>
+                                                <obs id="other-corticosteroid" conceptId="166344" />
                                             </div>
                                         </div>
 
@@ -622,11 +682,11 @@
                                             <div class="col-md-2">
                                                 <label>Other therapy</label>
                                                 <obs conceptId="166353" answerConceptIds="90003,99112,90001" answerLabels="Yes, No, Unknown"
-                                                     style="radio" class="horizontal" id="corticosteroid"/><!--yes, no, unknown -->
+                                                     style="radio" class="horizontal" id="other-therapy"/><!--yes, no, unknown -->
                                             </div>
                                             <div class="col-md-6">
-                                                <label>Specify</label>
-                                                <obs id="specify-novel-experimental-therapeutic-agent" conceptId="166344" />
+                                                <label>Specify Other therapy</label>
+                                                <obs id="specify-other-therapy" conceptId="166344" />
                                             </div>
                                         </div>
                                     </div>
@@ -637,20 +697,20 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label>Oxygen therapy</label>
-                                                <obs conceptId="166381" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown"
+                                                <obs id="oxygen-therapy" conceptId="166381" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>O<sub>2</sub>Flow</label> <!-- add subscript -->
                                                 <div class="row">
-                                                    <obs conceptId="166395" answerConceptIds="166392,166393,166394,166416,90001" answerLabel="1-5 L/min,6-10 L/min,11-15 L/min,>15,Unknown" style="checkbox" class="col-md-4"/>
+                                                    <obs id="02-flow" conceptId="166395" answerConceptIds="166392,166393,166394,166416,90001" answerLabel="1-5 L/min,6-10 L/min,11-15 L/min,>15,Unknown" style="checkbox" class="col-md-4"/>
                                                 </div>
 
                                             </div>
                                             <div class="col-md-4">
-                                                <label>Inferface</label>
+                                                <label>Interface</label>
                                                 <div class="row">
-                                                    <obs conceptId="166387" answerConceptIds="161253,166383,166384,166385,166386" answerLabel="Nasal prongs, Mask, Mask with reservoir, CPAP/NIV mask, HF nasal cannula"/>
+                                                    <obs id="interface" conceptId="166387" answerConceptIds="161253,166383,166384,166385,166386" answerLabel="Nasal prongs, Mask, Mask with reservoir, CPAP/NIV mask, HF nasal cannula"/>
                                                 </div>
                                             </div>
                                         </div>
