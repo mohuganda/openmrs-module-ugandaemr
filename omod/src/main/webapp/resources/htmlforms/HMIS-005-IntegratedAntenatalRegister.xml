@@ -599,6 +599,9 @@
                                 <a class="nav-link" data-toggle="tab" href="#emtct-status">Clinical Assessement &amp; Diagnosis/eMTCT Status</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#pregnancy-section">Pregnacy information</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#diagnosis-and-hiv-information">Progress Examination</a>
                             </li>
                             <li class="nav-item">
@@ -619,6 +622,105 @@
                                         <div class="hidden col-md-4 html-form-entry-disabled-field">
                                           <encounterDate default="today"  disallowMultipleEncountersOnDate="block"   />
                                         </div>
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            ANC Visit info
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>ANC Visit Number</label>
+                                                    <obs conceptId="99727" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Referrals in/Out</label>
+                                                    <obs conceptId="165855" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 <div class="row">
+                                     <div class="col-md-12">
+                                         <div class="card">
+                                             <div class="card-header">
+                                                 Nutrition Assessment
+                                             </div>
+                                             <div class="card-body">
+                                                 <div class="row">
+                                                     <div class="col-md-3">
+                                                         <obs conceptId="5089" labelText="Weight (kg)" />
+                                                     </div>
+                                                     <div class="col-md-3">
+                                                         <obs conceptId="5090" labelText="Height (cm)" />
+                                                     </div>
+                                                     <div class="col-md-3">
+                                                         <label>MUAC (Cm)</label>
+                                                         <obs conceptId="1343" id="muac-score" />
+                                                     </div>
+                                                     <div class="col-md-3">
+                                                         <span class="muac">
+                                                             <includeIf velocityTest="$patient.age &lt; 5">
+                                                                 <label>MUAC Code</label>
+                                                                 <obs id="muac-code" conceptId="99030" answerConceptIds="99028,99029,99027" answerLabels="Red &lt; 11.5cm, Yellow 11.5cm - &lt;12.5cm,Green &gt;= 12.5cm" />
+                                                             </includeIf>
+                                                             <includeIf velocityTest="$patient.age &lt; 10 &amp;&amp; $patient.age &gt;=5">
+                                                                 <label>MUAC Code</label>
+                                                                 <obs id="muac-code" conceptId="99030" answerConceptIds="99028,99029,99027" answerLabels="Red &lt; 13.5cm,Yellow 13.5cm - &lt;14.5cm,Green &gt;=14.5cm" />
+                                                             </includeIf>
+                                                             <includeIf velocityTest="$patient.age &lt; 18 &amp;&amp; $patient.age &gt;=10">
+                                                                 <label>MUAC Code</label>
+                                                                 <obs id="muac-code" conceptId="99030" answerConceptIds="99028,99029,99027" answerLabels="Red &lt; 16.5cm, Yellow 16.5cm - &lt;19.0cm,Green &gt;=19.0cm" />
+                                                             </includeIf>
+                                                             <includeIf velocityTest="$patient.age &gt;=18">
+                                                                 <label>MUAC Code</label>
+                                                                 <obs id="muac-code" conceptId="99030" answerConceptIds="99028,99029,99027" answerLabels="Red &lt;19.0cm , Yellow 19.0cm - &lt;22.0cm,Green &gt;=22.0cm" />
+                                                             </includeIf>
+                                                         </span>
+                                                     </div>
+                                                     <excludeIf velocityTest="$patient.age &gt; 11">
+                                                         <div class="col-md-3">
+                                                             <label>Z-Scores</label>
+                                                             <obs conceptId="99800" answerConceptIds="99803,99804,99805,99806,99807" answerLabels="&#60;-3,-3_&#60;-1,-1_1,&#62;1_3,&#62;3" />
+                                                         </div><div class="col-md-6">
+                                                         <label>MUAC (Cm)</label>
+                                                         <obs conceptId="1343" id="muac-score" />
+                                                     </div>
+                                                     </excludeIf>
+                                                 </div>
+                                                 <div class="row">
+                                                     <div class="col-md-3">
+                                                         <label>Blood Pressure</label>
+                                                         <div class="row ml-1">
+                                                             <obs conceptId="5085" id="bp_systolic" />
+                                                             <p class="left" >
+                                                                 /
+                                                             </p>
+                                                             <obs conceptId="5086" id="bp_diastolic" />
+                                                         </div>
+                                                     </div>
+                                                     <div class="col-md-3">
+                                                         <label>Temperature (c)</label>
+                                                         <obs conceptId="5088" id="temperature"/>
+                                                     </div>
+                                                     <div class="col-md-3">
+                                                         <label>Nutrition Status</label>
+                                                         <obs conceptId="165050" class="long-value-select"
+                                                              answerConceptIds="1115, 99271, 99272, 99273, 5277"
+                                                              answerLabels="N - Normal, MAM - Moderate Acute Malnutrition, SAM - Severe Acute Malnutrition,
+                                                     SAMO - Severe Acute Malnutrition with Oedema, O - Overweight/Obese"/>
+                                                     </div>
+                                                     <div class="col-md-3">
+                                                         <label>INR No.</label>
+                                                         <obs conceptId="99733" id="inrNumber" />
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -657,6 +759,16 @@
                                                         <div class="col-md-5">
                                                             <label>Other Medications</label>
                                                             <obs conceptId="99035" style="textarea" rows='3' cols='4'/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label>IPT Given</label>
+                                                            <obs conceptId="99306"/>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label>CTx</label>
+                                                            <obs conceptId="165457"/>
                                                         </div>
                                                     </div>
                                                 </obsgroup>
@@ -788,8 +900,8 @@
                                                                     <div class="row">
                                                                         <div class="col-md-3">
                                                                             <label>Family Planning Methods</label>
-                                                                                <obs conceptId="374" answerConceptIds="190, 5275, 162961, 160570" 
-                                                                                     answerLabels="Condoms, IUDs, Implants, Pills" /> 
+                                                                                <obs conceptId="374" answerConceptIds="190, 5275, 162961, 160570,5278,780, 5279, 5277"
+                                                                                     answerLabels="Condoms, IUDs, Implants, Pills, Diaphram/Cervical Cap, Oral Contraceptive pills, Injectable, Fertility Awareness Methods" />
                                                                         </div>
                                                                         <div class="col-md-2 pt-4">
                                                                             <obs conceptId="166183" id="166183" style="checkbox" />
@@ -827,202 +939,7 @@
                                     </div>
                                 </div>
 
-                                    <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            Current Pregnancy Information
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <obs conceptId="5624" labelText="Gravida" id="gravida"/>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <obs conceptId="1053" labelText="Parity" id="parity"/>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <obs conceptId="5992" labelText="Gestation Age" class="gestational-age"/>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label>ANC 1 Timimg</label>
-                                                    <obs conceptId="99732" answerConceptIds="90003, 90004, 1175" answerLabels="Yes, No, NA" style="radio" class="horizontal"/>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <obs conceptId="99731" labelText="Expected Date of Delivery (EDD)" allowFutureDates="true" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div></div>
 
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            Nutrition Assessment
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <obs conceptId="5089" labelText="Weight (kg)" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <obs conceptId="5090" labelText="Height (cm)" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>MUAC (Cm)</label>
-                                                    <obs conceptId="1343" id="muac-score" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <span class="muac">
-                                                        <includeIf velocityTest="$patient.age &lt; 5">
-                                                            <label>MUAC Code</label>
-                                                            <obs id="muac-code" conceptId="99030" answerConceptIds="99028,99029,99027" answerLabels="Red &lt; 11.5cm, Yellow 11.5cm - &lt;12.5cm,Green &gt;= 12.5cm" />
-                                                        </includeIf>
-                                                        <includeIf velocityTest="$patient.age &lt; 10 &amp;&amp; $patient.age &gt;=5">
-                                                            <label>MUAC Code</label>
-                                                            <obs id="muac-code" conceptId="99030" answerConceptIds="99028,99029,99027" answerLabels="Red &lt; 13.5cm,Yellow 13.5cm - &lt;14.5cm,Green &gt;=14.5cm" />
-                                                        </includeIf>
-                                                        <includeIf velocityTest="$patient.age &lt; 18 &amp;&amp; $patient.age &gt;=10">
-                                                            <label>MUAC Code</label>
-                                                            <obs id="muac-code" conceptId="99030" answerConceptIds="99028,99029,99027" answerLabels="Red &lt; 16.5cm, Yellow 16.5cm - &lt;19.0cm,Green &gt;=19.0cm" />
-                                                        </includeIf>
-                                                        <includeIf velocityTest="$patient.age &gt;=18">
-                                                            <label>MUAC Code</label>
-                                                            <obs id="muac-code" conceptId="99030" answerConceptIds="99028,99029,99027" answerLabels="Red &lt;19.0cm , Yellow 19.0cm - &lt;22.0cm,Green &gt;=22.0cm" />
-                                                        </includeIf>
-                                                    </span>
-                                                </div>
-                                                <excludeIf velocityTest="$patient.age &gt; 11">
-                                                    <div class="col-md-3">
-                                                        <label>Z-Scores</label>
-                                                        <obs conceptId="99800" answerConceptIds="99803,99804,99805,99806,99807" answerLabels="&#60;-3,-3_&#60;-1,-1_1,&#62;1_3,&#62;3" />
-                                                    </div><div class="col-md-6">
-                                                    <label>MUAC (Cm)</label>
-                                                    <obs conceptId="1343" id="muac-score" />
-                                                </div>
-                                                </excludeIf>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Blood Pressure</label>
-                                                    <div class="row ml-1">
-                                                        <obs conceptId="5085" id="bp_systolic" />
-                                                        <p class="left" >
-                                                            /
-                                                        </p>
-                                                        <obs conceptId="5086" id="bp_diastolic" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Temperature (c)</label>
-                                                    <obs conceptId="5088" id="temperature"/>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Nutrition Status</label>
-                                                    <obs conceptId="165050" class="long-value-select"
-                                                         answerConceptIds="1115, 99271, 99272, 99273, 5277"
-                                                         answerLabels="N - Normal, MAM - Moderate Acute Malnutrition, SAM - Severe Acute Malnutrition,
-                                                     SAMO - Severe Acute Malnutrition with Oedema, O - Overweight/Obese"/>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>INR No.</label>
-                                                    <obs conceptId="99733" id="inrNumber" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            Previous Obstetric
-                                        </div>
-                                        <div class="card-body">
-
-                                        <div>
-                                            <repeat>
-                                                <template>
-                                                <obsgroup groupingConceptId="166239">
-                                                    <div class="row obstetric" id="{id}-toggleContainer7">
-                                                        
-                                                        <div class="col-md-12">
-                                                            <div class="row">
-                                                                <div class="col-md-2">
-                                                                    <obs conceptId="166185" labelText="Pregnancy No." />
-                                                                </div>
-                                                                <div class="col-md-2 pt-4">
-                                                                    <obs conceptId="166241" style="checkbox" />
-                                                                    <label>Abortion</label>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <obs conceptId="166186" labelText="Abortion Period" />
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <obs conceptId="166191" labelText="Pregnancy Maturity" />
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <obs conceptId="5630" answerConceptIds="163005, 1170" answerLabels="Vacuum Extraction, Normal Delivery" labelText="Delivery Type" class="gestational-age"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-2 mt-4">
-                                                                    <obs conceptId="166192" style="checkbox" />
-                                                                    <label>Third Stage</label>
-                                                                </div>
-                                                                <div class="col-md-2 mt-4">
-                                                                    <obs conceptId="166193" style="checkbox" />
-                                                                    <label>Child Alive SB/NND</label>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <obs conceptId="5916" labelText="Birth Weight (Kg)" />
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <obs conceptId="1053" labelText="Health Condition" />
-                                                                </div>
-                                                                <div class="col-md-2 pt-4">
-                                                                    <obs conceptId="166218" answerLabel="Puer Perium" style="checkbox" />
-                                                                    <label>Puer Perium</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-2">
-                                                                <label>Sex</label>
-                                                                    <obs conceptId="90252" answerConceptIds="90165, 90164" answerLabels="Male, Female" style="radio" class="horizontal"/>
-                                                                </div>
-                                                                <div class="col-md-2 pt-4">
-                                                                    <obs conceptId="166194" style="checkbox"/>
-                                                                    <label>Immunized</label>
-                                                                </div>
-                                                                <div class="col-md-1 pt-4">
-                                                                    <div class="add-entry7">
-                                                                        <a href="#" id="{id}-addEntry7" class="addEntry7 add-more-link">
-                                                                            <i class="icon-plus-sign"></i></a>
-                                                                        <a href="#" class="removeEntry7 remove-more-link" id="{id}-removeEntry7">
-                                                                            <i class="icon-minus"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </obsgroup>
-                                            </template>
-                                                <render id="1"/>
-                                                <render id="2"/>
-                                                <render id="3"/>
-                                                <render id="4"/>
-                                                <render id="5"/>
-                                                <render id="6"/>
-                                                <render id="7"/>
-                                                <render id="8"/>
-                                                <render id="9"/>
-                                                <render id="10"/>
-                                        </repeat>
-                                        </div>
-                                    </div>
-
-
-                                        </div>
-                                    </div>
                                 </section>
                             </div>
 
@@ -1583,76 +1500,203 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="medication-section">
-                        <div class="card">
-                            <div class="card-header">
-                                Medication
+                            <div class="tab-pane" id="medication-section">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Medication
+                                    </div>
+                                    <div class="card-body">
+                                        <div>
+                                            <repeat>
+                                                <template>
+                                                    <obsgroup groupingConceptId="160741">
+                                                        <div class="row multi-drug" id="{id}-toggleContainer">
+                                                            <div class="col-md-3">
+                                                                <obs id="other-meds-trigger" labelText="Drug" conceptId="1282" answerClasses="Drug" style="autocomplete" class="fullwidth"/>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <obs class="drug-strength" conceptId="1444" labelText="Strength"/>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <obs id="other-meds-quantity" labelText="Quantity" conceptId="160856"/>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <obs labelText="Qty unit" conceptId="165791" answerConceptSetIds="162402,162384"/>
+                                                            </div>
+                                                            <div class="col-md-1 duration">
+                                                                <label>Duration</label>
+                                                                <obs conceptId="159368"/>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <obs conceptId="1732" labelText="Duration unit"/>
+                                                            </div>
+                                                            <div class="col-md-1 pt-4">
+                                                                <div class="add-entry">
+                                                                    <a href="#" id="{id}-addEntry" class="addEntry add-more-link"><i class="icon-plus-sign"></i></a>
+                                                                    <a href="#" class="removeEntry remove-more-link" id="{id}-removeEntry"><i class="icon-minus"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </obsgroup>
+                                                </template>
+                                                <render id="1"/>
+                                                <render id="2"/>
+                                                <render id="3"/>
+                                                <render id="4"/>
+                                                <render id="5"/>
+                                                <render id="6"/>
+                                                <render id="7"/>
+                                                <render id="8"/>
+                                                <render id="9"/>
+                                                <render id="10"/>
+                                            </repeat>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        Appointment
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <obs id="5096" conceptId="5096" labelText="Return Date" allowFutureDates="true"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs id="160288" conceptId="160288" answerConceptIds="166236,166237,166238" answerLabels="Checkup, Booking, Ultra sound" labelText="Reason" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <div>
-                                    <repeat>
-                                        <template>
-                                            <obsgroup groupingConceptId="160741">
-                                                <div class="row multi-drug" id="{id}-toggleContainer">
-                                                    <div class="col-md-3">
-                                                        <obs id="other-meds-trigger" labelText="Drug" conceptId="1282" answerClasses="Drug" style="autocomplete" class="fullwidth"/>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <obs class="drug-strength" conceptId="1444" labelText="Strength"/>
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <obs id="other-meds-quantity" labelText="Quantity" conceptId="160856"/>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <obs labelText="Qty unit" conceptId="165791" answerConceptSetIds="162402,162384"/>
-                                                    </div>
-                                                    <div class="col-md-1 duration">
-                                                        <label>Duration</label>
-                                                        <obs conceptId="159368"/>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <obs conceptId="1732" labelText="Duration unit"/>
-                                                    </div>
-                                                    <div class="col-md-1 pt-4">
-                                                        <div class="add-entry">
-                                                            <a href="#" id="{id}-addEntry" class="addEntry add-more-link"><i class="icon-plus-sign"></i></a>
-                                                            <a href="#" class="removeEntry remove-more-link" id="{id}-removeEntry"><i class="icon-minus"></i></a>
+                            <div class="tab-pane" id="pregnancy-section">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Pregnancy
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    Current Pregnancy Information
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <obs conceptId="5624" labelText="Gravida" id="gravida"/>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <obs conceptId="1053" labelText="Parity" id="parity"/>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <obs conceptId="5992" labelText="Gestation Age" class="gestational-age"/>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label>ANC 1 Timimg</label>
+                                                            <obs conceptId="99732" answerConceptIds="90003, 90004, 1175" answerLabels="Yes, No, NA" style="radio" class="horizontal"/>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <obs conceptId="99731" labelText="Expected Date of Delivery (EDD)" allowFutureDates="true" />
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </obsgroup>
-                                        </template>
-                                        <render id="1"/>
-                                        <render id="2"/>
-                                        <render id="3"/>
-                                        <render id="4"/>
-                                        <render id="5"/>
-                                        <render id="6"/>
-                                        <render id="7"/>
-                                        <render id="8"/>
-                                        <render id="9"/>
-                                        <render id="10"/>
-                                    </repeat>
-                                </div>
-                            </div>
-                        </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    Previous Obstetric
+                                                </div>
+                                                <div class="card-body">
 
-                        <div class="card">
-                            <div class="card-header">
-                                Appointment
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <obs id="5096" conceptId="5096" labelText="Return Date" allowFutureDates="true"/>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <obs id="160288" conceptId="160288" answerConceptIds="166236,166237,166238" answerLabels="Checkup, Booking, Ultra sound" labelText="Reason" /> 
+                                                    <div>
+                                                        <repeat>
+                                                            <template>
+                                                                <obsgroup groupingConceptId="166239">
+                                                                    <div class="row obstetric" id="{id}-toggleContainer7">
+
+                                                                        <div class="col-md-12">
+                                                                            <div class="row">
+                                                                                <div class="col-md-2">
+                                                                                    <obs conceptId="166185" labelText="Pregnancy No." />
+                                                                                </div>
+                                                                                <div class="col-md-2 pt-4">
+                                                                                    <obs conceptId="166241" style="checkbox" />
+                                                                                    <label>Abortion</label>
+                                                                                </div>
+                                                                                <div class="col-md-3">
+                                                                                    <obs conceptId="166186" labelText="Abortion Period" />
+                                                                                </div>
+                                                                                <div class="col-md-3">
+                                                                                    <obs conceptId="166191" labelText="Pregnancy Maturity" />
+                                                                                </div>
+                                                                                <div class="col-md-2">
+                                                                                    <obs conceptId="5630" answerConceptIds="163005, 1170" answerLabels="Vacuum Extraction, Normal Delivery" labelText="Delivery Type" class="gestational-age"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-md-2 mt-4">
+                                                                                    <obs conceptId="166192" style="checkbox" />
+                                                                                    <label>Third Stage</label>
+                                                                                </div>
+                                                                                <div class="col-md-2 mt-4">
+                                                                                    <obs conceptId="166193" style="checkbox" />
+                                                                                    <label>Child Alive SB/NND</label>
+                                                                                </div>
+                                                                                <div class="col-md-3">
+                                                                                    <obs conceptId="5916" labelText="Birth Weight (Kg)" />
+                                                                                </div>
+                                                                                <div class="col-md-3">
+                                                                                    <obs conceptId="1053" labelText="Health Condition" />
+                                                                                </div>
+                                                                                <div class="col-md-2 pt-4">
+                                                                                    <obs conceptId="166218" answerLabel="Puer Perium" style="checkbox" />
+                                                                                    <label>Puer Perium</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-md-2">
+                                                                                    <label>Sex</label>
+                                                                                    <obs conceptId="90252" answerConceptIds="90165, 90164" answerLabels="Male, Female" style="radio" class="horizontal"/>
+                                                                                </div>
+                                                                                <div class="col-md-2 pt-4">
+                                                                                    <obs conceptId="166194" style="checkbox"/>
+                                                                                    <label>Immunized</label>
+                                                                                </div>
+                                                                                <div class="col-md-1 pt-4">
+                                                                                    <div class="add-entry7">
+                                                                                        <a href="#" id="{id}-addEntry7" class="addEntry7 add-more-link">
+                                                                                            <i class="icon-plus-sign"></i></a>
+                                                                                        <a href="#" class="removeEntry7 remove-more-link" id="{id}-removeEntry7">
+                                                                                            <i class="icon-minus"></i></a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </obsgroup>
+                                                            </template>
+                                                            <render id="1"/>
+                                                            <render id="2"/>
+                                                            <render id="3"/>
+                                                            <render id="4"/>
+                                                            <render id="5"/>
+                                                            <render id="6"/>
+                                                            <render id="7"/>
+                                                            <render id="8"/>
+                                                            <render id="9"/>
+                                                            <render id="10"/>
+                                                        </repeat>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
                     </div>
                     </div>
                 </div>
