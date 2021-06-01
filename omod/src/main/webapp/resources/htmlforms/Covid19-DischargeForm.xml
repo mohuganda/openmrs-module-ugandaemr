@@ -441,85 +441,85 @@
                                     <div class="card-body complications">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label>Shock</label>
+                                                <label>Shock</label>  <!--shock is not coded and no attached answers (112989)-->
                                                 <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Bacteremia</label>
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                <obs conceptId="166372" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <label>Seizure</label>
+                                                <label>Seizure</label> <!--Seizure is not coded and no attached answers (206)-->
                                                 <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label>Bleeding</label>
+                                                <label>Bleeding</label> <!--Bleeding is not coded and no attached answers (147241)-->
                                                 <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <label>Meningitis/Encephalitis</label>
+                                                <label>Meningitis/Encephalitis</label> <!--Meningitis is not coded and no attached answers (115835)-->
                                                 <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Endocarditis</label>
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                <obs conceptId="166373" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label>Anaemia</label>
+                                                <label>Anaemia</label> <!--Anaemia is not coded and no attached answers-->
                                                 <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Myocarditis/Pericarditis</label>
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                <obs conceptId="166374" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <label>Cardiac Arrhythmia</label>
+                                                <label>Cardiac Arrhythmia</label> <!--Cardiac Arrhythmia is not coded and no attached answers (120148)-->
                                                 <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label>Acute Renal Injury</label>
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                <obs conceptId="166375" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Cardiac Arrest</label>
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                <obs conceptId="166417" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Pancreatitis</label>
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                <obs conceptId="166376" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label>Pneumonia</label>
+                                                <label>Pneumonia</label>  <!--Pneumonia is not coded and no attached answers (114100)147-->
                                                 <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Liver Dysfunction</label>
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                <obs conceptId="166418" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <label>Bronchiolitis</label>
+                                                <label>Bronchiolitis</label> <!--Bronchiolitis is not coded and no attached answers (147)-->
                                                 <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label>Cardiomyopathy</label>
+                                                <label>Cardiomyopathy</label> <!--Cardiomyopathy is not coded and no attached answers (5016)-->
                                                 <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Acute Respiartory Distress Syndrome</label>
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                <obs conceptId="166371" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <label>Other</label>
+                                                <label>Other</label> <!--concept is missing and its answers -->
                                                 <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
                                             </div>
                                         </div>
@@ -535,11 +535,11 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>Corona Virus test</label>
-                                                <obs id="corona-virus-test" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                <obs id="corona-virus-test" conceptId="166440" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-6">
-                                                <label>if Yes</label>
+                                                <label>if Yes</label>  <!--missing covid virus test results concepts-->
                                                 <obs id="corona-virus-result" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
@@ -552,12 +552,12 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>Malaria (Falciparum) test</label>
-                                                <obs id="malaria-falciparum-test" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                <obs id="malaria-falciparum-test" conceptId="166439" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-6">
-                                                <label>if Yes</label>
-                                                <obs id="malaria-falciparum-result" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
+                                                <label>if Yes</label>  <!--missing malaria test results concept-->
+                                                <obs id="malaria-falciparum-result" conceptId="164434" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                         </div>
@@ -569,11 +569,11 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>HIV test</label>
-                                                <obs id="hiv-test" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                <obs id="hiv-test" conceptId="166448" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-6">
-                                                <label>if Yes</label>
+                                                <label>if Yes</label> <!--missing HIV test results concept-->
                                                 <obs id="hiv-result" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
@@ -591,7 +591,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label>if Yes</label>
-                                                <obs id="other-diagnostic-result" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
+                                                <obs id="other-diagnostic-result" conceptId="166442" answerConceptIds="703,664" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                         </div>
@@ -606,7 +606,7 @@
                                             <div class="row">
                                                 <div class="col-md-6 anti-biotics">
                                                     <label>Antibiotics</label>
-                                                    <obs conceptId="166361" answerConceptIds="90003,90004, 90001" answerLabels="Yes, No, Unknown"
+                                                    <obs conceptId="166421" answerConceptIds="90003,90004" answerLabels="Yes, No"
                                                          style="radio" class="horizontal" id="malaria-treatment"/>
                                                 </div>
                                                 <div class="col-md-6">
@@ -632,14 +632,14 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label>Hydroxychloroquine</label> <!-- wrong concept -->
-                                                <obs conceptId="166351" answerConceptIds="99353,99112" answerLabels="Yes, No"
-                                                     style="radio" class="horizontal" id="hydroxychloroquine"/> <!-- add yes no to concept -->
+                                                <label>Hydroxychloroquine</label>
+                                                <obs conceptId="166348" answerConceptIds="90003,90004" answerLabels="Yes, No"
+                                                     style="radio" class="horizontal" id="hydroxychloroquine"/>
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Antiviral</label>
-                                                <obs conceptId="166351" answerConceptIds="99353,99112,90001" answerLabels="Yes, No, Unknown"
-                                                     style="radio" class="horizontal" id="antiviral"/><!-- add yes no unknown -->
+                                                <obs conceptId="166351" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                     style="radio" class="horizontal" id="antiviral"/>
                                             </div>
                                             <div class="col-md-8">
                                                     <label>Antivirals</label>
@@ -653,17 +653,17 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>Corticosteroid</label>
-                                                <obs conceptId="166353" answerConceptIds="90003,99112,90001" answerLabels="Yes, No, Unknown"
-                                                     style="radio" class="horizontal" id="corticosteroid"/><!--yes, no, unknown -->
+                                                <obs conceptId="166353" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                     style="radio" class="horizontal" id="corticosteroid"/>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>Route</label> <!-- change concept -->
+                                                <label>Route</label>
                                                 <div class="row">
-                                                    <obs conceptId="166353" answerConceptIds="160240,160242,162400" answerLabel="Oral,Intravenous,Inhaled" id="corticosteroid-route"/>
+                                                    <obs conceptId="166352" answerConceptIds="160240,160242,162400" answerLabel="Oral,Intravenous,Inhaled" id="corticosteroid-route"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label>Specify Corticosteroid</label>
+                                                <label>Specify Corticosteroid</label>  <!--this concept is missing -->
                                                 <obs id="other-corticosteroid" conceptId="166344" />
                                             </div>
                                         </div>
@@ -671,22 +671,22 @@
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <label>Proning</label>
-                                                <obs conceptId="166353" answerConceptIds="90003,99112,90001" answerLabels="Yes, No, Unknown"
-                                                     style="radio" class="horizontal" id="corticosteroid"/><!--yes, no, unknown -->
+                                                <obs conceptId="166444" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                     style="radio" class="horizontal" id="corticosteroid"/>
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Plasmaphoresis</label>
-                                                <obs conceptId="166353" answerConceptIds="90003,99112,90001" answerLabels="Yes, No, Unknown"
-                                                     style="radio" class="horizontal" id="corticosteroid"/><!--yes, no, unknown -->
+                                                <obs conceptId="166446" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                     style="radio" class="horizontal" id="corticosteroid"/>
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Other therapy</label>
-                                                <obs conceptId="166353" answerConceptIds="90003,99112,90001" answerLabels="Yes, No, Unknown"
-                                                     style="radio" class="horizontal" id="other-therapy"/><!--yes, no, unknown -->
+                                                <obs conceptId="166445" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                                     style="radio" class="horizontal" id="other-therapy"/>
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Specify Other therapy</label>
-                                                <obs id="specify-other-therapy" conceptId="166344" />
+                                                <obs id="specify-other-therapy" conceptId="166447" />
                                             </div>
                                         </div>
                                     </div>
@@ -697,11 +697,11 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label>Oxygen therapy</label>
-                                                <obs id="oxygen-therapy" conceptId="166381" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown"
+                                                <obs id="oxygen-therapy" conceptId="166396" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <label>O<sub>2</sub>Flow</label> <!-- add subscript -->
+                                                <label>O<sub>2</sub>Flow</label>
                                                 <div class="row">
                                                     <obs id="02-flow" conceptId="166395" answerConceptIds="166392,166393,166394,166416,90001" answerLabel="1-5 L/min,6-10 L/min,11-15 L/min,>15,Unknown" style="checkbox" class="col-md-4"/>
                                                 </div>
@@ -725,9 +725,9 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <obs conceptId="166244" answerConceptId="159791" answerLabel="Discharged Alive" style="checkbox" class="col-md-2"/> <!--create concepts-->
-                                            <obs conceptId="166244" answerConceptId="90306" answerLabel="Transferred to another HF for hospitalization" style="checkbox" class="col-md-4"/> <!--create concepts-->
-                                            <obs conceptId="166244" answerConceptId="1366" answerLabel="Dead" style="checkbox" class="col-md-2"/> <!--create concepts-->
+                                            <obs conceptId="166244" answerConceptId="159791" answerLabel="Discharged Alive" style="checkbox" class="col-md-2"/>
+                                            <obs conceptId="166244" answerConceptId="90306" answerLabel="Transferred to another HF for hospitalization" style="checkbox" class="col-md-4"/>
+                                            <obs conceptId="166244" answerConceptId="1366" answerLabel="Dead" style="checkbox" class="col-md-2"/>
                                             <obs conceptId="166244" answerConceptId="166349" answerLabel="Left health facility against Medical Advice" style="checkbox" class="col-md-4"/> <!--create concepts-->
                                         </div>
                                     </div>
