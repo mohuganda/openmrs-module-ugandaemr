@@ -15,352 +15,482 @@
 
         if (jQuery) {
 
-        jq(document).ready(function () {
-        disable_fields("specify-other-anti-biotics");
-        disable_fields("specify-other-malaria-treatment");
-        disable_fields("specify-other-anti-biotics");
-        disable_fields("specify-other-diabetes-medication");
-        disable_fields("Specify-other-complications");
-        disable_fields("specify-other-art-regimens");
-        disable_fields("specify-other-therapeutic");
-        disable_fields("specify-other-satin");
-        disable_fields("worst-spo-fio-ratio");
-        disable_fields("pH");
-        disable_fields("PaO2");
-        disable_fields("PCO2");
-        disable_fields("HCO3");
-        disable_fields("corticosteroid-route")
-        disable_fields("Haemoglobin-results");
-        disable_fields("WBC-Count-results");
-        disable_fields("Haematocrit-results");
-        disable_fields("Platelets-results");
-        disable_fields("APTT-APTR-results");
-        disable_fields("PT-results");
-        disable_fields("INR-results");
-        disable_fields("ALT-SGPT-results");
-        disable_fields("Total-Bilirubin-results");
-        disable_fields("AST-SGOT-results");
-        disable_fields("Urea-results");
-        disable_fields("Lactate-results");
-        disable_fields("Creatinine-results");
-        disable_fields("Sodium-results");
-        disable_fields("Potassium-results");
-        disable_fields("Procalcitonin-results");
-        disable_fields("CRP-results");
-        disable_fields("LDH-results");
-        disable_fields("Creatine-results");
-        disable_fields("Kinase-results");
-        disable_fields("UTroponin-results");
-        disable_fields("ESR-results");
-        disable_fields("UD-dimer-results");
-        disable_fields("mFerritin-results");
-        disable_fields("aIL-6-results");
-        disable_fields("infiltrates-present");
+            jq(document).ready(function () {
+                disable_fields("specify-other-anti-biotics");
+                disable_fields("specify-other-malaria-treatment");
+                disable_fields("specify-other-anti-biotics");
+                disable_fields("specify-other-diabetes-medication");
+                disable_fields("Specify-other-complications");
+                disable_fields("specify-other-art-regimens");
+                disable_fields("specify-other-therapeutic");
+                disable_fields("specify-other-satin");
+                disable_fields("worst-spo-fio-ratio");
+                disable_fields("pH");
+                disable_fields("PaO2");
+                disable_fields("PCO2");
+                disable_fields("HCO3");
+                disable_fields("corticosteroid-route")
+                disable_fields("Haemoglobin-results");
+                disable_fields("WBC-Count-results");
+                disable_fields("Haematocrit-results");
+                disable_fields("Platelets-results");
+                disable_fields("APTT-APTR-results");
+                disable_fields("PT-results");
+                disable_fields("INR-results");
+                disable_fields("ALT-SGPT-results");
+                disable_fields("Total-Bilirubin-results");
+                disable_fields("AST-SGOT-results");
+                disable_fields("Urea-results");
+                disable_fields("Lactate-results");
+                disable_fields("Creatinine-results");
+                disable_fields("Sodium-results");
+                disable_fields("Potassium-results");
+                disable_fields("Procalcitonin-results");
+                disable_fields("CRP-results");
+                disable_fields("LDH-results");
+                disable_fields("Creatine-results");
+                disable_fields("Kinase-results");
+                disable_fields("UTroponin-results");
+                disable_fields("ESR-results");
+                disable_fields("UD-dimer-results");
+                disable_fields("mFerritin-results");
+                disable_fields("aIL-6-results");
+                disable_fields("infiltrates-present");
 
-        disable_fields("corona-virus-result");
-        disable_fields("malaria-falciparum-result");
-        disable_fields("hiv-result");
-        disable_fields("other-diagnostic-result");
-        disable_fields("specify-novel-experimental-therapeutic-agent");
-
-        disable_fields("ribavirin");
-        disable_fields("lopinavir-ritonavir");
-        disable_fields("neuraminidase-inhibitor");
-        disable_fields("other-corticosteroid");
-        disable_fields("specify-other-therapy");
-
-        disable_fields("02-flow");
-        disable_fields("interface");
-
-        jq("#corona-virus-test").click(function () {
-            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                enable_fields("corona-virus-result");
-            } else {
                 disable_fields("corona-virus-result");
-            }
-        });
-
-        jq("#malaria-falciparum-test").click(function () {
-            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                enable_fields("malaria-falciparum-result");
-            } else {
                 disable_fields("malaria-falciparum-result");
-            }
-        });
-
-        jq("#hiv-test").click(function () {
-            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                enable_fields("hiv-result");
-            } else {
                 disable_fields("hiv-result");
-            }
-        });
-
-        jq("#other-diagnostic-test").click(function () {
-            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                enable_fields("other-diagnostic-result");
-            } else {
                 disable_fields("other-diagnostic-result");
-            }
-        });
-
-        jq("#novel-experimental-therapeutic-agent").click(function () {
-            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                enable_fields("specify-novel-experimental-therapeutic-agent");
-            } else {
                 disable_fields("specify-novel-experimental-therapeutic-agent");
-            }
-        });
 
-        jq("#antiviral").click(function () {
-            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                enable_fields("ribavirin");
-                enable_fields("lopinavir-ritonavir");
-                enable_fields("neuraminidase-inhibitor");
-            } else {
                 disable_fields("ribavirin");
                 disable_fields("lopinavir-ritonavir");
                 disable_fields("neuraminidase-inhibitor");
-            }
-        });
-
-        jq("#corticosteroid").click(function () {
-            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                enable_fields("corticosteroid-route");
-                enable_fields("other-corticosteroid");
-            } else {
-                disable_fields("corticosteroid-route");
                 disable_fields("other-corticosteroid");
-            }
-        });
-        jq("#other-therapy").click(function () {
-            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                enable_fields("specify-other-therapy");
-            } else {
                 disable_fields("specify-other-therapy");
-            }
-        });
-        jq("#oxygen-therapy").click(function () {
-            if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                enable_fields("02-flow");
-                enable_fields("interface");
-            } else {
+
                 disable_fields("02-flow");
                 disable_fields("interface");
-            }
-        });
 
+                jq("#corona-virus-test").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("corona-virus-result");
+                    } else {
+                        disable_fields("corona-virus-result");
+                    }
+                });
 
+                jq("#malaria-falciparum-test").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("malaria-falciparum-result");
+                    } else {
+                        disable_fields("malaria-falciparum-result");
+                    }
+                });
 
+                jq("#hiv-test").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("hiv-result");
+                    } else {
+                        disable_fields("hiv-result");
+                    }
+                });
 
+                jq("#other-diagnostic-test").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("other-diagnostic-result");
+                    } else {
+                        disable_fields("other-diagnostic-result");
+                    }
+                });
 
+                jq("#novel-experimental-therapeutic-agent").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("specify-novel-experimental-therapeutic-agent");
+                    } else {
+                        disable_fields("specify-novel-experimental-therapeutic-agent");
+                    }
+                });
 
+                jq("#antiviral").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("ribavirin");
+                        enable_fields("lopinavir-ritonavir");
+                        enable_fields("neuraminidase-inhibitor");
+                    } else {
+                        disable_fields("ribavirin");
+                        disable_fields("lopinavir-ritonavir");
+                        disable_fields("neuraminidase-inhibitor");
+                    }
+                });
 
+                jq("#corticosteroid").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("corticosteroid-route");
+                        enable_fields("other-corticosteroid");
+                    } else {
+                        disable_fields("corticosteroid-route");
+                        disable_fields("other-corticosteroid");
+                    }
+                });
+                jq("#other-therapy").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("specify-other-therapy");
+                    } else {
+                        disable_fields("specify-other-therapy");
+                    }
+                });
+                jq("#oxygen-therapy").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("02-flow");
+                        enable_fields("interface");
+                    } else {
+                        disable_fields("02-flow");
+                        disable_fields("interface");
+                    }
+                });
+                jq("#malaria-treatment").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("specify-other-malaria-treatment");
+                        enable_fields("specify-other-anti-biotics");
+                    } else {
+                        disable_fields("specify-other-malaria-treatment");
+                        disable_fields("specify-other-anti-biotics");
+                    }
+                });
 
+                jq(".if-art").change(function () {
+                    if (jq(this).find('#other-art').find(':checkbox').prop('checked')) {
+                        enable_fields("specify-other-art-regimens");
+                    } else {
+                        disable_fields("specify-other-art-regimens");
+                    }
+                });
 
+                jq("#diabetes-medication").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("specify-other-diabetes-medication");
+                    } else {
+                        disable_fields("specify-other-diabetes-medication");
+                    }
+                });
 
+                jq("#satin").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("specify-other-satin");
+                    } else {
+                        disable_fields("specify-other-satin");
+                    }
+                });
 
-        jq("#malaria-treatment").click(function () {
-        if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-        enable_fields("specify-other-malaria-treatment");
-        enable_fields("specify-other-anti-biotics");
-        } else {
-        disable_fields("specify-other-malaria-treatment");
-        disable_fields("specify-other-anti-biotics");
-        }
-        });
+                jq("#blood-gas-done").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("pH");
+                        enable_fields("PaO2");
+                        enable_fields("PCO2");
+                        enable_fields("HCO3");
+                    } else {
+                        disable_fields("pH");
+                        disable_fields("PaO2");
+                        disable_fields("PCO2");
+                        disable_fields("HCO3");
+                    }
+                });
 
-        jq(".if-art").change(function () {
-        if (jq(this).find('#other-art').find(':checkbox').prop('checked')) {
-        enable_fields("specify-other-art-regimens");
-        } else {
-        disable_fields("specify-other-art-regimens");
-        }
-        });
+                jq(".complications").change(function () {
+                    if (jq(this).find('#other-complications').find(':checkbox').prop('checked')) {
+                        enable_fields("Specify-other-complications");
+                    } else {
+                        disable_fields("Specify-other-complications");
+                    }
+                });
 
-        jq("#diabetes-medication").click(function () {
-        if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-        enable_fields("specify-other-diabetes-medication");
-        } else {
-        disable_fields("specify-other-diabetes-medication");
-        }
-        });
+                jq(".antibiotics").change(function () {
+                    if (jq(this).find('#other-anti-biotics').find(':checkbox').prop('checked')) {
+                        enable_fields("Specify-other-anti-biotics");
+                    } else {
+                        disable_fields("Specify-other-anti-biotics");
+                    }
+                });
 
-        jq("#satin").click(function () {
-        if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-        enable_fields("specify-other-satin");
-        } else {
-        disable_fields("specify-other-satin");
-        }
-        });
+                jq("#chest-xray").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("infiltrates-present");
+                    } else {
+                        disable_fields("infiltrates-present");
+                    }
+                });
 
+                jq(".lab-tests").change(function () {
+                    if(jq(this).find('#Haemoglobin-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Haemoglobin-results");
+                    } else {
+                        disable_fields("Haemoglobin-results");
+                    }
+                    if(jq(this).find('#WBC-Count-test').find(':checkbox').prop('checked')) {
+                        enable_fields("WBC-Count-results");
+                    } else {
+                        disable_fields("WBC-Count-results");
+                    }
+                    if(jq(this).find('#Haematocrit-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Haematocrit-results");
+                    } else {
+                        disable_fields("Haematocrit-results");
+                    }
+                    if(jq(this).find('#Platelets-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Platelets-results");
+                    } else {
+                        disable_fields("Platelets-results");
+                    }
+                    if(jq(this).find('#APTT-APTR-test').find(':checkbox').prop('checked')) {
+                        enable_fields("APTT-APTR-result");
+                    } else {
+                        disable_fields("APTT-APTR-result");
+                    }
+                    if(jq(this).find('#PT-test').find(':checkbox').prop('checked')) {
+                        enable_fields("PT-results");
+                    } else {
+                        disable_fields("PT-results");
+                    }
+                    if(jq(this).find('#INR-test').find(':checkbox').prop('checked')) {
+                        enable_fields("INR-results");
+                    } else {
+                        disable_fields("INR-results");
+                    }
+                    if(jq(this).find('#ALT-SGPT-test').find(':checkbox').prop('checked')) {
+                        enable_fields("ALT-SGPT-results");
+                    } else {
+                        disable_fields("ALT-SGPT-results");
+                    }
+                    if(jq(this).find('#Total-Bilirubin-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Total-Bilirubin-results");
+                    } else {
+                        disable_fields("Total-Bilirubin-results");
+                    }
+                    if(jq(this).find('#AST-SGOT-test').find(':checkbox').prop('checked')) {
+                        enable_fields("AST-SGOT-results");
+                    } else {
+                        disable_fields("AST-SGOT-results");
+                    }
+                    if(jq(this).find('#Urea-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Urea-results");
+                    } else {
+                        disable_fields("Urea-results");
+                    }
+                    if(jq(this).find('#Lactate-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Lactate-results");
+                    } else {
+                        disable_fields("Lactate-results");
+                    }
+                    if(jq(this).find('#Creatinine-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Creatinine-results");
+                    } else {
+                        disable_fields("Creatinine-results");
+                    }
+                    if(jq(this).find('#Sodium-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Sodium-results");
+                    } else {
+                        disable_fields("Sodium-results");
+                    }
+                    if(jq(this).find('#Potassium-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Potassium-results");
+                    } else {
+                        disable_fields("Potassium-results");
+                    }
+                    if(jq(this).find('#Procalcitonin-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Procalcitonin-results");
+                    } else {
+                        disable_fields("Procalcitonin-results");
+                    }
+                    if(jq(this).find('#CRP-test').find(':checkbox').prop('checked')) {
+                        enable_fields("CRP-results");
+                    } else {
+                        disable_fields("CRP-results");
+                    }
+                    if(jq(this).find('#LDH-test').find(':checkbox').prop('checked')) {
+                        enable_fields("LDH-results");
+                    } else {
+                        disable_fields("LDH-results");
+                    }
+                    if(jq(this).find('#Creatine-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Creatine-results");
+                    } else {
+                        disable_fields("Creatine-results");
+                    }
+                    if(jq(this).find('#Kinase-test').find(':checkbox').prop('checked')) {
+                        enable_fields("Kinase-results");
+                    } else {
+                        disable_fields("Kinase-results");
+                    }
+                    if(jq(this).find('#UTroponin-test').find(':checkbox').prop('checked')) {
+                        enable_fields("UTroponin-results");
+                    } else {
+                        disable_fields("UTroponin-results");
+                    }
+                    if(jq(this).find('#ESR-test').find(':checkbox').prop('checked')) {
+                        enable_fields("ESR-results");
+                    } else {
+                        disable_fields("ESR-results");
+                    }
+                    if(jq(this).find('#UD-dimer-test').find(':checkbox').prop('checked')) {
+                        enable_fields("UD-dimer-results");
+                    } else {
+                        disable_fields("UD-dimer-results");
+                    }
+                    if(jq(this).find('#mFerritin-test').find(':checkbox').prop('checked')) {
+                        enable_fields("mFerritin-results");
+                    } else {
+                        disable_fields("mFerritin-results");
+                    }
+                    if(jq(this).find('#aIL-6-test').find(':checkbox').prop('checked')) {
+                        enable_fields("aIL-6-results");
+                    } else {
+                        disable_fields("aIL-6-results");
+                    }
+                });
 
-        jq("#blood-gas-done").click(function () {
-        if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-        enable_fields("pH");
-        enable_fields("PaO2");
-        enable_fields("PCO2");
-        enable_fields("HCO3");
-        } else {
-        disable_fields("pH");
-        disable_fields("PaO2");
-        disable_fields("PCO2");
-        disable_fields("HCO3");
-        }
-        });
+                <!-- Validate if for every complication, an answer (yes,no or unknown) is chosen -->
 
-        jq(".complications").change(function () {
-        if (jq(this).find('#other-complications').find(':checkbox').prop('checked')) {
-        enable_fields("Specify-other-complications");
-        } else {
-        disable_fields("Specify-other-complications");
-        }
-        });
+                beforeSubmit.push(function () {
 
-        jq(".antibiotics").change(function () {
-        if (jq(this).find('#other-anti-biotics').find(':checkbox').prop('checked')) {
-        enable_fields("Specify-other-anti-biotics");
-        } else {
-        disable_fields("Specify-other-anti-biotics");
-        }
-        });
+                        if(jq('#shock').find(':checkbox').prop('checked')) {
+                            var shockAnswer = jq('#shock-answer').find("input[type='radio']:checked").val();
+                            if(!shockAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'Shock' under Complication");
+                                return false;
+                            }
+                        }
 
-        jq("#chest-xray").click(function () {
-        if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-        enable_fields("infiltrates-present");
-        } else {
-        disable_fields("infiltrates-present");
-        }
-        });
+                        if(jq('#bacteria').find(':checkbox').prop('checked')) {
+                            var bacteriaAnswer = jq('#bacteria-answer').find("input[type='radio']:checked").val();
+                            if(!bacteriaAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'Bacteria' under Complication");
+                                return false;
+                            }
+                        }
 
-        jq(".lab-tests").change(function () {
-        if(jq(this).find('#Haemoglobin-test').find(':checkbox').prop('checked')) {
-        enable_fields("Haemoglobin-results");
-        } else {
-        disable_fields("Haemoglobin-results");
-        }
-        if(jq(this).find('#WBC-Count-test').find(':checkbox').prop('checked')) {
-        enable_fields("WBC-Count-results");
-        } else {
-        disable_fields("WBC-Count-results");
-        }
-        if(jq(this).find('#Haematocrit-test').find(':checkbox').prop('checked')) {
-        enable_fields("Haematocrit-results");
-        } else {
-        disable_fields("Haematocrit-results");
-        }
-        if(jq(this).find('#Platelets-test').find(':checkbox').prop('checked')) {
-        enable_fields("Platelets-results");
-        } else {
-        disable_fields("Platelets-results");
-        }
-        if(jq(this).find('#APTT-APTR-test').find(':checkbox').prop('checked')) {
-        enable_fields("APTT-APTR-result");
-        } else {
-        disable_fields("APTT-APTR-result");
-        }
-        if(jq(this).find('#PT-test').find(':checkbox').prop('checked')) {
-        enable_fields("PT-results");
-        } else {
-        disable_fields("PT-results");
-        }
-        if(jq(this).find('#INR-test').find(':checkbox').prop('checked')) {
-        enable_fields("INR-results");
-        } else {
-        disable_fields("INR-results");
-        }
-        if(jq(this).find('#ALT-SGPT-test').find(':checkbox').prop('checked')) {
-        enable_fields("ALT-SGPT-results");
-        } else {
-        disable_fields("ALT-SGPT-results");
-        }
-        if(jq(this).find('#Total-Bilirubin-test').find(':checkbox').prop('checked')) {
-        enable_fields("Total-Bilirubin-results");
-        } else {
-        disable_fields("Total-Bilirubin-results");
-        }
-        if(jq(this).find('#AST-SGOT-test').find(':checkbox').prop('checked')) {
-        enable_fields("AST-SGOT-results");
-        } else {
-        disable_fields("AST-SGOT-results");
-        }
-        if(jq(this).find('#Urea-test').find(':checkbox').prop('checked')) {
-        enable_fields("Urea-results");
-        } else {
-        disable_fields("Urea-results");
-        }
-        if(jq(this).find('#Lactate-test').find(':checkbox').prop('checked')) {
-        enable_fields("Lactate-results");
-        } else {
-        disable_fields("Lactate-results");
-        }
-        if(jq(this).find('#Creatinine-test').find(':checkbox').prop('checked')) {
-        enable_fields("Creatinine-results");
-        } else {
-        disable_fields("Creatinine-results");
-        }
-        if(jq(this).find('#Sodium-test').find(':checkbox').prop('checked')) {
-        enable_fields("Sodium-results");
-        } else {
-        disable_fields("Sodium-results");
-        }
-        if(jq(this).find('#Potassium-test').find(':checkbox').prop('checked')) {
-        enable_fields("Potassium-results");
-        } else {
-        disable_fields("Potassium-results");
-        }
-        if(jq(this).find('#Procalcitonin-test').find(':checkbox').prop('checked')) {
-        enable_fields("Procalcitonin-results");
-        } else {
-        disable_fields("Procalcitonin-results");
-        }
-        if(jq(this).find('#CRP-test').find(':checkbox').prop('checked')) {
-        enable_fields("CRP-results");
-        } else {
-        disable_fields("CRP-results");
-        }
-        if(jq(this).find('#LDH-test').find(':checkbox').prop('checked')) {
-        enable_fields("LDH-results");
-        } else {
-        disable_fields("LDH-results");
-        }
-        if(jq(this).find('#Creatine-test').find(':checkbox').prop('checked')) {
-        enable_fields("Creatine-results");
-        } else {
-        disable_fields("Creatine-results");
-        }
-        if(jq(this).find('#Kinase-test').find(':checkbox').prop('checked')) {
-        enable_fields("Kinase-results");
-        } else {
-        disable_fields("Kinase-results");
-        }
-        if(jq(this).find('#UTroponin-test').find(':checkbox').prop('checked')) {
-        enable_fields("UTroponin-results");
-        } else {
-        disable_fields("UTroponin-results");
-        }
-        if(jq(this).find('#ESR-test').find(':checkbox').prop('checked')) {
-        enable_fields("ESR-results");
-        } else {
-        disable_fields("ESR-results");
-        }
-        if(jq(this).find('#UD-dimer-test').find(':checkbox').prop('checked')) {
-        enable_fields("UD-dimer-results");
-        } else {
-        disable_fields("UD-dimer-results");
-        }
-        if(jq(this).find('#mFerritin-test').find(':checkbox').prop('checked')) {
-        enable_fields("mFerritin-results");
-        } else {
-        disable_fields("mFerritin-results");
-        }
-        if(jq(this).find('#aIL-6-test').find(':checkbox').prop('checked')) {
-        enable_fields("aIL-6-results");
-        } else {
-        disable_fields("aIL-6-results");
-        }
-        });
-        });
+                        if(jq('#seizure').find(':checkbox').prop('checked')) {
+                            var seizureAnswer = jq('#seizure-answer').find("input[type='radio']:checked").val();
+                            if(!seizureAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'seizure' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#bleeding').find(':checkbox').prop('checked')) {
+                            var bleedingAnswer = jq('#bleeding-answer').find("input[type='radio']:checked").val();
+                            if(!bleedingAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'bleeding' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#meningitis-encephalitis').find(':checkbox').prop('checked')) {
+                            var meningitisAnswer = jq('#meningitis-encephalitis-answer').find("input[type='radio']:checked").val();
+                            if(!meningitisAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'meningitis/encephalitis' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#endocarditis').find(':checkbox').prop('checked')) {
+                            var endocarditisAnswer = jq('#endocarditis-answer').find("input[type='radio']:checked").val();
+                            if(!endocarditisAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'endocarditis' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#anaemia').find(':checkbox').prop('checked')) {
+                            var anaemiaAnswer = jq('#anaemia-answer').find("input[type='radio']:checked").val();
+                            if(!anaemiaAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'anaemia' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#myocarditis-pericarditis').find(':checkbox').prop('checked')) {
+                            var myocarditisAnswer = jq('#myocarditis-pericarditis-answer').find("input[type='radio']:checked").val();
+                            if(!myocarditisAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'myocarditis/pericarditis' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#cardiac-arrhythmia').find(':checkbox').prop('checked')) {
+                            var arrhythmiaAnswer = jq('#cardiac-arrhythmia-answer').find("input[type='radio']:checked").val();
+                            if(!arrhythmiaAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'cardiac arrhythmia' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#acute-renal-injury').find(':checkbox').prop('checked')) {
+                            var renalAnswer = jq('#acute-renal-injury-answer').find("input[type='radio']:checked").val();
+                            if(!renalAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'acute renal injury' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#cardiac-arrest').find(':checkbox').prop('checked')) {
+                            var arrestAnswer = jq('#cardiac-arrest-answer').find("input[type='radio']:checked").val();
+                            if(!arrestAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'cardiac arrest' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#pancreatitis').find(':checkbox').prop('checked')) {
+                            var pancreatitisAnswer = jq('#pancreatitis-answer').find("input[type='radio']:checked").val();
+                            if(!pancreatitisAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'pancreatitis' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#pneumonia').find(':checkbox').prop('checked')) {
+                            var pneumoniaAnswer = jq('#pneumonia-answer').find("input[type='radio']:checked").val();
+                            if(!pneumoniaAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'pneumonia' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#liver-dysfunction').find(':checkbox').prop('checked')) {
+                            var dysfunctionAnswer = jq('#liver-dysfunction-answer').find("input[type='radio']:checked").val();
+                            if(!dysfunctionAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'liver dysfunction' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#bronchiolitis').find(':checkbox').prop('checked')) {
+                            var bronchiolitisAnswer = jq('#bronchiolitis-answer').find("input[type='radio']:checked").val();
+                            if(!bronchiolitisAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'bronchiolitis' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#cardiomyopathy').find(':checkbox').prop('checked')) {
+                            var cardiomyopathyAnswer = jq('#cardiomyopathy-answer').find("input[type='radio']:checked").val();
+                            if(!cardiomyopathyAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'cardiomyopathy' under Complication");
+                                return false;
+                            }
+                        }
+
+                        if(jq('#acute-respiratory-distress-syndrome').find(':checkbox').prop('checked')) {
+                            var distressAnswer = jq('#acute-respiratory-distress-syndrome-answer').find("input[type='radio']:checked").val();
+                            if(!distressAnswer){
+                                jq().toastmessage('showErrorToast', "Choose Answer to 'acute respiratory distress syndrome' under Complication");
+                                return false;
+                            }
+                        }
+                        return true;
+                })
+            });
         }
     </script>
 
@@ -440,88 +570,130 @@
                                     </div>
                                     <div class="card-body complications">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Shock</label>  <!--shock is not coded and no attached answers (112989)-->
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Bacteremia</label>
-                                                <obs conceptId="166372" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Seizure</label> <!--Seizure is not coded and no attached answers (206)-->
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="shock" conceptId="166378" answerConceptId="112989" answerLabel="Shock" style="checkbox" toggle="shock-answer"/>
+                                                    <div id="shock-answer">
+                                                        <obs conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                    </div>
+                                                </div>
+                                            </obsgroup>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="bacteremia" conceptId="166378" answerConceptId="166372" answerLabel="Bacteremia" style="checkbox" toggle="bacteremia-answer" />
+                                                    <obs id="bacteremia-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="seizure" conceptId="166378" answerConceptId="206" answerLabel="Seizure" style="checkbox" toggle="seizure-answer" />
+                                                    <obs id="seizure-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Bleeding</label> <!--Bleeding is not coded and no attached answers (147241)-->
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Meningitis/Encephalitis</label> <!--Meningitis is not coded and no attached answers (115835)-->
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Endocarditis</label>
-                                                <obs conceptId="166373" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="bleeding" conceptId="166378" answerConceptId="147241" answerLabel="Bleeding" style="checkbox" toggle="bleeding-answer"/>
+                                                    <obs id="bleeding-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="meningitis-encephalitis" conceptId="166378" answerConceptId="115835" answerLabel="Meningitis/Encephalitis" style="checkbox" toggle="meningitis-encephalitis-answer" />
+                                                    <obs id="meningitis-encephalitis-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="endocarditis" conceptId="166378" answerConceptId="166373" answerLabel="Endocarditis" style="checkbox" toggle="endocarditis-answer" />
+                                                    <obs id="endocarditis-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Anaemia</label> <!--Anaemia is not coded and no attached answers-->
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Myocarditis/Pericarditis</label>
-                                                <obs conceptId="166374" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Cardiac Arrhythmia</label> <!--Cardiac Arrhythmia is not coded and no attached answers (120148)-->
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="anaemia" conceptId="166378" answerConceptId="121629" answerLabel="Anaemia" style="checkbox" toggle="anaemia-answer"/>
+                                                    <obs id="anaemia-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="myocarditis-pericarditis" conceptId="166378" answerConceptId="166374" answerLabel="Myocarditis/Pericarditis" style="checkbox" toggle="myocarditis-pericarditis-answer" />
+                                                    <obs id="myocarditis-pericarditis-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="cardiac-arrhythmia" conceptId="166378" answerConceptId="120148" answerLabel="Cardiac Arrhythmia" style="checkbox" toggle="cardiac-arrhythmia-answer" />
+                                                    <obs id="cardiac-arrhythmia-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Acute Renal Injury</label>
-                                                <obs conceptId="166375" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Cardiac Arrest</label>
-                                                <obs conceptId="166417" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Pancreatitis</label>
-                                                <obs conceptId="166376" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="acute-renal-injury" conceptId="166378" answerConceptId="166375" answerLabel="Acute Renal Injury" style="checkbox" toggle="acute-renal-injury-answer" />
+                                                    <obs id="acute-renal-injury-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="cardiac-arrest" conceptId="166378" answerConceptId="166417" answerLabel="Cardiac Arrest" style="checkbox" toggle="cardiac-arrest-answer" />
+                                                    <obs id="cardiac-arrest-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="pancreatitis" conceptId="166378" answerConceptId="166376" answerLabel="Pancreatitis" style="checkbox" toggle="pancreatitis-answer"/>
+                                                    <obs id="pancreatitis-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Pneumonia</label>  <!--Pneumonia is not coded and no attached answers (114100)147-->
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Liver Dysfunction</label>
-                                                <obs conceptId="166418" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Bronchiolitis</label> <!--Bronchiolitis is not coded and no attached answers (147)-->
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="pneumonia" conceptId="166378" answerConceptId="114100" answerLabel="Pneumonia" style="checkbox" toggle="pneumonia-answer"/>
+                                                    <obs id="pneumonia-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="liver-dysfunction" conceptId="166378" answerConceptId="166418" answerLabel="Liver Dysfunction" style="checkbox" toggle="liver-dysfunction-answer"/>
+                                                    <obs id="liver-dysfunction-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="bronchiolitis" conceptId="166378" answerConceptId="147" answerLabel="Bronchiolitis" style="checkbox" toggle="bronchiolitis-answer"/>
+                                                    <obs id="bronchiolitis-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Cardiomyopathy</label> <!--Cardiomyopathy is not coded and no attached answers (5016)-->
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Acute Respiartory Distress Syndrome</label>
-                                                <obs conceptId="166371" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Other</label> <!--concept is missing and its answers -->
-                                                <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
-                                            </div>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="cardiomyopathy" conceptId="166378" answerConceptId="5016" answerLabel="Cardiomyopathy" style="checkbox" toggle="cardiomyopathy-answer"/>
+                                                    <obs id="cardiomyopathy-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs id="acute-respiratory-distress-syndrome" conceptId="166378" answerConceptId="166371" answerLabel="Acute Respiartory Distress Syndrome" style="checkbox" toggle="acute-respiratory-distress-syndrome-answer"/>
+                                                    <obs id="acute-respiratory-distress-syndrome-answer" conceptId="166431" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" style="radio" class="horizontal"/>
+                                                </div>
+                                            </obsgroup>
+                                        </div>
+                                        <div class="row">
+                                            <obsgroup groupingConceptId="166432">
+                                                <div class="col-md-4">
+                                                    <obs conceptId="166378" answerConceptId="90002" answerLabel="Other" style="checkbox" id="other-complications"/>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <obs conceptId="166377" answerLabel="Specify Other" id="specify-other-complications" />
+                                                </div>
+                                            </obsgroup>
                                         </div>
                                     </div>
                                 </div>
@@ -663,7 +835,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label>Specify Corticosteroid</label>  <!--this concept is missing -->
+                                                <label>Specify Corticosteroid</label>  <!--this concept "Specify Corticosteroid" is missing -->
                                                 <obs id="other-corticosteroid" conceptId="166344" />
                                             </div>
                                         </div>
@@ -728,14 +900,14 @@
                                             <obs conceptId="166244" answerConceptId="159791" answerLabel="Discharged Alive" style="checkbox" class="col-md-2"/>
                                             <obs conceptId="166244" answerConceptId="90306" answerLabel="Transferred to another HF for hospitalization" style="checkbox" class="col-md-4"/>
                                             <obs conceptId="166244" answerConceptId="1366" answerLabel="Dead" style="checkbox" class="col-md-2"/>
-                                            <obs conceptId="166244" answerConceptId="166349" answerLabel="Left health facility against Medical Advice" style="checkbox" class="col-md-4"/> <!--create concepts-->
+                                            <obs conceptId="166244" answerConceptId="166349" answerLabel="Left health facility against Medical Advice" style="checkbox" class="col-md-4"/> <!--create concepts "Left health facility against Medical Advice" and add it to 166244-->
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="col-md-6 anti-biotics">
-                                            <label>Enrolled in palliative care</label> <!--create concept and add codded answers yes/no-->
+                                            <label>Enrolled in palliative care</label> <!--create concept "Enrolled in palliative care" and add codded answers yes/no-->
                                             <obs conceptId="166361" answerConceptIds="90003,90004" answerLabels="Yes, No"
                                                  style="radio" class="horizontal" />
                                         </div>
@@ -746,11 +918,11 @@
                                         Ability to self-care
                                     </div>
                                     <div class="card-body">
-                                        <div class="row"> <!--create concepts for ability to self care and add these answers-->
-                                            <obs conceptId="166244" answerConceptId="159791" answerLabel="Better than before admission" style="checkbox" class="col-md-3"/> <!--create concepts-->
-                                            <obs conceptId="166244" answerConceptId="90306" answerLabel="Same as before admission" style="checkbox" class="col-md-3"/> <!--create concepts-->
-                                            <obs conceptId="166244" answerConceptId="1366" answerLabel="Worse than before admission" style="checkbox" class="col-md-4"/> <!--create concepts-->
-                                            <obs conceptId="166244" answerConceptId="166349" answerLabel="N/A" style="checkbox" class="col-md-2"/> <!--create concepts-->
+                                        <div class="row"> <!--create concepts for "ability to self care" and add these answers-->
+                                            <obs conceptId="166244" answerConceptId="159791" answerLabel="Better than before admission" style="checkbox" class="col-md-3"/> <!--create concepts "Better than before admission"-->
+                                            <obs conceptId="166244" answerConceptId="90306" answerLabel="Same as before admission" style="checkbox" class="col-md-3"/> <!--create concepts "Same as before admission"-->
+                                            <obs conceptId="166244" answerConceptId="1366" answerLabel="Worse than before admission" style="checkbox" class="col-md-4"/> <!--create concepts "Worse than before admission"-->
+                                            <obs conceptId="166244" answerConceptId="166349" answerLabel="N/A" style="checkbox" class="col-md-2"/> <!--create concepts "N/A"-->
                                         </div>
                                     </div>
                                 </div>
