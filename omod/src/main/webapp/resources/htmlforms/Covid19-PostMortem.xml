@@ -1,4 +1,4 @@
-<htmlform formName="Covid-19 PostMortem Report"
+<htmlform formName="Covid-19 Postmortem Report"
           formDescription="Covid-19: Case Investigation"
           formEncounterType="422ee220-9e83-451d-9b25-79a688a0413a"
           formUuid="9644a450-5027-4584-8e74-e64a4c7cd347" 
@@ -9,13 +9,13 @@
           formIcon="icon-medkit"
           formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==false&amp;&amp; sessionLocation.uuid=='1748bd6f-b013-449f-8d38-91319b576f3f'"
           formDisplayStyle="Standard"
-          formLabel="Covid-19 PostMortem Report">
+          formLabel="Covid-19 Postmortem Report">
 
 
     <div>
         <div class="row">
             <div class="col-md-6">
-                <h1>Covid-19: PostMortem Report</h1>
+                <h1>Covid-19: Postmortem Report</h1>
             </div>
             <div class="col-md-5"></div>
             <div class="col-md-1">
@@ -29,7 +29,7 @@
                     <div class="card-header">
                         <ul class="nav nav-tabs nav-fill card-header-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#patient-info-section">Post Mortem Report</a>
+                                <a class="nav-link active" data-toggle="tab" href="#patient-info-section">Patient Information</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#patient-covid-history-section">Covid Diagnosis History</a>
@@ -47,7 +47,7 @@
                                         Patient Information
                                     </div>
                                     <div class="card-body">
-                                        <div class="row">
+                                        <div class="row mb-4">
                                             <div class="col-md-3">
                                                 <label>Report No.</label>
                                                 <obs conceptId="159395" />
@@ -73,14 +73,18 @@
                                             </div>
                                             <div class="col-md-3">
 												<label>Date of Reciept of Body:</label>
-												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 47%;"></i>
+												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 35%;"></i>
 												<obs conceptId="159376" />
                                             </div>
                                             <div class="col-md-3">
 												<label>Date of Admission in Hospital:</label>
-												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 47%;"></i>
+												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 35%;"></i>
 												<obs conceptId="159376" />
                                             </div>
+                                            <div class="col-md-3">
+                                                <label>Medical Officer</label>
+                                                <encounterProviderAndRole encounterRole="240b26f9-dd88-4172-823d-4a8bfeb7841f" required="required"/>
+                                            </div> 
                                         </div>
                                     </div>
                                 </div>
@@ -99,21 +103,21 @@
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-3">
+                                                <label>Diagnosis Type</label>
+                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Antemortem case under investigation, Post-mortem Examination (gross) diagnosis"
+                                                     style="radio" class="horizontal"/>
+                                            </div>
+                                            <div class="col-md-3">
                                                 <label>How was the diagnosis confirmed</label>
                                                 <obs id="1542" conceptId="1542"
                                                      answerConceptIds="166272,159466,166273,5622"
                                                      answerLabels="Ante mortem Lab Diagnosis, Ante mortem Radiological Diagnosis, Ante mortem Clinical Diagnosis, Post-Mortem Lab Diagnosis"/>
                                             </div>
                                             <div class="col-md-3">
-												<label>If yes, indicate Date of Diagnosis:</label>
-												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 47%;"></i>
+												<label>Date of Diagnosis:</label>
+												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 28%;"></i>
 												<obs conceptId="90272" />
-											</div>
-                                            <div class="col-md-3">
-                                                <label>Diagnosis Type</label>
-                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004" answerLabels="ANTEMORTEM CASE UNDER INVESTIGATION, POST-MORTEM EXAMINATION (GROSS) DIAGNOSIS"
-                                                     style="radio" class="horizontal"/>
-                                            </div>
+											</div>                             
                                         </div>
                                     </div>
                                 </div>
@@ -148,6 +152,8 @@
                                         <obs conceptId="90251" answerConceptId="90132" answerLabel="Jaundice" style="checkbox" class="col-md-2" />
                                         <obs conceptId="90251" answerConceptId="158843" answerLabel="Adenopathy" style="checkbox" class="col-md-2" />
                                         <obs conceptId="90251" answerConceptId="165501" answerLabel="Skin lesions (rash, bleeding etc.)" style="checkbox" class="col-md-2"/>
+                                    </div>
+                                    <div class="row">
                                         <obs conceptId="90251" answerConceptId="90094" answerLabel="Bleeding through orifices" style="checkbox" class="col-md-3" />
                                         <obs conceptId="90251" answerConceptId="5980" answerLabel="Oedema" style="checkbox" class="col-md-3"/>
                                         <obs id="90002" conceptId="90251" answerConceptId="90002" answerLabel="Other" style="checkbox" class="col-md-2" />
@@ -164,9 +170,12 @@
                                              answerLabels="UNKNOWN, DISEASE, ACCIDENT, TUBERCULOSIS, Infectious Disease other than TB, HIV Non-infectious Disease, Natural Causes, Non natural causes, Cancer"/>
                                     </div>
                                     <div class="col-md-4">
-                                        <label>Medical Officer</label>
-                                        <obs id="166296" conceptId="166296" />
-                                    </div> 
+                                        <label>Height (cm)</label>
+                                        <obs id="5090" conceptId="5090" />
+                                    </div><div class="col-md-4">
+                                        <label>Weight (kgs)</label>
+                                        <obs id="5089" conceptId="5089" />
+                                    </div>                                    
                                     </div>                                 
                                 </div>
                             </div>
@@ -227,6 +236,26 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label>Uterus, if pregnant</label>
+                                    <obs conceptId="159395" style="textarea" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Head</label>
+                                    <obs conceptId="159395" style="textarea" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Neck</label>
+                                    <obs conceptId="159395" style="textarea" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Chest</label>
+                                    <obs conceptId="159395" style="textarea" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Abdomen</label>
+                                    <obs conceptId="159395" style="textarea" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Spleen- Pancreas</label>
                                     <obs conceptId="159395" style="textarea" />
                                 </div>
                                 </div>
