@@ -29,11 +29,8 @@
                     <div class="card-header">
                         <ul class="nav nav-tabs nav-fill card-header-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#patient-info-section">Patient Information</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#patient-covid-history-section">Covid Diagnosis History</a>
-                            </li>
+                                <a class="nav-link active" data-toggle="tab" href="#patient-info-diagnosis-history-section">Patient Information and Diagnosis History</a>
+                            </li>                            
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#autopsy-findings-section">Autopsy Findings</a>
                             </li>
@@ -41,13 +38,13 @@
                     </div>
                     <div class="card-body">
                         <div class="tab-content">
-                            <div class="tab-pane active" id="patient-info-section">
+                            <div class="tab-pane active" id="patient-info-diagnosis-history-section">
                                 <div class="card">
                                     <div class="card-header">
                                         Patient Information
                                     </div>
                                     <div class="card-body">
-                                        <div class="row mb-4">
+                                        <div class="row">
                                             <div class="col-md-3">
                                                 <label>Report No.</label>
                                                 <obs conceptId="159395" />
@@ -67,6 +64,8 @@
 												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 47%;"></i>
 												<obs conceptId="90272" />
 											</div>
+                                            </div>
+                                            <div class="row">
                                             <div class="col-md-3">
                                                 <label>Covid symptoms</label>
                                                 <obs conceptId="159395" style="textarea" />
@@ -88,9 +87,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="tab-pane" id="patient-covid-history-section">
                                 <div class="card">
                                     <div class="card-header">
                                         Diagnosis History
@@ -102,18 +99,20 @@
                                                 <obs id="166285" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Yes, No"
                                                      style="radio" class="horizontal"/>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-9">
                                                 <label>Diagnosis Type</label>
                                                 <obs id="166285" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Antemortem case under investigation, Post-mortem Examination (gross) diagnosis"
                                                      style="radio" class="horizontal"/>
                                             </div>
-                                            <div class="col-md-3">
+                                            </div>
+                                            <div class="row">
+                                            <div class="col-md-4">
                                                 <label>How was the diagnosis confirmed</label>
                                                 <obs id="1542" conceptId="1542"
                                                      answerConceptIds="166272,159466,166273,5622"
                                                      answerLabels="Ante mortem Lab Diagnosis, Ante mortem Radiological Diagnosis, Ante mortem Clinical Diagnosis, Post-Mortem Lab Diagnosis"/>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-5">
 												<label>Date of Diagnosis:</label>
 												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 28%;"></i>
 												<obs conceptId="90272" />
@@ -148,15 +147,17 @@
                                     </div>
                                     </div>
                                     <div class="row">
-                                        <obs conceptId="90251" answerConceptId="871" answerLabel="Pallor" style="checkbox" class="col-md-2"/>
-                                        <obs conceptId="90251" answerConceptId="90132" answerLabel="Jaundice" style="checkbox" class="col-md-2" />
-                                        <obs conceptId="90251" answerConceptId="158843" answerLabel="Adenopathy" style="checkbox" class="col-md-2" />
-                                        <obs conceptId="90251" answerConceptId="165501" answerLabel="Skin lesions (rash, bleeding etc.)" style="checkbox" class="col-md-2"/>
+                                        <obs conceptId="90251" answerConceptId="871" answerLabel="Pallor" style="checkbox" class="col-md-4"/>
+                                        <obs conceptId="90251" answerConceptId="90132" answerLabel="Jaundice" style="checkbox" class="col-md-4" />
+                                        <obs conceptId="90251" answerConceptId="158843" answerLabel="Adenopathy" style="checkbox" class="col-md-4" />
                                     </div>
                                     <div class="row">
-                                        <obs conceptId="90251" answerConceptId="90094" answerLabel="Bleeding through orifices" style="checkbox" class="col-md-3" />
-                                        <obs conceptId="90251" answerConceptId="5980" answerLabel="Oedema" style="checkbox" class="col-md-3"/>
-                                        <obs id="90002" conceptId="90251" answerConceptId="90002" answerLabel="Other" style="checkbox" class="col-md-2" />
+                                        <obs conceptId="90251" answerConceptId="90094" answerLabel="Bleeding through orifices" style="checkbox" class="col-md-4" />
+                                        <obs conceptId="90251" answerConceptId="5980" answerLabel="Oedema" style="checkbox" class="col-md-4"/>
+                                        <obs conceptId="90251" answerConceptId="165501" answerLabel="Skin lesions (rash, bleeding etc.)" style="checkbox" class="col-md-4"/>
+                                    </div>
+                                    <div class="row">
+                                        <obs id="90002" conceptId="90251" answerConceptId="90002" answerLabel="Other" style="checkbox" class="col-md-4"/>
                                         <div class="col-md-4">
                                             <label>Other Significant Finding</label>
                                             <obs id="166296" conceptId="166296" />
@@ -198,6 +199,8 @@
                                     <label>Heart</label>
                                     <obs conceptId="159395" style="textarea" />
                                 </div>
+                                </div>
+                                <div class="row">
                                 <div class="col-md-4">
                                     <label>Left Kidney</label>
                                     <obs conceptId="159395" style="textarea" />
@@ -210,6 +213,8 @@
                                     <label>Right Lung</label>
                                     <obs conceptId="159395" style="textarea" />
                                 </div>
+                                </div>
+                                <div class="row">
                                 <div class="col-md-4">
                                     <label>Right Adrenal Gland</label>
                                     <obs conceptId="159395" style="textarea" />
@@ -222,6 +227,8 @@
                                     <label>Left Adrenal Gland</label>
                                     <obs conceptId="159395" style="textarea" />
                                 </div>
+                                </div>
+                                <div class="row">
                                 <div class="col-md-4">
                                     <label>Liver</label>
                                     <obs conceptId="159395" style="textarea" />
@@ -234,6 +241,8 @@
                                     <label>Spleen</label>
                                     <obs conceptId="159395" style="textarea" />
                                 </div>
+                                </div>
+                                <div class="row">
                                 <div class="col-md-4">
                                     <label>Uterus, if pregnant</label>
                                     <obs conceptId="159395" style="textarea" />
@@ -246,6 +255,8 @@
                                     <label>Neck</label>
                                     <obs conceptId="159395" style="textarea" />
                                 </div>
+                                </div>
+                                <div class="row">
                                 <div class="col-md-4">
                                     <label>Chest</label>
                                     <obs conceptId="159395" style="textarea" />
