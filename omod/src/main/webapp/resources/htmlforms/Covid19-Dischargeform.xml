@@ -1,4 +1,4 @@
-<htmlform formName="Covid-19 Discharge"
+<htmlform formName="Covid19 Discharge Form"
           formDescription="Covid-19: Discharge Form"
           formEncounterType="482e4b17-fb9c-4937-a1cf-9052d3e3be68"
           formUuid="e3832d41-77f3-4597-818f-0a0d0753da61"
@@ -71,6 +71,15 @@
 
                 disable_fields("02-flow");
                 disable_fields("interface");
+                disable_fields("other-symptoms-during-admission");
+
+                jq(".symptom").change(function () {
+                    if (jq(this).find('#other-symptom').find(':checkbox').prop('checked')) {
+                        enable_fields("other-symptoms-during-admission");
+                    } else {
+                        disable_fields("other-symptoms-during-admission");
+                    }
+                });
 
                 jq("#corona-virus-test").click(function () {
                     if (jq(this).find("input[type='radio']:checked").val() == "90003") {
@@ -497,7 +506,7 @@
     <div>
         <div class="row">
             <div class="col-md-6">
-                <h1>Covid-19: Discharge Form</h1>
+                <h1>Covid-19 Discharge Form</h1>
             </div>
             <div class="col-md-5"></div>
             <div class="col-md-1">
@@ -519,7 +528,7 @@
                                 <a class="nav-link" data-toggle="tab" href="#clinical-feature-lab-results-section">Diagnostic Testing</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#medication-section">Medication/Supportive Care</a>
+                                <a class="nav-link" data-toggle="tab" href="#medication-section">Medication and Supportive Care</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#supportive-care-section">Outcome</a>
@@ -531,7 +540,7 @@
                             <div class="tab-pane active" id="patient-info-section" >
                                 <div class="card">
                                     <div class="card-header">
-                                        Date of Discharge/Transfer/Death/Release from Isolation
+                                        Date of Discharge from Isolation
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
@@ -545,7 +554,7 @@
                                     <div class="card-header">
                                         Symptoms During Course of Admission
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body symptom">
                                         <div class="row">
                                             <obs conceptId="166413" answerConceptId="90132"   answerLabel="Cough" class="col-md-3"/>
                                             <obs conceptId="166413" answerConceptId="1004"   answerLabel="Sputum" class="col-md-3" />
@@ -556,8 +565,11 @@
                                             <obs conceptId="166413" answerConceptId="206"     answerLabel="Seizures" class="col-md-3"/>
                                             <obs conceptId="166413" answerConceptId="5980"  answerLabel="Vomiting/Nausea Diarrhea" class="col-md-3"/>
                                             <obs conceptId="166413" answerConceptId="6034"  answerLabel="Conjuctivitis Myalgia" class="col-md-3"/>
-                                            <obs conceptId="166413" answerConceptId="90002"  answerLabel="Other" class="col-md-3"/>
-                                            <!-- <obs conceptId="166413" answerConceptId=""  answerLabel="Specify Other" class="col-md-3"/> missing -->
+                                            <obs id="other-symptom" conceptId="166413" answerConceptId="90002"  answerLabel="Other" class="col-md-3"/>
+                                            <div class="col-md-6">
+                                                <label>Specify Other</label>
+                                                <obs id="other-symptoms-during-admission" conceptId="166414" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -710,24 +722,17 @@
                                                 <obs id="corona-virus-test" conceptId="166440" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label>if Yes</label>  <!--missing covid virus test results concepts-->
                                                 <obs id="corona-virus-result" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
                                             <div class="col-md-3">
                                                 <label>Malaria (Falciparum) test</label>
                                                 <obs id="malaria-falciparum-test" conceptId="166439" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label>if Yes</label>  <!--missing malaria test results concept-->
                                                 <obs id="malaria-falciparum-result" conceptId="164434" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
@@ -776,32 +781,35 @@
                                 <div class="card">
                                     <div class="card-body">
                                             <div class="row">
-                                                <div class="col-md-6 anti-biotics">
+                                                <div class="col-md-3 anti-biotics">
                                                     <label>Antibiotics</label>
                                                     <obs conceptId="166421" answerConceptIds="90003,90004" answerLabels="Yes, No"
                                                          style="radio" class="horizontal" id="malaria-treatment"/>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label>Specify Antibiotics</label>
                                                     <obs id="specify-other-anti-biotics" conceptId="166344" />
                                                 </div>
                                             </div>
                                     </div>
                                 </div>
-
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label>Novel/Experimental Therapeutic agent</label>
                                                 <obs conceptId="166361" answerConceptIds="90003,90004, 90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal" id="novel-experimental-therapeutic-agent"/>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label>Specify Novel/Experimental Therapeutic agent</label>
                                                 <obs id="specify-novel-experimental-therapeutic-agent" conceptId="166344" />
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <label>Hydroxychloroquine</label>
@@ -814,32 +822,40 @@
                                                      style="radio" class="horizontal" id="antiviral"/>
                                             </div>
                                             <div class="col-md-8">
-                                                    <label>Antivirals</label>
-                                                    <div class="row">
-                                                        <obs id="ribavirin" conceptId="166351" answerConceptId="166350" answerLabel="Ribavirin" style="checkbox" class="col-md-2"/>
-                                                        <obs id="lopinavir-ritonavir" conceptId="166351" answerConceptId="794" answerLabel="Lopinavir/Ritonavir" style="checkbox" class="col-md-3"/>
-                                                        <obs id="neuraminidase-inhibitor" conceptId="166351" answerConceptId="166349" answerLabel="Neuraminidase Inhibitor" style="checkbox" class="col-md-4"/>
+                                                <label>Antivirals</label>
+                                                <div class="row">
+                                                    <obs id="ribavirin" conceptId="166351" answerConceptId="166350" answerLabel="Ribavirin" style="checkbox" class="col-md-2"/>
+                                                    <obs id="lopinavir-ritonavir" conceptId="166351" answerConceptId="794" answerLabel="Lopinavir/Ritonavir" style="checkbox" class="col-md-3"/>
+                                                    <obs id="neuraminidase-inhibitor" conceptId="166351" answerConceptId="166349" answerLabel="Neuraminidase Inhibitor" style="checkbox" class="col-md-4"/>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>Corticosteroid</label>
                                                 <obs conceptId="166353" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal" id="corticosteroid"/>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <label>Route</label>
                                                 <div class="row">
                                                     <obs conceptId="166352" answerConceptIds="160240,160242,162400" answerLabel="Oral,Intravenous,Inhaled" id="corticosteroid-route"/>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label>Specify Corticosteroid</label>  <!--this concept "Specify Corticosteroid" is missing -->
                                                 <obs id="other-corticosteroid" conceptId="166344" />
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
 
+                                <div class="card">
+                                    <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <label>Proning</label>
@@ -897,27 +913,24 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <obs conceptId="166244" answerConceptId="159791" answerLabel="Discharged Alive" style="checkbox" class="col-md-2"/>
+                                            <obs conceptId="166244" answerConceptId="159791" answerLabel="Discharged alive" style="checkbox" class="col-md-2"/>
                                             <obs conceptId="166244" answerConceptId="90306" answerLabel="Transferred to another HF for hospitalization" style="checkbox" class="col-md-4"/>
                                             <obs conceptId="166244" answerConceptId="1366" answerLabel="Dead" style="checkbox" class="col-md-2"/>
-                                            <obs conceptId="166244" answerConceptId="166349" answerLabel="Left health facility against Medical Advice" style="checkbox" class="col-md-4"/> <!--create concepts "Left health facility against Medical Advice" and add it to 166244-->
+                                            <obs conceptId="166244" answerConceptId="166349" answerLabel="Left health facility against medical advice" style="checkbox" class="col-md-4"/> <!--create concepts "Left health facility against Medical Advice" and add it to 166244-->
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="col-md-6 anti-biotics">
-                                            <label>Enrolled in palliative care</label> <!--create concept "Enrolled in palliative care" and add codded answers yes/no-->
-                                            <obs conceptId="166361" answerConceptIds="90003,90004" answerLabels="Yes, No"
-                                                 style="radio" class="horizontal" />
+                                        <div class="row">
+                                            <div class="col-md-6 anti-biotics">
+                                                <label>Enrolled in palliative care</label> <!--create concept "Enrolled in palliative care" and add codded answers yes/no-->
+                                                <obs conceptId="166361" answerConceptIds="90003,90004" answerLabels="Yes, No"
+                                                     style="radio" class="horizontal" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        Ability to self-care
-                                    </div>
-                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Self Care</label>
+                                            </div>
+                                        </div>
+
                                         <div class="row"> <!--create concepts for "ability to self care" and add these answers-->
                                             <obs conceptId="166244" answerConceptId="159791" answerLabel="Better than before admission" style="checkbox" class="col-md-3"/> <!--create concepts "Better than before admission"-->
                                             <obs conceptId="166244" answerConceptId="90306" answerLabel="Same as before admission" style="checkbox" class="col-md-3"/> <!--create concepts "Same as before admission"-->
