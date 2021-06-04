@@ -46,21 +46,21 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Report No.</label>
+                                                <label>Report Number</label>
                                                 <obs conceptId="159395" />
                                             </div>
                                             <div class="col-md-3">
-												<label>Date of Autopsy:</label>
+												<label>Date of Autopsy</label>
 												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 47%;"></i>
 												<obs conceptId="159376" />
 											</div>
                                             <div class="col-md-3">
-												<label>Date of Death:</label>
+												<label>Date of Death</label>
 												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 47%;"></i>
 												<obs conceptId="90272" />
 											</div>
                                             <div class="col-md-3">
-												<label>Date of Discharge:</label>
+												<label>Date of Discharge</label>
 												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 47%;"></i>
 												<obs conceptId="90272" />
 											</div>
@@ -71,12 +71,12 @@
                                                 <obs conceptId="159395" style="textarea" />
                                             </div>
                                             <div class="col-md-3">
-												<label>Date of Reciept of Body:</label>
+												<label>Date of Reciept of Body</label>
 												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 35%;"></i>
 												<obs conceptId="159376" />
                                             </div>
                                             <div class="col-md-3">
-												<label>Date of Admission in Hospital:</label>
+												<label>Date of Admission in Hospital</label>
 												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 35%;"></i>
 												<obs conceptId="159376" />
                                             </div>
@@ -113,7 +113,7 @@
                                                      answerLabels="Ante mortem Lab Diagnosis, Ante mortem Radiological Diagnosis, Ante mortem Clinical Diagnosis, Post-Mortem Lab Diagnosis"/>
                                             </div>
                                             <div class="col-md-5">
-												<label>Date of Diagnosis:</label>
+												<label>Date of Diagnosis</label>
 												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 28%;"></i>
 												<obs conceptId="90272" />
 											</div>                             
