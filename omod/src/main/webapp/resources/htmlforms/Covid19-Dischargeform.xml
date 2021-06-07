@@ -14,30 +14,24 @@
     <script type="text/javascript">
 
         if (jQuery) {
-
             jq(document).ready(function () {
                 disable_fields("specify-other-anti-biotics");
                 disable_fields("Specify-other-complications");
                 disable_fields("specify-other-therapeutic");
                 disable_fields("corticosteroid-route")
-
-
                 disable_fields("corona-virus-result");
                 disable_fields("malaria-falciparum-result");
                 disable_fields("hiv-result");
                 disable_fields("other-diagnostic-result");
                 disable_fields("specify-novel-experimental-therapeutic-agent");
-
                 disable_fields("ribavirin");
                 disable_fields("lopinavir-ritonavir");
                 disable_fields("neuraminidase-inhibitor");
                 disable_fields("other-corticosteroid");
                 disable_fields("specify-other-therapy");
-
                 disable_fields("02-flow");
                 disable_fields("interface");
                 disable_fields("other-symptoms-during-admission");
-
                 jq(".symptom").change(function () {
                     if (jq(this).find('#other-symptom').find(':checkbox').prop('checked')) {
                         enable_fields("other-symptoms-during-admission");
@@ -45,7 +39,6 @@
                         disable_fields("other-symptoms-during-admission");
                     }
                 });
-
                 jq("#corona-virus-test").click(function () {
                     if (jq(this).find("input[type='radio']:checked").val() == "90003") {
                         enable_fields("corona-virus-result");
@@ -53,7 +46,6 @@
                         disable_fields("corona-virus-result");
                     }
                 });
-
                 jq("#malaria-falciparum-test").click(function () {
                     if (jq(this).find("input[type='radio']:checked").val() == "90003") {
                         enable_fields("malaria-falciparum-result");
@@ -61,7 +53,6 @@
                         disable_fields("malaria-falciparum-result");
                     }
                 });
-
                 jq("#hiv-test").click(function () {
                     if (jq(this).find("input[type='radio']:checked").val() == "90003") {
                         enable_fields("hiv-result");
@@ -69,7 +60,6 @@
                         disable_fields("hiv-result");
                     }
                 });
-
                 jq("#other-diagnostic-test").click(function () {
                     if (jq(this).find("input[type='radio']:checked").val() == "90003") {
                         enable_fields("other-diagnostic-result");
@@ -77,7 +67,6 @@
                         disable_fields("other-diagnostic-result");
                     }
                 });
-
                 jq("#novel-experimental-therapeutic-agent").click(function () {
                     if (jq(this).find("input[type='radio']:checked").val() == "90003") {
                         enable_fields("specify-novel-experimental-therapeutic-agent");
@@ -85,7 +74,6 @@
                         disable_fields("specify-novel-experimental-therapeutic-agent");
                     }
                 });
-
                 jq("#antiviral").click(function () {
                     if (jq(this).find("input[type='radio']:checked").val() == "90003") {
                         enable_fields("ribavirin");
@@ -97,7 +85,6 @@
                         disable_fields("neuraminidase-inhibitor");
                     }
                 });
-
                 jq("#corticosteroid").click(function () {
                     if (jq(this).find("input[type='radio']:checked").val() == "90003") {
                         enable_fields("corticosteroid-route");
@@ -123,8 +110,6 @@
                         disable_fields("interface");
                     }
                 });
-
-
                 jq(".complications").change(function () {
                     if (jq(this).find('#other-complications').find(':checkbox').prop('checked')) {
                         enable_fields("Specify-other-complications");
@@ -132,7 +117,6 @@
                         disable_fields("Specify-other-complications");
                     }
                 });
-
                 jq(".antibiotics").change(function () {
                     if (jq(this).find('#other-anti-biotics').find(':checkbox').prop('checked')) {
                         enable_fields("Specify-other-anti-biotics");
@@ -140,7 +124,6 @@
                         disable_fields("Specify-other-anti-biotics");
                     }
                 });
-
                 jq(document).ready(function () {
                     $allRows = jq(this).find('.other-diagnostic-test');
                     $allRows.hide();
@@ -152,7 +135,6 @@
                     jq('#20-addEntry').remove();
                     jq('#11-toggleContainer').show();
                 });
-
                 jq(document).ready(function () {
                     jq('.addEntry').on("click", function () {
                         var correctedAddButtonId = parseFloat(this.id) + 1;
@@ -163,7 +145,6 @@
                         return false;
                     });
                 });
-
                 jq(document).ready(function () {
                     jq('.removeEntry').on("click", function () {
                         var correctedRemoveButtonId = parseFloat(this.id) - 1;
@@ -176,8 +157,6 @@
                         return false;
                     });
                 });
-
-
                 <ifMode mode = "EDIT" >
                     jq(document).ready(function () {
                         $allRows = jq(this).find('.other-diagnostic-test');
@@ -200,9 +179,7 @@
                         }
                     });
                 </ifMode>
-
                 <!-- Validate if for every complication, an answer (yes,no or unknown) is chosen -->
-
                 beforeSubmit.push(function () {
 
                         if(jq('#shock').find(':checkbox').prop('checked')) {
@@ -212,7 +189,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#bacteria').find(':checkbox').prop('checked')) {
                             var bacteriaAnswer = jq('#bacteria-answer').find("input[type='radio']:checked").val();
                             if(!bacteriaAnswer){
@@ -220,7 +196,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#seizure').find(':checkbox').prop('checked')) {
                             var seizureAnswer = jq('#seizure-answer').find("input[type='radio']:checked").val();
                             if(!seizureAnswer){
@@ -228,7 +203,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#bleeding').find(':checkbox').prop('checked')) {
                             var bleedingAnswer = jq('#bleeding-answer').find("input[type='radio']:checked").val();
                             if(!bleedingAnswer){
@@ -236,7 +210,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#meningitis-encephalitis').find(':checkbox').prop('checked')) {
                             var meningitisAnswer = jq('#meningitis-encephalitis-answer').find("input[type='radio']:checked").val();
                             if(!meningitisAnswer){
@@ -244,7 +217,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#endocarditis').find(':checkbox').prop('checked')) {
                             var endocarditisAnswer = jq('#endocarditis-answer').find("input[type='radio']:checked").val();
                             if(!endocarditisAnswer){
@@ -252,7 +224,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#anaemia').find(':checkbox').prop('checked')) {
                             var anaemiaAnswer = jq('#anaemia-answer').find("input[type='radio']:checked").val();
                             if(!anaemiaAnswer){
@@ -260,7 +231,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#myocarditis-pericarditis').find(':checkbox').prop('checked')) {
                             var myocarditisAnswer = jq('#myocarditis-pericarditis-answer').find("input[type='radio']:checked").val();
                             if(!myocarditisAnswer){
@@ -268,7 +238,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#cardiac-arrhythmia').find(':checkbox').prop('checked')) {
                             var arrhythmiaAnswer = jq('#cardiac-arrhythmia-answer').find("input[type='radio']:checked").val();
                             if(!arrhythmiaAnswer){
@@ -276,7 +245,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#acute-renal-injury').find(':checkbox').prop('checked')) {
                             var renalAnswer = jq('#acute-renal-injury-answer').find("input[type='radio']:checked").val();
                             if(!renalAnswer){
@@ -284,7 +252,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#cardiac-arrest').find(':checkbox').prop('checked')) {
                             var arrestAnswer = jq('#cardiac-arrest-answer').find("input[type='radio']:checked").val();
                             if(!arrestAnswer){
@@ -292,7 +259,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#pancreatitis').find(':checkbox').prop('checked')) {
                             var pancreatitisAnswer = jq('#pancreatitis-answer').find("input[type='radio']:checked").val();
                             if(!pancreatitisAnswer){
@@ -300,7 +266,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#pneumonia').find(':checkbox').prop('checked')) {
                             var pneumoniaAnswer = jq('#pneumonia-answer').find("input[type='radio']:checked").val();
                             if(!pneumoniaAnswer){
@@ -308,7 +273,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#liver-dysfunction').find(':checkbox').prop('checked')) {
                             var dysfunctionAnswer = jq('#liver-dysfunction-answer').find("input[type='radio']:checked").val();
                             if(!dysfunctionAnswer){
@@ -316,7 +280,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#bronchiolitis').find(':checkbox').prop('checked')) {
                             var bronchiolitisAnswer = jq('#bronchiolitis-answer').find("input[type='radio']:checked").val();
                             if(!bronchiolitisAnswer){
@@ -324,7 +287,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#cardiomyopathy').find(':checkbox').prop('checked')) {
                             var cardiomyopathyAnswer = jq('#cardiomyopathy-answer').find("input[type='radio']:checked").val();
                             if(!cardiomyopathyAnswer){
@@ -332,7 +294,6 @@
                                 return false;
                             }
                         }
-
                         if(jq('#acute-respiratory-distress-syndrome').find(':checkbox').prop('checked')) {
                             var distressAnswer = jq('#acute-respiratory-distress-syndrome-answer').find("input[type='radio']:checked").val();
                             if(!distressAnswer){
@@ -546,7 +507,7 @@
                                                     <obs conceptId="166378" answerConceptId="90002" answerLabel="Other" style="checkbox" id="other-complications"/>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <obs conceptId="166377" answerLabel="Specify Other" id="specify-other-complications" />
+                                                    <obs id="specify-other-complications" conceptId="166377" answerLabel="Specify Other"/>
                                                 </div>
                                             </obsgroup>
                                         </div>
@@ -566,7 +527,7 @@
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>if Yes</label>  <!--missing covid virus test results concepts-->
+                                                <label>Results</label>  <!--missing covid virus test results concepts-->
                                                 <obs id="corona-virus-result" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
@@ -576,7 +537,7 @@
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>if Yes</label>  <!--missing malaria test results concept-->
+                                                <label>Results</label>  <!--missing malaria test results concept-->
                                                 <obs id="malaria-falciparum-result" conceptId="164434" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
@@ -587,13 +548,13 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <label>HIV test</label>
                                                 <obs id="hiv-test" conceptId="166448" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal"/>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label>if Yes</label>
+                                            <div class="col-md-4">
+                                                <label>Results</label>
                                                 <obs id="hiv-result" conceptId="99628" answerConceptIds="703,664" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
@@ -611,11 +572,11 @@
                                                             <div class="col-md-12">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
-                                                                        <label>Other Diagnostic test</label>
+                                                                        <label>Test</label>
                                                                         <obs id="other-diagnostic-test" conceptId="166441" class="horizontal"/>
                                                                     </div>
-                                                                    <div class="col-md-3">
-                                                                        <label>if Yes</label>
+                                                                    <div class="col-md-4">
+                                                                        <label>Results</label>
                                                                         <obs id="other-diagnostic-result" conceptId="166442" answerConceptIds="703,664" answerLabels="Positive, Negative"
                                                                              style="radio" class="horizontal"/>
                                                                     </div>
@@ -656,26 +617,20 @@
                                                     <obs conceptId="166421" answerConceptIds="90003,90004" answerLabels="Yes, No"
                                                          style="radio" class="horizontal" id="malaria-treatment"/>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <label>Specify Antibiotics</label>
                                                     <obs id="specify-other-anti-biotics" conceptId="166344" />
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <label>Novel/Experimental Therapeutic agent</label>
+                                                    <obs conceptId="166361" answerConceptIds="90003,90004, 90001" answerLabels="Yes, No, Unknown"
+                                                         style="radio" class="horizontal" id="novel-experimental-therapeutic-agent"/>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Specify Novel/Experimental Therapeutic agent</label>
+                                                    <obs id="specify-novel-experimental-therapeutic-agent" conceptId="166344" />
+                                                </div>
                                             </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Novel/Experimental Therapeutic agent</label>
-                                                <obs conceptId="166361" answerConceptIds="90003,90004, 90001" answerLabels="Yes, No, Unknown"
-                                                     style="radio" class="horizontal" id="novel-experimental-therapeutic-agent"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Specify Novel/Experimental Therapeutic agent</label>
-                                                <obs id="specify-novel-experimental-therapeutic-agent" conceptId="166344" />
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="card">
@@ -686,8 +641,15 @@
                                                 <obs conceptId="166348" answerConceptIds="90003,90004" answerLabels="Yes, No"
                                                      style="radio" class="horizontal" id="hydroxychloroquine"/>
                                             </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
                                             <div class="col-md-2">
-                                                <label>Antiviral</label>
+                                                <label>Antiviral Given</label>
                                                 <obs conceptId="166351" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal" id="antiviral"/>
                                             </div>
@@ -705,7 +667,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <label>Corticosteroid</label>
                                                 <obs conceptId="166353" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal" id="corticosteroid"/>
@@ -732,17 +694,17 @@
                                                 <obs conceptId="166444" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal" id="corticosteroid"/>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <label>Plasmaphoresis</label>
                                                 <obs conceptId="166446" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal" id="corticosteroid"/>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <label>Other therapy</label>
                                                 <obs conceptId="166445" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                      style="radio" class="horizontal" id="other-therapy"/>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label>Specify Other therapy</label>
                                                 <obs id="specify-other-therapy" conceptId="166447" />
                                             </div>
