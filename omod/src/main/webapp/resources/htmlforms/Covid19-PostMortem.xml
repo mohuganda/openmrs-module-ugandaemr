@@ -1,4 +1,4 @@
-<htmlform formName="Covid-19 Postmortem Report"
+<htmlform formName="Covid-19 Postmortem"
           formDescription="Covid-19: Case Investigation"
           formEncounterType="422ee220-9e83-451d-9b25-79a688a0413a"
           formUuid="9644a450-5027-4584-8e74-e64a4c7cd347" 
@@ -23,7 +23,8 @@
                 disable_fields("date-of-diagnosis");
                 disable_fields("diagnosis-type");
                 disable_fields("specify");            
-                disable_fields("other-medical-intervention");            
+                disable_fields("other-medical-intervention");
+                disable_fields("how-was-the-diagnosis-confirmed");            
 
                 jq(".166319").change(function () {
                     if (jq(this).find('#other').find(':checkbox').prop('checked')) {
@@ -36,8 +37,10 @@
                 jq("#covid-confirmed").click(function () {
                     if (jq(this).find("input[type='radio']:checked").val() == "90003") {
                         enable_fields("date-of-diagnosis");
+                        enable_fields("how-was-the-diagnosis-confirmed");
                     } else {
                         disable_fields("date-of-diagnosis");
+                        disable_fields("how-was-the-diagnosis-confirmed");
                     }
                 });
 
@@ -147,29 +150,29 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <label>Covid Confirmed</label>
                                                 <obs id="covid-confirmed" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Yes, No"
                                                      style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <label>Diagnosis Type</label>
-                                                <obs id="diagnosis-type" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Antemortem case under investigation, Post-mortem Examination (gross) diagnosis"
-                                                     style="radio" class="horizontal"/>
-                                            </div>
-                                            </div>
-                                            <div class="row">
-                                            <div class="col-md-4">
-                                                <label>How was the diagnosis confirmed</label>
-                                                <obs id="1542" conceptId="1542"
-                                                     answerConceptIds="166272,159466,166273,5622"
-                                                     answerLabels="Ante mortem Lab Diagnosis, Ante mortem Radiological Diagnosis, Ante mortem Clinical Diagnosis, Post-Mortem Lab Diagnosis"/>
                                             </div>
                                             <div class="col-md-3">
 												<label>Date of Diagnosis</label>
 												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 45%;"></i>
 												<obs id="date-of-diagnosis" conceptId="90272" />
-											</div>                             
+											</div>
+                                            <div class="col-md-4">
+                                                <label>How was the diagnosis confirmed?</label>
+                                                <obs id="how-was-the-diagnosis-confirmed" conceptId="1542"
+                                                     answerConceptIds="166272,159466,166273,5622"
+                                                     answerLabels="Ante mortem Lab Diagnosis, Ante mortem Radiological Diagnosis, Ante mortem Clinical Diagnosis, Post-Mortem Lab Diagnosis"/>
+                                            </div>                                                                                        
+                                            </div>
+                                            <div class="row">                                                                                     
+                                            <div class="col-md-12">
+                                                <label>Diagnosis Type</label>
+                                                <obs id="diagnosis-type" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Antemortem case under investigation, Post-mortem Examination (gross) diagnosis"
+                                                     style="radio" class="horizontal"/>
+                                            </div>                            
                                         </div>
                                     </div>
                                 </div>
@@ -200,13 +203,13 @@
                                     </div>
                                     </div>
                                     <div class="row 90251">
-                                        <obs conceptId="90251" answerConceptId="871" answerLabel="Pallor" style="checkbox" class="col-md-4"/>
-                                        <obs conceptId="90251" answerConceptId="90132" answerLabel="Jaundice" style="checkbox" class="col-md-4" />
-                                        <obs conceptId="90251" answerConceptId="158843" answerLabel="Adenopathy" style="checkbox" class="col-md-4" />
+                                        <obs conceptId="90251" answerConceptId="90109" answerLabel="Pallor" style="checkbox" class="col-md-4"/>
+                                        <obs conceptId="90251" answerConceptId="90115" answerLabel="Jaundice" style="checkbox" class="col-md-4" />
+                                        <obs conceptId="90251" answerConceptId="161" answerLabel="Adenopathy" style="checkbox" class="col-md-4" />
                                     </div>
                                     <div class="row">
                                         <obs conceptId="90251" answerConceptId="90094" answerLabel="Bleeding through orifices" style="checkbox" class="col-md-4" />
-                                        <obs conceptId="90251" answerConceptId="5980" answerLabel="Oedema" style="checkbox" class="col-md-4"/>
+                                        <obs conceptId="90251" answerConceptId="460" answerLabel="Oedema" style="checkbox" class="col-md-4"/>
                                         <obs conceptId="90251" answerConceptId="165501" answerLabel="Skin lesions (rash, bleeding etc.)" style="checkbox" class="col-md-4"/>
                                     </div>
                                     <div class="row">
@@ -221,7 +224,7 @@
                                         <label>Cause of Death</label>
                                         <obs id="5002" conceptId="5002"
                                              answerConceptIds="90001,99288,99287,58,165374,165375,165376,165377,116030"
-                                             answerLabels="UNKNOWN, DISEASE, ACCIDENT, TUBERCULOSIS, Infectious Disease other than TB, HIV Non-infectious Disease, Natural Causes, Non natural causes, Cancer"/>
+                                             answerLabels="Unknown, Disease, Accident, Tuberculosis, Infectious Disease other than TB, HIV Non-infectious Disease, Natural Causes, Non natural causes, Cancer"/>
                                     </div>
                                     <div class="col-md-4">
                                         <label>Height (cm)</label>
