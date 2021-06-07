@@ -17,45 +17,10 @@
 
             jq(document).ready(function () {
                 disable_fields("specify-other-anti-biotics");
-                disable_fields("specify-other-malaria-treatment");
-                disable_fields("specify-other-anti-biotics");
-                disable_fields("specify-other-diabetes-medication");
                 disable_fields("Specify-other-complications");
-                disable_fields("specify-other-art-regimens");
                 disable_fields("specify-other-therapeutic");
-                disable_fields("specify-other-satin");
-                disable_fields("worst-spo-fio-ratio");
-                disable_fields("pH");
-                disable_fields("PaO2");
-                disable_fields("PCO2");
-                disable_fields("HCO3");
                 disable_fields("corticosteroid-route")
-                disable_fields("Haemoglobin-results");
-                disable_fields("WBC-Count-results");
-                disable_fields("Haematocrit-results");
-                disable_fields("Platelets-results");
-                disable_fields("APTT-APTR-results");
-                disable_fields("PT-results");
-                disable_fields("INR-results");
-                disable_fields("ALT-SGPT-results");
-                disable_fields("Total-Bilirubin-results");
-                disable_fields("AST-SGOT-results");
-                disable_fields("Urea-results");
-                disable_fields("Lactate-results");
-                disable_fields("Creatinine-results");
-                disable_fields("Sodium-results");
-                disable_fields("Potassium-results");
-                disable_fields("Procalcitonin-results");
-                disable_fields("CRP-results");
-                disable_fields("LDH-results");
-                disable_fields("Creatine-results");
-                disable_fields("Kinase-results");
-                disable_fields("UTroponin-results");
-                disable_fields("ESR-results");
-                disable_fields("UD-dimer-results");
-                disable_fields("mFerritin-results");
-                disable_fields("aIL-6-results");
-                disable_fields("infiltrates-present");
+
 
                 disable_fields("corona-virus-result");
                 disable_fields("malaria-falciparum-result");
@@ -158,53 +123,7 @@
                         disable_fields("interface");
                     }
                 });
-                jq("#malaria-treatment").click(function () {
-                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                        enable_fields("specify-other-malaria-treatment");
-                        enable_fields("specify-other-anti-biotics");
-                    } else {
-                        disable_fields("specify-other-malaria-treatment");
-                        disable_fields("specify-other-anti-biotics");
-                    }
-                });
 
-                jq(".if-art").change(function () {
-                    if (jq(this).find('#other-art').find(':checkbox').prop('checked')) {
-                        enable_fields("specify-other-art-regimens");
-                    } else {
-                        disable_fields("specify-other-art-regimens");
-                    }
-                });
-
-                jq("#diabetes-medication").click(function () {
-                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                        enable_fields("specify-other-diabetes-medication");
-                    } else {
-                        disable_fields("specify-other-diabetes-medication");
-                    }
-                });
-
-                jq("#satin").click(function () {
-                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                        enable_fields("specify-other-satin");
-                    } else {
-                        disable_fields("specify-other-satin");
-                    }
-                });
-
-                jq("#blood-gas-done").click(function () {
-                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                        enable_fields("pH");
-                        enable_fields("PaO2");
-                        enable_fields("PCO2");
-                        enable_fields("HCO3");
-                    } else {
-                        disable_fields("pH");
-                        disable_fields("PaO2");
-                        disable_fields("PCO2");
-                        disable_fields("HCO3");
-                    }
-                });
 
                 jq(".complications").change(function () {
                     if (jq(this).find('#other-complications').find(':checkbox').prop('checked')) {
@@ -222,141 +141,65 @@
                     }
                 });
 
-                jq("#chest-xray").click(function () {
-                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-                        enable_fields("infiltrates-present");
-                    } else {
-                        disable_fields("infiltrates-present");
-                    }
+                jq(document).ready(function () {
+                    $allRows = jq(this).find('.other-diagnostic-test');
+                    $allRows.hide();
+                    jq('#1-removeEntry').remove();
+                    jq('#10-addEntry').remove();
+                    jq('#1-toggleContainer').show();
+
+                    jq('#11-removeEntry').remove();
+                    jq('#20-addEntry').remove();
+                    jq('#11-toggleContainer').show();
                 });
 
-                jq(".lab-tests").change(function () {
-                    if(jq(this).find('#Haemoglobin-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Haemoglobin-results");
-                    } else {
-                        disable_fields("Haemoglobin-results");
-                    }
-                    if(jq(this).find('#WBC-Count-test').find(':checkbox').prop('checked')) {
-                        enable_fields("WBC-Count-results");
-                    } else {
-                        disable_fields("WBC-Count-results");
-                    }
-                    if(jq(this).find('#Haematocrit-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Haematocrit-results");
-                    } else {
-                        disable_fields("Haematocrit-results");
-                    }
-                    if(jq(this).find('#Platelets-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Platelets-results");
-                    } else {
-                        disable_fields("Platelets-results");
-                    }
-                    if(jq(this).find('#APTT-APTR-test').find(':checkbox').prop('checked')) {
-                        enable_fields("APTT-APTR-result");
-                    } else {
-                        disable_fields("APTT-APTR-result");
-                    }
-                    if(jq(this).find('#PT-test').find(':checkbox').prop('checked')) {
-                        enable_fields("PT-results");
-                    } else {
-                        disable_fields("PT-results");
-                    }
-                    if(jq(this).find('#INR-test').find(':checkbox').prop('checked')) {
-                        enable_fields("INR-results");
-                    } else {
-                        disable_fields("INR-results");
-                    }
-                    if(jq(this).find('#ALT-SGPT-test').find(':checkbox').prop('checked')) {
-                        enable_fields("ALT-SGPT-results");
-                    } else {
-                        disable_fields("ALT-SGPT-results");
-                    }
-                    if(jq(this).find('#Total-Bilirubin-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Total-Bilirubin-results");
-                    } else {
-                        disable_fields("Total-Bilirubin-results");
-                    }
-                    if(jq(this).find('#AST-SGOT-test').find(':checkbox').prop('checked')) {
-                        enable_fields("AST-SGOT-results");
-                    } else {
-                        disable_fields("AST-SGOT-results");
-                    }
-                    if(jq(this).find('#Urea-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Urea-results");
-                    } else {
-                        disable_fields("Urea-results");
-                    }
-                    if(jq(this).find('#Lactate-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Lactate-results");
-                    } else {
-                        disable_fields("Lactate-results");
-                    }
-                    if(jq(this).find('#Creatinine-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Creatinine-results");
-                    } else {
-                        disable_fields("Creatinine-results");
-                    }
-                    if(jq(this).find('#Sodium-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Sodium-results");
-                    } else {
-                        disable_fields("Sodium-results");
-                    }
-                    if(jq(this).find('#Potassium-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Potassium-results");
-                    } else {
-                        disable_fields("Potassium-results");
-                    }
-                    if(jq(this).find('#Procalcitonin-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Procalcitonin-results");
-                    } else {
-                        disable_fields("Procalcitonin-results");
-                    }
-                    if(jq(this).find('#CRP-test').find(':checkbox').prop('checked')) {
-                        enable_fields("CRP-results");
-                    } else {
-                        disable_fields("CRP-results");
-                    }
-                    if(jq(this).find('#LDH-test').find(':checkbox').prop('checked')) {
-                        enable_fields("LDH-results");
-                    } else {
-                        disable_fields("LDH-results");
-                    }
-                    if(jq(this).find('#Creatine-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Creatine-results");
-                    } else {
-                        disable_fields("Creatine-results");
-                    }
-                    if(jq(this).find('#Kinase-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Kinase-results");
-                    } else {
-                        disable_fields("Kinase-results");
-                    }
-                    if(jq(this).find('#UTroponin-test').find(':checkbox').prop('checked')) {
-                        enable_fields("UTroponin-results");
-                    } else {
-                        disable_fields("UTroponin-results");
-                    }
-                    if(jq(this).find('#ESR-test').find(':checkbox').prop('checked')) {
-                        enable_fields("ESR-results");
-                    } else {
-                        disable_fields("ESR-results");
-                    }
-                    if(jq(this).find('#UD-dimer-test').find(':checkbox').prop('checked')) {
-                        enable_fields("UD-dimer-results");
-                    } else {
-                        disable_fields("UD-dimer-results");
-                    }
-                    if(jq(this).find('#mFerritin-test').find(':checkbox').prop('checked')) {
-                        enable_fields("mFerritin-results");
-                    } else {
-                        disable_fields("mFerritin-results");
-                    }
-                    if(jq(this).find('#aIL-6-test').find(':checkbox').prop('checked')) {
-                        enable_fields("aIL-6-results");
-                    } else {
-                        disable_fields("aIL-6-results");
-                    }
+                jq(document).ready(function () {
+                    jq('.addEntry').on("click", function () {
+                        var correctedAddButtonId = parseFloat(this.id) + 1;
+                        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+                        jq(contentAddId).toggle(true);
+                        jq('#' + this.id).toggle(false);
+                        jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
+                        return false;
+                    });
                 });
+
+                jq(document).ready(function () {
+                    jq('.removeEntry').on("click", function () {
+                        var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+                        jq(contentAddId).toggle(false);
+                        jq(':input:not(:button)', contentAddId).val([]);
+                        jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+
+                        return false;
+                    });
+                });
+
+
+                <ifMode mode = "EDIT" >
+                    jq(document).ready(function () {
+                        $allRows = jq(this).find('.other-diagnostic-test');
+                        $allRows.hide();
+                        jq('#1-removeEntry').remove();
+                        jq('#10-addEntry').remove();
+                        jq('#1-toggleContainer').show();
+                        jq('#11-removeEntry').remove();
+                        jq('#20-addEntry').remove();
+                        jq('#11-toggleContainer').show();
+                        for (let x = 0; x&lt;= 10; x++) {
+                            if (jq(this).find('#' +x+ '-drug').find("input[type$='text']").val()!='') {
+                                jq(this).find('#' +x+ '-toggleContainer').show();
+                                jq(this).find('#' +x+ '-addEntry').hide();
+                            }else {
+                                x-=1;
+                                jq(this).find('#' +x+ '-addEntry').show();
+                                break;
+                            }
+                        }
+                    });
+                </ifMode>
 
                 <!-- Validate if for every complication, an answer (yes,no or unknown) is chosen -->
 
@@ -750,8 +593,8 @@
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-6">
-                                                <label>if Yes</label> <!--missing HIV test results concept-->
-                                                <obs id="hiv-result" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Positive, Negative"
+                                                <label>if Yes</label>
+                                                <obs id="hiv-result" conceptId="99628" answerConceptIds="703,664" answerLabels="Positive, Negative"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                         </div>
@@ -760,17 +603,44 @@
 
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Other Diagnostic test</label>
-                                                <obs id="other-diagnostic-test" conceptId="166285" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
-                                                     style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>if Yes</label>
-                                                <obs id="other-diagnostic-result" conceptId="166442" answerConceptIds="703,664" answerLabels="Positive, Negative"
-                                                     style="radio" class="horizontal"/>
-                                            </div>
+                                        <div>
+                                            <repeat>
+                                                <template>
+                                                    <obsgroup groupingConceptId="166443">
+                                                        <div class="row other-diagnostic-test" id="{id}-toggleContainer">
+                                                            <div class="col-md-12">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label>Other Diagnostic test</label>
+                                                                        <obs id="other-diagnostic-test" conceptId="166441" class="horizontal"/>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <label>if Yes</label>
+                                                                        <obs id="other-diagnostic-result" conceptId="166442" answerConceptIds="703,664" answerLabels="Positive, Negative"
+                                                                             style="radio" class="horizontal"/>
+                                                                    </div>
+                                                                    <div class="col-md-1 pt-4">
+                                                                        <div class="add-entry">
+                                                                            <a href="#" id="{id}-addEntry" class="addEntry add-more-link"><i class="icon-plus-sign"></i></a>
+                                                                            <a href="#" class="removeEntry remove-more-link" id="{id}-removeEntry"><i class="icon-minus"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </obsgroup>
+                                                </template>
+                                                <render id="1"/>
+                                                <render id="2"/>
+                                                <render id="3"/>
+                                                <render id="4"/>
+                                                <render id="5"/>
+                                                <render id="6"/>
+                                                <render id="7"/>
+                                                <render id="8"/>
+                                                <render id="9"/>
+                                                <render id="10"/>
+                                            </repeat>
                                         </div>
                                     </div>
                                 </div>
@@ -925,16 +795,12 @@
                                                      style="radio" class="horizontal" />
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Self Care</label>
-                                            </div>
-                                        </div>
 
+                                        <label>Self Care</label>
                                         <div class="row"> <!--create concepts for "ability to self care" and add these answers-->
                                             <obs conceptId="166244" answerConceptId="159791" answerLabel="Better than before admission" style="checkbox" class="col-md-3"/> <!--create concepts "Better than before admission"-->
                                             <obs conceptId="166244" answerConceptId="90306" answerLabel="Same as before admission" style="checkbox" class="col-md-3"/> <!--create concepts "Same as before admission"-->
-                                            <obs conceptId="166244" answerConceptId="1366" answerLabel="Worse than before admission" style="checkbox" class="col-md-4"/> <!--create concepts "Worse than before admission"-->
+                                            <obs conceptId="166244" answerConceptId="1366" answerLabel="Worse than before admission" style="checkbox" class="col-md-3"/> <!--create concepts "Worse than before admission"-->
                                             <obs conceptId="166244" answerConceptId="166349" answerLabel="N/A" style="checkbox" class="col-md-2"/> <!--create concepts "N/A"-->
                                         </div>
                                     </div>
