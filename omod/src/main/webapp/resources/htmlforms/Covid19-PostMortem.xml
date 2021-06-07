@@ -11,6 +11,59 @@
           formDisplayStyle="Standard"
           formLabel="Covid-19 Postmortem Report">
 
+    <script type="text/javascript">
+
+        if (jQuery) {
+
+            jq(document).ready(function () {
+
+                //Block Multiple encounter entry on same date
+                blockEncounterOnSameDateEncounter(jq("#encounterDate").find("input[type=hidden]"),"block");
+
+                disable_fields("date-of-diagnosis");
+                disable_fields("diagnosis-type");
+                disable_fields("specify");            
+                disable_fields("other-medical-intervention");            
+
+                jq(".166319").change(function () {
+                    if (jq(this).find('#other').find(':checkbox').prop('checked')) {
+                        enable_fields("specify");
+                    } else {
+                        disable_fields("specify"); 
+                    }
+                });
+
+                jq("#covid-confirmed").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("date-of-diagnosis");
+                    } else {
+                        disable_fields("date-of-diagnosis");
+                    }
+                });
+
+                jq("#covid-confirmed").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90004") {
+                        enable_fields("diagnosis-type");
+                    } else {
+                        disable_fields("diagnosis-type");
+                    }
+                });
+
+                jq("#evidence-of-medical-intervention").change(function () {
+                    if (jq(this).find("select").find(":selected").val() == "5622") {
+                        enable_fields("other-medical-intervention");
+                    } else {
+                        disable_fields("other-medical-intervention");
+                    }
+                });
+
+
+            });
+
+        }
+
+    </script>
+
 
     <div>
         <div class="row">
@@ -96,12 +149,12 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>Covid Confirmed</label>
-                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Yes, No"
+                                                <obs id="covid-confirmed" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Yes, No"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-9">
                                                 <label>Diagnosis Type</label>
-                                                <obs id="166285" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Antemortem case under investigation, Post-mortem Examination (gross) diagnosis"
+                                                <obs id="diagnosis-type" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Antemortem case under investigation, Post-mortem Examination (gross) diagnosis"
                                                      style="radio" class="horizontal"/>
                                             </div>
                                             </div>
@@ -112,10 +165,10 @@
                                                      answerConceptIds="166272,159466,166273,5622"
                                                      answerLabels="Ante mortem Lab Diagnosis, Ante mortem Radiological Diagnosis, Ante mortem Clinical Diagnosis, Post-Mortem Lab Diagnosis"/>
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-3">
 												<label>Date of Diagnosis</label>
-												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 28%;"></i>
-												<obs conceptId="90272" />
+												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 45%;"></i>
+												<obs id="date-of-diagnosis" conceptId="90272" />
 											</div>                             
                                         </div>
                                     </div>
@@ -127,7 +180,7 @@
                                     <div class="card-header">
                                         External Examination
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body 166319">
                                     <div class="row">
                                     <div class="col-md-4">
                                         <label>Physique</label>
@@ -137,16 +190,16 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label>Evidence of Medical Intervention</label>
-                                        <obs id="1542" conceptId="1542"
-                                             answerConceptIds="166272,159466,166273,5622"
+                                        <obs id="evidence-of-medical-intervention" conceptId="1542"
+                                             answerConceptIds="166272,159466,166273,166273,5622"
                                              answerLabels="cannula, I.V line, NGT, catheters, Other Specify"/>
                                     </div>
                                     <div class="col-md-4">
                                         <label>Other Medical Intervention</label>
-                                        <obs id="165136" conceptId="165136"/>
+                                        <obs id="other-medical-intervention" conceptId="165136"/>
                                     </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row 90251">
                                         <obs conceptId="90251" answerConceptId="871" answerLabel="Pallor" style="checkbox" class="col-md-4"/>
                                         <obs conceptId="90251" answerConceptId="90132" answerLabel="Jaundice" style="checkbox" class="col-md-4" />
                                         <obs conceptId="90251" answerConceptId="158843" answerLabel="Adenopathy" style="checkbox" class="col-md-4" />
@@ -157,10 +210,10 @@
                                         <obs conceptId="90251" answerConceptId="165501" answerLabel="Skin lesions (rash, bleeding etc.)" style="checkbox" class="col-md-4"/>
                                     </div>
                                     <div class="row">
-                                        <obs id="90002" conceptId="90251" answerConceptId="90002" answerLabel="Other" style="checkbox" class="col-md-4"/>
+                                        <obs id="other" conceptId="90251" answerConceptId="90002" answerLabel="Other" style="checkbox" class="col-md-4"/>
                                         <div class="col-md-4">
-                                            <label>Other Significant Finding</label>
-                                            <obs id="166296" conceptId="166296" />
+                                            <label>Specify</label>
+                                            <obs id="specify" conceptId="166296" />
                                         </div>
                                     </div>
                                     <div class="row">
