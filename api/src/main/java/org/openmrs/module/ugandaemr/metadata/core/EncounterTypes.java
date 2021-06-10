@@ -263,4 +263,19 @@ public class EncounterTypes {
             return "95d334b0-c322-46ee-856a-4f503c8979ee";
         }
     };
+    public static EncounterTypeDescriptor COVID19_DISCHARGE = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Covid19 Discharge";
+        }
+
+        @Override
+        public String description() {
+            return "Covid19 Discharge Encounter";
+        }
+
+        public String uuid() {
+            return "482e4b17-fb9c-4937-a1cf-9052d3e3be68";
+        }
+    };
 }
