@@ -150,7 +150,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <label>Covid Confirmed</label>
                                                 <obs id="covid-confirmed" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Yes, No"
                                                      style="radio" class="horizontal"/>
@@ -160,7 +160,7 @@
 												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 45%;"></i>
 												<obs id="date-of-diagnosis" conceptId="90272" />
 											</div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <label>How was the diagnosis confirmed?</label>
                                                 <obs id="how-was-the-diagnosis-confirmed" conceptId="1542"
                                                      answerConceptIds="166272,159466,166273,5622"
