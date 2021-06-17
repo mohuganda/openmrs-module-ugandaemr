@@ -1,0 +1,376 @@
+<htmlform formName="Covid-19 Referral Form" 
+    formDescription="Covid-19: Referral Form" 
+    formEncounterType="422ee220-9e83-451d-9b25-79a688a0413a" 
+    formUuid="2004f5a4-f87c-465b-b627-e4f8817953a3" 
+    formVersion="3.0.0" 
+    formAddMetadata="yes"
+    formUILocation="patientDashboard.visitActions" 
+    formOrder="1" 
+    formIcon="icon-medkit" 
+    formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==false&amp;&amp; sessionLocation.uuid=='1748bd6f-b013-449f-8d38-91319b576f3f'" 
+    formDisplayStyle="Standard" 
+    formLabel="Covid-19 Referral Form">
+
+    <div>
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Covid-19: Referral Form</h1>
+            </div>
+            <div class="col-md-5"></div>
+            <div class="col-md-1">
+                <submit class="confirm" submitLabel="Save" submitStyle="customSubmit" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs nav-fill card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#referral-details">Referral Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#patient-history">Patient History</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#examinations">Examination</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#current-management-and-further-plan">Current Management and Further Plan</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="referral-details">
+                                <div class="card">
+                                    <div class="card-header">
+                                            Referral Details
+                                        </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Covid Status</label>
+                                                <obs id="covid-status" conceptId="166285" answerConceptIds="90003,90004" answerLabels="confirmed case, Suspect" style="radio" class="horizontal" />
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>Covid Severity</label>
+                                                <obs id="covid-confirmed" conceptId="166285" answerConceptIds="90003,90004,90003,90004" answerLabels="Asympomatic, Mild, Moderate, Severe, Critical" style="radio" class="horizontal" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Reason for referral</label>
+                                                <obs conceptId="159395" style="textarea" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>Medical Officer</label>
+                                                <encounterProviderAndRole encounterRole="240b26f9-dd88-4172-823d-4a8bfeb7841f" required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                                Referring Facility
+                                            </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Referring Facility</label>
+                                                <obs conceptId="159395" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Ward/Unit</label>
+                                                <obs conceptId="159395" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Referring Clinician</label>
+                                                <encounterProviderAndRole encounterRole="240b26f9-dd88-4172-823d-4a8bfeb7841f" required="required" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Phone</label>
+                                                <obs conceptId="159395" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Designation</label>
+                                                <obs conceptId="159395" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                            Recieving Facility
+                                        </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Recieving Facility</label>
+                                                <obs conceptId="159395" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Ward/Unit</label>
+                                                <obs conceptId="159395" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Recieving Clinician</label>
+                                                <encounterProviderAndRole encounterRole="240b26f9-dd88-4172-823d-4a8bfeb7841f" required="required" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Phone</label>
+                                                <obs conceptId="159395" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Designation</label>
+                                                <obs conceptId="159395" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane active" id="patient-history">
+                                <div class="card">
+                                    <div class="card-header">
+                                            Patient History
+                                        </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Chronic Condition/PMH</label>
+                                                <obs conceptId="159395" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Presenting Complaint and History</label>
+                                                <obs conceptId="159395" style="textarea" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Chronic Medication</label>
+                                                <obs conceptId="159395" style="textarea" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>History of Current Illness</label>
+                                                <obs conceptId="159395" style="textarea" />
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label>Social History</label>
+                                                <div class="row">
+                                                    <obs id="smoking" conceptId="166351" answerConceptId="166350" answerLabel="Smoking" style="checkbox" class="col-md-3" />
+                                                    <obs id="alcohol" conceptId="166351" answerConceptId="794" answerLabel="Alcohol" style="checkbox" class="col-md-3" />
+                                                    <obs id="illicit-drug-use" conceptId="166351" answerConceptId="166349" answerLabel="Illicit Drug Use" style="checkbox" class="col-md-3" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane active" id="examinations">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Social History</label>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>Arrival</label>
+                                                        <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-2" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Current</label>
+                                                        <obs conceptId="159395" class="col-md-2" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Oxygen Saturation</label>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>Arrival</label>
+                                                        <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Current</label>
+                                                        <obs conceptId="159395" class="col-md-3" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Pulse Rate</label>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>Arrival</label>
+                                                        <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Current</label>
+                                                        <obs conceptId="159395" class="col-md-3" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Blood Pressure(BP)</label>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>Arrival</label>
+                                                        <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Current</label>
+                                                        <obs conceptId="159395" class="col-md-3" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Blood Glucose(RBG)</label>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>Arrival</label>
+                                                        <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Current</label>
+                                                        <obs conceptId="159395" class="col-md-3" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>AVPU(Alert, to Pain, to 
+                                                        Verbal, Unresponsive)</label>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>Arrival</label>
+                                                        <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Current</label>
+                                                        <obs conceptId="159395" class="col-md-3" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Investigaion Summary</label>
+                                                <obs conceptId="159395" style="textarea" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>General</label>
+                                                <obs conceptId="159395" style="textarea" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Key Systemic Exam Finding</label>
+                                                <obs conceptId="159395" style="textarea" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane active" id="current-management-and-further-plan">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Medications (what start 
+                                                    date, dosage, freq)</label>
+                                                <obs conceptId="159395" style="textarea" />
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label>Oxygen</label>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>Amount</label>
+                                                        <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Delivery Method</label>
+                                                        <obs conceptId="159395" class="col-md-3" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="col-md-12">
+                                            <label>For intubated cases
+                                                    (additional notes can be 
+                                                    attached)</label>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Mode</label>
+                                                    <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>VT</label>
+                                                    <obs conceptId="159395" class="col-md-3" />
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>RR</label>
+                                                    <obs conceptId="159395" class="col-md-3" />
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>FiO2</label>
+                                                    <obs conceptId="159395" class="col-md-3" />
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>PEEP</label>
+                                                    <obs conceptId="159395" class="col-md-3" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="col-md-4">
+                                            <label>Further Plan</label>
+                                            <obs conceptId="159395" style="textarea" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</htmlform>
