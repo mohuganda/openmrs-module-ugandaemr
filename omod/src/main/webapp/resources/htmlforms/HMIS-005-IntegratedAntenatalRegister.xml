@@ -43,6 +43,27 @@
                 disable_fields("166184");        //why family planning discontinued
                 disable_fields("166186");        //abortion period
 
+                disable_fields("emtct-art-no");
+                disable_fields("emtct-where");
+                disable_fields("emtct-pre-art-no");
+
+                jq("#emtct-tvf").change(function () {
+                    if(jq(this).find(':checkbox').prop('checked')) {
+                        enable_fields("emtct-art-no");
+                    } else {
+                        disable_fields("emtct-art-no");
+                    }
+                });
+
+                jq("#emtct-linked-to-art").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+                        enable_fields("emtct-where");
+                        enable_fields("emtct-pre-art-no");
+                    } else {
+                        disable_fields("emtct-where");
+                        disable_fields("emtct-pre-art-no");
+                    }
+                });
 
                 jq("#1063").change(function () {
                     if(jq(this).find(':checkbox').prop('checked')) {
@@ -860,9 +881,35 @@
                                                     <label>Age</label>
                                                     <obs conceptId="99074"/> 
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <label>STK/Facility Result</label>
                                                     <obs id="165385" conceptId="165385" style="radio" class="emtct-code horizontal" answerLabels="Positive ,Negative" />
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label></label>
+                                                    <obs id="emtct-tvf" conceptId="99317" answerConceptId="165354" answerLabel="TVF" style="checkbox" class="horizontal" />
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label>ART No</label>
+                                                    <obs conceptId="165479" id="emtct-art-no"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <label></label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label>Linked to ART</label> <!--missing concept for this -->
+                                                    <obs id="emtct-linked-to-art" conceptId="165385" answerConceptIds="90003,90004" style="radio" class="horizontal" answerLabels="Yes ,No" />
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <label>Where</label>
+                                                    <obs conceptId="99074" id="emtct-where"/>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label>Pre ART No</label>
+                                                    <obs conceptId="165424" id="emtct-pre-art-no"/>
                                                 </div>
                                             </div>
                                         </div>
