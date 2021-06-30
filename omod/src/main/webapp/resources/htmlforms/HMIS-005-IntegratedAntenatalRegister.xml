@@ -167,24 +167,24 @@
 
                 jq(document).ready(function () {
                     jq('.addEntry-other').on("click", function () {
-                    var correctedAddButtonId = parseFloat(this.id) + 1;
-                    var contentAddId = "#" + correctedAddButtonId + "-toggleContainer-other";
-                    jq(contentAddId).toggle(true);
-                    jq('#' + this.id).toggle(false);
-                    jq('#' + parseFloat(this.id) + '-removeEntry-other').toggle(true);
-                    return false;
+                        var correctedAddButtonId = parseFloat(this.id) + 1;
+                        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer-other";
+                        jq(contentAddId).toggle(true);
+                        jq('#' + this.id).toggle(false);
+                        jq('#' + parseFloat(this.id) + '-removeEntry-other').toggle(true);
+                        return false;
                     });
                 });
 
-               jq(document).ready(function () {
+                jq(document).ready(function () {
                     jq('.removeEntry-other').on("click", function () {
-                    var correctedRemoveButtonId = parseFloat(this.id) - 1;
-                    var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer-other";
-                    jq(contentAddId).toggle(false);
-                    jq(':input:not(:button)', contentAddId).val([]);
-                    jq('#' + correctedRemoveButtonId + '-addEntry-other').toggle(true);
-                    jq('#' + correctedRemoveButtonId + '-removeEntry-other').toggle(true);
-                    return false;
+                        var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer-other";
+                        jq(contentAddId).toggle(false);
+                        jq(':input:not(:button)', contentAddId).val([]);
+                        jq('#' + correctedRemoveButtonId + '-addEntry-other').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-removeEntry-other').toggle(true);
+                        return false;
                     });
                 });
 
@@ -218,7 +218,6 @@
 
                         return false;
                     });
-
                 });
 
                 jq(document).ready(function () {
@@ -539,56 +538,9 @@
                     else
                         disable_fields("165478");
                 });
-
-                <ifMode mode = "EDIT" >
-                    jq(document).ready(function () {
-                        $allRows = jq(this).find('.multi-drug');
-                        $allRows.hide();
-                        jq('#1-removeEntry').remove();
-                        jq('#10-addEntry').remove();
-                        jq('#1-toggleContainer').show();
-                        jq('#11-removeEntry').remove();
-                        jq('#20-addEntry').remove();
-                        jq('#11-toggleContainer').show();
-                        for (let x = 0; x&lt;= 10; x++) {
-                             if (jq(this).find('#' +x+ '-drug').find("input[type$='text']").val()!='')
-                             {
-                                 jq(this).find('#' +x+ '-toggleContainer').show();
-                                  jq(this).find('#' +x+ '-addEntry').hide();
-                             }
-                            else {
-                                    x-=1;
-                                    jq(this).find('#' +x+ '-addEntry').show();
-                                    break;
-                            }
-                        }
-                    });
-
-                    jq(document).ready(function () {
-                        $allRows_other = jq(this).find('.multi-drug-other');
-                        $allRows_other.hide();
-                        jq('#1-removeEntry-other').remove();
-                        jq('#10-addEntry-other').remove();
-                        jq('#1-toggleContainer-other').show();
-                        jq('#11-removeEntry-other').remove();
-                        jq('#20-addEntry-other').remove();
-                        jq('#11-toggleContainer-other').show();
-                        for (let x = 0; x&lt;= 10; x++) {
-                            if (jq(this).find('#' +x+ '-drugother').find("input[type$='text']").val()!='')
-                            {
-                              jq(this).find('#' +x+ '-toggleContainer-other').show();
-                              jq(this).find('#' +x+ '-addEntry-other').hide();
-                            }
-                            else {
-                                x-=1;
-                                jq(this).find('#' +x+ '-addEntry-other').show();
-                                break;
-                            }
-                        }
-                    });
-                </ifMode>
-          
             });
+
+
         }
 
     </script>
