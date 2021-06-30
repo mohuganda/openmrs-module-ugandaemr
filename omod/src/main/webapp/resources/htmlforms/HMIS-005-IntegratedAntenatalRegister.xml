@@ -985,16 +985,14 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="card">
-                                                    <div class="card-header">Blood Group</div>
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label>Blood Group</label>
-                                                                    <obs conceptId="300" answerConceptIds="690, 692, 694, 696, 699, 701, 1230, 1231" answerLabels="A - Postive, A - Negative, B - Postive, B - Negative, O Postive, O - Negative, AB - Postive, AB - Negative" />
-                                                                </div>
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-header">Blood Group</div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Blood Group</label>
+                                                            <obs conceptId="300" answerConceptIds="690, 692, 694, 696, 699, 701, 1230, 1231" answerLabels="A - Postive, A - Negative, B - Postive, B - Negative, O Postive, O - Negative, AB - Postive, AB - Negative" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1021,7 +1019,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="card">
-                                                <div class="card-header">Syphilis &amp; HB Test Results</div>
+                                                <div class="card-header">Syphilis Test Results</div>
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-3">
@@ -1032,7 +1030,7 @@
                                                                  answerLabels="Rx - Client tested positive results given and treatment initiated,
                                                                                +Ve - Client tested positive results given but treatment not yet initiated,
                                                                                NR - Client tested negative and results given,
-                                                                               NT - Client not Tested for Syphilis/Hep B" 
+                                                                               NT - Client not Tested for Syphilis"
                                                                  style="dropdown" class="long-value-select"/>
                                                         </div>
                                                     </div>
@@ -1051,7 +1049,46 @@
                                                                                RX+ - Retest - Client tested positive and results given,
                                                                                +Ve+ - Retest -Client tested positive but not yet given treatment,
                                                                                NR+ - Retest - Client tested negative and results given,
-                                                                               NT - Client not Tested for Syphilis/Hep B" 
+                                                                               NT - Client not Tested for Syphilis"
+                                                                 style="dropdown" class="long-value-select"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-header">HB Test Results</div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label>Woman</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <obs conceptId="166450" answerConceptIds="165465,165466,165467,166449"
+                                                                 answerLabels="Rx - Client tested positive results given and treatment initiated,
+                                                                               +Ve - Client tested positive results given but treatment not yet initiated,
+                                                                               NR - Client tested negative and results given,
+                                                                               NT - Client not Tested for Hep B"
+                                                                 style="dropdown" class="long-value-select"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label>Partner</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <obs conceptId="166451" answerConceptIds="165465,165466,165467,165472,165473,165474,165475,165476,165477,166449"
+                                                                 answerLabels="Rx - Client tested positive results given and treatment initiated,
+                                                                               +Ve - Client tested positive results given but treatment not yet initiated,
+                                                                               NR - Client tested negative and results given,
+                                                                               RX&#8730; - Revisit - Client tested positive and results given,
+                                                                               +Ve&#8730; - Revisit - Client tested positive but not yet given treatment,
+                                                                               NR&#8730; - Revisit - Client tested negative results given,
+                                                                               RX+ - Retest - Client tested positive and results given,
+                                                                               +Ve+ - Retest -Client tested positive but not yet given treatment,
+                                                                               NR+ - Retest - Client tested negative and results given,
+                                                                               NT - Client not Tested for Hep B"
                                                                  style="dropdown" class="long-value-select"/>
                                                         </div>
                                                     </div>
@@ -1164,45 +1201,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header">Other Investigations</div>
-                                    <div class="card-body">
-                                        <div>
-                                            <repeat>
-                                                <template>
-                                                    <obsgroup groupingConceptId="165877">
-                                                        <div class="row other-investigations" id="{id}-toggleContainer3">
-                                                            <div class="col-md-3">
-                                                                <obs labelText="Test Name" conceptId="165875"/>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <obs labelText="Results" conceptId="165876"/>
-                                                            </div>
-                                                            <div class="col-md-3 pt-4">
-                                                                <div class="add-entry3">
-                                                                    <a href="#" id="{id}-addEntry3" class="addEntry3 add-more-link"><i class="icon-plus-sign"></i></a>
-                                                                    <a href="#" class="removeEntry3 remove-more-link" id="{id}-removeEntry3"><i class="icon-minus"></i></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </obsgroup>
-                                                </template>
-                                                <render id="1"/>
-                                                <render id="2"/>
-                                                <render id="3"/>
-                                                <render id="4"/>
-                                                <render id="5"/>
-                                                <render id="6"/>
-                                                <render id="7"/>
-                                                <render id="8"/>
-                                                <render id="9"/>
-                                                <render id="10"/>
-                                            </repeat>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                                                 
                         <div class="card">
@@ -1234,32 +1232,6 @@
                                     <div class="col-md-4">
                                         <label>Free LLIN Given?</label>
                                         <obs conceptId="99760" answerConceptIds="90003,90004" answerLabels="Yes, No" style="radio" class="horizontal" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                Ultra Sound Report
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <obs id="1279" conceptId="1279" labelText="Gestation Age" />
-                                    </div>
-                                    <div class="col-md-3">
-                                        <obs id="165478" conceptId="165478" labelText="Placenta (Site and Maturity)" />
-                                    </div>
-                                    <div class="col-md-2">
-                                        <obs id="165478" conceptId="165478" labelText="Amnionic Fluid" />
-                                    </div>
-                                    <div class="col-md-3">
-                                        <obs id="99768" conceptId="99768" labelText="Complication" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <obs id="165363" conceptId="165363" labelText="Comments" class="textarea" rows='7' cols='5'/>
                                     </div>
                                 </div>
                             </div>
@@ -1352,7 +1324,7 @@
                                                 <obs conceptId="1053" labelText="Parity" id="parity"/>
                                             </div>
                                             <div class="col-md-2">
-                                                <obs conceptId="5992" labelText="Gestation Age" class="gestational-age"/>
+                                                <obs conceptId="1279" labelText="Gestation Age" class="gestational-age"/>
                                             </div>
                                             <div class="col-md-2">
                                                 <label>ANC 1 Timimg</label>
