@@ -708,8 +708,8 @@
                                                             <obs conceptId="165457" class="long-value-select"/>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <label>Mebendazole Dose</label> <!--missing Mebendazole Dose concept and it answers-->
-                                                            <obs conceptId="165457" answerLabels="&#8730; Recieved,X Not Recieved, C Completed, N/A" class="long-value-select" />
+                                                            <label>Mebendazole Dose</label>
+                                                            <obs conceptId="99312" answerConceptIds="99309,99310,1267,99311" class="long-value-select" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -739,12 +739,12 @@
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <label>Iron Sulphate</label> <!--missing Iron Sulphate concept and it answers-->
-                                                            <obs conceptId="165352"/>
+                                                            <label>Iron Sulphate</label>
+                                                            <obs conceptId="99761"/>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <label>Folic Acid</label> <!--missing Folic Acid concept and it answers-->
-                                                            <obs conceptId="165352" class="long-value-select"/>
+                                                            <label>Folic Acid</label>
+                                                            <obs conceptId="99762" class="long-value-select"/>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label>Iron/folic Acid/Combined</label>
