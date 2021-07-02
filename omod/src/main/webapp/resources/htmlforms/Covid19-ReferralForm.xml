@@ -873,11 +873,11 @@ formLabel="Covid-19 Referral Form">
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <label>Arrival</label>
-                                                        <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
+                                                        <obs id="arrival" conceptId="166410" answerLabel="arrival" class="col-md-3" />
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label>Current</label>
-                                                        <obs conceptId="159395" class="col-md-3" />
+                                                        <obs conceptId="166410" class="col-md-3" />
                                                     </div>
                                                 </div>
                                             </div>
