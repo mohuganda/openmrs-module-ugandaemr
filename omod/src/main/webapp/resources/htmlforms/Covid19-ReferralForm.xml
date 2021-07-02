@@ -1,15 +1,89 @@
-<htmlform formName="Covid-19 Referral Form" 
-    formDescription="Covid-19: Referral Form" 
-    formEncounterType="422ee220-9e83-451d-9b25-79a688a0413a" 
-    formUuid="2004f5a4-f87c-465b-b627-e4f8817953a3" 
-    formVersion="3.0.0" 
-    formAddMetadata="yes"
-    formUILocation="patientDashboard.visitActions" 
-    formOrder="1" 
-    formIcon="icon-medkit" 
-    formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==false&amp;&amp; sessionLocation.uuid=='1748bd6f-b013-449f-8d38-91319b576f3f'" 
-    formDisplayStyle="Standard" 
-    formLabel="Covid-19 Referral Form">
+<htmlform formName="Covid-19 Referral Form"
+formDescription="Covid-19: Referral Form"
+formEncounterType="422ee220-9e83-451d-9b25-79a688a0413a"
+formUuid="2004f5a4-f87c-465b-b627-e4f8817953a3"
+formVersion="3.0.0" formAddMetadata="yes"
+formUILocation="patientDashboard.visitActions"
+formOrder="1" formIcon="icon-medkit"
+formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==false&amp;&amp; sessionLocation.uuid=='1748bd6f-b013-449f-8d38-91319b576f3f'" 
+formDisplayStyle="Standard"
+formLabel="Covid-19 Referral Form">
+
+<script type="text/javascript">
+
+    if (jquery){
+        jq(document).ready(function() { 
+
+            //Block Multiple encounter entry on same date
+            blockEncounterOnSameDateEncounter(jq("#encounterDate").find("input[type=hidden]"),"block");            
+           
+            jq(document).ready(function () {
+                $allRows = jq(this).find('.multi-drug');
+                $allRows.hide();
+                jq('#1-removeEntry').remove();
+                jq('#10-addEntry').remove();
+                jq('#1-toggleContainer').show();
+
+                jq('#11-removeEntry').remove();
+                jq('#20-addEntry').remove();
+                jq('#11-toggleContainer').show();
+            });
+
+            jq(document).ready(function () {
+                jq('.addEntry').on("click", function () {
+                    var correctedAddButtonId = parseFloat(this.id) + 1;
+                    var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+                    jq(contentAddId).toggle(true);
+                    jq('#' + this.id).toggle(false);
+                    jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
+                    return false;
+                });
+            });
+
+            jq(document).ready(function () {
+                jq('.removeEntry').on("click", function () {
+                    var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                    var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+                    jq(contentAddId).toggle(false);
+                    jq(':input:not(:button)', contentAddId).val([]);
+                    jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
+                    jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+
+                    return false;
+                });
+
+            });
+
+            <ifMode mode = "EDIT" >
+                jq(document).ready(function () {
+                  $allRows = jq(this).find('.multi-drug');
+                  $allRows.hide();
+                  jq('#1-removeEntry').remove();
+                  jq('#10-addEntry').remove();
+                  jq('#1-toggleContainer').show();
+                  jq('#11-removeEntry').remove();
+                  jq('#20-addEntry').remove();
+                  jq('#11-toggleContainer').show();
+                  for (let x = 0; x&lt;= 10; x++) {
+                    if (jq(this).find('#' +x+ '-drug').find("input[type$='text']").val()!='')
+                    {
+                        jq(this).find('#' +x+ '-toggleContainer').show();
+                        jq(this).find('#' +x+ '-addEntry').hide();
+                    }
+                    else {
+                        x-=1;
+                        jq(this).find('#' +x+ '-addEntry').show();
+                        break;
+                    }
+                  }
+                });
+              </ifMode>
+
+        });
+
+    }
+
+</script>
 
     <div>
         <div class="row">
@@ -49,24 +123,24 @@
                                         </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-6">
                                                 <label>Covid Status</label>
-                                                <obs id="covid-status" conceptId="166285" answerConceptIds="90003,90004" answerLabels="confirmed case, Suspect" style="radio" class="horizontal" />
+                                                <obs id="covid-status" conceptId="166285" answerConceptIds="90003,90004" answerLabels="Confirmed Case, Suspect" style="radio" class="horizontal" />
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-6">
                                                 <label>Covid Severity</label>
-                                                <obs id="covid-confirmed" conceptId="166285" answerConceptIds="90003,90004,90003,90004" answerLabels="Asympomatic, Mild, Moderate, Severe, Critical" style="radio" class="horizontal" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Reason for referral</label>
-                                                <obs conceptId="159395" style="textarea" />
-                                            </div>
+                                                <obs id="occupation" conceptId="1542" answerConceptIds="90003,90004,90003,90004" answerLabels="Asympomatic, Mild, Moderate, Severe, Critical" />
+                                            </div>                                            
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-5">
+                                            <div class="col-md-6">
+                                                <label>Reason For Referral</label>
+                                                <obs conceptId="159395" style="textarea" />
+                                            </div>
+                                            <div class="col-md-6">
                                                 <label>Medical Officer</label>
                                                 <encounterProviderAndRole encounterRole="240b26f9-dd88-4172-823d-4a8bfeb7841f" required="required" />
-                                            </div>
+                                            </div>                                            
                                         </div>
                                     </div>
                                 </div>
@@ -81,24 +155,24 @@
                                                 <label>Referring Facility</label>
                                                 <obs conceptId="159395" />
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <label>Ward/Unit</label>
                                                 <obs conceptId="159395" />
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>Referring Clinician</label>
-                                                <encounterProviderAndRole encounterRole="240b26f9-dd88-4172-823d-4a8bfeb7841f" required="required" />
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>Phone</label>
-                                                <obs conceptId="159395" />
-                                            </div>
+                                            </div>                                            
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>Designation</label>
                                                 <obs conceptId="159395" />
                                             </div>
+                                            <div class="col-md-4">
+                                                <label>Phone Number</label>
+                                                <obs conceptId="159395" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Referring Clinician</label>
+                                                <encounterProviderAndRole encounterRole="240b26f9-dd88-4172-823d-4a8bfeb7841f" required="required" />
+                                            </div>                                            
                                         </div>
                                     </div>
                                 </div>
@@ -113,30 +187,30 @@
                                                 <label>Recieving Facility</label>
                                                 <obs conceptId="159395" />
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <label>Ward/Unit</label>
                                                 <obs conceptId="159395" />
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>Recieving Clinician</label>
-                                                <encounterProviderAndRole encounterRole="240b26f9-dd88-4172-823d-4a8bfeb7841f" required="required" />
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>Phone</label>
-                                                <obs conceptId="159395" />
-                                            </div>
+                                            </div>                                            
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>Designation</label>
                                                 <obs conceptId="159395" />
                                             </div>
+                                            <div class="col-md-4">
+                                                <label>Phone Number</label>
+                                                <obs conceptId="159395" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Recieving Clinician</label>
+                                                <encounterProviderAndRole encounterRole="240b26f9-dd88-4172-823d-4a8bfeb7841f" required="required" />
+                                            </div>                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="tab-pane active" id="patient-history">
+                            <div class="tab-pane" id="patient-history">
                                 <div class="card">
                                     <div class="card-header">
                                             Patient History
@@ -147,20 +221,6 @@
                                                 <label>Chronic Condition/PMH</label>
                                                 <obs conceptId="159395" />
                                             </div>
-                                            <div class="col-md-4">
-                                                <label>Presenting Complaint and History</label>
-                                                <obs conceptId="159395" style="textarea" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Chronic Medication</label>
-                                                <obs conceptId="159395" style="textarea" />
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>History of Current Illness</label>
-                                                <obs conceptId="159395" style="textarea" />
-                                            </div>
                                             <div class="col-md-8">
                                                 <label>Social History</label>
                                                 <div class="row">
@@ -169,17 +229,82 @@
                                                     <obs id="illicit-drug-use" conceptId="166351" answerConceptId="166349" answerLabel="Illicit Drug Use" style="checkbox" class="col-md-3" />
                                                 </div>
                                             </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Occupation</label>
+                                                <obs id="occupation" conceptId="1542" answerConceptIds="166272,159466,166273,5622" answerLabels="Health Care Worker, Truck Driver, Surveillance Officer/Contact Tracer, Other Specify" />
+                                            </div>                                            
+                                            <div class="col-md-4">
+                                                <label>History of Current Illness</label>
+                                                <obs conceptId="159395" style="textarea" />
+                                            </div>
+                                            <div class="col-md-3">
+												<label>Date of Admission in Hospital</label>
+												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 35%;"></i>
+												<obs conceptId="159376" />
+                                            </div>
+                                        </div>                                        
+                                    </div>                                    
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <label>Chronic Medication</label>
+                                    </div>
+                                    <div class="card-body">
+                                        <div>
+                                            <repeat>
+                                                <template>
+                                                    <obsgroup groupingConceptId="160741">
+                                                        <div class="row multi-drug" id="{id}-toggleContainer">
+                                                            <div class="col-2">
+                                                                <obs labelText="Drugs"  id="{id}-drug" conceptId="1282" answerClasses="Drug" style="autocomplete" class="fullwidth"/>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <obs labelText="Quantity" conceptId="160856"/>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <obs labelText="Qty unit" conceptId="165791" answerConceptSetIds="162402,162384"/>
+                                                            </div>
+                                                            <div class="col-2 duration">
+                                                                <label>Duration</label>
+                                                                <obs conceptId="159368"/>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <obs conceptId="1732" labelText="Duration unit"/>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <div class="add-entry">
+                                                                    <a href="#" id="{id}-addEntry" class="addEntry add-more-link"><i class="icon-plus-sign"></i></a>
+                                                                    <a href="#" class="removeEntry remove-more-link" id="{id}-removeEntry"><i class="icon-minus"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </obsgroup>
+                                                </template>
+                                                <render id="1"/>
+                                                <render id="2"/>
+                                                <render id="3"/>
+                                                <render id="4"/>
+                                                <render id="5"/>
+                                                <render id="6"/>
+                                                <render id="7"/>
+                                                <render id="8"/>
+                                                <render id="9"/>
+                                                <render id="10"/>
+                                            </repeat>
                                         </div>
                                     </div>
-                                </div>
+                            </div>
                             </div>
 
-                            <div class="tab-pane active" id="examinations">
+                            <div class="tab-pane" id="examinations">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Social History</label>
+                                                <label>Respiratory Rate(RR)</label>
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <label>Arrival</label>
@@ -192,7 +317,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label>Oxygen Saturation</label>
+                                                <label>Oxygen Saturation(SPO2)</label>
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <label>Arrival</label>
@@ -212,7 +337,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Pulse Rate</label>
+                                                <label>Pulse Rate(PR)</label>
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <label>Arrival</label>
@@ -277,11 +402,7 @@
 
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Investigaion Summary</label>
-                                                <obs conceptId="159395" style="textarea" />
-                                            </div>
+                                        <div class="row">                                            
                                             <div class="col-md-4">
                                                 <label>General</label>
                                                 <obs conceptId="159395" style="textarea" />
@@ -293,65 +414,335 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                      <div class="card">
+                                          <div class="card-header">
+                                              Laboratory Tests
+                                          </div>
+                                          <div class="card-body">
+                                            <div class="row lab-tests">
+                                              <obs conceptId="166336" answerConceptId="21"   answerLabel="Haemoglobin" class="col-md-12 mb-1" id="Haemoglobin-test" />
+                                              <obs conceptId="166336" answerConceptId="678"    answerLabel="WBC Count" class="col-md-12 mb-1" id="WBC-Count-test" />
+                                              <obs conceptId="166336" answerConceptId="1015"   answerLabel="Haematocrit (%)" class="col-md-12 mb-1" id="Haematocrit-test" />
+                                              <obs conceptId="166336" answerConceptId="729"    answerLabel="Platelets" class="col-md-12 mb-1" id="Platelets-test"/>
+                                              <obs conceptId="166336" answerConceptId="166329" answerLabel="APTT/APTR" class="col-md-12 mb-1" id="APTT-APTR-test"/>
+                                              <obs conceptId="166336" answerConceptId="166330" answerLabel="PT (seconds)" class="col-md-12 mb-1" id="PT-test"/>
+                                              <obs conceptId="166336" answerConceptId="166331" answerLabel="INR" class="col-md-12 mb-1" id="INR-test"/> 
+                                              <obs conceptId="166336" answerConceptId="654"    answerLabel="ALT/SGPT" class="col-md-12 mb-1" id="ALT-SGPT-test" />
+                                              <obs conceptId="166336" answerConceptId="655"    answerLabel="Total Bilirubin" class="col-md-12 mb-1" id="Total-Bilirubin-test" />
+                                              <obs conceptId="166336" answerConceptId="166429" answerLabel="AST/SGOT" class="col-md-12 mb-1" id="AST-SGOT-test" />
+                                              <obs conceptId="166336" answerConceptId="857"    answerLabel="Urea (BUN) " class="col-md-12 mb-1" id="Urea-test" />
+                                              <obs conceptId="166336" answerConceptId="1012"   answerLabel="Lactate" class="col-md-12 mb-1" id="Lactate-test" />
+                                              <obs conceptId="166336" answerConceptId="790"    answerLabel="Creatinine" class="col-md-12 mb-1" id="Creatinine-test" />
+                                              <obs conceptId="166336" answerConceptId="1132"   answerLabel="Sodium" class="col-md-12 mb-1" id="Sodium-test" />
+                                              <obs conceptId="166336" answerConceptId="1133"   answerLabel="Potassium" class="col-md-12 mb-1" id="Potassium-test" />
+                                              <obs conceptId="166336" answerConceptId="166327" answerLabel="Procalcitonin " class="col-md-12 mb-1" id="Procalcitonin-test" />
+                                              <obs conceptId="166336" answerConceptId="166328" answerLabel="CRP" class="col-md-12 mb-1" id="CRP-test" />
+                                              <obs conceptId="166336" answerConceptId="1014"   answerLabel="LDH" class="col-md-12 mb-1" id="LDH-test" /> 
+                                              <obs conceptId="166336" answerConceptId="1011"   answerLabel="Creatine Kinase" class="col-md-12 mb-1" id="Creatine-test" />
+                                              <obs conceptId="166336" answerConceptId="166332" answerLabel="UTroponin" class="col-md-12 mb-1" id="UTroponin-test" />
+                                              <obs conceptId="166336" answerConceptId="855"    answerLabel="ESR" class="col-md-12 mb-1" id="ESR-test" />
+                                              <obs conceptId="166336" answerConceptId="166333" answerLabel="UD-dimer" class="col-md-12 mb-1" id="UD-dimer-test"/>
+                                              <obs conceptId="166336" answerConceptId="166334" answerLabel="mFerritin" class="col-md-12 mb-1" id="mFerritin-test"/>
+                                              <obs conceptId="166336" answerConceptId="166335" answerLabel="aIL-6" class="col-md-12 mb-1" id="aIL-6-test"/>
+                                            </div>
+                                            <div class="row"></div>
+                                        </div>
+                                      </div> 
+                                    </div>      
+                                    <div class="col-md-9">
+                                      <div class="card">
+                                          <div class="card-header">
+                                              Laboratory Results
+                                          </div>
+                                          <div class="card-body">
+                                            <div class="row">
+                                              <obs conceptId="21"     labelText="Haemoglobin" class="col-md-4" id="Haemoglobin-results"/>
+                                              <obs conceptId="678"    labelText="WBC Count" class="col-md-4" id="WBC-Count-results" />
+                                              <obs conceptId="1015"   labelText="Haematocrit (%)" class="col-md-4" id="Haematocrit-results" />
+                                            </div>
+                                            <div class="row">
+                                              <obs conceptId="729"    labelText="Platelets" class="col-md-4" id="Platelets-results"/>
+                                              <obs conceptId="166329" labelText="APTT/APTR" class="col-md-4" id="APTT-APTR-results"/>
+                                              <obs conceptId="166330" labelText="PT (seconds)" class="col-md-4" id="PT-results"/>
+                                            </div>
+                                            <div class="row">
+                                              <obs conceptId="166331" labelText="INR" class="col-md-4" id="INR-results"/> 
+                                              <obs conceptId="654"    labelText="ALT/SGPT" class="col-md-4" id="ALT-SGPT-results" />
+                                              <obs conceptId="655"    labelText="Total Bilirubin" class="col-md-4" id="Total-Bilirubin-results" />
+                                            </div>
+                                            <div class="row">
+                                              <obs conceptId="166429" labelText="AST/SGOT" class="col-md-4" id="AST-SGOT-results" />
+                                              <obs conceptId="857"    labelText="Urea (BUN)" class="col-md-4" id="Urea-results" />
+                                              <obs conceptId="1012"   labelText="Lactate" class="col-md-4" id="Lactate-results" />
+                                            </div>
+                                            <div class="row">
+                                              <obs conceptId="790"    labelText="Creatinine" class="col-md-4" id="Creatinine-results" /> 
+                                              <obs conceptId="1132"   labelText="Sodium" class="col-md-4" id="Sodium-results" />
+                                              <obs conceptId="1133"   labelText="Potassium" class="col-md-4" id="Potassium-results" />
+                                            </div>
+                                            <div class="row">
+                                              <obs conceptId="166327" labelText="Procalcitonin" class="col-md-4" id="Procalcitonin-results" />
+                                              <obs conceptId="166328" labelText="CRP" class="col-md-4" id="CRP-results" />
+                                              <obs conceptId="1014"   labelText="LDH" class="col-md-4" id="LDH-results" /> 
+                                            </div>
+                                            <div class="row">
+                                              <obs conceptId="1011"   labelText="Creatine" class="col-md-4" id="Creatine-results" /> 
+                                              <obs conceptId="1011"   labelText="Kinase" class="col-md-4" id="Kinase-results"/>
+                                              <obs conceptId="166332" labelText="UTroponin" class="col-md-4" id="UTroponin-results" />
+                                            </div>
+                                            <div class="row">
+                                              <obs conceptId="855"    labelText="ESR" class="col-md-4" id="ESR-results" />
+                                              <obs conceptId="166333" labelText="UD-dimer" class="col-md-4" id="UD-dimer-results"/>
+                                              <obs conceptId="166334" labelText="mFerritin" class="col-md-4" id="mFerritin-results"/>
+                                            </div>
+                                            <div class="row">
+                                              <obs conceptId="166335" labelText="aIL-6" class="col-md-4" id="aIL-6-results"/>
+                                            </div>
+                                        </div>
+                                      </div> 
+                                    </div>
+                                  </div>
                             </div>
 
-                            <div class="tab-pane active" id="current-management-and-further-plan">
+                            <div class="tab-pane" id="current-management-and-further-plan">
                                 <div class="card">
+                                    <div class="card-body">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <label>Essential Medications</label>
+                                            </div>
+                                            <div class="card-body">
+                                                <div>
+                                                    <repeat>
+                                                        <template>
+                                                            <obsgroup groupingConceptId="160741">
+                                                                <div class="row multi-drug" id="{id}-toggleContainer">
+                                                                    <div class="col-2">
+                                                                        <obs labelText="Drugs"  id="{id}-drug" conceptId="1282" answerClasses="Drug" style="autocomplete" class="fullwidth"/>
+                                                                    </div>
+                                                                    <div class="col-2">
+                                                                        <obs labelText="Quantity" conceptId="160856"/>
+                                                                    </div>
+                                                                    <div class="col-2">
+                                                                        <obs labelText="Qty unit" conceptId="165791" answerConceptSetIds="162402,162384"/>
+                                                                    </div>
+                                                                    <div class="col-2 duration">
+                                                                        <label>Duration</label>
+                                                                        <obs conceptId="159368"/>
+                                                                    </div>
+                                                                    <div class="col-2">
+                                                                        <obs conceptId="1732" labelText="Duration unit"/>
+                                                                    </div>
+                                                                    <div class="col-2">
+                                                                        <div class="add-entry">
+                                                                            <a href="#" id="{id}-addEntry" class="addEntry add-more-link"><i class="icon-plus-sign"></i></a>
+                                                                            <a href="#" class="removeEntry remove-more-link" id="{id}-removeEntry"><i class="icon-minus"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </obsgroup>
+                                                        </template>
+                                                        <render id="1"/>
+                                                        <render id="2"/>
+                                                        <render id="3"/>
+                                                        <render id="4"/>
+                                                        <render id="5"/>
+                                                        <render id="6"/>
+                                                        <render id="7"/>
+                                                        <render id="8"/>
+                                                        <render id="9"/>
+                                                        <render id="10"/>
+                                                    </repeat>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <label>Other Medications</label>
+                                        </div>
+                                        <div class="card-body">
+                                            <div>
+                                                <repeat>
+                                                    <template>
+                                                        <obsgroup groupingConceptId="165874">
+                                                            <div class="row multi-drug-other" id="{id}-toggleContainer-other">
+                                                                <div class="col-2">
+                                                                    <obs labelText="Drug" id="{id}-drugother" conceptId="99035" class="fullwidth"/>
+                                                                </div>
+                                                                <div class="col-2">
+                                                                    <obs labelText="Quantity" conceptId="160856"/>
+                                                                </div>
+                                                                <div class="col-2">
+                                                                    <obs labelText="Qty unit" conceptId="165791" answerConceptSetIds="162402,162384"/>
+                                                                </div>
+                                                                <div class="col-2 duration">
+                                                                    <label>Duration</label>
+                                                                    <obs conceptId="159368"/>
+                                                                </div>
+                                                                <div class="col-2">
+                                                                    <obs conceptId="1732" labelText="Duration unit"/>
+                                                                </div>
+                                                                <div class="col-2">
+                                                                    <div class="add-entry">
+                                                                        <a href="#" id="{id}-addEntry-other" class="addEntry-other add-more-link"><i class="icon-plus-sign"></i></a>
+                                                                        <a href="#" class="removeEntry-other remove-more-link" id="{id}-removeEntry-other"><i class="icon-minus"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </obsgroup>
+                                                    </template>
+                                                    <render id="1"/>
+                                                    <render id="2"/>
+                                                    <render id="3"/>
+                                                    <render id="4"/>
+                                                    <render id="5"/>
+                                                    <render id="6"/>
+                                                    <render id="7"/>
+                                                    <render id="8"/>
+                                                    <render id="9"/>
+                                                    <render id="10"/>
+                                                </repeat>
+                                            </div>
+                                        </div>
+                                    </div>                                        
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        FOR INTUBATED CASES
+                                    </div>
+                                    <div class="card-body">
+                                    <div class="card">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label>Medications (what start 
-                                                    date, dosage, freq)</label>
-                                                <obs conceptId="159395" style="textarea" />
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label>Oxygen</label>
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <label>Amount</label>
-                                                        <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label>Delivery Method</label>
-                                                        <obs conceptId="159395" class="col-md-3" />
-                                                    </div>
-                                                </div>
+                                              <label>ICU or High Dependency Unit Admission </label>
+                                              <obs conceptId="166249" answerConceptIds="99353,99112" answerLabels="Yes, No" 
+                                                   style="radio" class="horizontal"/>
                                             </div>
                                         </div>
+                                      </div>
+                                    </div>     
+                                    <div class="card">
+                                      <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                              <label>Oxygen Therapy </label>
+                                              <obs conceptId="166396" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown" 
+                                                   style="radio" class="horizontal"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                              <label>O<sub>2</sub>Flow</label>
+                                              <obs conceptId="166395" answerConceptIds="166392,166393,166394,166416,90001" 
+                                                   answerLabels="1-5 L/min, 6-10 L/min, 11-15 L/min, &gt;15 L/min, Unknown"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                              <label>Source of Oxygen</label>
+                                              <obs conceptId="166391" answerConceptIds="166390,166389,166388,90001" 
+                                                   answerLabels="Piped, Cylinder, Concentrator, Unknown"/>
+                                            </div>
+                                            <div class="col-md-2">
+                                              <label>Interface</label>
+                                              <obs conceptId="166387" answerConceptIds="161253,166383,166384,166385,166386" answerLabels="Nasal Prongs,Mask,Mask with reservoir,CPAP/NIV mask,HF nasal cannula"/>
+                                            </div>
+                                        </div>
+                                      </div>
                                     </div>
-                                </div>
-
-                                <div class="card">
+                                    <div class="card">
                                     <div class="card-body">
-                                        <div class="col-md-12">
-                                            <label>For intubated cases
-                                                    (additional notes can be 
-                                                    attached)</label>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Mode</label>
-                                                    <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>VT</label>
-                                                    <obs conceptId="159395" class="col-md-3" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>RR</label>
-                                                    <obs conceptId="159395" class="col-md-3" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>FiO2</label>
-                                                    <obs conceptId="159395" class="col-md-3" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>PEEP</label>
-                                                    <obs conceptId="159395" class="col-md-3" />
-                                                </div>
-                                            </div>
+                                        <div class="row">
+                                          <div class="col-md-4">
+                                            <label>Non-invasive Ventilation(e.g BIPAP/CPAP)</label>
+                                            <obs conceptId="166398" answerConceptIds="90003,90004,1175" answerLabels="Yes,No,N/A" 
+                                                   style="radio" class="horizontal" id="non-invasive-ventilation"/>
+                                          </div>
+                                          <div class="col-md-4">
+                                            <label>Worst Pressure Support Required (cm H<sub>2</sub>O)</label>
+                                            <obs conceptId="166397" id="worst-pressure-support"/>
+                                          </div>
                                         </div>
+                                      </div>
                                     </div>
+                                    <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                          <div class="col-md-4">
+                                            <label>Invasive Ventilation (Any)?</label>
+                                            <obs conceptId="166400" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" 
+                                                  style="radio" class="horizontal" id="invasive-ventilation"/>
+                                          </div>
+                                          <div class="col-md-2">
+                                            <label>SPO<sub>2</sub></label>
+                                            <obs conceptId="5092" id="worst-spo-ratio"/>
+                                          </div>
+                                          <div class="col-md-2">
+                                            <label>FiO<sub>2</sub></label>
+                                            <obs conceptId="166399" id="worst-fio-ratio"/>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-body">
+                                        <div class="row">
+                                          <div class="col-md-4">
+                                            <label>Inotropes/Vasopressors</label>
+                                            <obs conceptId="166382" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" 
+                                                 style="radio" class="horizontal"/>
+                                          </div>
+                                          <div class="col-md-3">
+                                            <label>Blood Gas Done</label>
+                                            <obs conceptId="166405" answerConceptIds="90003,90004" answerLabels="Yes,No" 
+                                                 style="radio" class="horizontal" id="blood-gas-done"/>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-2">
+                                            <label>pH</label>
+                                            <obs conceptId="166401" id="pH"/>
+                                          </div>
+                                          <div class="col-md-2"></div>
+                                          <div class="col-md-2">
+                                            <label>PaO<sub>2</sub></label>
+                                            <obs conceptId="166402" id="PaO2"/>
+                                          </div>
+                                          <div class="col-md-2">
+                                            <label>PCO<sub>2</sub></label>
+                                            <obs conceptId="166403" id="PCO2"/>
+                                          </div>
+                                          <div class="col-md-2">
+                                            <label>HCO<sub>3</sub></label>
+                                            <obs conceptId="166404" id="HCO3"/>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-body">
+                                      <div class="row">
+                                          <div class="col-md-4">
+                                              <label>Extracorporeal (ECMO) Support</label>
+                                              <obs conceptId="166381" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" 
+                                                   style="radio" class="horizontal"/>
+                                          </div>
+                                          <div class="col-md-4">
+                                              <label>Prone Position</label>
+                                              <obs conceptId="166380" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" 
+                                                   style="radio" class="horizontal"/>
+                                          </div>
+                                          <div class="col-md-4">
+                                            <label>Renal Replacement Therapy (RRT) or Dialysis?</label>
+                                            <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown"
+                                                 style="radio" class="horizontal"/>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
+                              </div>
 
                                 <div class="card">
                                     <div class="card-body">
