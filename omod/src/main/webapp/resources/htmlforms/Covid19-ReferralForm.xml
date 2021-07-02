@@ -362,6 +362,80 @@ formLabel="Covid-19 Referral Form">
 
         });              
     });
+
+    jq(document).ready(function () {
+        $allRows_other = jq(this).find('.multi-drug-other');
+        $allRows_other.hide();
+        jq('#1-removeEntry-other').remove();
+        jq('#10-addEntry-other').remove();
+        jq('#1-toggleContainer-other').show();
+
+        jq('#11-removeEntry-other').remove();
+        jq('#20-addEntry-other').remove();
+        jq('#11-toggleContainer-other').show();
+        });
+
+   jq(document).ready(function () {
+        jq('.addEntry-other').on("click", function () {
+        var correctedAddButtonId = parseFloat(this.id) + 1;
+        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer-other";
+        jq(contentAddId).toggle(true);
+        jq('#' + this.id).toggle(false);
+        jq('#' + parseFloat(this.id) + '-removeEntry-other').toggle(true);
+        return false;
+        });
+        });
+
+   jq(document).ready(function () {
+        jq('.removeEntry-other').on("click", function () {
+        var correctedRemoveButtonId = parseFloat(this.id) - 1;
+        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer-other";
+        jq(contentAddId).toggle(false);
+        jq(':input:not(:button)', contentAddId).val([]);
+        jq('#' + correctedRemoveButtonId + '-addEntry-other').toggle(true);
+        jq('#' + correctedRemoveButtonId + '-removeEntry-other').toggle(true);
+
+        return false;
+        });
+
+        });
+
+        jq(document).ready(function () {
+            $allRows_essential = jq(this).find('.multi-drug-essential');
+            $allRows_essential.hide();
+            jq('#1-removeEntry-essential').remove();
+            jq('#10-addEntry-essential').remove();
+            jq('#1-toggleContainer-essential').show();
+    
+            jq('#11-removeEntry-essential').remove();
+            jq('#20-addEntry-essential').remove();
+            jq('#11-toggleContainer-essential').show();
+            });
+    
+       jq(document).ready(function () {
+            jq('.addEntry-essential').on("click", function () {
+            var correctedAddButtonId = parseFloat(this.id) + 1;
+            var contentAddId = "#" + correctedAddButtonId + "-toggleContainer-essential";
+            jq(contentAddId).toggle(true);
+            jq('#' + this.id).toggle(false);
+            jq('#' + parseFloat(this.id) + '-removeEntry-essential').toggle(true);
+            return false;
+            });
+            });
+    
+       jq(document).ready(function () {
+            jq('.removeEntry-essential').on("click", function () {
+            var correctedRemoveButtonId = parseFloat(this.id) - 1;
+            var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer-essential";
+            jq(contentAddId).toggle(false);
+            jq(':input:not(:button)', contentAddId).val([]);
+            jq('#' + correctedRemoveButtonId + '-addEntry-essential').toggle(true);
+            jq('#' + correctedRemoveButtonId + '-removeEntry-essential').toggle(true);
+    
+            return false;
+            });
+    
+            });
    
     }
 
@@ -391,6 +465,102 @@ formLabel="Covid-19 Referral Form">
       }
     });
   </ifMode>
+
+  <ifMode mode = "EDIT" >
+    jq(document).ready(function () {
+        $allRows = jq(this).find('.multi-drug');
+        $allRows.hide();
+        jq('#1-removeEntry').remove();
+        jq('#10-addEntry').remove();
+        jq('#1-toggleContainer').show();
+        jq('#11-removeEntry').remove();
+        jq('#20-addEntry').remove();
+        jq('#11-toggleContainer').show();
+        for (let x = 0; x&lt;= 10; x++) {
+             if (jq(this).find('#' +x+ '-drug').find("input[type$='text']").val()!='')
+             {
+                 jq(this).find('#' +x+ '-toggleContainer').show();
+                  jq(this).find('#' +x+ '-addEntry').hide();
+             }
+            else {
+                    x-=1;
+                    jq(this).find('#' +x+ '-addEntry').show();
+                    break;
+            }
+        }
+    });
+
+    jq(document).ready(function () {
+        $allRows_other = jq(this).find('.multi-drug-other');
+        $allRows_other.hide();
+        jq('#1-removeEntry-other').remove();
+        jq('#10-addEntry-other').remove();
+        jq('#1-toggleContainer-other').show();
+        jq('#11-removeEntry-other').remove();
+        jq('#20-addEntry-other').remove();
+        jq('#11-toggleContainer-other').show();
+        for (let x = 0; x&lt;= 10; x++) {
+            if (jq(this).find('#' +x+ '-drugother').find("input[type$='text']").val()!='')
+            {
+              jq(this).find('#' +x+ '-toggleContainer-other').show();
+              jq(this).find('#' +x+ '-addEntry-other').hide();
+            }
+            else {
+                x-=1;
+                jq(this).find('#' +x+ '-addEntry-other').show();
+                break;
+            }
+        }
+    });
+</ifMode>
+
+<ifMode mode = "EDIT" >
+    jq(document).ready(function () {
+        $allRows = jq(this).find('.multi-drug');
+        $allRows.hide();
+        jq('#1-removeEntry').remove();
+        jq('#10-addEntry').remove();
+        jq('#1-toggleContainer').show();
+        jq('#11-removeEntry').remove();
+        jq('#20-addEntry').remove();
+        jq('#11-toggleContainer').show();
+        for (let x = 0; x&lt;= 10; x++) {
+             if (jq(this).find('#' +x+ '-drug').find("input[type$='text']").val()!='')
+             {
+                 jq(this).find('#' +x+ '-toggleContainer').show();
+                  jq(this).find('#' +x+ '-addEntry').hide();
+             }
+            else {
+                    x-=1;
+                    jq(this).find('#' +x+ '-addEntry').show();
+                    break;
+            }
+        }
+    });
+
+    jq(document).ready(function () {
+        $allRows_other = jq(this).find('.multi-drug-essential');
+        $allRows_other.hide();
+        jq('#1-removeEntry-essential').remove();
+        jq('#10-addEntry-essential').remove();
+        jq('#1-toggleContainer-other').show();
+        jq('#11-removeEntry-essential').remove();
+        jq('#20-addEntry-essential').remove();
+        jq('#11-toggleContainer-essential').show();
+        for (let x = 0; x&lt;= 10; x++) {
+            if (jq(this).find('#' +x+ '-drugother').find("input[type$='text']").val()!='')
+            {
+              jq(this).find('#' +x+ '-toggleContainer-other').show();
+              jq(this).find('#' +x+ '-addEntry-essential').hide();
+            }
+            else {
+                x-=1;
+                jq(this).find('#' +x+ '-addEntry-essential').show();
+                break;
+            }
+        }
+    });
+</ifMode>
 
 </script>
 
@@ -833,7 +1003,7 @@ formLabel="Covid-19 Referral Form">
                                                     <repeat>
                                                         <template>
                                                             <obsgroup groupingConceptId="160741">
-                                                                <div class="row multi-drug" id="{id}-toggleContainer">
+                                                                <div class="row multi-drug-essential" id="{id}-toggleContainer-essential">
                                                                     <div class="col-2">
                                                                         <obs labelText="Drugs"  id="{id}-drug" conceptId="1282" answerClasses="Drug" style="autocomplete" class="fullwidth"/>
                                                                     </div>
@@ -852,8 +1022,8 @@ formLabel="Covid-19 Referral Form">
                                                                     </div>
                                                                     <div class="col-2">
                                                                         <div class="add-entry">
-                                                                            <a href="#" id="{id}-addEntry-essential" class="addEntry add-more-link"><i class="icon-plus-sign"></i></a>
-                                                                            <a href="#" class="removeEntry remove-more-link" id="{id}-removeEntry"><i class="icon-minus"></i></a>
+                                                                            <a href="#" id="{id}-addEntry-essential" class="addEntry-essential add-more-link"><i class="icon-plus-sign"></i></a>
+                                                                            <a href="#" class="removeEntry-essential remove-more-link" id="{id}-removeEntry-essential"><i class="icon-minus"></i></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
