@@ -9,79 +9,388 @@ formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==fals
 formDisplayStyle="Standard"
 formLabel="Covid-19 Referral Form">
 
+
 <script type="text/javascript">
 
-    if (jquery){
-        jq(document).ready(function() { 
+    if (jQuery) {
 
-            //Block Multiple encounter entry on same date
-            blockEncounterOnSameDateEncounter(jq("#encounterDate").find("input[type=hidden]"),"block");            
-           
-            jq(document).ready(function () {
-                $allRows = jq(this).find('.multi-drug');
-                $allRows.hide();
-                jq('#1-removeEntry').remove();
-                jq('#10-addEntry').remove();
-                jq('#1-toggleContainer').show();
+      jq(document).ready(function () {
+         disable_fields("specify-other-facility-details");
+         disable_fields("specify-other-anti-biotics");
+         disable_fields("specify-other-malaria-treatment");
+         disable_fields("specify-other-diabetes-medication"); 
+         disable_fields("specify-other-complications");
+         disable_fields("specify-other-art-regimens");
+         disable_fields("specify-other-therapeutic");
+         disable_fields("specify-other-satin");
+         disable_fields("worst-pressure-support");
+         disable_fields("worst-spo-fio-ratio");
+         disable_fields("pH");
+         disable_fields("PaO2");
+         disable_fields("PCO2");
+         disable_fields("HCO3");
+         disable_fields("corticosteroid-route")
+         disable_fields("specify-other-anticoagulation");
+         disable_fields("Haemoglobin-results");
+         disable_fields("WBC-Count-results");
+         disable_fields("Haematocrit-results");
+         disable_fields("Platelets-results");
+         disable_fields("APTT-APTR-results");
+         disable_fields("PT-results");
+         disable_fields("INR-results");
+         disable_fields("ALT-SGPT-results");
+         disable_fields("Total-Bilirubin-results");
+         disable_fields("AST-SGOT-results");
+         disable_fields("Urea-results");
+         disable_fields("Lactate-results");
+         disable_fields("Creatinine-results");
+         disable_fields("Sodium-results");
+         disable_fields("Potassium-results");
+         disable_fields("Procalcitonin-results");
+         disable_fields("CRP-results");
+         disable_fields("LDH-results");
+         disable_fields("Creatine-results");
+         disable_fields("Kinase-results");
+         disable_fields("UTroponin-results");
+         disable_fields("ESR-results");
+         disable_fields("UD-dimer-results");
+         disable_fields("mFerritin-results");
+         disable_fields("aIL-6-results");
+         disable_fields("infiltrates-present");
+         disable_fields("specify-other-hypertension-medication");
+         disable_fields("specify-other-clinical-features");
+         disable_fields("other-occupation");
 
-                jq('#11-removeEntry').remove();
-                jq('#20-addEntry').remove();
-                jq('#11-toggleContainer').show();
-            });
+         jq("#occupation").change(function () {
+            if (jq(this).find("select").find(":selected").val() == "5622") {
+                enable_fields("other-occupation");
+            } else {
+                disable_fields("other-occupation");
+            }
+        });
+        
 
-            jq(document).ready(function () {
-                jq('.addEntry').on("click", function () {
-                    var correctedAddButtonId = parseFloat(this.id) + 1;
-                    var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
-                    jq(contentAddId).toggle(true);
-                    jq('#' + this.id).toggle(false);
-                    jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
-                    return false;
-                });
-            });
+       jq(".facility-details").change(function () {
+         if (jq(this).find('#other-facility-details').find(':checkbox').prop('checked')) {
+         enable_fields("specify-other-facility-details");
+         } else {
+         disable_fields("specify-other-facility-details");
+         }
+       });
 
-            jq(document).ready(function () {
-                jq('.removeEntry').on("click", function () {
-                    var correctedRemoveButtonId = parseFloat(this.id) - 1;
-                    var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
-                    jq(contentAddId).toggle(false);
-                    jq(':input:not(:button)', contentAddId).val([]);
-                    jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
-                    jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+       jq("#corticosteroid").click(function () {
+         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+         enable_fields("corticosteroid-route");
+         } else {
+         disable_fields("corticosteroid-route");
+         }
+       });
 
-                    return false;
-                });
+       jq("#malaria-treatment").click(function () {
+         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+         enable_fields("specify-other-malaria-treatment");
+         } else {
+         disable_fields("specify-other-malaria-treatment");
+         }
+       });
 
-            });
+       jq(".if-art").change(function () {
+         if (jq(this).find('#other-art').find(':checkbox').prop('checked')) {
+         enable_fields("specify-other-art-regimens");
+         } else {
+         disable_fields("specify-other-art-regimens");
+         }
+       });
 
-            <ifMode mode = "EDIT" >
-                jq(document).ready(function () {
-                  $allRows = jq(this).find('.multi-drug');
-                  $allRows.hide();
-                  jq('#1-removeEntry').remove();
-                  jq('#10-addEntry').remove();
-                  jq('#1-toggleContainer').show();
-                  jq('#11-removeEntry').remove();
-                  jq('#20-addEntry').remove();
-                  jq('#11-toggleContainer').show();
-                  for (let x = 0; x&lt;= 10; x++) {
-                    if (jq(this).find('#' +x+ '-drug').find("input[type$='text']").val()!='')
-                    {
-                        jq(this).find('#' +x+ '-toggleContainer').show();
-                        jq(this).find('#' +x+ '-addEntry').hide();
-                    }
-                    else {
-                        x-=1;
-                        jq(this).find('#' +x+ '-addEntry').show();
-                        break;
-                    }
-                  }
-                });
-              </ifMode>
+       jq("#diabetes-medication").click(function () {
+         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+         enable_fields("specify-other-diabetes-medication");
+         } else {
+         disable_fields("specify-other-diabetes-medication");
+         }
+       });
 
+       jq("#satin").click(function () {
+         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+         enable_fields("specify-other-satin");
+         } else {
+         disable_fields("specify-other-satin");
+         }
+       });
+
+       jq("#anticoagulation").click(function () {
+         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+         enable_fields("specify-other-anticoagulation");
+         } else {
+         disable_fields("specify-other-anticoagulation");
+         }
+       });
+
+       jq("#non-invasive-ventilation").click(function () {
+         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+         enable_fields("worst-pressure-support");
+         } else {
+         disable_fields("worst-pressure-support");
+         }
+       });
+
+       jq("#invasive-ventilation").click(function () {
+         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+         enable_fields("worst-spo-fio-ratio");
+         } else {
+         disable_fields("worst-spo-fio-ratio");
+         }
+       });
+
+       jq("#blood-gas-done").click(function () {
+         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+           enable_fields("pH");
+           enable_fields("PaO2");
+           enable_fields("PCO2");
+           enable_fields("HCO3");
+         }else {
+           disable_fields("pH");
+           disable_fields("PaO2");
+           disable_fields("PCO2");
+           disable_fields("HCO3");
+         }
+       });
+
+      jq(".complications").change(function () {
+         if (jq(this).find('#other-complications').find(':checkbox').prop('checked')) {
+          enable_fields("specify-other-complications");
+         } else {
+          disable_fields("specify-other-complications");
+         }
+      });
+
+      jq(".antibiotics").change(function () {
+         if (jq(this).find('#other-anti-biotics').find(':checkbox').prop('checked')) {
+          enable_fields("specify-other-anti-biotics");
+         } else {
+          disable_fields("specify-other-anti-biotics");
+         }
+      });
+
+      jq("#chest-xray").click(function () {
+         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+         enable_fields("infiltrates-present");
+         } else {
+         disable_fields("infiltrates-present");
+         }
+      });
+
+      jq(".hypertension-medication").change(function () {
+         if (jq(this).find('#other-hypertension-medication').find(':checkbox').prop('checked')) {
+          enable_fields("specify-other-hypertension-medication");
+         } else {
+          disable_fields("specify-other-hypertension-medication");
+         }
+      }); 
+
+      jq(".daily-clinical-features").change(function () {
+         if (jq(this).find('#other-clinical-features').find(':checkbox').prop('checked')) {
+          enable_fields("specify-other-clinical-features");
+         } else {
+          disable_fields("specify-other-clinical-features");
+         }
+      }); 
+
+      jq(".lab-tests").change(function () {
+        if(jq(this).find('#Haemoglobin-test').find(':checkbox').prop('checked')) {
+          enable_fields("Haemoglobin-results");
+        } else {
+          disable_fields("Haemoglobin-results");
+        }
+        if(jq(this).find('#WBC-Count-test').find(':checkbox').prop('checked')) {
+          enable_fields("WBC-Count-results");
+        } else {
+          disable_fields("WBC-Count-results");
+        }
+        if(jq(this).find('#Haematocrit-test').find(':checkbox').prop('checked')) {
+          enable_fields("Haematocrit-results");
+        } else {
+          disable_fields("Haematocrit-results");
+        }
+        if(jq(this).find('#Platelets-test').find(':checkbox').prop('checked')) {
+          enable_fields("Platelets-results");
+        } else {
+          disable_fields("Platelets-results");
+        }
+        if(jq(this).find('#APTT-APTR-test').find(':checkbox').prop('checked')) {
+          enable_fields("APTT-APTR-results");
+        } else {
+          disable_fields("APTT-APTR-results");
+        }
+        if(jq(this).find('#PT-test').find(':checkbox').prop('checked')) {
+          enable_fields("PT-results");
+        } else {
+          disable_fields("PT-results");
+        }
+        if(jq(this).find('#INR-test').find(':checkbox').prop('checked')) {
+          enable_fields("INR-results");
+        } else {
+          disable_fields("INR-results");
+        }
+        if(jq(this).find('#ALT-SGPT-test').find(':checkbox').prop('checked')) {
+          enable_fields("ALT-SGPT-results");
+        } else {
+          disable_fields("ALT-SGPT-results");
+        }
+        if(jq(this).find('#Total-Bilirubin-test').find(':checkbox').prop('checked')) {
+          enable_fields("Total-Bilirubin-results");
+        } else {
+          disable_fields("Total-Bilirubin-results");
+        }
+        if(jq(this).find('#AST-SGOT-test').find(':checkbox').prop('checked')) {
+          enable_fields("AST-SGOT-results");
+        } else {
+          disable_fields("AST-SGOT-results");
+        }
+        if(jq(this).find('#Urea-test').find(':checkbox').prop('checked')) {
+          enable_fields("Urea-results");
+        } else {
+          disable_fields("Urea-results");
+        }
+        if(jq(this).find('#Lactate-test').find(':checkbox').prop('checked')) {
+          enable_fields("Lactate-results");
+        } else {
+          disable_fields("Lactate-results");
+        }
+        if(jq(this).find('#Creatinine-test').find(':checkbox').prop('checked')) {
+          enable_fields("Creatinine-results");
+        } else {
+          disable_fields("Creatinine-results");
+        }
+        if(jq(this).find('#Sodium-test').find(':checkbox').prop('checked')) {
+          enable_fields("Sodium-results");
+        } else {
+          disable_fields("Sodium-results");
+        }
+        if(jq(this).find('#Potassium-test').find(':checkbox').prop('checked')) {
+          enable_fields("Potassium-results");
+        } else {
+          disable_fields("Potassium-results");
+        }
+        if(jq(this).find('#Procalcitonin-test').find(':checkbox').prop('checked')) {
+          enable_fields("Procalcitonin-results");
+        } else {
+          disable_fields("Procalcitonin-results");
+        }
+        if(jq(this).find('#CRP-test').find(':checkbox').prop('checked')) {
+          enable_fields("CRP-results");
+        } else {
+          disable_fields("CRP-results");
+        }
+        if(jq(this).find('#LDH-test').find(':checkbox').prop('checked')) {
+          enable_fields("LDH-results");
+        } else {
+          disable_fields("LDH-results");
+        }
+        if(jq(this).find('#Creatine-test').find(':checkbox').prop('checked')) {
+          enable_fields("Creatine-results");
+        } else {
+          disable_fields("Creatine-results");
+        }
+        if(jq(this).find('#Kinase-test').find(':checkbox').prop('checked')) {
+          enable_fields("Kinase-results");
+        } else {
+          disable_fields("Kinase-results");
+        }
+        if(jq(this).find('#UTroponin-test').find(':checkbox').prop('checked')) {
+          enable_fields("UTroponin-results");
+        } else {
+          disable_fields("UTroponin-results");
+        }
+        if(jq(this).find('#ESR-test').find(':checkbox').prop('checked')) {
+          enable_fields("ESR-results");
+        } else {
+          disable_fields("ESR-results");
+        }
+        if(jq(this).find('#UD-dimer-test').find(':checkbox').prop('checked')) {
+          enable_fields("UD-dimer-results");
+        } else {
+          disable_fields("UD-dimer-results");
+        }
+        if(jq(this).find('#mFerritin-test').find(':checkbox').prop('checked')) {
+          enable_fields("mFerritin-results");
+        } else {
+          disable_fields("mFerritin-results");
+        }
+        if(jq(this).find('#aIL-6-test').find(':checkbox').prop('checked')) {
+          enable_fields("aIL-6-results");
+        } else {
+          disable_fields("aIL-6-results");
+        }
+
+      });
+
+      jq(document).ready(function () {
+            $allRows = jq(this).find('.multi-drug');
+            $allRows.hide();
+            jq('#1-removeEntry').remove();
+            jq('#10-addEntry').remove();
+            jq('#1-toggleContainer').show();
+
+            jq('#11-removeEntry').remove();
+            jq('#20-addEntry').remove();
+            jq('#11-toggleContainer').show();
         });
 
+        jq(document).ready(function () {
+            jq('.addEntry').on("click", function () {
+                var correctedAddButtonId = parseFloat(this.id) + 1;
+                var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+                jq(contentAddId).toggle(true);
+                jq('#' + this.id).toggle(false);
+                jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
+                return false;
+            });
+        });
+
+        jq(document).ready(function () {
+            jq('.removeEntry').on("click", function () {
+                var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+                jq(contentAddId).toggle(false);
+                jq(':input:not(:button)', contentAddId).val([]);
+                jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
+                jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+
+                return false;
+            });
+
+        });              
+    });
+   
     }
+
+
+
+  <ifMode mode = "EDIT" >
+    jq(document).ready(function () {
+      $allRows = jq(this).find('.multi-drug');
+      $allRows.hide();
+      jq('#1-removeEntry').remove();
+      jq('#10-addEntry').remove();
+      jq('#1-toggleContainer').show();
+      jq('#11-removeEntry').remove();
+      jq('#20-addEntry').remove();
+      jq('#11-toggleContainer').show();
+      for (let x = 0; x&lt;= 10; x++) {
+        if (jq(this).find('#' +x+ '-drug').find("input[type$='text']").val()!='')
+        {
+            jq(this).find('#' +x+ '-toggleContainer').show();
+            jq(this).find('#' +x+ '-addEntry').hide();
+        }
+        else {
+            x-=1;
+            jq(this).find('#' +x+ '-addEntry').show();
+            break;
+        }
+      }
+    });
+  </ifMode>
 
 </script>
 
@@ -129,7 +438,7 @@ formLabel="Covid-19 Referral Form">
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Covid Severity</label>
-                                                <obs id="occupation" conceptId="1542" answerConceptIds="90003,90004,90003,90004" answerLabels="Asympomatic, Mild, Moderate, Severe, Critical" />
+                                                <obs id="covid-severity" conceptId="1542" answerConceptIds="90003,90004,90003,90004" answerLabels="Asympomatic, Mild, Moderate, Severe, Critical" />
                                             </div>                                            
                                         </div>
                                         <div class="row">
@@ -235,17 +544,23 @@ formLabel="Covid-19 Referral Form">
                                             <div class="col-md-4">
                                                 <label>Occupation</label>
                                                 <obs id="occupation" conceptId="1542" answerConceptIds="166272,159466,166273,5622" answerLabels="Health Care Worker, Truck Driver, Surveillance Officer/Contact Tracer, Other Specify" />
-                                            </div>                                            
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Other Specify</label>
+                                                <obs id="other-occupation" conceptId="159395" />
+                                            </div>                                         
                                             <div class="col-md-4">
                                                 <label>History of Current Illness</label>
                                                 <obs conceptId="159395" style="textarea" />
-                                            </div>
+                                            </div>                                            
+                                        </div>
+                                        <div class="row">
                                             <div class="col-md-3">
 												<label>Date of Admission in Hospital</label>
-												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 35%;"></i>
+												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 50%;"></i>
 												<obs conceptId="159376" />
                                             </div>
-                                        </div>                                        
+                                        </div>                                       
                                     </div>                                    
                                 </div>
                                 <div class="card">
@@ -537,7 +852,7 @@ formLabel="Covid-19 Referral Form">
                                                                     </div>
                                                                     <div class="col-2">
                                                                         <div class="add-entry">
-                                                                            <a href="#" id="{id}-addEntry" class="addEntry add-more-link"><i class="icon-plus-sign"></i></a>
+                                                                            <a href="#" id="{id}-addEntry-essential" class="addEntry add-more-link"><i class="icon-plus-sign"></i></a>
                                                                             <a href="#" class="removeEntry remove-more-link" id="{id}-removeEntry"><i class="icon-minus"></i></a>
                                                                         </div>
                                                                     </div>
