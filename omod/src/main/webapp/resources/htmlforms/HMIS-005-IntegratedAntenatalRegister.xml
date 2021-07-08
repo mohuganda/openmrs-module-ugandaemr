@@ -992,16 +992,10 @@
                                                             <label>Partner</label>
                                                         </div>
                                                         <div class="col-md-9">
-                                                            <obs conceptId="165471" answerConceptIds="165465,165466,165467,165472,165473,165474,165475,165476,165477,165468" 
+                                                            <obs conceptId="99753" answerConceptIds="99754,99755,99756,99757"
                                                                  answerLabels="Rx - Client tested positive results given and treatment initiated,
                                                                                +Ve - Client tested positive results given but treatment not yet initiated,
                                                                                NR - Client tested negative and results given,
-                                                                               RX&#8730; - Revisit - Client tested positive and results given,
-                                                                               +Ve&#8730; - Revisit - Client tested positive but not yet given treatment,
-                                                                               NR&#8730; - Revisit - Client tested negative results given,
-                                                                               RX+ - Retest - Client tested positive and results given,
-                                                                               +Ve+ - Retest -Client tested positive but not yet given treatment,
-                                                                               NR+ - Retest - Client tested negative and results given,
                                                                                NT - Client not Tested for Syphilis"
                                                                  style="dropdown" class="long-value-select"/>
                                                         </div>
