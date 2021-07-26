@@ -15,13 +15,13 @@
     });
 </script>
 <% if (breadcrumbs) { %>
-${ ui.includeFragment("prisonemr", "patientsearch/patientSearchWidget",
+${ ui.includeFragment("ugandaemr", "patientsearch/covid/patientSearchWidget",
         [ afterSelectedUrl: afterSelectedUrl,
           showLastViewedPatients: showLastViewedPatients,
           breadcrumbOverride: breadcrumbs,
           registrationAppLink: registrationAppLink])}
 <% } else { %>
-${ ui.includeFragment("prisonemr", "patientsearch/patientSearchWidget",
+${ ui.includeFragment("ugandaemr", "patientsearch/covid/patientSearchWidget",
         [ afterSelectedUrl: afterSelectedUrl,
           showLastViewedPatients: showLastViewedPatients,
           registrationAppLink: registrationAppLink])}

@@ -198,7 +198,7 @@ body {
         });
 
         jq("#checkin").click(function () {
-            jq.get('${ ui.actionLink("ugandaemrpoc","checkIn","post") }', {
+            jq.get('${ ui.actionLink("ugandaemr","checkIn","post") }', {
                 patientId: jq("#patient_id").val().trim().toLowerCase(),
                 locationId: jq("#location_id").val().trim().toLowerCase(),
                 locationFromId: jq("#location_from_id").val().trim().toLowerCase(),
@@ -224,10 +224,19 @@ body {
 
         jq("#loading-model").modal("show");
         jQuery.ajax({
-            url: "https://openhimlive.cphluganda.org:5000/covidlab/diagnostic_report",
+            url: "https://apitest.cphluganda.org/diagnostic_report",
             dataType: 'json',
             type: 'POST',
-            data: query
+            data: query,
+            crossDomain: true,
+            contentType:'application/json',
+            secure: true,
+            headers: {
+            'Access-Control-Allow-Origin': '*',
+            },
+            beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", "Basic " + btoa("covidlabtest:covidlabtest"));
+            }
         }).success(function (data) {
         console.log(data);
             if (data[0].size() > 0) {
@@ -625,7 +634,7 @@ body {
         </div>
     </div>
 </div>
-${ui.includeFragment("ugandaemrpoc", "checkIn")}
+${ui.includeFragment("ugandaemr", "checkIn")}
 <div class="modal fade" id="loading-model" tabindex="-1" role="dialog"
      aria-labelledby="loadingModelLabel"
      aria-hidden="true">
