@@ -218,58 +218,50 @@ body {
 
 <script>
     function searchOnLine(identifier) {
-        var query = '{"token":"FfRAgkkGTN0wHLkV4bXqszwyZgrq3UAE","patient_id":"%s"}';
-                    
-        query = query.replace("%s", identifier);
-
         jq("#loading-model").modal("show");
-        jQuery.ajax({
-            url: "https://apitest.cphluganda.org/diagnostic_report",
-            dataType: 'json',
-            type: 'POST',
-            data: query,
-            crossDomain: true,
-            contentType:'application/json',
-            secure: true,
-            headers: {
-            'Access-Control-Allow-Origin': '*',
-            },
-            beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", "Basic " + btoa("covidlabtest:covidlabtest"));
-            }
-        }).success(function (data) {
-        console.log(data);
-            if (data[0].size() > 0) {
+        jq.post("https://apitest.cphluganda.org/diagnostic_report",
+                    {
+                        token: "FfRAgkkGTN0wHLkV4bXqszwyZgrq3UAE",
+                        patient_id: identifier
 
-                displayData(data);
-
-                /*jq.post('${ ui.actionLink("ugandaemr","transferInFromCentralServer","processPatientEncounters") }', {
-                    patientData: JSON.stringify(data.data.patient)
-                }, function (response) {
-                    var responseData = JSON.parse(response.replace("patientData=", "\"patientData\":").trim());
-                    patientTransferInData = responseData;
-
-                    jq('#mostRecentEncounterModel').modal('show');
-
-                    jq("#loading-model").modal("hide");
-
-                    if (responseData.patientData.obsSummaryPageList !== null) {
-
-                    } else {
-                        transferPatientIn = true;
-                    }
-                }); */
-            }
-            else {
-                jq("#loading-model").modal("hide");
-            }
+                    },
+                     function(data) {
+                            console.log(data);
+                        var patientInfo = data[0];
 
 
-        }).complete(function (data) {
-            data;
-        }).error(function (data) {
-            data;
-        });
+                        if (data.length > 0) {
+                        console.log('does it')
+
+                            displayData(data);
+
+                            /*jq.post('${ ui.actionLink("ugandaemr","transferInFromCentralServer","processPatientEncounters") }', {
+                                patientData: JSON.stringify(data.data.patient)
+                            }, function (response) {
+                                var responseData = JSON.parse(response.replace("patientData=", "\"patientData\":").trim());
+                                patientTransferInData = responseData;
+                                jq('#mostRecentEncounterModel').modal('show');
+                                jq("#loading-model").modal("hide");
+                                if (responseData.patientData.obsSummaryPageList !== null) {
+                                } else {
+                                    transferPatientIn = true;
+                                }
+                            }); */
+                        }
+                        else {
+                            jq("#loading-model").modal("hide");
+                        }
+
+                        var patient = patientInfo.contained[3];
+                        var caseData = patientInfo.contained[4];
+
+                        //console.log(caseData.id);
+                        jq("#patient-name").append(patient.name[0].family);
+                        caseID = caseData.id
+                        jq("#case-id input").val(caseID);
+
+                    });
+
 
 
     }
@@ -291,17 +283,28 @@ body {
     function displayData(response) {
         jq("#patient_found").removeClass('hidden');
         jq("patient_found").show();
-        var patientNames = "" + response.data.patient.names[0].familyName + " " + response.data.patient.names[0].middleName + " " + response.data.patient.names[0].givenName;
-        patientNames = patientNames.replace("null", "");
+        //var patientNames = "" + patient.name[0].family + " " + response.data.patient.names[0].middleName + " " + response.data.patient.names[0].givenName;
+        var patientInfo = response[0]
+        var patient = patientInfo.contained[3];
+        var dateOfBirth = "";
+        if(patient.birthDate !== "") {
+           dateOfBirth = formatDate(new Date(patient.birthDate));
+        }
+
+        var patientNames      = "" + patient.name[0].text
+        //patientNames        = patientNames.replace("null", "");
+        var labContainer      = response[0].contained[0];
+        var facilityContainer = response[0].contained[4];
+
         jq("#patientNames").html(patientNames);
-        jq("#patientId").html(response.data.patient.uuid);
-        jq("#age").html(response.data.patient.age);
-        jq("#facilityName").html(response.data.patient.patientFacility.name);
-        jq("#facilityNameHeader").html("At " + response.data.patient.patientFacility.name);
-        jq("#facilityId").html(response.data.patient.patientFacility.uuid);
-        var dateOfBirth = formatDate(new Date(response.data.patient.birthdate));
+        //jq("#patientId").html(response.data.patient.uuid);
         jq("#birthDate").html(dateOfBirth + "");
-        jq("#gender").html(response.data.patient.gender);
+        jq("#gender").html(patient.gender);
+        jq("#labName").html(labContainer.name);
+        jq("#sampleFacilityName").html(facilityContainer.name);
+
+        jq('#mostRecentEncounterModel').modal('show');
+        jq("#loading-model").modal("hide");
     }
 
     function patientClinicInfo(response) {
@@ -589,7 +592,7 @@ body {
 
 <div class="modal fade" id="mostRecentEncounterModel" tabindex="-1" role="dialog"
      aria-labelledby="mostRecentEncounterModelLabel"
-     aria-hidden="true">
+     aria-hidden="false">
     <div class="modal-dialog  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -606,19 +609,19 @@ body {
                     </div>
 
                     <div>
-                        <strong>Sex:</strong><span id="gender"></span>
+                        <strong>Sex:</strong> <span id="gender"></span>
                     </div>
 
                     <div>
-                        <strong>Date of Birth:</strong><span id="birthDate"></span>
+                        <strong>Date of Birth:</strong> <span id="birthDate"></span>
                     </div>
 
                     <div>
-                        <strong>Sample Collection Facility:</strong><span id="sampleFacilityName"></span>
+                        <strong>Sample Collection Facility:</strong> <span id="sampleFacilityName"></span>
                     </div>
 
                     <div>
-                        <strong>Testing Lab:</strong><span id="labName"></span>
+                        <strong>Testing Lab:</strong> <span id="labName"></span>
                     </div>
                 </div>
 
