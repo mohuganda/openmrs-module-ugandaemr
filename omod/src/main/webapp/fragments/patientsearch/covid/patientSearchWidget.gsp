@@ -286,6 +286,7 @@ body {
         //var patientNames = "" + patient.name[0].family + " " + response.data.patient.names[0].middleName + " " + response.data.patient.names[0].givenName;
         var patientInfo = response[0]
         var patient = patientInfo.contained[3];
+        var careGiver = patient.contact[0];
         var dateOfBirth = "";
         if(patient.birthDate !== "") {
            dateOfBirth = formatDate(new Date(patient.birthDate));
@@ -295,6 +296,17 @@ body {
         //patientNames        = patientNames.replace("null", "");
         var labContainer      = response[0].contained[0];
         var facilityContainer = response[0].contained[4];
+        var testContainer     = response[0].contained[1];
+        var testDate = "";
+        if(testContainer.effectiveDateTime !== "") {
+           testDate = formatDate(new Date(testContainer.effectiveDateTime));
+        }
+        var symptomsContainer  = response[0].contained[7];
+
+        var dateOnSet = "";
+        if(symptomsContainer.component[0].valueDateTime !== "") {
+           dateOnSet = formatDate(new Date(symptomsContainer.component[0].valueDateTime));
+        }
 
         jq("#patientNames").html(patientNames);
         //jq("#patientId").html(response.data.patient.uuid);
@@ -302,7 +314,13 @@ body {
         jq("#gender").html(patient.gender);
         jq("#labName").html(labContainer.name);
         jq("#sampleFacilityName").html(facilityContainer.name);
-
+        jq("#testType").html(testContainer.code.text);
+        jq("#testDate").html(testDate);
+        jq("#testResult").html(testContainer.valueCodeableConcept.text);
+        jq("#patientSymptomatic").html(symptomsContainer.valueBoolean);
+        jq("#dateOnSet").html(dateOnSet);
+        jq("#careGiverName").html(careGiver.name.text);
+        jq("#careGiverPhone").html(careGiver.telecom[0].value);
         jq('#mostRecentEncounterModel').modal('show');
         jq("#loading-model").modal("hide");
     }
@@ -596,7 +614,7 @@ body {
     <div class="modal-dialog  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="mostRecentEncounterModelLabel">Transfer in patient details</h5>
+                <h5 class="modal-title" id="mostRecentEncounterModelLabel" style="color : #ffffff" >Patient Information From RDS</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -604,6 +622,7 @@ body {
 
             <div class="modal-body">
                 <div class="">
+                    <h5>Patient Information</h5>
                     <div>
                         <strong>Patient Names:</strong> <span style="" id="patientNames"></span>
                     </div>
@@ -625,9 +644,33 @@ body {
                     </div>
                 </div>
 
-                <div style="margin-top: 10px">
-                    <span>Include Encounters</span><span> &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="transfer-encounters" name="transfer-encounter" value="true"></span>
+                <h5>Testing</h5>
+
+                <div>
+                    <strong>Test Type:</strong> <span id="testType"></span>
                 </div>
+                <div>
+                    <strong>Test Date:</strong> <span id="testDate"></span>
+                </div>
+
+                <h5>Symptoms</h5>
+
+                <div>
+                    <strong>Patient Symptomatic:</strong> <span id="patientSymptomatic"></span>
+                </div>
+                <div>
+                    <strong>Date on Set of First Symptom:</strong> <span id="dateOnSet"></span>
+                </div>
+
+                <h5>Care Giver</h5>
+
+                <div>
+                    <strong>Care Giver Name:</strong> <span id="careGiverName"></span>
+                </div>
+                <div>
+                    <strong>Care Giver Phone no:</strong> <span id="careGiverPhone"></span>
+                </div>
+
             </div>
 
             <div class="modal-footer">
