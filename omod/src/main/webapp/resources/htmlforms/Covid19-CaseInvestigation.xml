@@ -17,6 +17,32 @@
 
             jq(document).ready(function () { 
 
+            var patient_id = "";
+                //https://openhimlive.cphluganda.org:5000/covidlab/diagnostic_report
+                jq.post("https://apitest.cphluganda.org/diagnostic_report",    
+                        {
+                            token: "FfRAgkkGTN0wHLkV4bXqszwyZgrq3UAE",
+                            patient_id: "2009-0135/076"
+
+                        },
+                    function(data) {
+                            
+                            var patientInfo = data[0];
+
+                            var patient = patientInfo.contained[3];
+                            var caseData = patientInfo.contained[4];
+
+                            console.log(caseData.id);
+                            jq("#patient-name").append(patient.name[0].family);
+                            caseID = caseData.id
+                            jq("#case-id input").val(caseID);
+
+
+                            
+
+                            
+                        });
+
                 //Block Multiple encounter entry on same date
                 blockEncounterOnSameDateEncounter(jq("#encounterDate").find("input[type=hidden]"),"block");
 
@@ -230,12 +256,22 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-4" id="visit-date">
+                                                <label>Patient Name</label>
+                                                <span id="patient-name"></span>
+                                            </div>
+                                            <!-- <div class="col-md-4">
+                                                <label>Case ID</label>
+                                                <obs conceptId="1646" id="case-id"/>
+                                            </div> -->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4" id="visit-date">
                                                 <label>Enrolment Date</label>
                                                 <encounterDate default="today" disallowMultipleEncountersOnDate="block"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Case ID</label>
-                                                <obs conceptId="1646" />
+                                                <obs conceptId="1646" id="case-id"/>
                                             </div>
                                         </div>
                                     </div>
@@ -248,7 +284,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label>Care Giver Name</label>
-                                                <obs conceptId="165919" />
+                                                <obs conceptId="165919" id="care-giver"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Care Giver Phone Number</label>
