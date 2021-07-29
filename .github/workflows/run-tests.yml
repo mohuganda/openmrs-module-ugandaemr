@@ -23,9 +23,8 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ~/.m2
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
         # Execute the Maven verify command to compile, package, test, verify
       - name: Build with Maven
