@@ -226,39 +226,17 @@ body {
 
                     },
                      function(data) {
-                            console.log(data);
+                            //console.log(data);
                         var patientInfo = data[0];
 
-
                         if (data.length > 0) {
-                        console.log('does it')
-
                             displayData(data);
-
-                            /*jq.post('${ ui.actionLink("ugandaemr","transferInFromCentralServer","processPatientEncounters") }', {
-                                patientData: JSON.stringify(data.data.patient)
-                            }, function (response) {
-                                var responseData = JSON.parse(response.replace("patientData=", "\"patientData\":").trim());
-                                patientTransferInData = responseData;
-                                jq('#mostRecentEncounterModel').modal('show');
-                                jq("#loading-model").modal("hide");
-                                if (responseData.patientData.obsSummaryPageList !== null) {
-                                } else {
-                                    transferPatientIn = true;
-                                }
-                            }); */
+                            patientTransferInData = data;
                         }
                         else {
                             jq("#loading-model").modal("hide");
+                            alert("Patient NOT Found");
                         }
-
-                        var patient = patientInfo.contained[3];
-                        var caseData = patientInfo.contained[4];
-
-                        //console.log(caseData.id);
-                        jq("#patient-name").append(patient.name[0].family);
-                        caseID = caseData.id
-                        jq("#case-id input").val(caseID);
 
                     });
 
@@ -268,15 +246,14 @@ body {
 
     jQuery(document).ready(function (jq) {
         jq("#transferIn").click(function () {
-            /*jq.post('${ ui.actionLink("ugandaemr","transferInFromCentralServer","transferIn") }', {
-                patientData: JSON.stringify(patientTransferInData),
-                patientObs: JSON.stringify(patientTransferInObs),
+            jq.post('${ ui.actionLink("ugandaemr","transferInCovidPatient","processCovidPatient") }', {
+                patientDataFromRDS: JSON.stringify(patientTransferInData[0])
             }
             , function (response) {
                 var responseStatus = JSON.parse(response.replace("status=", "\"status\":").trim());
                 transferPatientIn = true;
                 htmlForm.getBeforeSubmit();
-            }); */
+            });
         });
     });
 

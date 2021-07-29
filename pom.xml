@@ -119,6 +119,7 @@
 		<!-- core configuration library -->
 		<ugandaemrReportsVersion>2.0.24-SNAPSHOT</ugandaemrReportsVersion>
 
+
 	</properties>
 
 	<dependencyManagement>
@@ -475,6 +476,12 @@
 				<scope>provided</scope>
 				<type>test-jar</type>
     		</dependency>
+			<dependency>
+				<groupId>org.json</groupId>
+				<artifactId>json</artifactId>
+				<version>${jsonVersion}</version>
+				<scope>provided</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
