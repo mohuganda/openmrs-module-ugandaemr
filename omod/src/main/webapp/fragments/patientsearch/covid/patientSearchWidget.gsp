@@ -267,6 +267,10 @@ body {
         var dateOfBirth = "";
         if(patient.birthDate !== "") {
            dateOfBirth = formatDate(new Date(patient.birthDate));
+
+        }else{
+        // show age text field
+        //hide date-of-birth-container
         }
 
         var patientNames      = "" + patient.name[0].text
@@ -608,10 +612,13 @@ body {
                         <strong>Sex:</strong> <span id="gender"></span>
                     </div>
 
-                    <div>
+                    <div id="date-of-birth-container">
                         <strong>Date of Birth:</strong> <span id="birthDate"></span>
                     </div>
-
+                    <div id="patient-age" class = "hidden">
+                        <label for="example">Enter Patient Age</label>
+                        <input type="text" id="age">
+                    </div>
                     <div>
                         <strong>Sample Collection Facility:</strong> <span id="sampleFacilityName"></span>
                     </div>
