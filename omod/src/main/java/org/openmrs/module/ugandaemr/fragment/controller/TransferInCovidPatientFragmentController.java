@@ -137,7 +137,7 @@ public class TransferInCovidPatientFragmentController {
         careGiverName.setValueText(((JSONObject)((JSONObject) ((JSONArray) patientData.get("contact")).get(0)).get("name")).get("text").toString());
         encounter.addObs(careGiverName);
 
-        createObsFromFhirObs(testContainer);
+        //createObsFromFhirObs(testContainer);
 
         Obs careGiverPhone = createNewObs(conceptService.getConcept(165924), encounter);
         careGiverPhone.setValueText(((JSONObject) ((JSONArray) ((JSONObject) ((JSONArray) patientData.get("contact")).get(0)).get("telecom")).get(0)).get("value").toString());
@@ -156,8 +156,8 @@ public class TransferInCovidPatientFragmentController {
         dateOnSet.setValueText(((JSONObject) ((JSONArray) symptomsContainer.get("component")).get(0)).get("valueDateTime").toString());
         encounter.addObs(dateOnSet);
 
-        Context.getEncounterService().saveEncounter(encounter);
-
+        //Context.getEncounterService().saveEncounter(encounter);
+        encounterService.saveEncounter(encounter);
         return encounter;
     }
     private Obs createObsFromJSONArray(Encounter encounter, JSONObject jsonObject, Obs transferInObs) throws ParseException {
