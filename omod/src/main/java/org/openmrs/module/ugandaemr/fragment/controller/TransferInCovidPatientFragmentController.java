@@ -3,6 +3,7 @@ package org.openmrs.module.ugandaemr.fragment.controller;
 import io.swagger.util.Json;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.velocity.runtime.directive.Parse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openmrs.*;
@@ -53,9 +54,7 @@ public class TransferInCovidPatientFragmentController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //log.info("show data" + patientData);
-
-
+        // redirect to case invesigation form
 
 
     }
@@ -117,15 +116,20 @@ public class TransferInCovidPatientFragmentController {
         JSONObject symptomsContainer  = (JSONObject) jsonArray.get(7);
         JSONObject patientData = (JSONObject) jsonArray.get(3);;
 
-        Obs caseIdentifer = createNewObs(conceptService.getConcept(1646), encounter);
-        caseIdentifer.setValueText(labContainer.get("accessionIdentifier").toString());
-        //caseIdentifer.setValueText(labContainer.get("accessionIdentifier").get("value"));
-        encounter.addObs(caseIdentifer);
+        String caseID =  ((JSONObject) labContainer.get("accessionIdentifier")).get("value").toString();
+        if (!caseID.equalsIgnoreCase("")){
+            Obs caseIdentifer = createNewObs(conceptService.getConcept(1646), encounter);
+            caseIdentifer.setValueText(caseID);
+            encounter.addObs(caseIdentifer);
+        }
 
-        Date datePositiveTest = new SimpleDateFormat("yyyy-MM-dd").parse(testContainer.get("effectiveDateTime").toString());
-        Obs dateOfPositiveTest = createNewObs(conceptService.getConcept(166281), encounter);
-        dateOfPositiveTest.setValueDate(datePositiveTest);
-        encounter.addObs(dateOfPositiveTest);
+        String effectiveDateTime = testContainer.get("effectiveDateTime").toString();
+        if (!effectiveDateTime.equalsIgnoreCase("")){
+            Date datePositiveTest = new SimpleDateFormat("yyyy-MM-dd").parse(effectiveDateTime);
+            Obs dateOfPositiveTest = createNewObs(conceptService.getConcept(166281), encounter);
+            dateOfPositiveTest.setValueDate(datePositiveTest);
+            encounter.addObs(dateOfPositiveTest);
+        }
 
         //Obs testType = createNewObs(conceptService.getConcept(166284), encounter);
         //String conceptTestType = ((JSONObject) testContainer.get("code")).get("text").toString();
@@ -133,18 +137,23 @@ public class TransferInCovidPatientFragmentController {
         //testType.setValueCoded();
         //encounter.addObs(testType);
 
-        Obs careGiverName = createNewObs(conceptService.getConcept(165919), encounter);
-        careGiverName.setValueText(((JSONObject)((JSONObject) ((JSONArray) patientData.get("contact")).get(0)).get("name")).get("text").toString());
-        encounter.addObs(careGiverName);
+        String careGiver = ((JSONObject)((JSONObject) ((JSONArray) patientData.get("contact")).get(0)).get("name")).get("text").toString();
+        if (!careGiver.equalsIgnoreCase("")){
+            Obs careGiverName = createNewObs(conceptService.getConcept(165919), encounter);
+            careGiverName.setValueText(careGiver);
+            encounter.addObs(careGiverName);
+        }
 
-        //createObsFromFhirObs(testContainer);
 
-        Obs careGiverPhone = createNewObs(conceptService.getConcept(165924), encounter);
-        careGiverPhone.setValueText(((JSONObject) ((JSONArray) ((JSONObject) ((JSONArray) patientData.get("contact")).get(0)).get("telecom")).get(0)).get("value").toString());
-        encounter.addObs(careGiverPhone);
+        String careGiverphone = ((JSONObject) ((JSONArray) ((JSONObject) ((JSONArray) patientData.get("contact")).get(0)).get("telecom")).get(0)).get("value").toString();
+        if (!careGiverphone.equalsIgnoreCase("")){
+            Obs careGiverPhone = createNewObs(conceptService.getConcept(165924), encounter);
+            careGiverPhone.setValueText(careGiverphone);
+            encounter.addObs(careGiverPhone);
+        }
 
         Obs isPatientSymptomatic = createNewObs(conceptService.getConcept(166285), encounter);
-        String patientSymptomicValue = symptomsContainer.get("valueBoolean").toString();
+        String patientSymptomicValue = ((JSONObject) (JSONObject) jsonArray.get(7)).get("valueBoolean").toString();
         if (Boolean.parseBoolean(patientSymptomicValue.toString())){
             isPatientSymptomatic.setValueCoded(conceptService.getConcept(90003));
         }else {
@@ -153,8 +162,11 @@ public class TransferInCovidPatientFragmentController {
         encounter.addObs(isPatientSymptomatic);
 
         Obs dateOnSet = createNewObs(conceptService.getConcept(166286), encounter);
-        dateOnSet.setValueText(((JSONObject) ((JSONArray) symptomsContainer.get("component")).get(0)).get("valueDateTime").toString());
-        encounter.addObs(dateOnSet);
+        String dateOnset = ((JSONObject) ((JSONArray) symptomsContainer.get("component")).get(0)).get("valueDateTime").toString();
+        if (!dateOnset.equalsIgnoreCase("")){
+            dateOnSet.setValueText(dateOnset);
+            encounter.addObs(dateOnSet);
+        }
 
         //Context.getEncounterService().saveEncounter(encounter);
         encounterService.saveEncounter(encounter);
