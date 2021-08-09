@@ -54,7 +54,10 @@ public class TransferInCovidPatientFragmentController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         // redirect to case invesigation form
+
+
 
 
     }
