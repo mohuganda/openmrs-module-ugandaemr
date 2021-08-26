@@ -59,6 +59,60 @@
             var latestTransferInEncounter = getLatestEncounterFromEncounterList(transferInEncounters);
             var latestTransferOutEncounter = getLatestEncounterFromEncounterList(transferOutEncounters);
 
+            jq(document).ready(function () {
+
+
+                jq("#pharmacy_selection_id").attr("disabled", true);
+                disable_fields("cddp_categorization");
+                disable_fields("clddp_id");
+                jq.ajax({
+                    type: "GET",
+                    url: '/' + OPENMRS_CONTEXT_PATH + "/ws/rest/v1/location?v=full&amp;&amp;tag=45e82faa-d8c6-4ae0-b52c-d263f8ac9cef",
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+
+                        var code_attribute_type_uuid = "3c27cd88-8383-49d4-9072-29b92de60e44";
+                        data.results.forEach(function (location) {
+                            location.attributes.forEach(function (attribute) {
+                                if (attribute.attributeType.uuid === code_attribute_type_uuid) {
+                                    var option = "<option value=" + attribute.value + ">" + location.name + "</option>";
+                                    jq("#pharmacy_selection_id").append(option);
+                                }
+                            })
+
+                        })
+                    }
+                });
+
+                jq("#pharmacy_selection_id").change(function () {
+                    jq("#pharmacy_id input").val(this.value);
+                });
+
+                jq("#cddp_categorization").change(function () {
+                    var cddpCategory= jq("#cddp_categorization").find("select").find(":selected").val();
+                    if (cddpCategory === "a6a0ab45-b7dc-43b2-b28c-45a91f968ebf") {
+                        jq("#pharmacy_selection_id").attr("disabled", false);
+                        disable_fields("clddp_id");
+                    } else if (cddpCategory === "d77cc565-5e53-4633-8fc7-956cfc1831d9") {
+                        enable_fields("clddp_id");
+                        jq("#pharmacy_selection_id").attr("disabled", true);
+                    }else {
+                        jq("#pharmacy_selection_id").attr("disabled", true);
+                        disable_fields("clddp_id");
+                    }
+                });
+
+                jq("#165143 select").change(function () {
+                    if (jq("#165143").find("select").find(":selected").val() === "165142") {
+                        enable_fields("cddp_categorization");
+                    }else {
+                        disable_fields("cddp_categorization");
+                    }
+                });
+            });
+
+
             function getEncountersByEncounterTypeUUID(patientUUID,encounterTypeUUID){
                 var serverResponse =[];
                 jq.ajax({
@@ -2665,6 +2719,34 @@
                                         </div>
 
                                         <div class="card">
+                                            <div class="card-header">Drug Pick Up Model</div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-3" id="cddp_categorization">
+                                                        <label>CDDP Category"</label>
+                                                        <workflowState  workflowId="4" stateIds="16,14,15" stateLabels="General CDDP, CLDDP,CRPDDP"/>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label>Pharmacy</label>
+                                                        <div class="form-group">
+                                                            <select class="form-control" id="pharmacy_selection_id" name="pharmacy_selection_id">
+                                                                <option value="">Select Pharmacy</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <obs id="pharmacy_id" conceptId="166476"
+                                                             labelText="Pharmacy Code"/>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <obs id="clddp_id" conceptId="166475"
+                                                             labelText="CLDDP Location"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card">
                                             <div class="card-header">Transfer Out</div>
                                             <div class="card-body">
                                                 <obsgroup groupingConceptId="99166">
@@ -3723,6 +3805,30 @@
                                 <div class="col-md-4">
                                     <obs id="duration-on-art" conceptId="99024"
                                          labelText="Duration (Months since baseline)"/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Drug Pick Up Mode</label>
+                                    <obs id="drug-pick-up-mode" conceptId="166474" answerConceptIds="166472,166471,166473"
+                                         answerLabels="General CDDP, CLDDP,CRPDDP" class="horizontal long-value-select"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Pharmacy</label>
+                                    <div class="form-group">
+                                        <select class="form-control" id="pharmacy_selection_id" name="pharmacy_selection_id">
+                                            <option value="">Select Pharmacy</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <obs id="pharmacy_id" conceptId="166476"
+                                         labelText="Pharmacy Code"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <obs id="clddp_id" conceptId="166475"
+                                         labelText="CLDDP Location"/>
                                 </div>
                             </div>
                             <div class="row">
