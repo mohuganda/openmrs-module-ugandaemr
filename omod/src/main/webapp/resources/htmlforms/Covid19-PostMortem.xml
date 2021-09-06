@@ -196,16 +196,7 @@
                     }
                 });
 
-                <ifMode mode = "ENTER" >
-                    //disable outcome fields
-                    disable_fields("90211");  //health facility
-                    disable_fields("165853"); //District
-                    disable_fields("159635"); //Phone Contact of receiving Health Unit
-                    disable_fields("99113");  //other signs and symptoms
-                    disable_fields("99413");  //CPT/Dapson
-                    disable_fields("165871"); // ARV drugs
-                    disable_fields("159368"); // number of days
-                    disable_fields("160856"); // number of drugs
+                <ifMode mode = "ENTER" >                    
 
                     disable_fields("165844_1"); //test
                     disable_fields("165844_2");
@@ -218,61 +209,8 @@
                     disable_fields("165845_3");
                     disable_fields("165845_4");
                     disable_fields("165845_5");
-                    disable_fields("165872");   //outcome date
 
-                    disable_fields("165854"); //health facility name
-
-                </ifMode>
-
-                //enable district if health facility is provided/entered
-                jq("#90211").change(function () {
-                    if (jq(this).find("input").val() !== " ") {
-                        enable_fields("165853"); 
-                    } else {
-                        disable_fields("165853");
-                    }
-                });
-
-                //enable Phone Contact of receiving Health Unit if district is provided/entered
-                jq("#165853").change(function () {
-                    if (jq(this).find("input").val() !== " ") {
-                        enable_fields("159635"); 
-                    } else {
-                        disable_fields("159635");
-                    }
-                });
-
-                //enable or disable other symptoms
-                jq('#90002').click(function () {
-                    if (getValue('90002.value') == 90002) {
-                      enable_fields('99113');
-                    } else {
-                      disable_fields('99113');
-                    }
-                });
-
-                //enable ctx/Dapson/ARV drugs
-                jq("#165396").change(function () {
-                    var $hivStatus = jq(this).find("select").find(":selected").val();
-                    if($hivStatus == "165397" || $hivStatus == "165350") {
-                        enable_fields("99413");
-                        enable_fields("165871");
-                    } else {
-                        disable_fields("99413");
-                        disable_fields("165871");
-                    }
-                });
-
-                //enable number of pills and number of days
-                jq("#99374").change(function () {
-                    if(jq(this).find("select").find(":selected").val() !== "") {
-                        enable_fields("159368");
-                        enable_fields("160856");
-                    } else {
-                        disable_fields("159368");
-                        disable_fields("160856");
-                    }
-                });
+                </ifMode>                                               
 
                 //enable test and lab number if text date is provided
                 jq('#164431_1').change(function () {
@@ -753,7 +691,7 @@
                                                     <div class="col-md-2">
                                                         <label>Test</label>
                                                         <obs conceptId="165844" answerConceptIds="90225,165413,165416,12,90002" 
-                                                             answerLabels="RT-PCR, NAAT, Antigen Test, Antibody (Serology) Test, Other" id="165844_{n}"/>
+                                                             answerLabels="RT-PCR, NAAT, RDT-Ag, RDT-Ad, Other" id="165844_{n}"/>
                                                     </div>
                                                     <div class="col-md-2 hidden" id="other-test-div_{n}">
                                                         <label>Other Test</label>
