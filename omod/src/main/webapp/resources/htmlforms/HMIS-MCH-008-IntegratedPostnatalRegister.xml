@@ -279,7 +279,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label>Timing for PNC Visit</label>
-                                            <obs conceptId="1732" answerConceptIds="1822, 1072, 1073, 1074"  answerLabels="24 Hours, 6 Days, 6 Weeks, 6 Months"/>
+                                            <obs conceptId="166502" answerConceptIds="165462, 165463, 166503, 166504, 166505"  answerLabels="	PNC at 6 hours, PNC at 24 hours, PNC at 6 days, PNC at 6 weeks, PNC at 6 months"/>
                                         </div>
                                         <span class="hidden">
                                             <encounterLocation
