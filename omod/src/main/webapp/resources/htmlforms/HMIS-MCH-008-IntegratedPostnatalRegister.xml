@@ -285,7 +285,13 @@
                                             <encounterLocation
                                                 default="629d78e9-93e5-43b0-ad8a-48313fd99117" order="629d78e9-93e5-43b0-ad8a-48313fd99117" />
                                             <encounterProvider role="Provider" type="autocomplete" default="currentUser" />
-                                        </span>
+                                        </span>                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Referrals in/Out</label>
+                                            <obs conceptId="165855" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
