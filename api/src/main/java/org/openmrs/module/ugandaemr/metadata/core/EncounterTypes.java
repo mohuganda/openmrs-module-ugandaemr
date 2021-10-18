@@ -232,6 +232,22 @@ public class EncounterTypes {
         }
     };
 
+    public static EncounterTypeDescriptor ART_REGIMEN_CHANGE = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "ART Regimen Change";
+        }
+
+        @Override
+        public String description() {
+            return "ART Regimen Switch or Change Encounter";
+        }
+
+        public String uuid() {
+            return "c11774c1-3b4a-4bdb-a847-6060895e006d";
+        }
+    };
+
     public static EncounterTypeDescriptor COVID19_ENROLLMENT = new EncounterTypeDescriptor() {
         @Override
         public String name() {
@@ -306,6 +322,21 @@ public class EncounterTypes {
 
         public String uuid() {
             return "afcdfcd8-defe-11eb-ba80-0242ac130004";
+        }
+    };
+    public static EncounterTypeDescriptor EMERGENCY_ART_SERVICE = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Emergency ART Service Encounter";
+        }
+
+        @Override
+        public String description() {
+            return "Emergency ART Service Encounter";
+        }
+
+        public String uuid() {
+            return "d18bd8f2-dfcd-11eb-ba80-0242ac130004";
         }
     };
 }
