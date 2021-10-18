@@ -1,9 +1,8 @@
 package org.openmrs.module.ugandaemr.fragment.controller;
 
-import io.swagger.util.Json;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.velocity.runtime.directive.Parse;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openmrs.*;
@@ -15,11 +14,14 @@ import org.openmrs.module.appui.UiSessionContext;
 import org.openmrs.module.idgen.IdentifierSource;
 import org.openmrs.module.idgen.service.IdentifierSourceService;
 import org.openmrs.module.ugandaemr.api.UgandaEMRService;
+import org.openmrs.ui.framework.SimpleObject;
 import org.openmrs.ui.framework.UiUtils;
 import org.openmrs.ui.framework.fragment.FragmentModel;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
-import java.lang.reflect.Array;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,33 +43,33 @@ public class TransferInCovidPatientFragmentController {
 
     }
 
-    public void processCovidPatient(FragmentModel model,
-                                     @RequestParam(value = "patientDataFromRDS", required = false) java.lang.String patientDataFromRDS, UiUtils ui,UiSessionContext sessionContext) {
+    public SimpleObject processCovidPatient(FragmentModel model,
+                                            @RequestParam(value = "patientDataFromRDS", required = false) String patientDataFromRDS, UiUtils ui, UiSessionContext sessionContext) throws IOException {
         log.info(patientDataFromRDS);
         JSONObject jsonObject = new JSONObject(patientDataFromRDS);
-        //log.info(jsonObject);
         JSONArray container = (JSONArray) jsonObject.get("contained");
         JSONObject patientData = container.getJSONObject(3);
         Patient patient = createPatient(patientData);
+        SimpleObject simpleObject = new SimpleObject();
+        ObjectMapper objectMapper = new ObjectMapper();
         try {
-            createCaseInvesitigationEncounter(container,patient,"",sessionContext);
+         Encounter  encounter =   createCaseInvesitigationEncounter(container,patient,"",sessionContext);
+         SimpleObject simpleObjectPatientCaseInvesitigationEncounter = SimpleObject.create("patientId",encounter.getPatient().getId(),"encounterId",encounter.getEncounterId());
+         simpleObject.put("patientCaseInvesitigationEncounter", objectMapper.writeValueAsString(simpleObjectPatientCaseInvesitigationEncounter));
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        // redirect to case invesigation form
-
-
-
-
+        return simpleObject;
     }
+
     public Patient createPatient(JSONObject jsonObject) {
         PatientService patientService = Context.getPatientService();
-        //Date date = new SimpleDateFormat("yyyy-MM-dd").parse(jsonObject.get("birthDate").toString());
 
         Date date = null;
         try {
             date = new SimpleDateFormat("yyyy-MM-dd").parse("1988-07-27");
+           // date = new SimpleDateFormat("yyyy-MM-dd").parse(jsonObject.get("birthDate").toString());
+
         } catch (ParseException e) {
             e.printStackTrace();
         }

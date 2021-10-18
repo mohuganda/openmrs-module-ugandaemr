@@ -237,7 +237,6 @@ body {
                             jq("#loading-model").modal("hide");
                             alert("Patient NOT Found");
                         }
-
                     });
 
 
@@ -250,9 +249,8 @@ body {
                 patientDataFromRDS: JSON.stringify(patientTransferInData[0])
             }
             , function (response) {
-                var responseStatus = JSON.parse(response.replace("status=", "\"status\":").trim());
-                transferPatientIn = true;
-                htmlForm.getBeforeSubmit();
+                var patientEncounterInfo = JSON.parse(response.replace("patientCaseInvesitigationEncounter=", "\"patientCaseInvesitigationEncounter\":").trim());
+                location.href = '/openmrs/htmlformentryui/htmlform/editHtmlFormWithStandardUi.page?patientId='+patientEncounterInfo.patientCaseInvesitigationEncounter.patientId+'&encounterId='+patientEncounterInfo.patientCaseInvesitigationEncounter.encounterId;
             });
         });
     });
@@ -357,6 +355,7 @@ body {
 
             if (covidPatientId !== "") {
                 searchOnLine(covidPatientId);
+
             } 
         });
     });
