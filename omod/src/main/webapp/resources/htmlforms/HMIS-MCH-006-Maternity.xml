@@ -137,6 +137,29 @@
                     }
                 });
 
+				<ifMode mode = "EDIT" >
+					jq(document).ready(function () {
+						$allRows = jq(this).find('.visit-follow-up');
+						$allRows.hide();
+						jq('#1-removeEntry').remove();
+						jq('#10-addEntry').remove();
+						jq('#1-toggleContainer').show();
+						jq('#11-removeEntry').remove();
+						jq('#20-addEntry').remove();
+						jq('#11-toggleContainer').show();
+						for (let x = 0; x&lt;= 10; x++) {
+							if (jq(this).find('#' +x+ '-Apgar').find("input[type$='text']").val()!='') {
+								jq(this).find('#' +x+ '-toggleContainer').show();
+								jq(this).find('#' +x+ '-addEntry').hide();
+							} else {
+								x-=1;
+								jq(this).find('#' +x+ '-addEntry').show();
+								break;
+							}
+						}
+					});
+				</ifMode>
+
 				//addRemovePrescription();
 
                 $allRows = jq(this).find('.visit-follow-up');
@@ -527,8 +550,7 @@
 															<div class="card-body">
 																<div class="row">
 																	<div class="col-md-4">
-																		<label>Apgar 1st Minute Score</label>
-																		<obs conceptId="99326"  />
+																		<obs labelText="Apgar 1st Minute Score"  id="{id}-Apgar" conceptId="99326"  />
 																	</div>
 																	<div class="col-md-4">
 																		<label>Apgar 5th Minute Score</label>

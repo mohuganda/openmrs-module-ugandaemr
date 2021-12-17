@@ -157,7 +157,7 @@
       "widget": "latestobsforconceptlist",
       "icon": "icon-user-md",
       "label": "LAST ART VISIT SUMMARY",
-      "concepts": "dcac04cf-30ab-102d-86b0-7a5022ba4115,160288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,dd2b0b4d-30ab-102d-86b0-7a5022ba4115,97c48198-3cf7-4892-a3e6-d61fb1125882,b0e53f0a-eaca-49e6-b663-d0df61601b70,7593ede6-6574-4326-a8a6-3d742e843659,dcdff274-30ab-102d-86b0-7a5022ba4115"
+      "concepts": "160288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,dd2b0b4d-30ab-102d-86b0-7a5022ba4115,97c48198-3cf7-4892-a3e6-d61fb1125882,b0e53f0a-eaca-49e6-b663-d0df61601b70,7593ede6-6574-4326-a8a6-3d742e843659,dcdff274-30ab-102d-86b0-7a5022ba4115"
     },
     "requiredPrivilege": "App: ugandaemr.widget.lastARTVisitSummary",
     "extensions": [
@@ -189,6 +189,32 @@
       {
         "id": "org.openmrs.module.coreapps.mostRecentVitals.clinicianDashboardSecondColumn",
         "appId": "ugandaemr.regimenlines.summary",
+        "extensionPointId": "patientDashboard.secondColumnFragments",
+        "extensionParams": {
+          "provider": "coreapps",
+          "fragment": "dashboardwidgets/dashboardWidget"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ugandaemr.regimenChangeList",
+    "instanceOf": "coreapps.template.dashboardWidget",
+    "description": "Regimen Change history for the patient",
+    "order": 6,
+    "config": {
+      "widget": "obsacrossencounters",
+      "icon": "icon-user-md",
+      "label": "Regimen Change History",
+      "concepts": "ca5a71aa-05f9-42a0-bf0d-65bcfd08036b,107bef04-bf05-4f41-9260-b167c1108f7e,dd2b0b4d-30ab-102d-86b0-7a5022ba4115",
+      "encounterType": "c11774c1-3b4a-4bdb-a847-6060895e006d",
+      "maxRecords": "5"
+    },
+    "requiredPrivilege": "App: ugandaemr.widget.regimenChangeList",
+    "extensions": [
+      {
+        "id": "org.openmrs.module.coreapps.mostRecentVitals.clinicianDashboardFirstColumn",
+        "appId": "ugandaemr.regimenChangeList",
         "extensionPointId": "patientDashboard.secondColumnFragments",
         "extensionParams": {
           "provider": "coreapps",
