@@ -715,6 +715,9 @@ form .lablex4 span {
 	margin-top: 25px;
 }
 
+#occupation > select {
+    max-width: 25%;
+}
 
 
 
