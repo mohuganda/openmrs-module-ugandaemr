@@ -719,6 +719,21 @@ form .lablex4 span {
     max-width: 25%;
 }
 
+#evidence-of-medical-intervention > select {
+    min-width: 80%
+}
 
+.postmortem-physique > select {
+    min-width: 95%
+}
+
+.test-165844 > select {
+    min-width: 20%;
+}
+.postmortem-padding {
+    margin-left:10px;
+    margin-right:10px;
+    max-width: 40%;
+}
 
 
