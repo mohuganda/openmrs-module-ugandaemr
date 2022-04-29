@@ -723,6 +723,10 @@ form .lablex4 span {
     min-width: 80%
 }
 
+.outcome-166244 > select {
+    max-width: 90%;
+}
+
 .postmortem-physique > select {
     min-width: 95%
 }
