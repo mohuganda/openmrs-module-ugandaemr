@@ -24,7 +24,8 @@ formLabel="Covid-19 Referral Form">
          disable_fields("specify-other-therapeutic");
          disable_fields("specify-other-satin");
          disable_fields("worst-pressure-support");
-         disable_fields("worst-spo-fio-ratio");
+         disable_fields("worst-spo-ratio");
+         disable_fields("worst-fio-ratio");
          disable_fields("pH");
          disable_fields("PaO2");
          disable_fields("PCO2");
@@ -60,12 +61,26 @@ formLabel="Covid-19 Referral Form">
          disable_fields("specify-other-hypertension-medication");
          disable_fields("specify-other-clinical-features");
          disable_fields("other-occupation");
+         disable_fields("oxygen-flow");
+         disable_fields("oxygen-source");
+         disable_fields("oxygen-interface");
+
+         jq("#other-occupation-container").hide();
+         jq("#oxygen-flow-container").hide();
+         jq("#oxygen-source-container").hide();
+         jq("#oxygen-interface-container").hide();
+         jq("#worst-pressure-support-container").hide();
+         jq("#worst-fio-ratio-container").hide();
+         jq("#worst-spo-ratio-container").hide();
+         jq("#gas-container").hide()
 
          jq("#occupation").change(function () {
             if (jq(this).find("select").find(":selected").val() == "5622") {
                 enable_fields("other-occupation");
+                jq("#other-occupation-container").show();
             } else {
                 disable_fields("other-occupation");
+                jq("#other-occupation-container").hide();
             }
         });
         
@@ -128,17 +143,25 @@ formLabel="Covid-19 Referral Form">
 
        jq("#non-invasive-ventilation").click(function () {
          if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-         enable_fields("worst-pressure-support");
+            enable_fields("worst-pressure-support");
+            jq("#worst-pressure-support-container").show();
          } else {
-         disable_fields("worst-pressure-support");
+            disable_fields("worst-pressure-support");
+            jq("#worst-pressure-support-container").hide();
          }
        });
 
        jq("#invasive-ventilation").click(function () {
          if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-         enable_fields("worst-spo-fio-ratio");
+            enable_fields("worst-fio-ratio");
+            enable_fields("worst-spo-ratio");
+            jq("#worst-fio-ratio-container").show();
+            jq("#worst-spo-ratio-container").show();
          } else {
-         disable_fields("worst-spo-fio-ratio");
+            disable_fields("worst-fio-ratio");
+            disable_fields("worst-spo-ratio");
+            jq("#worst-fio-ratio-container").hide();
+            jq("#worst-spo-ratio-container").hide();
          }
        });
 
@@ -148,11 +171,13 @@ formLabel="Covid-19 Referral Form">
            enable_fields("PaO2");
            enable_fields("PCO2");
            enable_fields("HCO3");
+           jq("#gas-container").show();
          }else {
            disable_fields("pH");
            disable_fields("PaO2");
            disable_fields("PCO2");
            disable_fields("HCO3");
+           jq("#gas-container").hide();
          }
        });
 
@@ -178,6 +203,24 @@ formLabel="Covid-19 Referral Form">
          } else {
          disable_fields("infiltrates-present");
          }
+      });
+
+      jq("#oxygen-therapy").click(function () {
+         if (jq(this).find("input[type='radio']:checked").val() == "90003") {
+         enable_fields("oxygen-flow");
+         enable_fields("oxygen-source");
+         enable_fields("oxygen-interface");
+         jq("#oxygen-flow-container").show();
+         jq("#oxygen-source-container").show();
+         jq("#oxygen-interface-container").show();
+      } else {
+         disable_fields("oxygen-flow");
+         disable_fields("oxygen-source");
+         disable_fields("oxygen-interface");
+         jq("#oxygen-flow-container").hide();
+         jq("#oxygen-source-container").hide();
+         jq("#oxygen-interface-container").hide();
+      }
       });
 
       jq(".hypertension-medication").change(function () {
@@ -608,7 +651,7 @@ formLabel="Covid-19 Referral Form">
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Covid Severity</label>
-                                                <obs id="covid-severity" conceptId="1542" answerConceptIds="90003,90004,90003,90004" answerLabels="Asympomatic, Mild, Moderate, Severe, Critical" />
+                                                <obs id="covid-severity" conceptId="1542" answerConceptIds="165126,159674,159466,165125,162570" answerLabels="Asympomatic, Mild, Moderate, Severe, Critical" />
                                             </div>                                            
                                         </div>
                                         <div class="row">
@@ -697,9 +740,10 @@ formLabel="Covid-19 Referral Form">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label>Chronic Condition/PMH</label>
-                                                <obs conceptId="159395" />
+                                                <label>Date of Admission in Hospital</label>
+                                                <encounterDate default="today" disallowMultipleEncountersOnDate="block" />
                                             </div>
+
                                             <div class="col-md-8">
                                                 <label>Social History</label>
                                                 <div class="row">
@@ -712,24 +756,31 @@ formLabel="Covid-19 Referral Form">
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label>Occupation</label>
-                                                <obs id="occupation" conceptId="1542" answerConceptIds="166272,159466,166273,5622" answerLabels="Health Care Worker, Truck Driver, Surveillance Officer/Contact Tracer, Other Specify" />
+                                                <label>Chronic Condition/PMH</label>
+                                                <obs conceptId="159395" />
                                             </div>
-                                            <div class="col-md-4">
-                                                <label>Other Specify</label>
-                                                <obs id="other-occupation" conceptId="159395" />
-                                            </div>                                         
+                                            <div class="col-md-8">
+                                                <label>Allergies</label>
+                                                <div class="row">
+                                                    <obs conceptId="166351" answerConceptId="166350" answerLabel="Medication" style="checkbox" class="col-md-3" />
+                                                    <obs conceptId="166351" answerConceptId="794" answerLabel="Food" style="checkbox" class="col-md-3" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-md-4">
                                                 <label>History of Current Illness</label>
                                                 <obs conceptId="159395" style="textarea" />
-                                            </div>                                            
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                              <label>Date of Admission in Hospital</label>
-                                              <encounterDate default="today" disallowMultipleEncountersOnDate="block" />
                                             </div>
-                                        </div>                                       
+                                            <div class="col-md-3">
+                                                <label>Occupation</label>
+                                                <obs id="occupation" conceptId="1542" answerConceptIds="166272,159466,166273,5622" answerLabels="Health Care Worker, Truck Driver, Surveillance Officer/Contact Tracer, Other Specify" />
+                                            </div>
+                                            <div id="other-occupation-container" class="col-md-4">
+                                                <label>Other occupation</label>
+                                                <obs id="other-occupation" conceptId="159395" />
+                                            </div>
+                                        </div>
                                     </div>                                    
                                 </div>
                                 <div class="card">
@@ -742,24 +793,25 @@ formLabel="Covid-19 Referral Form">
                                                 <template>
                                                     <obsgroup groupingConceptId="160741">
                                                         <div class="row multi-drug" id="{id}-toggleContainer">
-                                                            <div class="col-2">
+                                                            <div class="referral-padding">
                                                                 <obs labelText="Drugs"  id="{id}-drug" conceptId="1282" answerClasses="Drug" style="autocomplete" class="fullwidth"/>
                                                             </div>
-                                                            <div class="col-2">
+                                                            <div class="referral-padding">
                                                                 <obs labelText="Quantity" conceptId="160856"/>
                                                             </div>
-                                                            <div class="col-2">
+                                                            <div class="referral-padding">
                                                                 <obs labelText="Qty unit" conceptId="165791" answerConceptSetIds="162402,162384"/>
                                                             </div>
-                                                            <div class="col-2 duration">
+                                                            <div class="referral-padding duration">
                                                                 <label>Duration</label>
                                                                 <obs conceptId="159368"/>
                                                             </div>
-                                                            <div class="col-2">
+                                                            <div class="referral-padding">
                                                                 <obs conceptId="1732" labelText="Duration unit"/>
                                                             </div>
-                                                            <div class="col-2">
+                                                            <div class="referral-padding">
                                                                 <div class="add-entry">
+                                                                    <br/>
                                                                     <a href="#" id="{id}-addEntry" class="addEntry add-more-link"><i class="icon-plus-sign"></i></a>
                                                                     <a href="#" class="removeEntry remove-more-link" id="{id}-removeEntry"><i class="icon-minus"></i></a>
                                                                 </div>
@@ -786,28 +838,28 @@ formLabel="Covid-19 Referral Form">
                             <div class="tab-pane" id="examinations">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
+                                        <div class="row col-12">
+                                            <div class="col-6">
                                                 <label>Respiratory Rate(RR)</label>
-                                                <div class="row">
-                                                    <div class="col-md-4">
+                                                <div class="row col-12">
+                                                    <div>
                                                         <label>Arrival</label>
                                                         <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-2" />
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="referral-padding">
                                                         <label>Current</label>
                                                         <obs conceptId="159395" class="col-md-2" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-6">
                                                 <label>Oxygen Saturation(SPO2)</label>
-                                                <div class="row">
-                                                    <div class="col-md-4">
+                                                <div class="row col-12">
+                                                    <div>
                                                         <label>Arrival</label>
                                                         <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="referral-padding">
                                                         <label>Current</label>
                                                         <obs conceptId="159395" class="col-md-3" />
                                                     </div>
@@ -819,28 +871,28 @@ formLabel="Covid-19 Referral Form">
 
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
+                                        <div class="row col-12">
+                                            <div class="col-6">
                                                 <label>Pulse Rate(PR)</label>
-                                                <div class="row">
-                                                    <div class="col-md-4">
+                                                <div class="row col-12">
+                                                    <div>
                                                         <label>Arrival</label>
                                                         <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="referral-padding">
                                                         <label>Current</label>
                                                         <obs conceptId="159395" class="col-md-3" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-6">
                                                 <label>Blood Pressure(BP)</label>
-                                                <div class="row">
-                                                    <div class="col-md-4">
+                                                <div class="row col-12">
+                                                    <div>
                                                         <label>Arrival</label>
                                                         <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="referral-padding">
                                                         <label>Current</label>
                                                         <obs conceptId="159395" class="col-md-3" />
                                                     </div>
@@ -852,31 +904,31 @@ formLabel="Covid-19 Referral Form">
 
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
+                                        <div class="row col-12">
+                                            <div class="col-6">
                                                 <label>Blood Glucose(RBG)</label>
-                                                <div class="row">
-                                                    <div class="col-md-4">
+                                                <div class="row col-12">
+                                                    <div>
                                                         <label>Arrival</label>
                                                         <obs id="arrival" conceptId="159395" answerLabel="arrival" class="col-md-3" />
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="referral-padding">
                                                         <label>Current</label>
-                                                        <obs conceptId="159395" class="col-md-3" />
+                                                        <obs conceptId="159395" class="col-3" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label>AVPU(Alert, to Pain, to 
+                                            <div class="col-6">
+                                                <label> AVPU(Alert, to Pain, to
                                                         Verbal, Unresponsive)</label>
-                                                <div class="row">
-                                                    <div class="col-md-4">
+                                                <div class="row col-12">
+                                                    <div>
                                                         <label>Arrival</label>
                                                         <obs id="arrival" conceptId="166410" answerLabel="arrival" class="col-md-3" />
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="referral-padding">
                                                         <label>Current</label>
-                                                        <obs conceptId="166410" class="col-md-3" />
+                                                        <obs conceptId="166410" class="col-3" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -887,19 +939,19 @@ formLabel="Covid-19 Referral Form">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">                                            
-                                            <div class="col-md-4">
+                                            <div class="col-4">
                                                 <label>General</label>
                                                 <obs conceptId="159395" style="textarea" />
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-4">
                                                 <label>Key Systemic Exam Finding</label>
                                                 <obs conceptId="159395" style="textarea" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3">
+                                <div class="row col-12">
+                                    <div class="col-3">
                                       <div class="card">
                                           <div class="card-header">
                                               Laboratory Tests
@@ -1003,24 +1055,25 @@ formLabel="Covid-19 Referral Form">
                                                         <template>
                                                             <obsgroup groupingConceptId="160741">
                                                                 <div class="row multi-drug-essential" id="{id}-toggleContainer-essential">
-                                                                    <div class="col-2">
+                                                                    <div class="referral-padding">
                                                                         <obs labelText="Drugs"  id="{id}-drug" conceptId="1282" answerClasses="Drug" style="autocomplete" class="fullwidth"/>
                                                                     </div>
-                                                                    <div class="col-2">
+                                                                    <div class="referral-padding">
                                                                         <obs labelText="Quantity" conceptId="160856"/>
                                                                     </div>
-                                                                    <div class="col-2">
+                                                                    <div class="referral-padding">
                                                                         <obs labelText="Qty unit" conceptId="165791" answerConceptSetIds="162402,162384"/>
                                                                     </div>
-                                                                    <div class="col-2 duration">
+                                                                    <div class="referral-padding duration">
                                                                         <label>Duration</label>
                                                                         <obs conceptId="159368"/>
                                                                     </div>
-                                                                    <div class="col-2">
+                                                                    <div class="referral-padding">
                                                                         <obs conceptId="1732" labelText="Duration unit"/>
                                                                     </div>
-                                                                    <div class="col-2">
+                                                                    <div class="referral-padding">
                                                                         <div class="add-entry">
+                                                                            <br/>
                                                                             <a href="#" id="{id}-addEntry-essential" class="addEntry-essential add-more-link"><i class="icon-plus-sign"></i></a>
                                                                             <a href="#" class="removeEntry-essential remove-more-link" id="{id}-removeEntry-essential"><i class="icon-minus"></i></a>
                                                                         </div>
@@ -1052,24 +1105,25 @@ formLabel="Covid-19 Referral Form">
                                                     <template>
                                                         <obsgroup groupingConceptId="165874">
                                                             <div class="row multi-drug-other" id="{id}-toggleContainer-other">
-                                                                <div class="col-2">
+                                                                <div class="referral-padding">
                                                                     <obs labelText="Drug" id="{id}-drugother" conceptId="99035" class="fullwidth"/>
                                                                 </div>
-                                                                <div class="col-2">
+                                                                <div class="referral-padding">
                                                                     <obs labelText="Quantity" conceptId="160856"/>
                                                                 </div>
-                                                                <div class="col-2">
+                                                                <div class="referral-padding">
                                                                     <obs labelText="Qty unit" conceptId="165791" answerConceptSetIds="162402,162384"/>
                                                                 </div>
-                                                                <div class="col-2 duration">
+                                                                <div class="referral-padding duration">
                                                                     <label>Duration</label>
                                                                     <obs conceptId="159368"/>
                                                                 </div>
-                                                                <div class="col-2">
+                                                                <div class="referral-padding">
                                                                     <obs conceptId="1732" labelText="Duration unit"/>
                                                                 </div>
-                                                                <div class="col-2">
+                                                                <div class="referral-padding">
                                                                     <div class="add-entry">
+                                                                        <br/>
                                                                         <a href="#" id="{id}-addEntry-other" class="addEntry-other add-more-link"><i class="icon-plus-sign"></i></a>
                                                                         <a href="#" class="removeEntry-other remove-more-link" id="{id}-removeEntry-other"><i class="icon-minus"></i></a>
                                                                     </div>
@@ -1101,9 +1155,11 @@ formLabel="Covid-19 Referral Form">
                                     <div class="card-body">
                                     <div class="card">
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                              <label>ICU or High Dependency Unit Admission </label>
+                                        <div class="row col-12">
+                                            <div class="col-5">
+                                                <label>ICU or High Dependency Unit Admission </label>
+                                            </div>
+                                            <div class="col-4">
                                               <obs conceptId="166249" answerConceptIds="99353,99112" answerLabels="Yes, No" 
                                                    style="radio" class="horizontal"/>
                                             </div>
@@ -1112,38 +1168,43 @@ formLabel="Covid-19 Referral Form">
                                     </div>     
                                     <div class="card">
                                       <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4">
+                                        <div class="row col-12">
+                                            <div class="col-3">
                                               <label>Oxygen Therapy </label>
                                               <obs conceptId="166396" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown" 
-                                                   style="radio" class="horizontal"/>
+                                                   style="radio" class="horizontal"
+                                                    id="oxygen-therapy"/>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div id="oxygen-flow-container" class="col-3">
                                               <label>O<sub>2</sub>Flow</label>
                                               <obs conceptId="166395" answerConceptIds="166392,166393,166394,166416,90001" 
-                                                   answerLabels="1-5 L/min, 6-10 L/min, 11-15 L/min, &gt;15 L/min, Unknown"/>
+                                                   answerLabels="1-5 L/min, 6-10 L/min, 11-15 L/min, &gt;15 L/min, Unknown"
+                                                    id="oxygen-flow"/>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div id="oxygen-source-container" class="col-3">
                                               <label>Source of Oxygen</label>
                                               <obs conceptId="166391" answerConceptIds="166390,166389,166388,90001" 
-                                                   answerLabels="Piped, Cylinder, Concentrator, Unknown"/>
+                                                   answerLabels="Piped, Cylinder, Concentrator, Unknown"
+                                                    id="oxygen-source"/>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div id="oxygen-interface-container" class="col-2">
                                               <label>Interface</label>
-                                              <obs conceptId="166387" answerConceptIds="161253,166383,166384,166385,166386" answerLabels="Nasal Prongs,Mask,Mask with reservoir,CPAP/NIV mask,HF nasal cannula"/>
+                                              <obs conceptId="166387" answerConceptIds="161253,166383,166384,166385,166386"
+                                                   answerLabels="Nasal Prongs,Mask,Mask with reservoir,CPAP/NIV mask,HF nasal cannula"
+                                                   id="oxygen-interface"/>
                                             </div>
                                         </div>
                                       </div>
                                     </div>
                                     <div class="card">
                                     <div class="card-body">
-                                        <div class="row">
-                                          <div class="col-md-4">
+                                        <div class="row col-12">
+                                          <div class="col-5">
                                             <label>Non-invasive Ventilation(e.g BIPAP/CPAP)</label>
                                             <obs conceptId="166398" answerConceptIds="90003,90004,1175" answerLabels="Yes,No,N/A" 
                                                    style="radio" class="horizontal" id="non-invasive-ventilation"/>
                                           </div>
-                                          <div class="col-md-4">
+                                          <div id="worst-pressure-support-container" class="col-5">
                                             <label>Worst Pressure Support Required (cm H<sub>2</sub>O)</label>
                                             <obs conceptId="166397" id="worst-pressure-support"/>
                                           </div>
@@ -1152,17 +1213,17 @@ formLabel="Covid-19 Referral Form">
                                     </div>
                                     <div class="card">
                                     <div class="card-body">
-                                        <div class="row">
-                                          <div class="col-md-4">
+                                        <div class="row col-12">
+                                          <div class="col-4">
                                             <label>Invasive Ventilation (Any)?</label>
                                             <obs conceptId="166400" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" 
                                                   style="radio" class="horizontal" id="invasive-ventilation"/>
                                           </div>
-                                          <div class="col-md-2">
+                                          <div id="worst-spo-ratio-container" class="col-2">
                                             <label>SPO<sub>2</sub></label>
                                             <obs conceptId="5092" id="worst-spo-ratio"/>
                                           </div>
-                                          <div class="col-md-2">
+                                          <div id="worst-fio-ratio-container" class="col-2">
                                             <label>FiO<sub>2</sub></label>
                                             <obs conceptId="166399" id="worst-fio-ratio"/>
                                           </div>
@@ -1171,33 +1232,33 @@ formLabel="Covid-19 Referral Form">
                                     </div>
                                     <div class="card">
                                       <div class="card-body">
-                                        <div class="row">
-                                          <div class="col-md-4">
+                                        <div class="row col-12">
+                                          <div class="col-4">
                                             <label>Inotropes/Vasopressors</label>
                                             <obs conceptId="166382" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" 
                                                  style="radio" class="horizontal"/>
                                           </div>
-                                          <div class="col-md-3">
+                                          <div class="col-3">
                                             <label>Blood Gas Done</label>
                                             <obs conceptId="166405" answerConceptIds="90003,90004" answerLabels="Yes,No" 
                                                  style="radio" class="horizontal" id="blood-gas-done"/>
                                           </div>
                                         </div>
-                                        <div class="row">
-                                          <div class="col-md-2">
+                                        <div id="gas-container" class="row col-12">
+                                            <div class="col-4"></div>
+                                          <div class="col-2">
                                             <label>pH</label>
                                             <obs conceptId="166401" id="pH"/>
                                           </div>
-                                          <div class="col-md-2"></div>
-                                          <div class="col-md-2">
+                                          <div class="col-2">
                                             <label>PaO<sub>2</sub></label>
                                             <obs conceptId="166402" id="PaO2"/>
                                           </div>
-                                          <div class="col-md-2">
+                                          <div class="col-2">
                                             <label>PCO<sub>2</sub></label>
                                             <obs conceptId="166403" id="PCO2"/>
                                           </div>
-                                          <div class="col-md-2">
+                                          <div class="col-2">
                                             <label>HCO<sub>3</sub></label>
                                             <obs conceptId="166404" id="HCO3"/>
                                           </div>
@@ -1206,18 +1267,18 @@ formLabel="Covid-19 Referral Form">
                                     </div>
                                     <div class="card">
                                       <div class="card-body">
-                                      <div class="row">
-                                          <div class="col-md-4">
+                                      <div class="row col-12">
+                                          <div class="col-4">
                                               <label>Extracorporeal (ECMO) Support</label>
                                               <obs conceptId="166381" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" 
                                                    style="radio" class="horizontal"/>
                                           </div>
-                                          <div class="col-md-4">
+                                          <div class="col-3">
                                               <label>Prone Position</label>
                                               <obs conceptId="166380" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" 
                                                    style="radio" class="horizontal"/>
                                           </div>
-                                          <div class="col-md-4">
+                                          <div class="col-5">
                                             <label>Renal Replacement Therapy (RRT) or Dialysis?</label>
                                             <obs conceptId="166379" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown"
                                                  style="radio" class="horizontal"/>
@@ -1230,9 +1291,11 @@ formLabel="Covid-19 Referral Form">
 
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="col-md-4">
-                                            <label>Further Plan</label>
-                                            <obs conceptId="159395" style="textarea" />
+                                        <div class="row col-12">
+                                            <div class="col-4">
+                                                <label>Further Plan</label>
+                                                <obs conceptId="159395" style="textarea" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
