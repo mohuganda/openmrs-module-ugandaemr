@@ -55,6 +55,7 @@
                 jq("#travel-history-container").hide();
                 jq("#admit-to-hospital-cases-container").hide();
                 jq("#admit-to-hospital-specify-other-container").hide();
+                jq("#pregnancy-details-container").hide();
 
                 jq("#occupation").change(function () {
                     if (jq(this).find("select").find(":selected").val() == "5622") {
@@ -124,17 +125,19 @@
                     }
                 });
 
-                jq(".underlying-conditions").change(function () {
-                    if (jq(this).find('#pregnancy').find(':checkbox').prop('checked')) {
+                jq("#pregnancy").click(function () {
+                    if (jq(this).find("input[type='radio']:checked").val() == "1065"){
                         enable_fields("post-partum");
                         enable_fields("breast-feeding");
                         enable_fields("gestational-age");
                         enable_fields("trimester");
+                        jq("#pregnancy-details-container").show();
                     } else {
                         disable_fields("post-partum");
                         disable_fields("breast-feeding");
                         disable_fields("gestational-age");
                         disable_fields("trimester");
+                        jq("#pregnancy-details-container").hide();
                     }
                 });
 
@@ -149,8 +152,10 @@
 
                     if (jq(this).find('#hiv-status-check').find(':checkbox').prop('checked')) {
                         jq("#hiv-info-container").show();
+                        enable_fields("hiv-treatment-check");
                     } else {
                         jq("#hiv-info-container").hide();
+                        disable_fields("hiv-treatment-check");
                     }
                 });
 
@@ -469,10 +474,15 @@
                                         </div>
                                         <div class="card-body underlying-conditions">
                                             <div class="row">
-                                                <obs id="pregnancy" conceptId="166293" answerConceptId="90041" answerLabel="Pregnancy" style="checkbox" class="col-md-2"/>
+                                                <div class="col-2">
+                                                    <label>Pregnant</label>
+                                                </div>
+                                                <div class="col-4">
+                                                    <obs id="pregnancy" conceptId="90041" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" class="horizontal"/>
+                                                </div>
                                             </div>
-                                            <div class="row">
-                                                <obs id="post-partum" conceptId="90041" answerConceptId="166291" answerLabel="Post-Partum (&lt;6 Weeks)" style="checkbox" class="col-md-2"/>
+                                            <div id="pregnancy-details-container" class="row">
+                                                <obs id="post-partum" conceptId="90041" answerConceptId="166291" answerLabel="Post-Partum (&lt;6 Weeks)" style="checkbox" class="col-md-3"/>
                                                 <obs id="breast-feeding" conceptId="90041" answerConceptId="99601" answerLabel="Breast Feeding" style="checkbox" class="col-md-2" />
                                                 <div class="col-md-3">
                                                     <label>Est Gestational Age (weeks)</label>
@@ -509,11 +519,11 @@
                                             <obs conceptId="166319" answerConceptId="99095" answerLabel="Chronic Liver Disease" style="checkbox" class="col-md-3" />
                                             <obs conceptId="166319" answerConceptId="166294" answerLabel="Obesity" style="checkbox" class="col-md-3"/>
                                         </div>
-                                        <div class="row"> <!-- conceptIDs  miss match attach answers to HIV concept -->
-                                            <obs id="hiv-status-check" conceptId="90251" answerConceptId="1169" answerLabel="HIV" style="checkbox" class="col-md-3"/>
+                                        <div class="row">
+                                            <obs id="hiv-status-check" conceptId="166319" answerConceptId="166338" answerLabel="HIV Positive" style="checkbox" class="col-md-3"/>
                                             <div id="hiv-info-container" class="col-md-3">
                                                 <label>HIV Info</label>
-                                                <obs conceptId="165169" answerConceptIds="99415, 165904, 90001" answerLabels="On ART, Not On ART, Unknown" style="checkbox"/>
+                                                <obs id="hiv-treatment-check" conceptId="166338" answerConceptIds="99415, 165904, 90001" answerLabels="On ART, Not On ART, Unknown" style="checkbox"/>
                                             </div>
                                             <obs id="other-comorbidities" conceptId="90251" answerConceptId="90002" answerLabel="Other" style="checkbox" class="col-md-3"/>
                                             <div id="other-comorbidities-container" class="col-md-3">
@@ -616,9 +626,6 @@
                                                 <obs id="admit-to-hospital-specify-other" conceptId="166316" labelText="Specify Other"/>
                                             </div>
                                         </div>
-
-
-
                                     </div>
                                 </div>
                             </div>
