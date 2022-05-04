@@ -988,7 +988,7 @@
                                           <label>Chest X-ray</label>
                                         </div>
                                         <div class="col-4">
-                                            <obs conceptId="166249" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
+                                            <obs conceptId="12" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                                  style="radio" class="horizontal" id="chest-xray"/>
                                         </div>
                                         <div class="col-2">
@@ -1370,7 +1370,7 @@
                                     <label>ICU or High Dependency Unit Admission </label>
                                 </div>
                                 <div class="col-md-4">
-                                  <obs conceptId="166249" answerConceptIds="99353,99112" answerLabels="Yes, No"
+                                  <obs conceptId="161936" answerConceptIds="90003,90004,90001" answerLabels="Yes, No, Unknown"
                                        style="radio" class="horizontal"/>
                                 </div>
                             </div>
