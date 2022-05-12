@@ -324,6 +324,22 @@ public class EncounterTypes {
         }
     };
 
+    public static EncounterTypeDescriptor COVID19VACCINATION_TRACKING = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Covid19 vaccination Tracking Encounter";
+        }
+
+        @Override
+        public String description() {
+            return "Covid19 vaccination Tracking for Client active on ART";
+        }
+
+        public String uuid() {
+            return "c392cf0e-5024-4f47-9ed9-e10e307e942f";
+        }
+    };
+
     public static EncounterTypeDescriptor CACX_SCREENING_LOG = new EncounterTypeDescriptor() {
         @Override
         public String name() {
