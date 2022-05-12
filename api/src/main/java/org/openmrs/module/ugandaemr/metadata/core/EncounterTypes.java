@@ -327,12 +327,12 @@ public class EncounterTypes {
     public static EncounterTypeDescriptor CACX_SCREENING_LOG = new EncounterTypeDescriptor() {
         @Override
         public String name() {
-            return "Cacx Screening eligibility Log Encounter";
+            return "CaCx Screening Eligibility Log Encounter";
         }
 
         @Override
         public String description() {
-            return "Cacx Screening eligibility Log Encounter";
+            return "CaCx Screening Eligibility Log Encounter";
         }
 
         public String uuid() {
@@ -343,12 +343,12 @@ public class EncounterTypes {
     public static EncounterTypeDescriptor CACX_TREATMENT_REGISTER = new EncounterTypeDescriptor() {
         @Override
         public String name() {
-            return "Cacx Treatment Encounter";
+            return "CaCx Treatment Encounter";
         }
 
         @Override
         public String description() {
-            return "Cacx Treatment Encounter";
+            return "CaCx Treatment Encounter";
         }
 
         public String uuid() {
