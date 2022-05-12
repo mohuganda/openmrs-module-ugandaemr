@@ -323,4 +323,36 @@ public class EncounterTypes {
             return "d18bd8f2-dfcd-11eb-ba80-0242ac130004";
         }
     };
+
+    public static EncounterTypeDescriptor CACX_SCREENING_LOG = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Cacx Screening eligibility Log Encounter";
+        }
+
+        @Override
+        public String description() {
+            return "Cacx Screening eligibility Log Encounter";
+        }
+
+        public String uuid() {
+            return "91725548-2d90-4b28-be6d-0509ba37bb0f";
+        }
+    };
+
+    public static EncounterTypeDescriptor CACX_TREATMENT_REGISTER = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Cacx Treatment Encounter";
+        }
+
+        @Override
+        public String description() {
+            return "Cacx Treatment Encounter";
+        }
+
+        public String uuid() {
+            return "6d647bd4-33d6-4d04-a04a-595d2159b456";
+        }
+    };
 }
