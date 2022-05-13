@@ -10,7 +10,103 @@
           formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==false&amp;&amp; sessionLocation.uuid=='1748bd6f-b013-449f-8d38-91319b576f3f'"
           formDisplayStyle="Standard"
           formLabel="Covid-19 Case Investigation">
-          
+
+    <ifMode mode = "ENTER" > <!--Hide all optional fields by default on creation -->
+        <script type="text/javascript">
+            if (jQuery) {
+                jq(document).ready(function () {
+                    disable_fields("rdt-ag");
+                    disable_fields("rdt-ab");
+                    disable_fields("pcr");
+
+                    jq("#other-occupation-container").hide();
+                    jq("#other-country-of-residence-container").hide();
+                    jq("#date-of-first-symptom-container").hide();
+                    jq("#other-bleeding-site-container").hide();
+                    jq("#other-symptoms-container").hide();
+                    jq("#other-comorbidities-container").hide();
+                    jq("#hiv-info-container").hide();
+                    jq("#countries-container").hide();
+                    jq("#district-container").hide();
+                    jq("#country-container").hide();
+                    jq("#public-transport-means-container").hide();
+                    jq("#travel-history-container").hide();
+                    jq("#admit-to-hospital-cases-container").hide();
+                    jq("#admit-to-hospital-specify-other-container").hide();
+                    jq("#pregnancy-details-container").hide();
+                });
+            }
+        </script>
+    </ifMode>
+
+    <ifMode mode = "EDIT" > <!-- Handle edit logic for optional fields -->
+        <script type="text/javascript">
+            if (jQuery) {
+                jq(document).ready(function () {
+                    if (jq("#occupation").find("select").find(":selected").val() != "5622") {
+                        jq("#other-occupation-container").hide();
+                    }
+
+                    if (jq("#country-of-residence").find("select").find(":selected").val() != "90002") {
+                        jq("#other-country-of-residence-container").hide();
+                    }
+
+                    if (jq("#date-of-positive-lab-test").find("input[type='text']").val() == '') {
+                        disable_fields("rdt-ag");
+                        disable_fields("rdt-ab");
+                        disable_fields("pcr");
+                    }
+
+                    if (jq("#is-patient-symptomatic").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#date-of-first-symptom-container").hide();
+                    }
+
+                    if (!jq(".symptoms").find('#other-bleeding-site').find(':checkbox').prop('checked')) {
+                        jq("#other-bleeding-site-container").hide();
+                    }
+
+                    if (!jq(".symptoms").find('#other-symptoms').find(':checkbox').prop('checked')) {
+                        jq("#other-symptoms-container").hide();
+                    }
+
+                    if (!jq(".comorbidities").find('#other-comorbidities').find(':checkbox').prop('checked')) {
+                        jq("#other-comorbidities-container").hide();
+                    }
+
+                    if (!jq(".comorbidities").find('#hiv-status-check').find(':checkbox').prop('checked')) {
+                        jq("#hiv-info-container").hide();
+                    }
+
+                    if (jq("#travel-history").find("input[type='radio']:checked").val() == "90003") {
+                        if (jq("#mode-of-transport").find("select").find(":selected").val() != "166304") {
+                            jq("#public-transport-means-container").hide();
+                        }
+                        if (jq("#travel-type").find("input[type='radio']:checked").val() == "166298") {
+                            jq("#countries-container").hide();
+                        } else if (jq("#travel-type").find("input[type='radio']:checked").val() == "166299") {
+                            jq("#district-container").hide();
+                            jq("#country-container").hide();
+                        } else {
+                            jq("#countries-container").hide();
+                            jq("#district-container").hide();
+                            jq("#country-container").hide();
+                        }
+                    } else {
+                        jq("#travel-history-container").hide();
+                    }
+
+                    if (jq("#admit-to-hospital").find("input[type='radio']:checked").val() != "166317") {
+                        jq("#admit-to-hospital-cases-container").hide();
+                    }
+
+                    if (jq("#admit-to-hospital-cases").find("select").find(":selected").val() != "90002") {
+                        jq("#admit-to-hospital-specify-other-container").hide();
+                    }
+                });
+            }
+        </script>
+    </ifMode>
+
     <script type="text/javascript">
 
         if (jQuery) {
@@ -19,43 +115,6 @@
 
                 //Block Multiple encounter entry on same date
                 blockEncounterOnSameDateEncounter(jq("#encounterDate").find("input[type=hidden]"),"block");
-
-                disable_fields("country");
-                disable_fields("city");
-                disable_fields("other-country-of-residence");
-                disable_fields("rdt-ag");
-                disable_fields("rdt-ab");
-                disable_fields("pcr");
-                disable_fields("other-occupation");
-                disable_fields("date-of-first-symptom");
-                disable_fields("specify-other-bleeding-site");
-                disable_fields("specify-other-symptoms");
-                disable_fields("specify-other-comorbidities");
-                disable_fields("district");
-                disable_fields("county");
-                disable_fields("admit-to-hospital-specify-other");
-                disable_fields("gestational-age");
-                disable_fields("trimester");
-                disable_fields("public-transport-means");
-                disable_fields("bleeding-site");
-                disable_fields("countries-traveled");
-                disable_fields("admit-to-hospital-cases");
-
-                jq("#other-occupation-container").hide();
-                jq("#other-country-of-residence-container").hide();
-                jq("#date-of-first-symptom-container").hide();
-                jq("#other-bleeding-site-container").hide();
-                jq("#other-symptoms-container").hide();
-                jq("#other-comorbidities-container").hide();
-                jq("#hiv-info-container").hide();
-                jq("#countries-container").hide();
-                jq("#district-container").hide();
-                jq("#country-container").hide();
-                jq("#public-transport-means-container").hide();
-                jq("#travel-history-container").hide();
-                jq("#admit-to-hospital-cases-container").hide();
-                jq("#admit-to-hospital-specify-other-container").hide();
-                jq("#pregnancy-details-container").hide();
 
                 jq("#occupation").change(function () {
                     if (jq(this).find("select").find(":selected").val() == "5622") {
@@ -77,8 +136,8 @@
                     }
                 });
 
-                jq("#date-of-positive-lab-test").mouseover(function () {
-                    if (getValue('date-of-positive-lab-test.value') !== " ") {
+                jq("#date-of-positive-lab-test").change(function () {
+                    if (jq(this).find("input[type='text']").val() != '') {
                         enable_fields("rdt-ag");
                         enable_fields("rdt-ab");
                         enable_fields("pcr");
@@ -114,14 +173,6 @@
                     } else {
                         disable_fields("specify-other-symptoms");
                         jq("#other-symptoms-container").hide();
-                    }
-                });
-                
-                jq(".90251").change(function () {
-                    if (jq(this).find('#147241').find(':checkbox').prop('checked')) {
-                        enable_fields("bleeding-site");
-                    } else {
-                        disable_fields("bleeding-site");
                     }
                 });
 
@@ -221,7 +272,7 @@
                     }
                 });
 
-                jq("#admit-to-hospital").change(function () {
+                jq("#admit-to-hospital").click(function () {
                     if (jq(this).find("input[type='radio']:checked").val() == "166317") {
                         enable_fields("admit-to-hospital-other");
                         enable_fields("admit-to-hospital-cases");
