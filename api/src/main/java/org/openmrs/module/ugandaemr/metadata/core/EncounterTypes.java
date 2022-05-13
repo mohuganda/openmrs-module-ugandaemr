@@ -327,12 +327,12 @@ public class EncounterTypes {
     public static EncounterTypeDescriptor COVID19_VACCINATION_TRACKING = new EncounterTypeDescriptor() {
         @Override
         public String name() {
-            return "Covid19 vaccination Tracking Encounter";
+            return "Covid19 Vaccination Tracking Encounter";
         }
 
         @Override
         public String description() {
-            return "Covid19 vaccination tracking for clients";
+            return "Covid19 vaccination tracking for clients active on ART";
         }
 
         public String uuid() {
