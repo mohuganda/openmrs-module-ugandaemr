@@ -11,42 +11,153 @@
           formDisplayStyle="Standard"
           formLabel="Covid-19 Discharge">
 
+    <ifMode mode = "ENTER" >
+        <script type="text/javascript">
+            if (jQuery) {
+                jq(document).ready(function () {
+                    jq("#other-symptoms-during-admission-container").hide();
+                    jq("#specify-other-complications-container").hide();
+                    jq("#corona-virus-result-container").hide();
+                    jq("#malaria-falciparum-result-container").hide();
+                    jq("#hiv-result-container").hide();
+                    jq("#other-anti-biotics-text-container").hide();
+                    jq("#novel-experimental-therapeutic-agent-container").hide();
+                    jq("#antivirals-container").hide();
+                    jq("#corticosteroid-container").hide();
+                    jq("#corticosteroid-route-container").hide();
+                    jq("#other-therapy-container").hide();
+                    jq("#interface-container").hide();
+                    jq("#02-flow-container").hide();
+
+                    $allRows = jq(this).find('.other-diagnostic-test');
+                    $allRows.hide();
+                    jq('#1-removeEntry').remove();
+                    jq('#10-addEntry').remove();
+                    jq('#1-toggleContainer').show();
+
+                    jq('#11-removeEntry').remove();
+                    jq('#20-addEntry').remove();
+                    jq('#11-toggleContainer').show();
+
+                    jq('.addEntry').on("click", function () {
+                        var correctedAddButtonId = parseFloat(this.id) + 1;
+                        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+                        jq(contentAddId).toggle(true);
+                        jq('#' + this.id).toggle(false);
+                        jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
+                        return false;
+                    });
+
+                    jq('.removeEntry').on("click", function () {
+                        var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+                        jq(contentAddId).toggle(false);
+                        jq(':input:not(:button)', contentAddId).val([]);
+                        jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+
+                        return false;
+                    });
+                });
+            }
+        </script>
+    </ifMode>
+
+    <ifMode mode = "EDIT" >
+        <script type="text/javascript">
+            if (jQuery) {
+                jq(document).ready(function () {
+                    $allRows = jq(this).find('.other-diagnostic-test');
+                    $allRows.hide();
+                    jq('#1-removeEntry').remove();
+                    jq('#10-addEntry').remove();
+                    jq('#1-toggleContainer').show();
+                    jq('#11-removeEntry').remove();
+                    jq('#20-addEntry').remove();
+                    jq('#11-toggleContainer').show();
+                    for (let x = 0; x&lt;=10; x++) {
+                        if (jq(this).find('#' +x+ '-other-diagnostic-test').find("input[type$='text']").val()!='') {
+                            jq(this).find('#' +x+ '-toggleContainer').show();
+                            jq(this).find('#' +x+ '-addEntry').hide();
+                        }
+                        else {
+                            x-=1;
+                            jq(this).find('#' +x+ '-addEntry').show();
+                            break;
+                        }
+                    }
+
+                    jq('.addEntry').on("click", function () {
+                    var correctedAddButtonId = parseFloat(this.id) + 1;
+                    var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+                    jq(contentAddId).toggle(true);
+                    jq('#' + this.id).toggle(false);
+                    jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
+                    return false;
+                    });
+
+                    jq('.removeEntry').on("click", function () {
+                    var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                    var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+                    jq(contentAddId).toggle(false);
+                    jq(':input:not(:button)', contentAddId).val([]);
+                    jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
+                    jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+
+                    return false;
+                    });
+
+                    if (!jq(".symptom").find('#other-symptom').find(':checkbox').prop('checked')) {
+                        jq("#other-symptoms-during-admission-container").hide();
+                    }
+
+                    if (!jq(".complications").find('#other-complications').find(':checkbox').prop('checked')) {
+                        jq("#specify-other-complications-container").hide();
+                    }
+
+                    if (jq("#corona-virus-test").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#corona-virus-result-container").hide();
+                    }
+
+                    if (jq("#malaria-falciparum-test").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#malaria-falciparum-result-container").hide();
+                    }
+
+                    if (jq("#hiv-test").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#hiv-result-container").hide();
+                    }
+
+                    if (jq("#antibiotics").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#other-anti-biotics-text-container").hide();
+                    }
+
+                    if (jq("#novel-experimental-therapeutic-agent").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#novel-experimental-therapeutic-agent-container").hide();
+                    }
+
+                    if (jq("#antiviral").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#antivirals-container").hide();
+                    }
+
+                    if (jq("#corticosteroid").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#corticosteroid-container").hide();
+                        jq("#corticosteroid-route-container").hide();
+                    }
+
+                    if (jq("#oxygen-therapy").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#interface-container").hide();
+                        jq("#02-flow-container").hide();
+                    }
+
+                });
+            }
+        </script>
+    </ifMode>
+
     <script type="text/javascript">
 
         if (jQuery) {
             jq(document).ready(function () {
-                disable_fields("specify-other-complications");
-                disable_fields("specify-other-therapeutic");
-                disable_fields("corticosteroid-route")
-                disable_fields("corona-virus-result");
-                disable_fields("malaria-falciparum-result");
-                disable_fields("hiv-result");
-                disable_fields("other-diagnostic-result");
-                disable_fields("specify-novel-experimental-therapeutic-agent");
-                disable_fields("antivirals");
-                disable_fields("lopinavir-ritonavir");
-                disable_fields("neuraminidase-inhibitor");
-                disable_fields("other-corticosteroid");
-                disable_fields("specify-other-therapy");
-                disable_fields("02-flow");
-                disable_fields("interface");
-                disable_fields("other-symptoms-during-admission");
-                disable_fields("specify-other-anti-biotics-text");
-
-                jq("#other-symptoms-during-admission-container").hide();
-                jq("#specify-other-complications-container").hide();
-                jq("#corona-virus-result-container").hide();
-                jq("#malaria-falciparum-result-container").hide();
-                jq("#hiv-result-container").hide();
-                jq("#other-anti-biotics-text-container").hide();
-                jq("#novel-experimental-therapeutic-agent-container").hide();
-                jq("#antivirals-container").hide();
-                jq("#corticosteroid-container").hide();
-                jq("#corticosteroid-route-container").hide();
-                jq("#other-therapy-container").hide();
-                jq("#interface-container").hide();
-                jq("#02-flow-container").hide();
-
                 jq(".symptom").change(function () {
                     if (jq(this).find('#other-symptom').find(':checkbox').prop('checked')) {
                         enable_fields("other-symptoms-during-admission");
@@ -169,61 +280,7 @@
                         jq("#other-anti-biotics-text-container").hide();
                     }
                 });
-                jq(document).ready(function () {
-                    $allRows = jq(this).find('.other-diagnostic-test');
-                    $allRows.hide();
-                    jq('#1-removeEntry').remove();
-                    jq('#10-addEntry').remove();
-                    jq('#1-toggleContainer').show();
 
-                    jq('#11-removeEntry').remove();
-                    jq('#20-addEntry').remove();
-                    jq('#11-toggleContainer').show();
-                });
-                jq(document).ready(function () {
-                    jq('.addEntry').on("click", function () {
-                        var correctedAddButtonId = parseFloat(this.id) + 1;
-                        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
-                        jq(contentAddId).toggle(true);
-                        jq('#' + this.id).toggle(false);
-                        jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
-                        return false;
-                    });
-                });
-                jq(document).ready(function () {
-                    jq('.removeEntry').on("click", function () {
-                        var correctedRemoveButtonId = parseFloat(this.id) - 1;
-                        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
-                        jq(contentAddId).toggle(false);
-                        jq(':input:not(:button)', contentAddId).val([]);
-                        jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
-                        jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
-
-                        return false;
-                    });
-                });
-                <ifMode mode = "EDIT" >
-                    jq(document).ready(function () {
-                        $allRows = jq(this).find('.other-diagnostic-test');
-                        $allRows.hide();
-                        jq('#1-removeEntry').remove();
-                        jq('#10-addEntry').remove();
-                        jq('#1-toggleContainer').show();
-                        jq('#11-removeEntry').remove();
-                        jq('#20-addEntry').remove();
-                        jq('#11-toggleContainer').show();
-                        for (let x = 0; x&lt;= 10; x++) {
-                            if (jq(this).find('#' +x+ '-drug').find("input[type$='text']").val()!='') {
-                                jq(this).find('#' +x+ '-toggleContainer').show();
-                                jq(this).find('#' +x+ '-addEntry').hide();
-                            }else {
-                                x-=1;
-                                jq(this).find('#' +x+ '-addEntry').show();
-                                break;
-                            }
-                        }
-                    });
-                </ifMode>
                 <!-- Validate if for every complication, an answer (yes,no or unknown) is chosen -->
                 beforeSubmit.push(function () {
 
@@ -619,7 +676,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-4">
                                                                         <label>Test</label>
-                                                                        <obs id="other-diagnostic-test" conceptId="166441" class="horizontal"/>
+                                                                        <obs id="{id}-other-diagnostic-test" conceptId="166441" class="horizontal"/>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <label>Results</label>
