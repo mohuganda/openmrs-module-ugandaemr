@@ -11,6 +11,65 @@
           formDisplayStyle="Standard"
           formLabel="Covid-19 Postmortem Report">
 
+    <ifMode mode="ENTER">
+        <script type="text/javascript">
+            if (jQuery) {
+                jq(document).ready(function () {
+                    disable_fields("165844_1"); //test
+                    disable_fields("165844_2");
+                    disable_fields("165844_3");
+                    disable_fields("165844_4");
+                    disable_fields("165844_5");
+
+                    disable_fields("99291_1"); //results
+                    disable_fields("99291_2");
+                    disable_fields("99291_3");
+                    disable_fields("99291_4");
+                    disable_fields("99291_5");
+
+                    disable_fields("165845_1"); //lab number
+                    disable_fields("165845_2");
+                    disable_fields("165845_3");
+                    disable_fields("165845_4");
+                    disable_fields("165845_5");
+
+                    jq("#date-of-diagnosis-container").hide();
+                    jq("#how-was-the-diagnosis-confirmed-container").hide();
+                    jq("#diagnosis-type-container").hide();
+                    jq("#specify-other-container").hide();
+                    jq("#other-medical-intervention-container").hide();
+                });
+            }
+        </script>
+    </ifMode>
+
+    <ifMode mode="EDIT">
+        <script type="text/javascript">
+            if (jQuery) {
+                jq(document).ready(function () {
+                    if (jq("#covid-confirmed").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#date-of-diagnosis-container").hide();
+                        jq("#how-was-the-diagnosis-confirmed-container").hide();
+                    } else if (jq("#covid-confirmed").find("input[type='radio']:checked").val() != "90004") {
+                        jq("#diagnosis-type-container").hide();
+                    } else {
+                        jq("#date-of-diagnosis-container").hide();
+                        jq("#how-was-the-diagnosis-confirmed-container").hide();
+                        jq("#diagnosis-type-container").hide();
+                    }
+
+                    if (jq("#evidence-of-medical-intervention").find("select").find(":selected").val() != "90002") {
+                        jq("#other-medical-intervention-container").show();
+                    }
+
+                    if (!jq(".166319").find('#other').find(':checkbox').prop('checked')) {
+                        jq("#specify-other-container").hide();
+                    }
+                });
+            }
+        </script>
+    </ifMode>
+
     <script type="text/javascript">
 
         if (jQuery) {
@@ -18,19 +77,7 @@
             jq(document).ready(function () {
 
                 //Block Multiple encounter entry on same date
-                blockEncounterOnSameDateEncounter(jq("#encounterDate").find("input[type=hidden]"),"block");
-
-                disable_fields("date-of-diagnosis");
-                disable_fields("diagnosis-type");
-                disable_fields("specify");            
-                disable_fields("other-medical-intervention");
-                disable_fields("how-was-the-diagnosis-confirmed");
-
-                jq("#date-of-diagnosis-container").hide();
-                jq("#how-was-the-diagnosis-confirmed-container").hide();
-                jq("#diagnosis-type-container").hide();
-                jq("#specify-other-container").hide();
-                jq("#other-medical-intervention-container").hide();
+<!--                blockEncounterOnSameDateEncounter(jq("#encounterDate").find("input[type=hidden]"),"block");-->
 
                 jq(".166319").change(function () {
                     if (jq(this).find('#other').find(':checkbox').prop('checked')) {
@@ -67,7 +114,7 @@
                 });
 
                 jq("#evidence-of-medical-intervention").change(function () {
-                    if (jq(this).find("select").find(":selected").val() == "5622") {
+                    if (jq(this).find("select").find(":selected").val() == "90002") {
                         enable_fields("other-medical-intervention");
                         jq("#other-medical-intervention-container").show();
                     } else {
@@ -211,28 +258,6 @@
                         jq("#xray-results_5").addClass('hidden');
                     }
                 });
-
-                <ifMode mode = "ENTER" >                    
-
-                    disable_fields("165844_1"); //test
-                    disable_fields("165844_2");
-                    disable_fields("165844_3");
-                    disable_fields("165844_4");
-                    disable_fields("165844_5");
-
-                    disable_fields("99291_1"); //results
-                    disable_fields("99291_2");
-                    disable_fields("99291_3");
-                    disable_fields("99291_4");
-                    disable_fields("99291_5");
-
-                    disable_fields("165845_1"); //lab number
-                    disable_fields("165845_2");
-                    disable_fields("165845_3");
-                    disable_fields("165845_4");
-                    disable_fields("165845_5");
-
-                </ifMode>                                               
 
                 //enable test and lab number if text date is provided
                 jq('#164431_1').change(function () {
@@ -397,11 +422,8 @@
              });
             
              $otherRows.hide(); //Hide all rows apart from first row if adding new form
-             $firstRow.find('.remove').hide(); //Hide the remove button from the first row 
-
-
+             $firstRow.find('.remove').hide(); //Hide the remove button from the first row
             });
-
         }
 
     </script>
