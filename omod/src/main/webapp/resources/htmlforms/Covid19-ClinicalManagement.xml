@@ -26,86 +26,339 @@
           </includeIf>
       </ifMode>
 
+      <ifMode mode = "ENTER">
+          <script type="text/javascript">
+              if (jQuery) {
+                  jq(document).ready(function () {
+                      disable_fields("Haemoglobin-results");
+                      disable_fields("WBC-Count-results");
+                      disable_fields("Haematocrit-results");
+                      disable_fields("Platelets-results");
+                      disable_fields("APTT-APTR-results");
+                      disable_fields("PT-results");
+                      disable_fields("INR-results");
+                      disable_fields("ALT-SGPT-results");
+                      disable_fields("Total-Bilirubin-results");
+                      disable_fields("AST-SGOT-results");
+                      disable_fields("Urea-results");
+                      disable_fields("Lactate-results");
+                      disable_fields("Creatinine-results");
+                      disable_fields("Sodium-results");
+                      disable_fields("Potassium-results");
+                      disable_fields("Procalcitonin-results");
+                      disable_fields("CRP-results");
+                      disable_fields("LDH-results");
+                      disable_fields("Creatine-results");
+                      disable_fields("Kinase-results");
+                      disable_fields("UTroponin-results");
+                      disable_fields("ESR-results");
+                      disable_fields("UD-dimer-results");
+                      disable_fields("mFerritin-results");
+                      disable_fields("aIL-6-results");
+
+                      jq("#specify-other-facility-container").hide();
+                      jq("#specify-other-clinical-features-container").hide();
+                      jq("#specify-anticoagulation-container").hide();
+                      jq("#specify-satin-container").hide();
+                      jq("#specify-diabetes-medication-container").hide();
+                      jq("#specify-other-hypertension-medication-container").hide();
+                      jq("#other-art-regimens-container").hide();
+                      jq("#art-regimens-container").hide();
+                      jq("#other-malaria-treatment-container").hide();
+                      jq("#intravenous-fluids-container").hide();
+                      jq("#intravenous-fluids-given-container").hide();
+                      jq("#antivirals-container").hide();
+                      jq("#other-anti-biotics-container").hide();
+                      jq("#antibiotics-container").hide();
+                      jq("#corticosteroid-route-container").hide();
+                      jq("#corticosteroid-given-container").hide();
+                      jq("#other-complications-container").hide();
+                      jq("#oxygen-flow-container").hide();
+                      jq("#source-of-oxygen-container").hide();
+                      jq("#oxygen-interface-container").hide();
+                      jq("#worst-pressure-support-container").hide();
+                      jq("#blood-gas-done-worst-values-container").hide();
+                      jq("#worst-fio-ratio-container").hide();
+                      jq("#worst-spo-ratio-container").hide();
+
+                      $allRows = jq(this).find('.multi-drug');
+                      $allRows.hide();
+                      jq('#1-removeEntry').remove();
+                      jq('#10-addEntry').remove();
+                      jq('#1-toggleContainer').show();
+
+                      jq('#11-removeEntry').remove();
+                      jq('#20-addEntry').remove();
+                      jq('#11-toggleContainer').show();
+
+                      jq('.addEntry').on("click", function () {
+                          var correctedAddButtonId = parseFloat(this.id) + 1;
+                          var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+                          jq(contentAddId).toggle(true);
+                          jq('#' + this.id).toggle(false);
+                          jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
+
+                          return false;
+                      });
+
+                      jq('.removeEntry').on("click", function () {
+                          var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                          var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+                          jq(contentAddId).toggle(false);
+                          jq(':input:not(:button)', contentAddId).val([]);
+                          jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
+                          jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+
+                          return false;
+                      });
+                  });
+              }
+          </script>
+      </ifMode>
+
+      <ifMode mode = "EDIT" >
+          <script type="text/javascript">
+              if (jQuery) {
+                    jq(document).ready(function () {
+                        $allRows = jq(this).find('.multi-drug');
+                        $allRows.hide();
+                        jq('#1-removeEntry').remove();
+                        jq('#10-addEntry').remove();
+                        jq('#1-toggleContainer').show();
+<!--                        jq('#11-removeEntry').remove();-->
+<!--                        jq('#20-addEntry').remove();-->
+<!--                        jq('#11-toggleContainer').show();-->
+
+                        for (let x = 0; x&lt;= 10; x++) {
+                            if (jq(this).find('#' +x+ '-drug').find("input[type$='text']").val()!='') {
+                                jq(this).find('#' +x+ '-toggleContainer').show();
+                                jq(this).find('#' +x+ '-addEntry').hide();
+                            }
+                            else {
+                                x-=1;
+                                jq(this).find('#' +x+ '-addEntry').show();
+                                break;
+                            }
+                        }
+
+                        jq('.addEntry').on("click", function () {
+                              var correctedAddButtonId = parseFloat(this.id) + 1;
+                              var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+                              jq(contentAddId).toggle(true);
+                              jq('#' + this.id).toggle(false);
+                              jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
+
+                            return false;
+                        });
+
+                        jq('.removeEntry').on("click", function () {
+                              var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                              var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+                              jq(contentAddId).toggle(false);
+                              jq(':input:not(:button)', contentAddId).val([]);
+                              jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
+                              jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+
+                          return false;
+                        });
+
+                        if (jq("#facility-details").find("select").find(":selected").val() != "90002") {
+                            jq("#specify-other-facility-container").hide();
+                        }
+
+                        if (!jq(".daily-clinical-features").find('#other-clinical-features').find(':checkbox').prop('checked')){
+                            jq("#specify-other-clinical-features-container").hide();
+                        }
+
+                        if(!jq(".lab-tests").find('#Haemoglobin-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Haemoglobin-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#WBC-Count-test').find(':checkbox').prop('checked')) {
+                            disable_fields("WBC-Count-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#Haematocrit-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Haematocrit-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#Platelets-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Platelets-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#APTT-APTR-test').find(':checkbox').prop('checked')) {
+                            disable_fields("APTT-APTR-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#PT-test').find(':checkbox').prop('checked')) {
+                            disable_fields("PT-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#INR-test').find(':checkbox').prop('checked')) {
+                            disable_fields("INR-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#ALT-SGPT-test').find(':checkbox').prop('checked')) {
+                            disable_fields("ALT-SGPT-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#Total-Bilirubin-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Total-Bilirubin-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#AST-SGOT-test').find(':checkbox').prop('checked')) {
+                            disable_fields("AST-SGOT-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#Urea-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Urea-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#Lactate-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Lactate-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#Creatinine-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Creatinine-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#Sodium-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Sodium-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#Potassium-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Potassium-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#Procalcitonin-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Procalcitonin-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#CRP-test').find(':checkbox').prop('checked')) {
+                            disable_fields("CRP-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#LDH-test').find(':checkbox').prop('checked')) {
+                            disable_fields("LDH-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#Creatine-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Creatine-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#Kinase-test').find(':checkbox').prop('checked')) {
+                            disable_fields("Kinase-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#UTroponin-test').find(':checkbox').prop('checked')) {
+                            disable_fields("UTroponin-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#ESR-test').find(':checkbox').prop('checked')) {
+                            disable_fields("ESR-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#UD-dimer-test').find(':checkbox').prop('checked')) {
+                            disable_fields("UD-dimer-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#mFerritin-test').find(':checkbox').prop('checked')) {
+                            disable_fields("mFerritin-results");
+                        }
+
+                        if(!jq(".lab-tests").find('#aIL-6-test').find(':checkbox').prop('checked')) {
+                            disable_fields("aIL-6-results");
+                        }
+
+                        if (jq("#oral-fluids-given").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#intravenous-fluids-given-container").hide();
+                        }
+
+                        if (jq("#intravenous-fluids-given").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#intravenous-fluids-container").hide();
+                        }
+
+                        if (jq("#antibiotics-given").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#antibiotics-container").hide();
+                        }
+
+                        if (jq("#antibiotics").find("select").find(":selected").val() != "90002") {
+                            jq("#other-anti-biotics-container").hide();
+                        }
+
+                        if (jq("#antivirals-given").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#antivirals-container").hide();
+                        }
+
+                        if (jq("#corticosteroid").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#corticosteroid-route-container").hide();
+                        }
+
+                        if (jq("#corticosteroid-route").find("select").find(":selected").val() == '') {
+                            jq("#corticosteroid-given-container").hide();
+                        }
+
+                        if (jq("#malaria-treatment").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#other-malaria-treatment-container").hide();
+                        }
+
+                        if (jq("#art").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#art-regimens-container").hide();
+                        }
+
+                        if (!jq(".if-art").find('#other-art').find(':checkbox').prop('checked')) {
+                            jq("#other-art-regimens-container").hide();
+                        }
+
+                        if (!jq(".hypertension-medication").find('#other-hypertension-medication').find(':checkbox').prop('checked')) {
+                            jq("#specify-other-hypertension-medication-container").hide();
+                        }
+
+                        if (jq("#diabetes-medication").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#specify-diabetes-medication-container").hide();
+                        }
+
+                        if (jq("#satin").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#specify-satin-container").hide();
+                        }
+
+                        if (jq("#anticoagulation").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#specify-anticoagulation-container").hide();
+                        }
+
+                        if (jq("#oxygen-therapy").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#oxygen-flow-container").hide();
+                            jq("#source-of-oxygen-container").hide();
+                            jq("#oxygen-interface-container").hide();
+                        }
+
+                        if (jq("#non-invasive-ventilation").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#worst-pressure-support-container").hide();
+                        }
+
+                        if (jq("#invasive-ventilation").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#worst-fio-ratio-container").hide();
+                            jq("#worst-spo-ratio-container").hide();
+                        }
+
+                        if (!jq(".complications").find('#other-complications').find(':checkbox').prop('checked')) {
+                            jq("#other-complications-container").hide();
+                        }
+
+                        if (jq("#blood-gas-done").find("input[type='radio']:checked").val() != "90003") {
+                            jq("#blood-gas-done-worst-values-container").hide();
+                        }
+
+                    });
+              }
+          </script>
+      </ifMode>
+
      <script type="text/javascript">
 
           if (jQuery) {
 
             jq(document).ready(function () {
-               disable_fields("specify-other-facility-details");
-               disable_fields("specify-other-anti-biotics");
-               disable_fields("specify-other-malaria-treatment");
-               disable_fields("specify-other-diabetes-medication");
-               disable_fields("specify-other-complications");
-               disable_fields("specify-other-art-regimens");
-               disable_fields("specify-other-therapeutic");
-               disable_fields("specify-other-satin");
-               disable_fields("intravenous-fluids");
-               disable_fields("worst-pressure-support");
-               disable_fields("worst-spo-ratio");
-               disable_fields("worst-fio-ratio");
-               disable_fields("pH");
-               disable_fields("PaO2");
-               disable_fields("PCO2");
-               disable_fields("HCO3");
-               disable_fields("corticosteroid-route")
-               disable_fields("specify-other-anticoagulation");
-               disable_fields("Haemoglobin-results");
-               disable_fields("WBC-Count-results");
-               disable_fields("Haematocrit-results");
-               disable_fields("Platelets-results");
-               disable_fields("APTT-APTR-results");
-               disable_fields("PT-results");
-               disable_fields("INR-results");
-               disable_fields("ALT-SGPT-results");
-               disable_fields("Total-Bilirubin-results");
-               disable_fields("AST-SGOT-results");
-               disable_fields("Urea-results");
-               disable_fields("Lactate-results");
-               disable_fields("Creatinine-results");
-               disable_fields("Sodium-results");
-               disable_fields("Potassium-results");
-               disable_fields("Procalcitonin-results");
-               disable_fields("CRP-results");
-               disable_fields("LDH-results");
-               disable_fields("Creatine-results");
-               disable_fields("Kinase-results");
-               disable_fields("UTroponin-results");
-               disable_fields("ESR-results");
-               disable_fields("UD-dimer-results");
-               disable_fields("mFerritin-results");
-               disable_fields("aIL-6-results");
-               disable_fields("infiltrates-present");
-               disable_fields("specify-other-hypertension-medication");
-               disable_fields("specify-other-clinical-features");
-               disable_fields("corticosteroid-given");
-               disable_fields("oxygen-flow");
-               disable_fields("source-of-oxygen");
-               disable_fields("oxygen-interface");
-
-               jq("#specify-other-facility-container").hide();
-               jq("#specify-other-clinical-features-container").hide();
-               jq("#specify-anticoagulation-container").hide();
-               jq("#specify-satin-container").hide();
-               jq("#specify-diabetes-medication-container").hide();
-               jq("#specify-other-hypertension-medication-container").hide();
-               jq("#other-art-regimens-container").hide();
-               jq("#art-regimens-container").hide();
-               jq("#other-malaria-treatment-container").hide();
-               jq("#intravenous-fluids-container").hide();
-               jq("#intravenous-fluids-given-container").hide();
-               jq("#antivirals-container").hide();
-               jq("#other-anti-biotics-container").hide();
-               jq("#antibiotics-container").hide();
-               jq("#corticosteroid-route-container").hide();
-               jq("#corticosteroid-given-container").hide();
-               jq("#other-complications-container").hide();
-               jq("#oxygen-flow-container").hide();
-               jq("#source-of-oxygen-container").hide();
-               jq("#oxygen-interface-container").hide();
-               jq("#worst-pressure-support-container").hide();
-               jq("#blood-gas-done-worst-values-container").hide();
-               jq("#worst-fio-ratio-container").hide();
-               jq("#worst-spo-ratio-container").hide();
 
              jq("#facility-details").change(function () {
                if (jq(this).find("select").find(":selected").val() == "90002") {
@@ -201,7 +454,7 @@
 
              jq("#anticoagulation").click(function () {
                if (jq(this).find("input[type='radio']:checked").val() == "90003") {
-               enable_fields("specify-other-anticoagulation");
+                    enable_fields("specify-other-anticoagulation");
                     jq("#specify-anticoagulation-container").show();
                } else {
                     disable_fields("specify-other-anticoagulation");
@@ -259,7 +512,7 @@
                }
             });
 
-             jq("#antibiotics-given").change(function () {
+             jq("#antibiotics-given").click(function () {
                 if (jq(this).find("input[type='radio']:checked").val() == "90003") {
                     enable_fields("antibiotics-container");
                     jq("#antibiotics-container").show();
@@ -476,43 +729,6 @@
               }
 
             });
-
-            jq(document).ready(function () {
-                  $allRows = jq(this).find('.multi-drug');
-                  $allRows.hide();
-                  jq('#1-removeEntry').remove();
-                  jq('#10-addEntry').remove();
-                  jq('#1-toggleContainer').show();
-
-                  jq('#11-removeEntry').remove();
-                  jq('#20-addEntry').remove();
-                  jq('#11-toggleContainer').show();
-              });
-
-              jq(document).ready(function () {
-                  jq('.addEntry').on("click", function () {
-                      var correctedAddButtonId = parseFloat(this.id) + 1;
-                      var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
-                      jq(contentAddId).toggle(true);
-                      jq('#' + this.id).toggle(false);
-                      jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
-                      return false;
-                  });
-              });
-
-              jq(document).ready(function () {
-                  jq('.removeEntry').on("click", function () {
-                      var correctedRemoveButtonId = parseFloat(this.id) - 1;
-                      var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
-                      jq(contentAddId).toggle(false);
-                      jq(':input:not(:button)', contentAddId).val([]);
-                      jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
-                      jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
-
-                      return false;
-                  });
-
-              });
           });
 
 
@@ -702,33 +918,6 @@
               return true;
             })
           }
-
-
-
-        <ifMode mode = "EDIT" >
-          jq(document).ready(function () {
-            $allRows = jq(this).find('.multi-drug');
-            $allRows.hide();
-            jq('#1-removeEntry').remove();
-            jq('#10-addEntry').remove();
-            jq('#1-toggleContainer').show();
-            jq('#11-removeEntry').remove();
-            jq('#20-addEntry').remove();
-            jq('#11-toggleContainer').show();
-            for (let x = 0; x&lt;= 10; x++) {
-              if (jq(this).find('#' +x+ '-drug').find("input[type$='text']").val()!='')
-              {
-                  jq(this).find('#' +x+ '-toggleContainer').show();
-                  jq(this).find('#' +x+ '-addEntry').hide();
-              }
-              else {
-                  x-=1;
-                  jq(this).find('#' +x+ '-addEntry').show();
-                  break;
-              }
-            }
-          });
-        </ifMode>
 
       </script>
 
@@ -1324,7 +1513,7 @@
                                         <obsgroup groupingConceptId="166436">
                                           <div class="row multi-drug" id="{id}-toggleContainer">
                                             <div class="col-md-8">
-                                              <obs labelText="Specify Treatment" conceptId="166435"/>
+                                              <obs id="{id}-drug" labelText="Specify Treatment" conceptId="166435"/>
                                             </div>
                                             <div class="col-md-2"></div>
                                             <div class="col-md-1 pt-4">
