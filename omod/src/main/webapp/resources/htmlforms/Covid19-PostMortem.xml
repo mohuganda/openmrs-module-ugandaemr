@@ -38,6 +38,68 @@
                     jq("#diagnosis-type-container").hide();
                     jq("#specify-other-container").hide();
                     jq("#other-medical-intervention-container").hide();
+
+                    $allRows = jq(this).find('.multi-drug');
+                    $allRows.hide();
+                    jq('#1-removeEntry').remove();
+                    jq('#10-addEntry').remove();
+                    jq('#1-toggleContainer').show();
+
+                    jq('#11-removeEntry').remove();
+                    jq('#20-addEntry').remove();
+                    jq('#11-toggleContainer').show();
+
+                    jq('.addEntry').on("click", function () {
+                        var correctedAddButtonId = parseFloat(this.id) + 1;
+                        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+                        jq(contentAddId).toggle(true);
+                        jq('#' + this.id).toggle(false);
+                        jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
+
+                        return false;
+                    });
+
+                    jq('.removeEntry').on("click", function () {
+                        var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+                        jq(contentAddId).toggle(false);
+                        jq(':input:not(:button)', contentAddId).val([]);
+                        jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+
+                        return false;
+                    });
+
+                    $allRows_vitals = jq(this).find('.multi-vitals');
+                    $allRows_vitals.hide();
+                    jq('#1-removeEntry-vital').remove();
+                    jq('#10-addEntry-vital').remove();
+                    jq('#1-toggleContainer-vital').show();
+
+                    jq('#11-removeEntry-vital').remove();
+                    jq('#20-addEntry-vital').remove();
+                    jq('#11-toggleContainer-vital').show();
+
+                    jq('.addEntry-vital').on("click", function () {
+                        var correctedAddButtonId = parseFloat(this.id) + 1;
+                        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer-vital";
+                        jq(contentAddId).toggle(true);
+                        jq('#' + this.id).toggle(false);
+                        jq('#' + parseFloat(this.id) + '-removeEntry-vital').toggle(true);
+
+                        return false;
+                    });
+
+                    jq('.removeEntry-vital').on("click", function () {
+                        var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer-vital";
+                        jq(contentAddId).toggle(false);
+                        jq(':input:not(:button)', contentAddId).val([]);
+                        jq('#' + correctedRemoveButtonId + '-addEntry-vital').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-removeEntry-vital').toggle(true);
+
+                        return false;
+                    });
                 });
             }
         </script>
@@ -47,11 +109,11 @@
         <script type="text/javascript">
             if (jQuery) {
                 jq(document).ready(function () {
-                    if (jq("#covid-confirmed").find("input[type='radio']:checked").val() != "90003") {
+                    if (jq("#covid-confirmed").find("input[type='radio']:checked").val() == "90003") {
+                        jq("#diagnosis-type-container").hide();
+                    } else if (jq("#covid-confirmed").find("input[type='radio']:checked").val() == "90004") {
                         jq("#date-of-diagnosis-container").hide();
                         jq("#how-was-the-diagnosis-confirmed-container").hide();
-                    } else if (jq("#covid-confirmed").find("input[type='radio']:checked").val() != "90004") {
-                        jq("#diagnosis-type-container").hide();
                     } else {
                         jq("#date-of-diagnosis-container").hide();
                         jq("#how-was-the-diagnosis-confirmed-container").hide();
@@ -59,12 +121,94 @@
                     }
 
                     if (jq("#evidence-of-medical-intervention").find("select").find(":selected").val() != "90002") {
-                        jq("#other-medical-intervention-container").show();
+                        jq("#other-medical-intervention-container").hide();
                     }
 
                     if (!jq(".166319").find('#other').find(':checkbox').prop('checked')) {
                         jq("#specify-other-container").hide();
                     }
+
+                    $allRows = jq(this).find('.multi-drug');
+                    $allRows.hide();
+                    jq('#1-removeEntry').remove();
+                    jq('#10-addEntry').remove();
+                    jq('#1-toggleContainer').show();
+
+                    for (let x = 0; x&lt;= 10; x++) {
+                        if (jq(this).find('#' +x+ '-drug').find("select").find(":selected").val()!='') {
+                            jq(this).find('#' +x+ '-toggleContainer').show();
+                            jq(this).find('#' +x+ '-addEntry').hide();
+                        } else {
+                            x-=1;
+                            jq(this).find('#' +x+ '-addEntry').show();
+                            break;
+                        }
+                    }
+
+                    jq('.addEntry').on("click", function () {
+                        var correctedAddButtonId = parseFloat(this.id) + 1;
+                        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+                        jq(contentAddId).toggle(true);
+                        jq('#' + this.id).toggle(false);
+                        jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
+
+                        return false;
+                    });
+
+                    jq('.removeEntry').on("click", function () {
+                        var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+                        jq(contentAddId).toggle(false);
+                        jq(':input:not(:button)', contentAddId).val([]);
+                        jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+
+                        return false;
+                    });
+
+
+                    $allRows_vitals = jq(this).find('.multi-vitals');
+                    $allRows_vitals.hide();
+                    jq('#1-removeEntry-vital').remove();
+                    jq('#10-addEntry-vital').remove();
+                    jq('#1-toggleContainer-vital').show();
+
+                    jq('#11-removeEntry-vital').remove();
+                    jq('#20-addEntry-vital').remove();
+                    jq('#11-toggleContainer-vital').show();
+
+                    for (let x = 0; x&lt;= 10; x++) {
+                        if (jq(this).find('.' +x+ '-vitals').find("input[type$='text']").val() != '') {
+                            jq(this).find('#' +x+ '-toggleContainer-vital').show();
+                            jq(this).find('#' +x+ '-addEntry-vital').hide();
+                        } else {
+                            x-=1;
+                            jq(this).find('#' +x+ '-addEntry-vital').show();
+                            break;
+                        }
+                    }
+
+                    jq('.addEntry-vital').on("click", function () {
+                        var correctedAddButtonId = parseFloat(this.id) + 1;
+                        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer-vital";
+                        jq(contentAddId).toggle(true);
+                        jq('#' + this.id).toggle(false);
+                        jq('#' + parseFloat(this.id) + '-removeEntry-vital').toggle(true);
+
+                        return false;
+                    });
+
+                    jq('.removeEntry-vital').on("click", function () {
+                        var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer-vital";
+                        jq(contentAddId).toggle(false);
+                        jq(':input:not(:button)', contentAddId).val([]);
+                        jq('#' + correctedRemoveButtonId + '-addEntry-vital').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-removeEntry-vital').toggle(true);
+
+                        return false;
+                    });
+
                 });
             }
         </script>
@@ -381,48 +525,6 @@
                     }
                 });
 
-                 <!-- Add/remove tests and results-->
-                 var $otherRows,
-                 $firstRow,
-                 $thisRow,
-                 $nextRow,
-                 $lastVisibleRow;
-             var showAddButtonForLastVisibleRow = function($container) {
-                 $lastVisibleRow = $container.find('span.add-remove-section:visible:last');
-                 $lastVisibleRow.find('.add').show();
-             };
-
-             $firstRow = jq('span.add-remove-section:first-of-type');
-             $otherRows = jq('span.add-remove-section:not(:first-of-type)');
-
-             jq('.add').click(function(e) { //Handle add button event
-                 e.preventDefault();
-                 $thisRow = jq(this).parents('span.add-remove-section:first');
-                 $nextRow = $thisRow.next();
-
-                 if ($nextRow.length &gt; 0) {
-                     $nextRow.show('slow');
-                     $thisRow.find('.add').hide();
-                 }
-             });
-
-             jq('.remove').click(function(e) { //Handle remove button event
-                 e.preventDefault();
-                 $thisRow = jq(this).parents('span.add-remove-section:first');
-                 if (confirm('Are you sure you want to remove this record? All fields for this record will be cleared.') == 1) {
-                     $thisRow = jq(this).parents('span.add-remove-section:first');
-                     $lastRow = jq(this).parents('span.add-remove-section:last');
-                     $lastVisibleRow = $lastRow.prev();
-
-                     $thisRow.hide('slow', function() {
-                         fieldHelper.clearAllFields($thisRow);
-                         $lastVisibleRow.find('.add').show();
-                     });
-                 }
-             });
-            
-             $otherRows.hide(); //Hide all rows apart from first row if adding new form
-             $firstRow.find('.remove').hide(); //Hide the remove button from the first row
             });
         }
 
@@ -430,6 +532,11 @@
 
 
     <div>
+        <div class="row">
+            <span style="display: none;">
+                <encounterDate default="today" disallowMultipleEncountersOnDate="block"/>
+            </span>
+        </div>
         <div class="row">
             <div class="col-md-6">
                 <h1>Covid-19: Postmortem Report</h1>
@@ -606,32 +713,38 @@
                                     <repeat>
                                         <template>
                                             <obsgroup groupingConceptId="166612">
-                                                <span class="row add-remove-section">
+                                                <div class="row multi-drug" id="{id}-toggleContainer">
                                                     <div class="col-3">
                                                         <label>Body Organ</label>
                                                         <obs conceptId="166611"
                                                              answerConceptIds="166598,166610,166599,166600,166601,166602,
                                                              166603,166604,166605,166606,166607,166608,166609"
                                                              answerLabels="Brain,Heart,Right Kidney,Left Kidney,Pancreas,
-                                                             Right Lung,Left Lung,Right adrenal gland, Left adrenal gland,Liver,Thyroid,Spleen,Uterus"/>
+                                                             Right Lung,Left Lung,Right adrenal gland, Left adrenal gland,Liver,Thyroid,Spleen,Uterus"
+                                                             id="{id}-drug"/>
                                                     </div>
                                                     <div class="col-3">
                                                         <label>Organ weight</label>
                                                         <obs conceptId="166597" />
                                                     </div>
-                                                    <div>
+                                                    <div class="add-entry">
                                                         <br/>
-                                                        <a href="#" class="add add-more-link"><i class= "icon-plus-sign"></i></a>
-                                                        <a href="#" class="remove remove-more-link required"><i class="icon-minus"></i></a>
+                                                        <a href="#" id="{id}-addEntry" class="addEntry add-more-link"><i class= "icon-plus-sign"></i></a>
+                                                        <a href="#" class="removeEntry remove-more-link" id="{id}-removeEntry"><i class="icon-minus"></i></a>
                                                     </div>
-                                                </span>
+                                                </div>
                                             </obsgroup>
                                         </template>
-                                        <render n="1"/>
-                                        <render n="2"/>
-                                        <render n="3"/>
-                                        <render n="4"/>
-                                        <render n="5"/>
+                                        <render id="1"/>
+                                        <render id="2"/>
+                                        <render id="3"/>
+                                        <render id="4"/>
+                                        <render id="5"/>
+                                        <render id="6"/>
+                                        <render id="7"/>
+                                        <render id="8"/>
+                                        <render id="9"/>
+                                        <render id="10"/>
                                     </repeat>
                                 </div>
                             </div>
@@ -685,10 +798,10 @@
                                     <repeat>
                                         <template>
                                             <obsgroup groupingConceptId="99292">
-                                                <span class="row add-remove-section">
+                                                <div class="row multi-vitals" id="{id}-toggleContainer-vital">
                                                     <div class="postmortem-padding">
                                                         <label>Date Sample Taken</label>
-                                                        <obs conceptId="166139" allowTime="false" id="164431_{n}"/>
+                                                        <obs conceptId="166139" allowTime="false" id="164431_{n}" class="{id}-vitals"/>
                                                     </div>
                                                     <div class="postmortem-padding">
                                                         <label>Test</label>
@@ -711,19 +824,24 @@
                                                         <label>Lab No.</label>
                                                         <obs conceptId="165845" id="165845_{n}"/>
                                                     </div>
-                                                    <div class="postmortem-padding">
+                                                    <div class="add-entry postmortem-padding">
                                                         <br/>
-                                                        <a href="#" class="add add-more-link"><i class= "icon-plus-sign"></i></a>
-                                                        <a href="#" class="remove remove-more-link required"><i class="icon-minus"></i></a>
+                                                        <a href="#" id="{id}-addEntry-vital" class="addEntry-vital add-more-link"><i class= "icon-plus-sign"></i></a>
+                                                        <a href="#" id="{id}-removeEntry-vital" class="removeEntry-vital remove-more-link"><i class="icon-minus"></i></a>
                                                     </div>
-                                                </span>
+                                                </div>
                                             </obsgroup>
                                         </template>
-                                        <render n="1"/>
-                                        <render n="2"/>
-                                        <render n="3"/>
-                                        <render n="4"/>
-                                        <render n="5"/>
+                                        <render id="1"/>
+                                        <render id="2"/>
+                                        <render id="3"/>
+                                        <render id="4"/>
+                                        <render id="5"/>
+                                        <render id="6"/>
+                                        <render id="7"/>
+                                        <render id="8"/>
+                                        <render id="9"/>
+                                        <render id="10"/>
                                     </repeat>
                                 </div>
                             </div>
