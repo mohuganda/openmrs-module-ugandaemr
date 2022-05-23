@@ -143,31 +143,31 @@ formLabel="Covid-19 Referral Form">
 
                     $allRows_vitals = jq(this).find('.multi-vitals');
                     $allRows_vitals.hide();
-                    jq('#1-removeEntry').remove();
-                    jq('#10-addEntry').remove();
+                    jq('#1-removeEntry-vital').remove();
+                    jq('#10-addEntry-vital').remove();
                     jq('#1-toggleContainer-vital').show();
 
-                    jq('#11-removeEntry').remove();
-                    jq('#20-addEntry').remove();
+                    jq('#11-removeEntry-vital').remove();
+                    jq('#20-addEntry-vital').remove();
                     jq('#11-toggleContainer-vital').show();
 
-                    jq('.addEntry').on("click", function () {
+                    jq('.addEntry-vital').on("click", function () {
                         var correctedAddButtonId = parseFloat(this.id) + 1;
                         var contentAddId = "#" + correctedAddButtonId + "-toggleContainer-vital";
                         jq(contentAddId).toggle(true);
                         jq('#' + this.id).toggle(false);
-                        jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
+                        jq('#' + parseFloat(this.id) + '-removeEntry-vital').toggle(true);
 
                         return false;
                     });
 
-                    jq('.removeEntry').on("click", function () {
+                    jq('.removeEntry-vital').on("click", function () {
                         var correctedRemoveButtonId = parseFloat(this.id) - 1;
                         var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer-vital";
                         jq(contentAddId).toggle(false);
                         jq(':input:not(:button)', contentAddId).val([]);
-                        jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
-                        jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-addEntry-vital').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-removeEntry-vital').toggle(true);
 
                         return false;
                     });
@@ -186,9 +186,6 @@ formLabel="Covid-19 Referral Form">
                     jq('#1-removeEntry').remove();
                     jq('#10-addEntry').remove();
                     jq('#1-toggleContainer').show();
-                    jq('#11-removeEntry').remove();
-                    jq('#20-addEntry').remove();
-                    jq('#11-toggleContainer').show();
 
                     for (let x = 0; x&lt;= 10; x++) {
                         if (jq(this).find('#' +x+ '-drug').find("input[type$='text']").val()!='') {
@@ -199,7 +196,74 @@ formLabel="Covid-19 Referral Form">
                             jq(this).find('#' +x+ '-addEntry').show();
                             break;
                         }
-                    }<!-- End of multi-drug-->
+                    }
+
+                    jq('.addEntry').on("click", function () {
+                        var correctedAddButtonId = parseFloat(this.id) + 1;
+                        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
+                        jq(contentAddId).toggle(true);
+                        jq('#' + this.id).toggle(false);
+                        jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
+
+                        return false;
+                    });
+
+                    jq('.removeEntry').on("click", function () {
+                        var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
+                        jq(contentAddId).toggle(false);
+                        jq(':input:not(:button)', contentAddId).val([]);
+                        jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
+
+                        return false;
+                    });
+                    <!-- End of multi-drug-->
+
+                    <!-- Start of vitals-->
+                    $allRows_vitals = jq(this).find('.multi-vitals');
+                    $allRows_vitals.hide();
+                    jq('#1-removeEntry-vital').remove();
+                    jq('#10-addEntry-vital').remove();
+                    jq('#1-toggleContainer-vital').show();
+
+                    jq('#11-removeEntry-vital').remove();
+                    jq('#20-addEntry-vital').remove();
+                    jq('#11-toggleContainer-vital').show();
+
+
+                    for (let x = 0; x&lt;= 10; x++) {
+                        if (jq(this).find('#' +x+ '-vitals').find("select").find(":selected").val() != '') {
+                            jq(this).find('#' +x+ '-toggleContainer-vital').show();
+                            jq(this).find('#' +x+ '-addEntry-vital').hide();
+                        } else {
+                            x-=1;
+                            jq(this).find('#' +x+ '-addEntry-vital').show();
+                            break;
+                        }
+                    }
+
+                    jq('.addEntry').on("click", function () {
+                    var correctedAddButtonId = parseFloat(this.id) + 1;
+                    var contentAddId = "#" + correctedAddButtonId + "-toggleContainer-vital";
+                    jq(contentAddId).toggle(true);
+                    jq('#' + this.id).toggle(false);
+                    jq('#' + parseFloat(this.id) + '-removeEntry-vital').toggle(true);
+
+                    return false;
+                    });
+
+                    jq('.removeEntry').on("click", function () {
+                    var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                    var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer-vital";
+                    jq(contentAddId).toggle(false);
+                    jq(':input:not(:button)', contentAddId).val([]);
+                    jq('#' + correctedRemoveButtonId + '-addEntry-vital').toggle(true);
+                    jq('#' + correctedRemoveButtonId + '-removeEntry-vital').toggle(true);
+
+                    return false;
+                    });
+                    <!-- End of vitals-->
 
                     <!-- Start of multi-drug-other-->
                     $allRows_other = jq(this).find('.multi-drug-other');
@@ -207,9 +271,6 @@ formLabel="Covid-19 Referral Form">
                     jq('#1-removeEntry-other').remove();
                     jq('#10-addEntry-other').remove();
                     jq('#1-toggleContainer-other').show();
-                    jq('#11-removeEntry-other').remove();
-                    jq('#20-addEntry-other').remove();
-                    jq('#11-toggleContainer-other').show();
 
                     for (let x = 0; x&lt;= 10; x++) {
                         if (jq(this).find('#' +x+ '-drugother').find("input[type$='text']").val()!='') {
@@ -220,28 +281,192 @@ formLabel="Covid-19 Referral Form">
                             jq(this).find('#' +x+ '-addEntry-other').show();
                             break;
                         }
-                    } <!-- End of multi-drug-other-->
+                    }
+
+                    jq('.addEntry-other').on("click", function () {
+                        var correctedAddButtonId = parseFloat(this.id) + 1;
+                        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer-other";
+                        jq(contentAddId).toggle(true);
+                        jq('#' + this.id).toggle(false);
+                        jq('#' + parseFloat(this.id) + '-removeEntry-other').toggle(true);
+
+                        return false;
+                    });
+
+                    jq('.removeEntry-other').on("click", function () {
+                        var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer-other";
+                        jq(contentAddId).toggle(false);
+                        jq(':input:not(:button)', contentAddId).val([]);
+                        jq('#' + correctedRemoveButtonId + '-addEntry-other').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-removeEntry-other').toggle(true);
+
+                        return false;
+                    });
+                    <!-- End of multi-drug-other-->
 
                     <!-- Start of multi-drug-essential-->
                     $allRows_other = jq(this).find('.multi-drug-essential');
                     $allRows_other.hide();
                     jq('#1-removeEntry-essential').remove();
                     jq('#10-addEntry-essential').remove();
-                    jq('#1-toggleContainer-other').show();
+                    jq('#1-toggleContainer-essential').show();
                     jq('#11-removeEntry-essential').remove();
                     jq('#20-addEntry-essential').remove();
                     jq('#11-toggleContainer-essential').show();
 
                     for (let x = 0; x&lt;= 10; x++) {
-                        if (jq(this).find('#' +x+ '-drugother').find("input[type$='text']").val()!='') {
-                            jq(this).find('#' +x+ '-toggleContainer-other').show();
+                        if (jq(this).find('#' +x+ '-drug-essential').find("input[type$='text']").val()!='') {
+                            jq(this).find('#' +x+ '-toggleContainer-essential').show();
                             jq(this).find('#' +x+ '-addEntry-essential').hide();
                         } else {
                             x-=1;
                             jq(this).find('#' +x+ '-addEntry-essential').show();
                             break;
                         }
-                    }<!-- End of multi-drug-essential-->
+                    }
+
+                    jq('.addEntry-essential').on("click", function () {
+                        var correctedAddButtonId = parseFloat(this.id) + 1;
+                        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer-essential";
+                        jq(contentAddId).toggle(true);
+                        jq('#' + this.id).toggle(false);
+                        jq('#' + parseFloat(this.id) + '-removeEntry-essential').toggle(true);
+
+                        return false;
+                    });
+
+                    jq('.removeEntry-essential').on("click", function () {
+                        var correctedRemoveButtonId = parseFloat(this.id) - 1;
+                        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer-essential";
+                        jq(contentAddId).toggle(false);
+                        jq(':input:not(:button)', contentAddId).val([]);
+                        jq('#' + correctedRemoveButtonId + '-addEntry-essential').toggle(true);
+                        jq('#' + correctedRemoveButtonId + '-removeEntry-essential').toggle(true);
+
+                        return false;
+                    });
+                    <!-- End of multi-drug-essential-->
+
+                    if (jq("#occupation").find("select").find(":selected").val() != "5622") {
+                        jq("#other-occupation-container").hide();
+                    }
+
+                    if(!jq(".lab-tests").find('#Haemoglobin-test').find(':checkbox').prop('checked')) {
+                        disable_fields("Haemoglobin-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#WBC-Count-test').find(':checkbox').prop('checked')) {
+                        disable_fields("WBC-Count-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#Haematocrit-test').find(':checkbox').prop('checked')) {
+                        disable_fields("Haematocrit-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#Platelets-test').find(':checkbox').prop('checked')) {
+                        disable_fields("Platelets-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#APTT-APTR-test').find(':checkbox').prop('checked')) {
+                        disable_fields("APTT-APTR-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#PT-test').find(':checkbox').prop('checked')) {
+                        disable_fields("PT-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#INR-test').find(':checkbox').prop('checked')) {
+                        disable_fields("INR-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#ALT-SGPT-test').find(':checkbox').prop('checked')) {
+                        disable_fields("ALT-SGPT-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#Total-Bilirubin-test').find(':checkbox').prop('checked')) {
+                        disable_fields("Total-Bilirubin-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#AST-SGOT-test').find(':checkbox').prop('checked')) {
+                        disable_fields("AST-SGOT-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#Urea-test').find(':checkbox').prop('checked')) {
+                        disable_fields("Urea-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#Lactate-test').find(':checkbox').prop('checked')) {
+                        disable_fields("Lactate-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#Creatinine-test').find(':checkbox').prop('checked')) {
+                        disable_fields("Creatinine-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#Sodium-test').find(':checkbox').prop('checked')) {
+                        disable_fields("Sodium-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#Potassium-test').find(':checkbox').prop('checked')) {
+                        disable_fields("Potassium-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#Procalcitonin-test').find(':checkbox').prop('checked')) {
+                        disable_fields("Procalcitonin-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#CRP-test').find(':checkbox').prop('checked')) {
+                        disable_fields("CRP-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#LDH-test').find(':checkbox').prop('checked')) {
+                        disable_fields("LDH-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#Creatine-test').find(':checkbox').prop('checked')) {
+                        disable_fields("Creatine-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#UTroponin-test').find(':checkbox').prop('checked')) {
+                        disable_fields("UTroponin-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#ESR-test').find(':checkbox').prop('checked')) {
+                        disable_fields("ESR-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#UD-dimer-test').find(':checkbox').prop('checked')) {
+                    disable_fields("UD-dimer-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#mFerritin-test').find(':checkbox').prop('checked')) {
+                    disable_fields("mFerritin-results");
+                    }
+
+                    if(!jq(".lab-tests").find('#aIL-6-test').find(':checkbox').prop('checked')) {
+                    disable_fields("aIL-6-results");
+                    }
+
+                    if (jq("#oxygen-therapy").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#oxygen-flow-container").hide();
+                        jq("#oxygen-source-container").hide();
+                        jq("#oxygen-interface-container").hide();
+                    }
+
+                    if (jq("#non-invasive-ventilation").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#worst-pressure-support-container").hide();
+                    }
+
+                    if (jq("#invasive-ventilation").find("input[type='radio']:checked").val() != "90003") { ;
+                        jq("#worst-fio-ratio-container").hide();
+                        jq("#worst-spo-ratio-container").hide();
+                    }
+
+                    if (jq("#blood-gas-done").find("input[type='radio']:checked").val() != "90003") {
+                        jq("#gas-container").hide();
+                    }
+
                 });
             }
         </script>
@@ -529,11 +754,7 @@ formLabel="Covid-19 Referral Form">
                         disable_fields("Creatine-results");
                     }
 
-                    if(jq(this).find('#Kinase-test').find(':checkbox').prop('checked')) {
-                        enable_fields("Kinase-results");
-                    } else {
-                        disable_fields("Kinase-results");
-                    }
+
 
                     if(jq(this).find('#UTroponin-test').find(':checkbox').prop('checked')) {
                         enable_fields("UTroponin-results");
@@ -809,7 +1030,7 @@ formLabel="Covid-19 Referral Form">
                                                             <obs conceptId="1114"
                                                                  answerConceptIds="5242,5092,5087,99654,887,166410"
                                                                  answerLabels="Respiratory Rate(RR),Oxygen saturation(SPO2),Pulse Rate(PR),Blood Pressure,
-                                                             Blood glucose,AVPU"/>
+                                                             Blood glucose,AVPU" id="{id}-vitals"/>
                                                         </div>
                                                         <div class="col-3">
                                                             <label>Arrival</label>
@@ -822,8 +1043,8 @@ formLabel="Covid-19 Referral Form">
                                                         <div class="referral-padding">
                                                             <div class="add-entry">
                                                                 <br/>
-                                                                <a href="#" id="{id}-addEntry" class="addEntry add-more-link"><i class="icon-plus-sign"></i></a>
-                                                                <a href="#" class="removeEntry remove-more-link" id="{id}-removeEntry"><i class="icon-minus"></i></a>
+                                                                <a href="#" id="{id}-addEntry-vital" class="addEntry-vital add-more-link"><i class="icon-plus-sign"></i></a>
+                                                                <a href="#" class="removeEntry-vital remove-more-link" id="{id}-removeEntry-vital"><i class="icon-minus"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -931,16 +1152,13 @@ formLabel="Covid-19 Referral Form">
                                               <obs conceptId="1014"   labelText="LDH" class="col-md-4" id="LDH-results" /> 
                                             </div>
                                             <div class="row">
-                                              <obs conceptId="1011"   labelText="Creatine" class="col-md-4" id="Creatine-results" /> 
-                                              <obs conceptId="1011"   labelText="Kinase" class="col-md-4" id="Kinase-results"/>
+                                              <obs conceptId="1011"   labelText="Creatine Kinase" class="col-md-4" id="Creatine-results" />
                                               <obs conceptId="166332" labelText="UTroponin" class="col-md-4" id="UTroponin-results" />
+                                              <obs conceptId="855"    labelText="ESR" class="col-md-4" id="ESR-results" />
                                             </div>
                                             <div class="row">
-                                              <obs conceptId="855"    labelText="ESR" class="col-md-4" id="ESR-results" />
                                               <obs conceptId="166333" labelText="UD-dimer" class="col-md-4" id="UD-dimer-results"/>
                                               <obs conceptId="166334" labelText="mFerritin" class="col-md-4" id="mFerritin-results"/>
-                                            </div>
-                                            <div class="row">
                                               <obs conceptId="166335" labelText="aIL-6" class="col-md-4" id="aIL-6-results"/>
                                             </div>
                                         </div>
@@ -960,10 +1178,10 @@ formLabel="Covid-19 Referral Form">
                                                 <div>
                                                     <repeat>
                                                         <template>
-                                                            <obsgroup groupingConceptId="160741">
+                                                            <obsgroup groupingConceptId="166707">
                                                                 <div class="row multi-drug-essential" id="{id}-toggleContainer-essential">
                                                                     <div class="referral-padding">
-                                                                        <obs labelText="Drugs"  id="{id}-drug" conceptId="1282" answerClasses="Drug" style="autocomplete" class="fullwidth"/>
+                                                                        <obs labelText="Drugs"  id="{id}-drug-essential" conceptId="1282" answerClasses="Drug" style="autocomplete" class="fullwidth"/>
                                                                     </div>
                                                                     <div class="referral-padding">
                                                                         <obs labelText="Quantity" conceptId="160856"/>

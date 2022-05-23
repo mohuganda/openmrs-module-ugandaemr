@@ -2064,6 +2064,7 @@
     <concept  concept_id="166704"  retired="0"   datatype_id="4"  class_id="11"  is_set="0"  creator="1"  date_created="2022-05-11 17:07:29"   changed_by="1"  date_changed="2022-05-11 17:07:29"   uuid="946d103b-a5d3-452e-ac0e-8d6604838510"/>
     <concept  concept_id="166705"  retired="0"   datatype_id="4"  class_id="11"  is_set="0"  creator="1"  date_created="2022-05-11 17:08:00"   changed_by="1"  date_changed="2022-05-11 17:08:00"   uuid="53dc7c64-667b-4cc3-8c1a-d4d431075f88"/>
     <concept  concept_id="166706"  retired="0"   datatype_id="2"  class_id="5"   is_set="0"  creator="1"  date_created="2022-05-11 17:10:49"   changed_by="1"  date_changed="2022-05-11 17:10:49"   uuid="2e6897d2-b2e5-48a6-a6bc-20f2d721876a"/>
+    <concept  concept_id="166707"  retired="0" datatype_id="4"  class_id="9"  is_set="1"  creator="1"  date_created="2022-05-23 11:05:57"  changed_by="1"  date_changed="2022-05-23 11:05:57"  uuid="16cc8b20-b0af-43bf-ae2e-7a3bb5701152"/>
 
     <!--Emergency ART Services Register-->
     <concept  concept_id="166463"  retired="0"  datatype_id="4"  class_id="5"  is_set="0"  creator="1"  date_created="2021-07-19 14:56:59"  version="1.0"  changed_by="1"  date_changed="2021-07-19 14:56:59"  uuid="342db3a7-74c4-4cb0-943a-432c6b3693b6"/>
@@ -2867,6 +2868,7 @@
     <concept_description  concept_description_id="18695"  concept_id="166704"  description="Contact options (Covid 19)"  locale="en"  creator="1"  date_created="2022-05-11 17:07:29"  changed_by="NULL"  date_changed="NULL"  uuid="15bec53b-6a9b-45d3-aef7-f0471050138c"/>
     <concept_description  concept_description_id="18696"  concept_id="166705"  description="Contact options (Covid 19)"  locale="en"  creator="1"  date_created="2022-05-11 17:08:00"  changed_by="NULL"  date_changed="NULL"  uuid="efd059bc-a429-4e2e-821b-aab270f92626"/>
     <concept_description  concept_description_id="18697"  concept_id="166706"  description="How the contact was contacted (Covid 19)"  locale="en"  creator="1"  date_created="2022-05-11 17:10:49"  changed_by="NULL"  date_changed="NULL"  uuid="fe0da943-3f90-4468-864c-867e979cc05c"/>
+    <concept_description  concept_description_id="18698"  concept_id="166707"  description="Essential Medication needed by a patient"  locale="en"  creator="1"  date_created="2022-05-23 11:05:57" uuid="774fb936-1d4f-467d-90d4-80a434c651a4"/>
 
     <!-- Emergency ART Services Register -->
     <concept_description  concept_description_id="18543"  concept_id="166464"  description="TB Drug Refill Pills"                             locale="en"  creator="1"  date_created="2021-07-21 10:33:16" uuid="a212ac72-7ffb-4756-a1c1-74f7a9066aae"/>
@@ -6378,6 +6380,7 @@
     <concept_name  concept_name_id="162705"  concept_id="166448"  name="HIV tested"  locale="en"  locale_preferred="1"  creator="1"  date_created="2021-05-07 10:26:35"  concept_name_type="FULLY_SPECIFIED"  voided="0" uuid="cef10659-7165-4f8e-bd0b-bbb0f47d8917"/>
 
     <concept_name  concept_name_id="162710"  concept_id="166452"  name="oral fluids given"  locale="en"  locale_preferred="1"  creator="1"  date_created="2021-07-13 11:07:12"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="a0958720-89b5-4805-8ebf-7c116c276f13"/>
+    <concept_name  concept_name_id="162975"  concept_id="166707"  name="Essential Medications"  locale="en"  locale_preferred="1"  creator="1"  date_created="2022-05-23 11:05:57"  concept_name_type="FULLY_SPECIFIED"  voided="0" uuid="3181b94e-0adb-47d2-bfaa-fdfb0cd4ab5c"/>
 
     <!-- Emergency ART Services Register -->
     <concept_name  concept_name_id="162711"  concept_id="166453"  name="Parent Health Facility"  			 locale="en"  locale_preferred="1"  creator="1"  date_created="2021-07-19 14:24:15"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="c070e8b0-addf-45eb-8c3f-b6192039d238"/>
@@ -8992,6 +8995,11 @@
     <concept_set  concept_set_id="3020"  concept_id="165876"  concept_set="99292"   sort_weight="3"   creator="1"  date_created="2022-05-06 16:15:10"  uuid="c6816024-274c-4052-a45f-ea8c3e495011"/>
     <concept_set  concept_set_id="3021"  concept_id="166139"  concept_set="99292"   sort_weight="4"   creator="1"  date_created="2022-05-06 16:15:10"  uuid="613bcfd6-dffc-44fb-bd3d-e88cb7460302"/>
 
+    <concept_set  concept_set_id="3022"  concept_id="1282"  concept_set="166707"  sort_weight="0"  creator="1"  date_created="2022-05-23 11:05:57"  uuid="ded641fb-694b-4d6f-9b55-6740ddc00784"/>
+    <concept_set  concept_set_id="3023"  concept_id="160856"  concept_set="166707"  sort_weight="1"  creator="1"  date_created="2022-05-23 11:05:57"  uuid="2916ca01-e65f-4b14-88bc-6c2f97356686"/>
+    <concept_set  concept_set_id="3024"  concept_id="165791"  concept_set="166707"  sort_weight="2"  creator="1"  date_created="2022-05-23 11:05:57"  uuid="a83f8f90-1cb1-4627-ad89-31bf6e119484"/>
+    <concept_set  concept_set_id="3025"  concept_id="159368"  concept_set="166707"  sort_weight="3"  creator="1"  date_created="2022-05-23 11:05:57"  uuid="97c616b6-9a50-4dc7-ae0c-9b715fe82e88"/>
+    <concept_set  concept_set_id="3026"  concept_id="1732"  concept_set="166707"  sort_weight="4"  creator="1"  date_created="2022-05-23 11:05:57"  uuid="ae448472-c47b-4bbc-b4fc-7ad22a0483f1"/>
 
 
 
