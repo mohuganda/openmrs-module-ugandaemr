@@ -733,7 +733,7 @@
                                             </div>
                                             <div id="novel-experimental-therapeutic-agent-container" class="col-5">
                                                 <label>Specify Novel/Experimental Therapeutic agent</label>
-                                                <obs id="specify-novel-experimental-therapeutic-agent" conceptId="166561" />
+                                                <obs id="specify-novel-experimental-therapeutic-agent" conceptId="166730" />
                                             </div>
                                         </div>
                                     </div>
@@ -778,7 +778,7 @@
                                             </div>
                                             <div id="corticosteroid-container" class="col-4">
                                                 <label>Specify Corticosteroid</label>
-                                                <obs id="other-corticosteroid" conceptId="166562" />
+                                                <obs id="other-corticosteroid" conceptId="166731" />
                                             </div>
                                             <div id="corticosteroid-route-container" class="col-4">
                                                 <label>Route</label>
@@ -851,7 +851,7 @@
                                         <div class="row col-12">
                                             <div class="col-4">
                                                 <label>Enrolled in palliative care</label>
-                                                <obs conceptId="166563" answerConceptIds="90003,90004" answerLabels="Yes, No"
+                                                <obs conceptId="166732" answerConceptIds="90003,90004" answerLabels="Yes, No"
                                                      style="radio" class="horizontal" />
                                             </div>
                                             <div class="col-4">
@@ -862,7 +862,7 @@
                                              </div>
                                             <div class="col-4">
                                                 <label>Self Care</label>
-                                                <obs conceptId="166567" answerConceptIds="166564,166565,166566,1175"
+                                                <obs conceptId="166736" answerConceptIds="166733,166734,166735,1175"
                                                      answerLabels="Better than before admission,Same as before admission,Worse than before admission,N/A"
                                                      style="checkbox"/>
                                             </div>

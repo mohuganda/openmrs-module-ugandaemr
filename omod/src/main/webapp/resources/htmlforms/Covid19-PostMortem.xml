@@ -579,7 +579,7 @@
                                             <div class="col-3">
 												<label>Date of Autopsy</label>
 												<i class="icon-calendar small right-addon-row position-absolute" style="right: 25%; top: 47%;"></i>
-												<obs conceptId="166568" />
+												<obs conceptId="166737" />
 											</div>
                                             <div class="col-3">
 												<label>Date of Death</label>
