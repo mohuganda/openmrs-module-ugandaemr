@@ -2113,7 +2113,8 @@
     <concept  concept_id="166504"  retired="0" datatype_id="4"  class_id="5"  is_set="0"  creator="1"  date_created="2021-09-08 10:29:44" changed_by="1"  date_changed="2021-09-08 10:29:44" uuid="b86c8e18-2c4e-4b0f-b7a4-9442c6a90102"/>
     <concept  concept_id="166505"  retired="0" datatype_id="4"  class_id="5"  is_set="0"  creator="1"  date_created="2021-09-08 10:32:37" changed_by="1"  date_changed="2021-09-08 10:32:37" uuid="2fdad88f-23a2-45f1-8e16-618e28ea2d83"/>
     
-    
+    <concept  concept_id="166738"  retired="0"  datatype_id="4"  class_id="9"  is_set="1"  creator="1"  date_created="2022-06-16 15:31:57"  changed_by="1"  date_changed="2022-06-16 15:31:57"  uuid="0ff172ad-7d38-4875-b44a-96cf4ad94190"/>
+    <concept  concept_id="166739"  retired="0"  datatype_id="3"  class_id="11"  is_set="0"  creator="1"  date_created="2022-06-16 15:45:45"  changed_by="1"  date_changed="2022-06-16 15:45:45"  uuid="70cffa6b-7a8f-427d-ae84-f523544307aa"/>
 
     <!-- ART Access-->
     <concept  concept_id="166495"  retired="0" datatype_id="2"  class_id="7"  is_set="0"  creator="1"  date_created="2021-09-07 06:37:41" changed_by="1"  date_changed="2021-09-07 06:55:22" uuid="0907d345-a413-41ec-a034-1e462622d62b"/>
@@ -2877,6 +2878,8 @@
     <concept_description  concept_description_id="18706"  concept_id="166735"  description="Ability to self-care"  locale="en"  creator="1"  date_created="2022-05-04 14:30:59" uuid="2029a295-ee3f-4d02-bf0e-a2f2e0a27476"/>
     <concept_description  concept_description_id="18707"  concept_id="166736"  description="Ability to self-care"  locale="en"  creator="1"  date_created="2022-05-04 14:50:49" uuid="578287ec-e3bc-475e-a6c6-f09c5c103819"/>
     <concept_description  concept_description_id="18708"  concept_id="166737"  description="Date of Autopsy"  locale="en"  creator="1"  date_created="2022-05-04 16:41:03" uuid="24f22d8a-f85e-488b-9d46-baea9625b1be"/>
+
+    <concept_description  concept_description_id="18709"  concept_id="166739"  description="Any other reason why the client is not fully vaccinated"  locale="en"  creator="1"  date_created="2022-06-16 15:45:45"  uuid="e4411476-a571-4241-8e41-0527d6670156"/>
 
     <!-- Emergency ART Services Register -->
     <concept_description  concept_description_id="18543"  concept_id="166464"  description="TB Drug Refill Pills"                             locale="en"  creator="1"  date_created="2021-07-21 10:33:16" uuid="a212ac72-7ffb-4756-a1c1-74f7a9066aae"/>
@@ -6547,6 +6550,9 @@
     <concept_name  concept_name_id="162973"  concept_id="166705"  name="Not contacted and not found"                                locale="en"  locale_preferred="1"  creator="1"  date_created="2022-05-11 17:08:00"  concept_name_type="FULLY_SPECIFIED"  voided="0" uuid="24544723-2cad-49fd-8a6f-2f3b277fef33"/>
     <concept_name  concept_name_id="162974"  concept_id="166706"  name="Client contacted"                                           locale="en"  locale_preferred="1"  creator="1"  date_created="2022-05-11 17:10:49"  concept_name_type="FULLY_SPECIFIED"  voided="0" uuid="98bfa34c-453d-4923-a0a2-0db8363965c7"/>
 
+    <concept_name  concept_name_id="162993"  concept_id="166738"  name="Covid booster set"                            locale="en"  locale_preferred="1"  creator="1"  date_created="2022-06-16 15:31:57"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="4ecfa70f-e9a4-4b21-ba84-3a614ed82bd0"/>
+    <concept_name  concept_name_id="162994"  concept_id="166739"  name="Other reason for not being fully vaccinated"  locale="en"  locale_preferred="1"  creator="1"  date_created="2022-06-16 15:45:45"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="fbebaab7-72e9-4999-8055-f71d5e68d4c3"/>
+
     <!-- Emergency ART Services Register -->
     <concept_name  concept_name_id="162711"  concept_id="166453"  name="Parent Health Facility"  			 locale="en"  locale_preferred="1"  creator="1"  date_created="2021-07-19 14:24:15"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="c070e8b0-addf-45eb-8c3f-b6192039d238"/>
     <concept_name  concept_name_id="162712"  concept_id="166454"  name="District of Parent Health facility"  locale="en"  locale_preferred="1"  creator="1"  date_created="2021-07-19 14:31:22"  concept_name_type="FULLY_SPECIFIED"  voided="0"  uuid="88772153-834b-4d22-aeab-9ea729960c12"/>
@@ -8870,6 +8876,8 @@
     <concept_answer  concept_answer_id="7368104"  concept_id="166706"  answer_concept="165102"  creator="1"  date_created="2022-05-11 17:10:49"  sort_weight="1"  uuid="fff6392c-77ad-4407-9683-ca30b8ac77c9"/>
     <concept_answer  concept_answer_id="7368105"  concept_id="166706"  answer_concept="90003"   creator="1"  date_created="2022-05-11 17:10:49"  sort_weight="7"  uuid="4dd49ccb-5847-459d-92ff-b096496c136f"/>
 
+    <concept_answer  concept_answer_id="7368115"  concept_id="166700"  answer_concept="90002"  creator="1"  date_created="2022-06-16 15:43:31"  sort_weight="9"  uuid="fd218c57-dbbf-432a-ad71-ec43936f46f1"/>
+
     <!-- Emergency ART Services Register -->
 
     <concept_answer  concept_answer_id="7367842"  concept_id="160288"  answer_concept="166455"  creator="1"  date_created="2021-07-19 14:44:46"  sort_weight="21"  uuid="249b2927-0dc8-427e-ba4c-eeca26683c60"/>
@@ -9186,6 +9194,9 @@
     <concept_set  concept_set_id="3024"  concept_id="165791"  concept_set="166707"  sort_weight="2"  creator="1"  date_created="2022-05-23 11:05:57"  uuid="a83f8f90-1cb1-4627-ad89-31bf6e119484"/>
     <concept_set  concept_set_id="3025"  concept_id="159368"  concept_set="166707"  sort_weight="3"  creator="1"  date_created="2022-05-23 11:05:57"  uuid="97c616b6-9a50-4dc7-ae0c-9b715fe82e88"/>
     <concept_set  concept_set_id="3026"  concept_id="1732"  concept_set="166707"  sort_weight="4"  creator="1"  date_created="2022-05-23 11:05:57"  uuid="ae448472-c47b-4bbc-b4fc-7ad22a0483f1"/>
+
+    <concept_set  concept_set_id="3027"  concept_id="166680"  concept_set="166738"  sort_weight="0"  creator="1"  date_created="2022-06-16 15:31:57"  uuid="6fbc1688-e992-4d73-904c-f5e351a72eda"/>
+    <concept_set  concept_set_id="3028"  concept_id="166689"  concept_set="166738"  sort_weight="1"  creator="1"  date_created="2022-06-16 15:31:57"  uuid="a3ede49a-2d9c-4ecf-8dbe-7251e2c94dee"/>
 
 
 
