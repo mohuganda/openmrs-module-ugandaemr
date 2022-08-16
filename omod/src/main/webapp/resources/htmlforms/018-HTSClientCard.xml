@@ -655,8 +655,67 @@
                                             <obs conceptId="99494" id="99494" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Client has presumptive TB</label>
+                                            <obs conceptId="99498" id="99498" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Presumptive TB Case referred for TB Services:</label>
+                                            <obs id="165178" conceptId="165178" answerConceptIds="90003,90004" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Client has been referred for HIV care or other prevention services: </label>
+                                            <obs id="162982" conceptId="162982" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No"  style="radio" class="horizontal"/>
+                                            <span>
+                                                <label class="horizontal-layout-options">Place of referral: </label>
+                                                <obs id="90211" conceptId="90211" />
+                                            </span>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    Prevetion Services
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <obs conceptId="165177" answerConceptId="99511" answerLabel="1 - Prevention Information" style="checkbox" class="horizontal-layout-options" />
+                                            <obs conceptId="165177" answerConceptId="90083" answerLabel="2 - Condoms" style="checkbox" class="horizontal-layout-options" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <obs conceptId="165177" answerConceptId="99550" answerLabel="3 - STI Screening" style="checkbox" class="horizontal-layout-options" />
+                                            <obs conceptId="165177" answerConceptId="99553" answerLabel="4 - STI treatment" style="checkbox" class="horizontal-layout-options" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <obs conceptId="165177" answerConceptId="165176" answerLabel="5 - Post-GBV" style="checkbox" class="horizontal-layout-options" />
+                                            <obs conceptId="165177" answerConceptId="99056" answerLabel="6 - PEP" style="checkbox" class="horizontal-layout-options" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <obs conceptId="165177" answerConceptId="165163" answerLabel="7 - PREP" style="checkbox" class="horizontal-layout-options" />
+                                            <obs conceptId="165177" id="other-prevention-services" answerConceptId="90002" answerLabel="8 - Others" style="checkbox" class="horizontal-layout-options" />
+                                            <span><label>Specify:</label>
+                                                <obs id="165175" conceptId="165175" class="horizontal-layout-options"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                        <label><span class="required">*</span>Counsellor</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <encounterProvider required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </div>
                         </div>
@@ -667,101 +726,5 @@
             </div>
         </div>
     </div>
-
-
-        <section>
-            <h3>SECTION D:HIV TEST RESULTS</h3>
-            <table class="section-b">
-                <tbody>
-
-                <tr>
-                    <td><label>If tested HIV Positive Finger Print has been  Captured:</label>
-
-                        <obs id="165182" conceptId="165182" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio"/>
-                    </td>
-
-                    <td>
-                        <label>Results Received as Individual:</label>
-                        <obs conceptId="165183" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio"/>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="ResultAsCoupleEnableDisable1"><label>Results received as a
-                            couple:</label></td>
-                        <td>
-                                <span class="CounseledAsCoupleEnableDisableChild1">
-                                    <obs conceptId="99494" id="99494" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio"/>
-                                </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="CounseledAsCoupleEnableDisableChild1"><label>Couple results:</label></td>
-                        <td>
-                                <span class="ResultAsCoupleEnableDisableChild1">
-                                    <obs conceptId="99497" id="99497" answerConceptIds="6096,165173,165174" answerLabels="1 - Discordant Couple,2 - Concordant Negative,3 - Concordant positive" style="radio"/>
-                                </span>
-                        </td>
-                    </tr>
-
-                <tr>
-                    <td><label>Client has presumptive TB (Current cough, fever, weight loss and night sweats):</label></td>
-                    <td>
-                        <obs conceptId="99498" id="99498" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio"/>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td><label>Presumptive TB Case referred for TB Services:</label></td>
-                    <td>
-                        <obs id="165178" conceptId="165178" answerConceptIds="90003,90004" answerLabels="1 - Yes,2 - No" style="radio"/>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td><label>Prevention Services Received:</label></td>
-                    <td>
-                        <obs conceptId="165177" answerConceptId="99511" answerLabel="1 - Prevention Information" style="checkbox" class="horizontal-layout-options" />
-                        <obs conceptId="165177" answerConceptId="90083" answerLabel="2 - Condoms" style="checkbox" class="horizontal-layout-options" />
-                        <obs conceptId="165177" answerConceptId="99550" answerLabel="3 - STI Screening" style="checkbox" class="horizontal-layout-options" />
-                        <obs conceptId="165177" answerConceptId="99553" answerLabel="4 - STI treatment" style="checkbox" class="horizontal-layout-options" />
-                        <obs conceptId="165177" answerConceptId="165176" answerLabel="5 - Post-GBV" style="checkbox" class="horizontal-layout-options" />
-                        <obs conceptId="165177" answerConceptId="99056" answerLabel="6 - PEP" style="checkbox" class="horizontal-layout-options" />
-                        <obs conceptId="165177" answerConceptId="165163" answerLabel="7 - PREP" style="checkbox" class="horizontal-layout-options" />
-                        <obs conceptId="165177" id="other-prevention-services" answerConceptId="90002" answerLabel="8 - Others" style="checkbox" class="horizontal-layout-options" />
-
-
-                        <span><label>Specify:</label>
-                                     <obs id="165175" conceptId="165175" class="horizontal-layout-options"/>
-                                </span>
-
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <label>Client has been referred for HIV care or other prevention services:  </label>
-                    </td>
-                    <td >
-                        <label >  <obs id="162982" conceptId="162982" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No"  style="radio" /></label>
-                        <span>
-                               <label class="horizontal-layout-options">Place of referral: </label>
-                                <obs id="90211" conceptId="90211" />
-                           </span>
-
-
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan="2"><label><span class="required">*</span>Counsellor</label>
-                        <encounterProvider required="true"/>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </section>
-        <section>
-            <submit/>
-        </section>
-    </div>
+</div>
 </htmlform>
