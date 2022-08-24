@@ -442,7 +442,7 @@
                                             </span>
                                         </div>
                                         <div class="col-md-4">
-                                            <label> Entry Point For Community Health Testing:<br/></label>
+                                            <label> Entry Point For Community Health Testing:</label>
                                             <span id="checkboxRadio">
                                                 <obs conceptId="165160" id="165160"
                                                      answerConceptIds="99460,165157,162920,162895,165158,90002"
@@ -455,7 +455,7 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <label> Reason for Testing<br/></label>
+                                            <label> Reason for Testing</label>
                                             <span id="checkboxRadio">
                                                 <obs conceptId="165168" id="165168"
                                                      answerConceptIds="165161,165162,165163,99056,165164,165165,165166,90012,90002, 166506"
@@ -528,9 +528,10 @@
                                         </div>
                                         <div class="col-md-3">
                                             <obs conceptId="165169" id="165169" answerConceptId="90002"
-                                                 answerLabel="12 - Others (specify)" style="checkbox"/>
-                                            <obs id="165184" conceptId="165184"
-                                                 class="ARTSpecialCateogryEnableDisableChild1"/>
+                                                 answerLabel="12 - Others" style="checkbox"/>
+                                            <span><label>Specify:</label>
+                                                <obs id="165184" conceptId="165184" class="ARTSpecialCateogryEnableDisableChild1"/>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -708,9 +709,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                         <label><span class="required">*</span>Counsellor</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <encounterProvider required="true"/>
+                                            <encounterProvider required="true"/>
                                         </div>
                                     </div>
                                 </div>
