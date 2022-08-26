@@ -529,7 +529,7 @@
                                         <div class="col-md-3">
                                             <obs conceptId="165169" id="165169" answerConceptId="90002"
                                                  answerLabel="12 - Others" style="checkbox"/>
-                                            <span><label>Specify:</label>
+                                            <span><label>Specify</label>
                                                 <obs id="165184" conceptId="165184" class="ARTSpecialCateogryEnableDisableChild1"/>
                                             </span>
                                         </div>
@@ -701,7 +701,7 @@
                                         <div class="col-md-3">
                                             <obs conceptId="165177" answerConceptId="165163" answerLabel="7 - PREP" style="checkbox" class="horizontal-layout-options" />
                                             <obs conceptId="165177" id="other-prevention-services" answerConceptId="90002" answerLabel="8 - Others" style="checkbox" class="horizontal-layout-options" />
-                                            <span><label>Specify:</label>
+                                            <span><label>Specify</label>
                                                 <obs id="165175" conceptId="165175" class="horizontal-layout-options"/>
                                             </span>
                                         </div>
