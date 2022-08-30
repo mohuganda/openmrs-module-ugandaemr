@@ -356,7 +356,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>Date:</label>
+                                            <label>Date</label>
                                             <encounterDate default="today" disallowMultipleEncountersOnDate="block"/>
                                             <span style="display: none;">
                                                 <encounterLocation default="629d78e9-93e5-43b0-ad8a-48313fd99117"
@@ -364,13 +364,13 @@
                                             </span>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Serial No:</label>
+                                            <label>Serial number</label>
                                             <obs conceptId="1646" required="true"/>
                                         </div>
 
                                         <includeIf velocityTest="$patient.age &lt; 12">
                                         <div class="col-md-4">
-                                            <label>Accompanied by:</label>
+                                            <label>Accompanied by</label>
                                             <obs id="969" conceptId="969" answerConceptIds="970,971,165154,5620"
                                                  answerLabels="1 - Mother,2 - Father,3 - Both Parents, 4 - Other " style="radio"/>
                                             <span >
@@ -392,11 +392,11 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>HTS Delivery Model:</label>
+                                            <label>HTS delivery model</label>
                                             <obs id="165171" conceptId="165171" answerConceptIds="99416,165160" answerLabels="1 - Health Facility(HF),2 - Community " style="radio" required="true" class="horizontal"/>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>HTS Approach:</label>
+                                            <label>HTS Approach</label>
                                             <obs conceptId="99462" answerConceptIds="162919,99459" answerLabels="1 - CICT/VCT,2 - PITC" style="radio" required="true" class="horizontal"/>
                                         </div>
                                     </div>
@@ -405,12 +405,12 @@
 
                             <div class="card">
                                 <div class="card-header">
-                                   Entry Point for Testing
+                                   Entry point for testing
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label> Entry Point For Health Facility Testing:</label>
+                                            <label> Entry point for health facility testing</label>
                                             <span >
                                                 <includeIf velocityTest="$patient.gender == 'F' ">
                                                     <obs conceptId="162925" id="162925"
@@ -422,7 +422,7 @@
                                                         </controls>
                                                     </obs>
                                                     <span id="anc-visit-number">
-                                                        <label>ANC Visit Number</label>
+                                                        <label>ANC visit number</label>
                                                         <obs conceptId="99727" class="horizontal-layout-options" />
                                                     </span>
                                                 </includeIf>
@@ -442,7 +442,7 @@
                                             </span>
                                         </div>
                                         <div class="col-md-4">
-                                            <label> Entry Point For Community Health Testing:</label>
+                                            <label> Entry point for community health testing</label>
                                             <span id="checkboxRadio">
                                                 <obs conceptId="165160" id="165160"
                                                      answerConceptIds="99460,165157,162920,162895,165158,90002"
@@ -455,7 +455,7 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <label> Reason for Testing</label>
+                                            <label> Reason for testing</label>
                                             <span id="checkboxRadio">
                                                 <obs conceptId="165168" id="165168"
                                                      answerConceptIds="165161,165162,165163,99056,165164,165165,165166,90012,90002, 166506"
@@ -475,7 +475,7 @@
                         <div class="tab-pane" id="risk-assessment" >
                             <div class="card">
                                 <div class="card-header">
-                                    Special Categories
+                                    Special categories
                                 </div>
                                 <div class="card-body symptoms">
                                     <div class="row ARTSpecialCateogryEnableDisable1">
@@ -543,15 +543,15 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>First HIV test (has never tested before):</label>
+                                            <label>First HIV test (has never tested before)</label>
                                             <obs id="165180" conceptId="165180" answerConceptIds="90003,90004" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Last HIV Visit Date:</label>
+                                            <label>Last hiv visit date</label>
                                             <obs id="165170" conceptId="165170"/>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Previous Test Results:</label>
+                                            <label>Previous test results</label>
                                             <obs id="165181" conceptId="165181" answerConceptIds="90166,90167" answerLabels="1 - Positive ,2 - Negative" style="radio" class="horizontal"/>
 
                                         </div>
@@ -562,7 +562,7 @@
                                             <obs id="162965" conceptId="162965"/>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Number of sexual partners in the last 12 months:</label>
+                                            <label>Number of sexual partners in the last 12 months</label>
                                             <obs conceptId="99463"/>
                                         </div>
                                         <div class="col-md-4">
@@ -573,15 +573,15 @@
 
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>Recent Partner test Result</label>
+                                            <label>Recent partner test result</label>
                                             <obs id="99477" conceptId="99477" answerConceptIds="90166,90167,90001," answerLabels="1 - Positive ,2 - Negative ,3 - Don't know" style="radio" class="horizontal"/>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Pre -Test Counseling done/information given:</label>
+                                            <label>Pre -Test Counseling done/information given</label>
                                             <obs id="162918" conceptId="162918" answerConceptIds="90003,90004" answerLabels="1 - Yes, 2 - No" style="radio" required="true" class="horizontal"/>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Counseled as:</label>
+                                            <label>Counseled as</label>
                                             <span class="CounseledAsCoupleEnableDisable1">
                                                 <obs conceptId="99368" id="99368" answerConceptIds="99365,99367,99366"
                                                      answerLabels="1 - Individual,2 - Couple,3 - Group" style="radio" class="horizontal"/>
@@ -601,12 +601,12 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>HIV final test results:</label>
+                                            <label>HIV final test results</label>
                                             <obs id="99493" conceptId="99493" answerConceptIds="90167,90166,162926" answerLabels="1 - Negative,2 - Positive,3 - Inconclusive" style="radio" class="horizontal" required="true"/>
                                         </div>
                                         <includeIf velocityTest="$patient.gender == 'F'">
                                         <div class="col-md-4">
-                                            <label>HIV final Syphillis-Duo results:</label>
+                                            <label>HIV final Syphillis-Duo results</label>
                                             <obs id="br" conceptId="165172" answerConceptIds="1228,1229" answerLabels="1 - Reactive,2 - Non-Reactive" style="radio" class="horizontal"/>
 
                                         </div>
@@ -627,7 +627,7 @@
                                             <obs id="99481" conceptId="99481" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>HIV Recency Test Result:</label>
+                                            <label>HIV recency test result</label>
                                             <obs id="141520" conceptId="141520" answerConceptIds="141519,141518" answerLabels="1 - Long term infection ,2 - Recent infection"/>
                                         </div>
 
@@ -644,15 +644,15 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>If tested HIV Positive Finger Print has been  Captured:</label>
+                                            <label>If tested HIV positive finger print has been  captured</label>
                                             <obs id="165182" conceptId="165182" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
                                         </div>
                                             <div class="col-md-4">
-                                                <label>Results Received as Individual:</label>
+                                                <label>Results received as individual</label>
                                                 <obs conceptId="165183" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
                                             </div>
                                         <div class="col-md-4">
-                                            <label>Results received as a couple:</label>
+                                            <label>Results received as a couple</label>
                                             <obs conceptId="99494" id="99494" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
                                         </div>
                                     </div>
@@ -663,15 +663,15 @@
                                             <obs conceptId="99498" id="99498" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Presumptive TB Case referred for TB Services:</label>
+                                            <label>Presumptive TB case referred for TB Services</label>
                                             <obs id="165178" conceptId="165178" answerConceptIds="90003,90004" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
 
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Client has been referred for HIV care or other prevention services: </label>
+                                            <label>Client has been referred for HIV care or other prevention services </label>
                                             <obs id="162982" conceptId="162982" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No"  style="radio" class="horizontal"/>
                                             <span>
-                                                <label class="horizontal-layout-options">Place of referral: </label>
+                                                <label class="horizontal-layout-options">Place of referral </label>
                                                 <obs id="90211" conceptId="90211" />
                                             </span>
                                         </div>
