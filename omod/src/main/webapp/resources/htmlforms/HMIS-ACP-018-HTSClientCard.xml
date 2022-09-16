@@ -248,8 +248,9 @@
                     if(!jq('#other-prevention-services').find(':checkbox').prop('checked')){
                         jq("#165175").find("input[type$='text']").attr("disabled",true);
                         jq("#165175").find("input[type$='text']").val("");
-                    }else{
-                        jq("#165175").find("input[type$='text']").attr("disabled",false); }
+                    }
+                    else
+                        enable_fields(165175);
                 });
 
                 jq('#other-special-category').change(function(){
