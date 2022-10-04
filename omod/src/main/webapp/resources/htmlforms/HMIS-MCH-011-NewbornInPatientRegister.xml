@@ -203,15 +203,15 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Date of Admission</label>
-<!--                                                <span class="time-box-horizontal">-->
-<!--                                                    <obs conceptId="1165003"/>-->
-<!--                                                </span>-->
+                                                <span class="time-box-horizontal">
+                                                    <obs conceptId="166571"/>
+                                                </span>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Time of Admission</label>
-<!--                                                <span class="time-box-horizontal">-->
-<!--                                                    <obs conceptId="1164995"/>-->
-<!--                                                </span>-->
+                                                <span class="time-box-horizontal">
+                                                    <obs conceptId="166898"/>
+                                                </span>
                                             </div>
 
                                         </div>
@@ -223,7 +223,7 @@
 
                                             <div class="col-md-3">
                                                 <label>How Many Babies</label>
-<!--                                                <obs conceptId="1165002" answerLabels="1-Singleton,2-Twin,3-Triplet,4-Quadruplet,Other" style="dropdown" />-->
+                                                <obs conceptId="166887" answerLabels="1-Singleton,2-Twin,3-Triplet,4-Quadruplet,Other" style="dropdown" />
                                             </div>
 
                                             <div class="col-md-3">
@@ -241,11 +241,11 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>Place of Birth:</label>
-<!--                                                <obs conceptId="1165011" id="1165011" answerConceptIds="1165006,1165007,1165008,1165009,1165010,1165012" answerLabels="1-Hospital,2-HC IV,3-HC III,4-HC II,5-TBA,6-Other" style="dropdown" />-->
+                                                <obs conceptId="166895" id="166895" answerConceptIds="166889,166890,166891,166892,166893,166894" answerLabels="1-Hospital,2-HC IV,3-HC III,4-HC II,5-TBA,6-Other" style="dropdown" />
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Other Place of Birth</label>
-<!--                                                <obs conceptId="90002" id="other-place-of-birth"/>-->
+                                                <obs conceptId="166894" id="other-place-of-birth"/>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Mode of Delivery</label>
@@ -304,7 +304,7 @@
 
                                             </div>
                                             <div class="col-md-3">
-<!--                                                <obs id="1165004" conceptId="1165004" labelText="Units Given" />-->
+                                                <obs id="166896" conceptId="166896" labelText="Units Given" />
                                             </div>
                                         </div>
 
@@ -315,7 +315,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-<!--                                                <obs conceptId="160250" labelText="Final Diagnosis" style="textarea"/>-->
+                                                <obs conceptId="165441" labelText="Final Diagnosis" style="textarea"/>
                                             </div>
                                         </div>
                                     </div>

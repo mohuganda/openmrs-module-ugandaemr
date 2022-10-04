@@ -9,7 +9,6 @@
           formIcon="icon-medkit"
           formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==false;"
           formDisplayStyle="Standard"
-          sessionLocation.uuid="e9bc61b5-69ff-414b-9cf0-0c22d6dfca2b"
           formLabel="HMIS-MCH-007-Integrated-Family-Planning">
     <div>
         <div class="row">
