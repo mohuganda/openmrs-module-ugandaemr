@@ -143,6 +143,10 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                                     <label>IPD No.</label>
                                                     <obs conceptId="1646"  />
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <label>Service Provider</label>
+                                                    <encounterProvider role="Provider" />
+                                                </div>
                                             </div>
 
                                         </div>

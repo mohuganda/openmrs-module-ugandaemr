@@ -1,6 +1,6 @@
 <htmlform formName="HMIS IPD 003 - Inpatient Register" formDescription="Inpatient Register"
-          formEncounterType="1384587b-8eef-4ffb-8399-a50e0e0cba32"
-          formUuid="16e0c4e9-5b09-4f99-9194-569a81cb6f61" formVersion="1.0.0"
+          formEncounterType="5ef205bc-136a-469b-b074-5f39488db91a"
+          formUuid="5ef205bc-136a-469b-b074-5f39488db91a" formVersion="1.0.0"
           formAddMetadata="yes" formUILocation="patientDashboard.visitActions"
           formIcon="icon-medkit" formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==false"
           formDisplayStyle="Standard" formLabel="Inpatient(IPD) Form">

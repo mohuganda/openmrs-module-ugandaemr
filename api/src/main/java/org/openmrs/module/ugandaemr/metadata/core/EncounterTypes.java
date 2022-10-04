@@ -428,7 +428,7 @@ public class EncounterTypes {
 
         @Override
         public String description() {
-            return "This is an enncounter for new borns admitted. ";
+            return "This is an encounter for new borns admitted. ";
         }
 
         public String uuid() {
@@ -439,12 +439,12 @@ public class EncounterTypes {
     public static EncounterTypeDescriptor CHILD_HEALTH_ENCOUNTER = new EncounterTypeDescriptor() {
         @Override
         public String name() {
-            return "New Born In Patient Register";
+            return "Child Health Encounter";
         }
 
         @Override
         public String description() {
-            return "This is an enncounter for new borns admitted. ";
+            return "This is an encounter assessing Children's Health";
         }
 
         public String uuid() {
@@ -455,12 +455,12 @@ public class EncounterTypes {
     public static EncounterTypeDescriptor IN_PATIENT_ENCOUNTER = new EncounterTypeDescriptor() {
         @Override
         public String name() {
-            return "In Patient Encounter types";
+            return "In Patient Encounter";
         }
 
         @Override
         public String description() {
-            return "This is an enncounter  for patients admitted into the hospital ";
+            return "This is an encounter  for patients admitted into the hospital ";
         }
 
         public String uuid() {
