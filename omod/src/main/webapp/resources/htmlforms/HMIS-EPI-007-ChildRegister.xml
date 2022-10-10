@@ -128,9 +128,9 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                                 <div class="col-md-3">
                                                     <label>
                                                         <span class="required">*</span>
-                                                        Mother No.
+                                                        Mother's Name.
                                                     </label>
-                                                    <lookup class="value" expression="personAttributes.get('Mothers Name')" />
+                                                    <obs conceptId="1593"/>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>
@@ -141,7 +141,7 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>IPD No.</label>
-                                                    <obs conceptId="1646"  />
+                                                    <obs conceptId="1646"/>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Service Provider</label>
@@ -351,26 +351,26 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <!--<div class="col-md-3">
-                                                    <label>PCV</label>
-                                                    <obs conceptId="163014" />
-                                                    <obs conceptId="163015" />
-                                                    <obs conceptId="163016" />
-                                                </div>-->
+<!--                                               <div class="col-md-3">-->
+<!--                                                    <label>PCV</label>-->
+<!--                                                    <obs conceptId="163014" />-->
+<!--                                                    <obs conceptId="163015" />-->
+<!--                                                    <obs conceptId="163016" />-->
+<!--                                                </div>-->
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <label>Rota Virus Vaccine 1</label>
                                                     <obs conceptId="165021" answerConceptIds="165022,165024,165023" answerLabels="Yes,No" style="checkbox" class="horizontal" />
                                                 </div>
-                                                <!--<div class="col-md-3">
+                                                <div class="col-md-3">
                                                     <label>Rota Virus Vaccine 2</label>
-                                                    <obs conceptId="165023" />
+<!--                                                    <obs conceptId="165023" />-->
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Rota Virus Vaccine 3</label>
-                                                    <obs conceptId="165024" />
-                                                </div>-->
+<!--                                                    <obs conceptId="165024" />-->
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3">
