@@ -135,7 +135,7 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                                 <div class="col-md-3">
                                                     <label>
                                                         <span class="required">*</span>
-                                                        Father No.
+                                                        Father Name.
                                                     </label>
                                                     <obs conceptId="165028"  />
                                                 </div>
@@ -217,7 +217,7 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <label>First Dose Administered 6 to 11 Months</label>
-                                                    <obs conceptId="165032" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />
+                                                    <obs conceptId="165032" style="checkbox" class="horizontal" />
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>First Dose Administered 12 to 59 Months</label>
@@ -351,25 +351,25 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                                 </div>
                                             </div>
                                             <div class="row">
-<!--                                               <div class="col-md-3">-->
-<!--                                                    <label>PCV</label>-->
+                                               <div class="col-md-3">
+                                                    <label>PCV</label>
 <!--                                                    <obs conceptId="163014" />-->
 <!--                                                    <obs conceptId="163015" />-->
 <!--                                                    <obs conceptId="163016" />-->
-<!--                                                </div>-->
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <label>Rota Virus Vaccine 1</label>
-                                                    <obs conceptId="165021" answerConceptIds="165022,165024,165023" answerLabels="Yes,No" style="checkbox" class="horizontal" />
+                                                    <obs conceptId="165021"  />
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Rota Virus Vaccine 2</label>
-<!--                                                    <obs conceptId="165023" />-->
+                                                    <obs conceptId="165021" />
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Rota Virus Vaccine 3</label>
-<!--                                                    <obs conceptId="165024" />-->
+                                                    <obs conceptId="165021" />
                                                 </div>
                                             </div>
                                             <div class="row">
