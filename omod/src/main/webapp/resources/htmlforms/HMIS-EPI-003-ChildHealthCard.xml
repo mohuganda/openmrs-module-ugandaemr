@@ -35,7 +35,7 @@
                         <a class="nav-link" data-toggle="tab" href="#immunization-information-section">Immunization Information</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#referral-information-section">Counselling   And Referral Information</a>
+                        <a class="nav-link" data-toggle="tab" href="#Infant-feeding">Infant And Young Child feeding</a>
                     </li>
                 </ul>
                 </div>
@@ -76,10 +76,10 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3">
-                                    <label>
-                                        Mother's Name
-                                    </label>
+<!--                                <div class="col-md-3">-->
+<!--                                    <label>-->
+<!--                                        Mother's Name-->
+<!--                                    </label>-->
                                     <!--
                               <lookup class="value" complexExpression="#foreach ( $relationship in $relationshipList )
                                   #if( $relationship.relationshipType.bIsToA == 'Parent' )
@@ -91,26 +91,26 @@
                                   #end
                               #end "/>
                               -->
-                                    <obs conceptId="1593"></obs>
-                                </div>
+<!--                                    <obs conceptId="1593"></obs>-->
+<!--                                </div>-->
                                 <div class="col-md-3">
                                     <label>
-                                        Mothers Contact
+                                        Birth Weight
                                     </label>
-                                    <obs conceptId="165052"/>
+                                    <obs conceptId="164941"/>
                                 </div>
-                                <div class="col-md-3">
-                                    <label>
-                                        Father's Name
-                                    </label>
-                                    <obs conceptId="1594"/>
-                                </div>
-                                <div class="col-md-3">
-                                    <label>
-                                        Father's Contact
-                                    </label>
-                                    <obs conceptId="1594"/>
-                                </div>
+<!--                                <div class="col-md-3">-->
+<!--                                    <label>-->
+<!--                                        Father's Name-->
+<!--                                    </label>-->
+<!--                                    <obs conceptId="1594"/>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-3">-->
+<!--                                    <label>-->
+<!--                                        Father's Contact-->
+<!--                                    </label>-->
+<!--                                    <obs conceptId="1594"/>-->
+<!--                                </div>-->
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
@@ -150,22 +150,22 @@
                      <div class="card-body">
                          <div class="row">
                              <div class="col-md-4">
-                                     <obs conceptId="165200" answerConceptId="165219" answerLabel="Birth Weight less than 2.5 Kg" style="checkbox"/>
-                                     <obs conceptId="165200" answerConceptId="165219" answerLabel="Brothers and Sisters Malnourished" style="checkbox"/>
-                                     <obs conceptId="165402" answerConceptId="1065" answerLabel="Birth defect" style="checkbox"/>
+                                     <obs conceptId="166982" answerConceptId="166971" answerLabel="Birth Weight less than 2.5 Kg" style="checkbox"/>
+                                     <obs conceptId="166982" answerConceptId="166972" answerLabel="Brothers and Sisters Malnourished" style="checkbox"/>
+                                     <obs conceptId="166982" answerConceptId="165402" answerLabel="Birth defect" style="checkbox"/>
                              </div>
                              <div class="col-md-4">
-                                 <obs conceptId="99112" answerConceptId="1065" answerLabel="Mother dead" style="checkbox"/>
-                                 <obs conceptId="99112" answerConceptId="1065" answerLabel="Father dead" style="checkbox"/>
-                                 <obs conceptId="99112" answerConceptId="1065" answerLabel="Fifth child or more" style="checkbox"/>
-                                 <obs conceptId="121397" answerConceptId="1065" answerLabel="Birth Asphyxia" style="checkbox"/>
+                                 <obs conceptId="166982" answerConceptId="166973" answerLabel="Mother dead" style="checkbox"/>
+                                 <obs conceptId="166982" answerConceptId="166975" answerLabel="Father dead" style="checkbox"/>
+                                 <obs conceptId="166982" answerConceptId="166976" answerLabel="Fifth child or more" style="checkbox"/>
+                                 <obs conceptId="166982" answerConceptId="166981" answerLabel="Birth Asphyxia" style="checkbox"/>
 
                              </div>
                              <div class="col-md-4">
-                                 <obs conceptId="99112" answerConceptId="1065" answerLabel="3 or more children in family dead" style="checkbox"/>
-                                 <obs conceptId="99112" answerConceptId="1065" answerLabel="Birth less than 2 years after last birth" style="checkbox"/>
-                                 <obs conceptId="99112" answerConceptId="1065" answerLabel="Multiple birth child" style="checkbox"/>
-                                 <obs conceptId="99112" answerConceptId="1065" answerLabel="Severe Jaundice" style="checkbox"/>
+                                 <obs conceptId="166982" answerConceptId="166977" answerLabel="3 or more children in family dead" style="checkbox"/>
+                                 <obs conceptId="166982" answerConceptId="166978" answerLabel="Birth less than 2 years after last birth" style="checkbox"/>
+                                 <obs conceptId="166982" answerConceptId="166979" answerLabel="Multiple birth child" style="checkbox"/>
+                                 <obs conceptId="166982" answerConceptId="166980" answerLabel="Severe Jaundice" style="checkbox"/>
 
                              </div>
                          </div>
@@ -223,11 +223,15 @@
                             </div>
                             <div class="col-md-3">
                                 <label>Rota 1</label>
-                                <obs conceptId="165006" />
+                                <obsgroup groupingConceptId="165022">
+                                <obs conceptId="165021" />
+                                </obsgroup>
                             </div>
                             <div class="col-md-3">
                                 <label>PVC 1</label>
-                                <obs conceptId="165006" />
+                                <obsgroup groupingConceptId="165018">
+                                <obs conceptId="165017" />
+                                </obsgroup>
                             </div>
                             <div class="col-md-3">
                                 <label>DPT -HEB HIB 1</label>
@@ -252,11 +256,15 @@
                             </div>
                             <div class="col-md-3">
                                 <label>Rota 2</label>
-                                <obs conceptId="165006" />
+                                <obsgroup groupingConceptId="165023">
+                                    <obs conceptId="165021" />
+                                </obsgroup>
                             </div>
                             <div class="col-md-3">
                                 <label>PVC 2</label>
-                                <obs conceptId="165006" />
+                                <obsgroup groupingConceptId="165019">
+                                <obs conceptId="165017" />
+                                </obsgroup>
                             </div>
                             <div class="col-md-3">
                                 <label>DPT -HEB HIB 2</label>
@@ -281,7 +289,7 @@
                             </div>
                             <div class="col-md-3">
                                 <label>PCV 3</label>
-                                <obs conceptId="165006" />
+<!--                                <obs conceptId="165006" />-->
                             </div>
                             <div class="col-md-3">
                                 <label>IPV</label>
@@ -311,358 +319,36 @@
                     </div>
                 </div>
             </div>
+            <div class="tab-pane" id="Infant-feeding" >
+                <div class="card">
+                    <div class="card-header"> Vaccination At Birth </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>
+                                    Infant Feeding Options:
+                                </label>
+                                <obs conceptId="99451" id="99451" />
+                        </div>
+                            <div class="col-md-4">
+                                <label>
+                                    Mother's PMTCT Code
+                                </label>
+                                <obs conceptId="99317" id="99317" />
+                            </div>
+
+
+                        </div>
+                </div>
+                </div>
+            </div>
 
         </div>
     </div>
 
-<!--            <div class="row">-->
-<!--                <table>-->
-<!--                    <thead>-->
-<!--                        <tr>-->
-<!--                            <th>TIME</th>-->
-<!--                            <th>VACCINE</th>-->
-<!--                            <th>DATE GIVEN</th>-->
-<!--                        </tr>-->
-<!--                    </thead>-->
-<!--                    <tbody>-->
-<!--                        <tr>-->
-<!--                            <td rowspan="2">At Birth</td>-->
-<!--                            <td><label>BCG</label></td>-->
-<!--                            <td><obs conceptId="165012" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>Polio 0</label></td>-->
-<!--                            <td><obs conceptId="165006" /></td>-->
-
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td rowspan="4">At 6 Weeks</td>-->
-<!--                            <td><label>Polio 1</label></td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="165007" /></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>Rota 1</label></td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="165022" /></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>PCV 1</label></td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="1165018" /></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>DPT-HepB Hib 1</label></td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="165014" /></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td rowspan="4">At 10 Weeks</td>-->
-<!--                            <td><label>Polio 2</label></td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="165008" /></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>Rota 2</label></td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="165023" /></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>PCV 2</label></td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="1165020" /></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>DPT-HepB Hib 2</label></td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="165015" /></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td rowspan="4">At 14 Weeks</td>-->
-<!--                            <td><label>Polio 3</label></td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="165009" /></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>PCV 3</label></td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="1165021" /></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>IPV</label></td>-->
-<!--                            <td><obs conceptId="165011" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>DPT-HepB Hib 3</label></td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="165016" /></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <obsgroup groupingConceptId="165030">-->
-<!--                            <tr>-->
-
-<!--                                <td>At 9 Months</td>-->
-<!--                                <td>Measles Rubella 1 (MR1)</td>-->
-<!--&lt;!&ndash;                                <td><obs conceptId="1165022" /></td>&ndash;&gt;-->
-
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td>At 18 Months</td>-->
-<!--                                <td>Measles Rubella 2 (MR2)</td>-->
-<!--&lt;!&ndash;                                <td><obs conceptId="1165023" /></td>&ndash;&gt;-->
-
-<!--                            </tr>-->
-<!--                        </obsgroup>-->
-<!--                    </tbody>-->
-<!--                </table>-->
-<!--            </div>-->
-<!--            <div class="row">-->
-<!--                <table>-->
-<!--                    <thead>-->
-<!--                        <tr>-->
-<!--                            <th colspan="3">VITAMIN A AND DEWORMING</th>-->
-<!--                        </tr>-->
-<!--                    </thead>-->
-<!--                    <tbody>-->
-<!--                        <tr>-->
-<!--                            <td><b>AGE</b></td>-->
-<!--                            <td><b>VITAMIN A DATE GIVEN</b></td>-->
-<!--                            <td><b>DEWORMING DATE GIVEN</b></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>6 Months</td>-->
-<!--&lt;!&ndash;                            <td><obs conceptId="1165017" /></td>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <td><obs conceptId="1165017"/></td>&ndash;&gt;-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>1 Year</td>-->
-<!--                            <td><obs conceptId="165032" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165035" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>1.5 Years</td>-->
-<!--                            <td><obs conceptId="165032" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165035" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>2 Years</td>-->
-<!--                            <td><obs conceptId="165032" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165035" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>2.5 Years</td>-->
-<!--                            <td><obs conceptId="165032" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165035" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>3 Years</td>-->
-<!--                            <td><obs conceptId="165032" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165035" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>3.5 Years</td>-->
-<!--                            <td><obs conceptId="165032" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165035" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>4 Years</td>-->
-<!--                            <td><obs conceptId="165032" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165035" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>4.5 Years</td>-->
-<!--                            <td><obs conceptId="165032" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165035" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>5 Years</td>-->
-<!--                            <td><obs conceptId="165032" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165035" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                    </tbody>-->
-<!--                </table>-->
-<!--            </div>-->
-<!--            <div class="row">-->
-<!--                <table>-->
-<!--                    <thead>-->
-<!--                        <tr>-->
-<!--                            <th><label>Time</label></th>-->
-<!--                            <th><label>Birth</label></th>-->
-<!--                            <th><label>1w</label></th>-->
-<!--                            <th><label>6w</label></th>-->
-<!--                            <th><label>10w</label></th>-->
-<!--                            <th><label>14w</label></th>-->
-<!--                        </tr>-->
-<!--                    </thead>-->
-<!--                    <tbody>-->
-<!--                        <tr>-->
-<!--                            <td>IYCF Code</td>-->
-<!--                            <td><obs conceptId="1151" answerConceptIds="1152,5254,1150,6046,5526,968,99089" /></td>-->
-<!--                            <td><obs conceptId="1151" answerConceptIds="1152,5254,1150,6046,5526,968,99089" /></td>-->
-<!--                            <td><obs conceptId="1151" answerConceptIds="1152,5254,1150,6046,5526,968,99089" /></td>-->
-<!--                            <td><obs conceptId="1151" answerConceptIds="1152,5254,1150,6046,5526,968,99089" /></td>-->
-<!--                            <td><obs conceptId="1151" answerConceptIds="1152,5254,1150,6046,5526,968,99089" /></td>-->
-<!--                        </tr>-->
-<!--                    </tbody>-->
-<!--                </table>-->
-<!--                <table>-->
-<!--                    <thead>-->
-<!--                        <tr>-->
-<!--                            <th><label>Time</label></th>-->
-<!--                            <th><label>6m</label></th>-->
-<!--                            <th><label>9m</label></th>-->
-<!--                            <th><label>12m</label></th>-->
-<!--                            <th><label>18m</label></th>-->
-<!--                            <th><label>24m</label></th>-->
-<!--                        </tr>-->
-<!--                    </thead>-->
-<!--                    <tbody>-->
-<!--                        <tr>-->
-<!--                            <td>IYCF Code</td>-->
-<!--                            <td><obs conceptId="1151" answerConceptIds="1152,5254,1150,6046,5526,968,99089" /></td>-->
-<!--                            <td><obs conceptId="1151" answerConceptIds="1152,5254,1150,6046,5526,968,99089" /></td>-->
-<!--                            <td><obs conceptId="1151" answerConceptIds="1152,5254,1150,6046,5526,968,99089" /></td>-->
-<!--                            <td><obs conceptId="1151" answerConceptIds="1152,5254,1150,6046,5526,968,99089" /></td>-->
-<!--                            <td><obs conceptId="1151" answerConceptIds="1152,5254,1150,6046,5526,968,99089" /></td>-->
-<!--                        </tr>-->
-<!--                    </tbody>-->
-<!--                </table>-->
-<!--            </div>-->
-<!--            <div class="row">-->
-<!--                <table>-->
-<!--                    <tbody>-->
-<!--                        <tr>-->
-<!--                            <td><label>Mother PMTCT Code:</label></td>-->
-<!--                            <td style="width:20%"><obs id="woman-emtct-code" conceptId="99317" answerConceptIds="99313, 99734, 99314, 99315, 99735, 99736, 99737, 99738, 99739, 99741"-->
-<!--                                                       answerLabels="C - Counseled but declined HIV testing,-->
-<!--                                                                       T - Counseled and tested but didn't receive results,-->
-<!--                                                                       TR - Counseled tested and results given - Client tested HIV Negative,-->
-<!--                                                                       TRR - Counseled tested and results given - Client tested HIV Positive,-->
-<!--                                                                       TR&#8730; - ANC revisit clients with a known HIV Negative status,-->
-<!--                                                                       TRR&#8730; - ANC revisit clients with a known HIV Positive status,-->
-<!--                                                                       TRK; - Clients with documented HIV Negative status,-->
-<!--                                                                       TRRK; - Clients with documented HIV Positive status,-->
-<!--                                                                       TR+ - Client tested HIV Negative on a re-test,-->
-<!--                                                                       TRR+ - Client tested HIV Positive on a re-test"-->
-<!--                                                       required="true" class="long-value-select" /></td>-->
-<!--                            <td><label>Date</label></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>Results of the Child at 6 weeks:</label></td>-->
-<!--                            <td><obs conceptId="165172" answerConceptId="1228" answerLabel="Reactive" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165172" answerConceptId="1229" answerLabel="Non-Reactive" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>Results of the Child at 9 months:</label></td>-->
-<!--                            <td><obs conceptId="165172" answerConceptId="1228" answerLabel="Reactive" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165172" answerConceptId="1229" answerLabel="Non-Reactive" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>6 Weeks After Cessation of breastfeeding:</label></td>-->
-<!--                            <td><obs conceptId="165172" answerConceptId="1228" answerLabel="Reactive" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165172" answerConceptId="1229" answerLabel="Non-Reactive" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>Results of the Child at 18 months:</label></td>-->
-<!--                            <td><obs conceptId="165172" answerConceptId="1228" answerLabel="Reactive" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="165172" answerConceptId="1229" answerLabel="Non-Reactive" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>Child initiated on treatment</label></td>-->
-<!--                            <td><obs conceptId="99881" answerConceptId="1065" style="checkbox" /></td>-->
-<!--                            <td><obs conceptId="99881" answerConceptId="1066" style="checkbox" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>Date Child initiated on treatment</label></td>-->
-<!--                            <td><obs conceptId="162980" /></td>-->
-<!--                            <td></td>-->
-<!--                        </tr>-->
-
-<!--                    </tbody>-->
-<!--                </table>-->
-<!--            </div>-->
-<!--            <div class="row">-->
-<!--                <table>-->
-<!--                    <tbody>-->
-<!--                        <tr>-->
-<!--                            <td style="background-color: black;" colspan="4" scope="row"><span style="color: #ffffff;">EDUCATION, COUNSELLING AND REFERRAL INFORMATION</span></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><label>DATE OF VISIT</label></td>-->
-<!--                            <td><label>WEIGHT(KG)</label></td>-->
-<!--                            <td><label>INFORMATION</label></td>-->
-<!--                            <td><label>NEXT APPOINTMENT</label></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td><span class="time-box-horizontal"><obs conceptId="90273" /></span></td>-->
-<!--                            <td><obs conceptId="164941" /></td>-->
-<!--                            <td><obs conceptId="99239" /></td>-->
-<!--                            <td><obs conceptId="99818" labelCode="Next Appointment" allowFutureDates="true" /></td>-->
-<!--                        </tr>-->
-<!--                    </tbody>-->
-<!--                </table>-->
-<!--            </div>-->
-
 
         </div>
     </div>
-    <div class="col-md-12">
 
-
-    </div>
 
 </htmlform>
