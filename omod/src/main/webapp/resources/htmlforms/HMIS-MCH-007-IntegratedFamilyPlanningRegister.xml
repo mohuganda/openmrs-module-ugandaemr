@@ -164,21 +164,19 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Microgynon</label>
-<!--                                                <obs conceptId="163145"/>-->
+                                                <obs conceptId="166946"/>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Ovrette</label>
-<!--                                                <obs conceptId="80797" answerConcept="165004"/>-->
+                                                <obs conceptId="166947"/>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>levonorgestrel</label>
-<!--                                                <obs conceptId="165584" answerConceptId="165584"-->
-                                                />
+                                                <obs conceptId="166950"/>
                                             </div>
                                             <div class="col-md-3">
-<!--                                                <label>Zinnia</label>-->
-<!--                                                <obs conceptId="1165037"-->
-<!--                                                     answerClasses="Drug" style="autocomplete" />-->
+                                                <label>Zinnia</label>
+                                                <obs conceptId="166951"/>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -194,12 +192,12 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-3">
-<!--                                                <label>Male Condom</label>-->
-<!--                                                <obs conceptId="1165032" answerConcept="164813"/>-->
+                                                <label>Male Condom</label>
+                                                <obs conceptId="166948"/>
                                             </div>
                                             <div class="col-md-3">
-<!--                                                <label>Female Condom</label>-->
-<!--                                                <obs conceptId="1165032" answerConcept="164814"/>-->
+                                                <label>Female Condom</label>
+                                                <obs conceptId="166949"/>
                                             </div>
                                         </div>
                                     </div>
@@ -207,35 +205,38 @@
                                 <div class="card">
                                     <div class="card-header">Injectables</div>
                                     <div class="card-body">
+                                        <div class="row">
                                         <div class="col-md-3">
-<!--                                            <label>DPMA IM 3 Months</label>-->
-<!--                                            <obs conceptId="5279" answerConcept="165665"/>-->
+                                            <label>DPMA IM 3 Months</label>
+                                            <obs  conceptId="166952"/>
                                         </div>
                                         <div class="col-md-3">
-<!--                                            <label>DPMA SC 3 Months</label>-->
-<!--                                            <obs conceptId="5279" answerConcept="165663"/>-->
+                                            <label>DPMA SC 3 Months</label>
+                                            <obs conceptId="166953"/>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header">Implants</div>
                                     <div class="card-body">
+                                        <div class="row">
                                         <div class="col-md-3">
-<!--                                            <label>Implant Insertion</label>-->
-<!--                                            <obs conceptId="1165085"/>-->
+                                            <label>Implant Insertion</label>
+                                            <obs conceptId="166954"/>
                                         </div>
                                         <div class="col-md-3">
-<!--                                            <label>How Long</label>-->
+                                            <label>Implant Period </label>
 <!--                                            <obs conceptId="1165033"/>-->
                                         </div>
                                         <div class="col-md-3">
-<!--                                            <label>Implant Removal</label>-->
-<!--                                            <obs conceptId="1165086"/>-->
+                                            <label>Implant Removal</label>
+<!--                                            <obs conceptId="166858 "/>-->
                                         </div>
                                         <div class="col-md-3">
-<!--                                            <label>Implant Removal Reason</label>-->
-<!--                                            <obs conceptId="1165034" answerConceptIds="1165030,1365,99113" style="dropdown" />-->
-<!--                                            <obs conceptId="99113" />-->
+                                            <label>Implant Removal Reason</label>
+                                            <obs conceptId="166956" answerConceptIds="166860,166818,166855,90002" style="dropdown" />
+                                        </div>
                                         </div>
                                     </div>
                                     <div class="card-header">Sterilization</div>
@@ -253,12 +254,12 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>IUD Insertion ?</label>
-<!--                                                <obs conceptId="1165089"-->
-<!--                                                     answerConceptId="1065"-->
-<!--                                                     style="checkbox"/>-->
-<!--                                                <obs conceptId="1165089"-->
-<!--                                                     answerConceptId="1066"-->
-<!--                                                     style="checkbox"/>-->
+                                                <obs conceptId="166955"
+                                                     answerConceptId="90003"
+                                                     style="checkbox"/>
+                                                <obs conceptId="166955"
+                                                     answerConceptId="90004"
+                                                     style="checkbox"/>
                                             </div>
                                             <div class="col-md-3">
 <!--                                                <obs conceptId="1165036" answerConceptId="90089" style="checkbox" labelText="Copper-T" />-->
@@ -336,12 +337,12 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <label>SGBV Screening</label>
-<!--                                                <obs conceptId="1165077"-->
-<!--                                                     answerConceptId="1065"-->
-<!--                                                     style="checkbox"/>-->
-<!--                                                <obs conceptId="1165077"-->
-<!--                                                     answerConceptId="1066"-->
-<!--                                                     style="checkbox"/>-->
+                                                <obs conceptId="166958"
+                                                     answerConceptId="90003"
+                                                     style="checkbox"/>
+                                                <obs conceptId="166958"
+                                                     answerConceptId="90004"
+                                                     style="checkbox"/>
                                             </div>
                                         </div>
                                         <div class="row">
