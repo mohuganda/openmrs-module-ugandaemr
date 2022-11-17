@@ -73,6 +73,9 @@
               if(jq("#165170").find("input[type$='text']").val()==''){
                     jq("#165170").find("input[type$='text']").attr("disabled",true);
                }
+              if(jq("#165918").find("input[type$='text']").val()==''){
+                jq("#165918").find("input[type$='text']").attr("disabled",true);
+                }
                 if(jq("#166758").find("input[type$='text']").val()==''){
                 jq("#166758").find("input[type$='text']").attr("disabled",true);
                 }
@@ -103,6 +106,7 @@
                 disable_fields(165175);
                 disable_fields("other-special-category");
                 disable_fields(165170);
+                disable_fields(165918);
                 disable_fields(166758);
                 disable_fields(162965);
                 disable_fields(165181);
@@ -146,11 +150,13 @@
                         enable_fields(165181);
                         enable_fields(162965);
                         enable_fields(166758);
+                        enable_fields(165918);
                     }
                     else {
                         disable_fields(165170);
                         disable_fields(165181);
                         disable_fields(162965);
+                        disable_fields(166758);
                         disable_fields(166758);
 
         }
@@ -208,6 +214,15 @@
                     else
                         disable_fields(165159);
                 });
+<!--Hide fields for client initiated-->
+        jq("#hts-approach").change(function () {
+            if (jq(this).find("select").find(":selected").val() == "90079") {
+                jq("#tpt-status").find('select option:nth-child(3)').show();
+                }
+            else {
+                jq("#tpt-status").find('select option:nth-child(3)').hide();
+            }
+        });
 
                 jq('#165168').change(function () {
                     if(getValue('165168' + '.value')== 90002)
@@ -440,7 +455,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label>HTS Approach</label>
-                                            <obs conceptId="99462" answerConceptIds="162919,99459" answerLabels="1 - CICT/VCT,2 - PITC" style="radio" required="true" class="horizontal"/>
+                                            <obs id="hts-approach" conceptId="99462" answerConceptIds="162919,99459" answerLabels="1 - CICT/VCT,2 - PITC" style="radio" required="true" class="horizontal"/>
                                         </div>
                                     </div>
                                 </div>
@@ -593,17 +608,22 @@
                                             <obs id="165170" conceptId="165170"/>
                                         </div>
                                         <div class="col-md-3">
+                                            <label>Number of Months Since Last Tested</label>
+                                            <obs id="165918" conceptId="165918"  class="horizontal"/>
+
+                                        </div>
+                                        <div class="col-md-3">
                                             <label>Previous test results</label>
                                             <obs id="165181" conceptId="165181" answerConceptIds="90166,90167" answerLabels="1 - Positive ,2 - Negative" style="radio" class="horizontal"/>
 
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-3">
                                             <label>Previous Test Location</label>
                                             <obs id="166758" conceptId="166758"  class="horizontal"/>
-
                                         </div>
-                                    </div>
-                                    <div class="row">
+
                                         <div class="col-md-3">
                                             <label>Times tested in last 12 Months</label>
                                             <obs id="162965" conceptId="162965"/>
@@ -617,9 +637,7 @@
                                             <label>Spouse/Partner ever been tested for HIV before</label>
                                             <obs id="99472" conceptId="99472" answerConceptIds="1065,1066,99480,1175" answerLabels="1 - Yes,2 - No,3 - Don't Know, 4 - Not Applicable" />
                                         </div>
-                                        <div class="col-md-3">
 
-                                        </div>
                                     </div>
 
                                     <div class="row">
