@@ -214,15 +214,6 @@
                     else
                         disable_fields(165159);
                 });
-<!--Hide fields for client initiated-->
-        jq("#hts-approach").change(function () {
-            if (jq(this).find("select").find(":selected").val() == "90079") {
-                jq("#tpt-status").find('select option:nth-child(3)').show();
-                }
-            else {
-                jq("#tpt-status").find('select option:nth-child(3)').hide();
-            }
-        });
 
                 jq('#165168').change(function () {
                     if(getValue('165168' + '.value')== 90002)
@@ -641,26 +632,23 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <label>Recent partner test result</label>
                                             <obs id="99477" conceptId="99477" answerConceptIds="90166,90167,90001," answerLabels="1 - Positive ,2 - Negative ,3 - Don't know" style="radio" class="horizontal"/>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <label>Pre -Test Counseling done/information given</label>
                                             <obs id="162918" conceptId="162918" answerConceptIds="90003,90004" answerLabels="1 - Yes, 2 - No" style="radio" required="true" class="horizontal"/>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <label>Counseled as</label>
                                             <span class="CounseledAsCoupleEnableDisable1">
                                                 <obs conceptId="99368" id="99368" answerConceptIds="99365,99367,99366"
                                                      answerLabels="1 - Individual,2 - Couple,3 - Group" style="radio" class="horizontal"/>
                                             </span>
                                         </div>
-                                        <div class="col-md-3">
 
-                                        </div>
                                     </div>
-
                                 </div>
                             </div>
 
