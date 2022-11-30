@@ -76,11 +76,11 @@
                                 </div>
                             </div>
                             <div class="row">
-<!--                                <div class="col-md-3">-->
-<!--                                    <label>-->
-<!--                                        Mother's Name-->
-<!--                                    </label>-->
-                                    <!--
+                              <div class="col-md-3">
+                                   <label>
+                                       Mother's Name
+                                   </label>
+
                               <lookup class="value" complexExpression="#foreach ( $relationship in $relationshipList )
                                   #if( $relationship.relationshipType.bIsToA == 'Parent' )
                                         #if( !($relationship.personB.patientId == $patient.patientId ))
@@ -90,27 +90,27 @@
                                         #end
                                   #end
                               #end "/>
-                              -->
-<!--                                    <obs conceptId="1593"></obs>-->
-<!--                                </div>-->
+
+                          <obs conceptId="1593"></obs>
+                              </div>
                                 <div class="col-md-3">
                                     <label>
                                         Birth Weight
                                     </label>
                                     <obs conceptId="164941"/>
                                 </div>
-<!--                                <div class="col-md-3">-->
-<!--                                    <label>-->
-<!--                                        Father's Name-->
-<!--                                    </label>-->
-<!--                                    <obs conceptId="1594"/>-->
-<!--                                </div>-->
-<!--                                <div class="col-md-3">-->
-<!--                                    <label>-->
-<!--                                        Father's Contact-->
-<!--                                    </label>-->
-<!--                                    <obs conceptId="1594"/>-->
-<!--                                </div>-->
+                                <div class="col-md-3">
+                                    <label>
+                                        Father's Name
+                                    </label>
+                                    <obs conceptId="1594"/>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>
+                                        Father's Contact
+                                    </label>
+                                    <obs conceptId="1594"/>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">

@@ -198,20 +198,24 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                             </div>
 
                             <div class="tab-pane" id="feeding-information-section">
-
                                 <section>
                                     <div class="card">
-                                        <div class="card-header">Infant Child Feeding</div>
+                                        <div class="card-header">Feeding Practices</div>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <label>Feeding Practices</label>
                                                     <obs conceptId="99607" labelText="0 Days" />
+                                                </div>
+                                                <div class="col-md-3">
                                                     <obs conceptId="99608" labelText="6 Months" />
+                                                </div>
+                                                <div class="col-md-3">
                                                     <obs conceptId="99608" labelText="7-24+ Months Days" />
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="card">
                                         <div class="card-header">Vitamin A Administration</div>
                                         <div class="card-body">
                                             <div class="row">
@@ -221,16 +225,17 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>First Dose Administered 12 to 59 Months</label>
-                                                    <obs conceptId="164941" />
+                                                    <obs conceptId="164941"  />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <label>Second Dose Administered 12 to 59 Months</label>
-                                                    <obs conceptId="164941" />
+                                                    <obs conceptId="165033" />
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
                                         <div class="card">
                                             <div class="card-header">Deworming</div>
@@ -250,7 +255,6 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                             <div class="card-body">
                                             </div>
                                         </div>
-                                    </div>
                                 </section>
                             </div>
 
@@ -352,7 +356,7 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                             </div>
                                             <div class="row">
                                                <div class="col-md-3">
-                                                    <label>PCV</label>
+<!--                                                    <label>PCV</label>-->
 <!--                                                    <obs conceptId="163014" />-->
 <!--                                                    <obs conceptId="163015" />-->
 <!--                                                    <obs conceptId="163016" />-->
@@ -384,8 +388,6 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                             </div>
 
                                         </div>
-                                        <div class="card-body">
-                                        </div>
 
                                         <div class="card">
                                             <div class="card-header">Emtct Information</div>
@@ -413,8 +415,7 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                                 </div>
 
                                             </div>
-                                            <div class="card-body">
-                                            </div>
+
                                         </div>
                                     </div>
                                 </section>
