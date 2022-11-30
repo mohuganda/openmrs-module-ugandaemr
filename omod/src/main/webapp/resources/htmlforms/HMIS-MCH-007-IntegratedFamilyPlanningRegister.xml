@@ -227,11 +227,11 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label>Implant Period </label>
-<!--                                            <obs conceptId="1165033"/>-->
+                                            <obs conceptId="167039" answerConceptIds="166998,166999,167000"/>
                                         </div>
                                         <div class="col-md-3">
                                             <label>Implant Removal</label>
-<!--                                            <obs conceptId="166858 "/>-->
+                                            <obs conceptId="166858" answerConceptIds="90003,90004"/>
                                         </div>
                                         <div class="col-md-3">
                                             <label>Implant Removal Reason</label>
@@ -254,27 +254,18 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>IUD Insertion ?</label>
-                                                <obs conceptId="166955"
-                                                     answerConceptId="90003"
-                                                     style="checkbox"/>
-                                                <obs conceptId="166955"
-                                                     answerConceptId="90004"
-                                                     style="checkbox"/>
+                                                <obs conceptId="166955" answerConceptIds="90003,90004" style="checkbox"/>
                                             </div>
-                                            <div class="col-md-3">
+<!--                                            <div class="col-md-3">-->
 <!--                                                <obs conceptId="1165036" answerConceptId="90089" style="checkbox" labelText="Copper-T" />-->
-                                            </div>
-                                            <div class="col-md-3">
+<!--                                            </div>-->
+<!--                                            <div class="col-md-3">-->
 <!--                                                <obs conceptId="1165036" answerConceptId="5279" style="checkbox" labelText="Hormonal" />-->
-                                            </div>
+<!--                                            </div>-->
                                             <div class="col-md-3">
                                                 <label>IUD Removal ?</label>
-<!--                                                <obs conceptId="1165088"-->
-<!--                                                     answerConceptId="1065"-->
-<!--                                                     style="checkbox"/>-->
-<!--                                                <obs conceptId="1165088"-->
-<!--                                                     answerConceptId="1066"-->
-<!--                                                     style="checkbox"/>-->
+                                                <obs conceptId="166859" answerConceptIds="1065,1066" style="checkbox"/>
+
                                             </div>
                                             <div class="col-md-3">
                                                 <obs conceptId="166866" answerConceptIds="166860,166853,166855,90002" style="dropdown" labelText="IUD Removal Reason" />
@@ -316,8 +307,6 @@
                                                      answerLabels="IB,HB,NB,NV,ISR,INSR,HE,BR,CR,SAP,WG,SP,AC,Others"
                                                      style="dropdown" class="long-value-select" />
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-md-3">
                                                 <label>Cervical Cancer Screening</label>
                                                 <obs conceptId="165315" answerConceptIds="99348,165314,1175,1364" answerLabels="FOM - Free of malignancy,SS - Suspicious of malignancy,ND - Not screen for cancer ,NA - Male partners" style="dropdown" class="long-value-select" />
@@ -326,26 +315,16 @@
                                                 <label>Breast Cancer Screening</label>
                                                 <obs conceptId="166897" answerConceptIds="116026,165313,1175,1364" answerLabels="FOM - Free of malignancy,SS - Suspicious of malignancy,ND - Not screen for cancer ,NA - Male partners" style="dropdown" class="long-value-select" />
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <label>STI Screening</label>
-                                                <obs conceptId="99550"
-                                                     answerConceptId="1065"
-                                                     style="checkbox"/>
-                                                <obs conceptId="99550"
-                                                     answerConceptId="1066"
-                                                     style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>SGBV Screening</label>
-                                                <obs conceptId="166958"
-                                                     answerConceptId="90003"
-                                                     style="checkbox"/>
-                                                <obs conceptId="166958"
-                                                     answerConceptId="90004"
-                                                     style="checkbox"/>
+                                                <obs conceptId="99550" answerConceptIds="1065,1066" style="checkbox"/>
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col-md-3">
+                                                <label>SGBV Screening</label>
+                                                <obs conceptId="166958" answerConceptIds="90003,90004" style="checkbox"/>
+                                            </div>
                                             <div class="col-md-3">
                                                 <label>HCT Code</label>
                                                 <obs conceptId="99317" answerConceptIds="99313, 99734, 99314, 99315, 99735, 99736, 99739, 99741"
@@ -360,12 +339,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>HIV+ First Time Use</label>
-                                                <obs conceptId="165003"
-                                                     answerConceptId="1065"
-                                                     style="checkbox"/>
-                                                <obs conceptId="165003"
-                                                     answerConceptId="1066"
-                                                     style="checkbox"/>
+                                                <obs conceptId="165003" answerConceptIds="1065,1066" style="checkbox"/>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>ARVs</label>
