@@ -318,49 +318,56 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                                     <obs conceptId="99551" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>DPT-Hep B-HIB</label>
-                                                    <obs conceptId="165013" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Infant Screened For HIV</label>
-                                                    <obs conceptId="99550" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Exposed</label>
-                                                    <obs conceptId="99087" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Tested</label>
-                                                    <obs conceptId="99551" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>DPT-Hep B-HIB</label>
-                                                    <obs conceptId="165013" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Infant Screened For HIV</label>
-                                                    <obs conceptId="99550" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Exposed</label>
-                                                    <obs conceptId="99087" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Tested</label>
-                                                    <obs conceptId="99551" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />
-                                                </div>
-                                            </div>
+<!--                                            <div class="row">-->
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <label>DPT-Hep B-HIB</label>-->
+<!--                                                    <obs conceptId="165013" />-->
+<!--                                                </div>-->
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <label>Infant Screened For HIV</label>-->
+<!--                                                    <obs conceptId="99550" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />-->
+<!--                                                </div>-->
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <label>Exposed</label>-->
+<!--                                                    <obs conceptId="99087" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />-->
+<!--                                                </div>-->
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <label>Tested</label>-->
+<!--                                                    <obs conceptId="99551" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="row">-->
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <label>DPT-Hep B-HIB</label>-->
+<!--                                                    <obs conceptId="165013" />-->
+<!--                                                </div>-->
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <label>Infant Screened For HIV</label>-->
+<!--                                                    <obs conceptId="99550" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />-->
+<!--                                                </div>-->
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <label>Exposed</label>-->
+<!--                                                    <obs conceptId="99087" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />-->
+<!--                                                </div>-->
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <label>Tested</label>-->
+<!--                                                    <obs conceptId="99551" answerConceptIds="1065,1066" answerLabels="Yes,No" style="checkbox" class="horizontal" />-->
+<!--                                                </div>-->
+<!--                                            </div>-->
                                             <div class="row">
                                                <div class="col-md-3">
-<!--                                                    <label>PCV</label>-->
-<!--                                                    <obs conceptId="163014" />-->
-<!--                                                    <obs conceptId="163015" />-->
-<!--                                                    <obs conceptId="163016" />-->
+                                                    <label>PCV 1</label>
+                                                   <obs conceptId="166963" />
+                                               </div>
+                                                <div class="col-md-3">
+                                                    <label>PCV 2</label>
+                                                    <obs conceptId="166964" />
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <label>PCV 3</label>
+                                                    <obs conceptId="166965" />
+                                                </div>
+
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3">
