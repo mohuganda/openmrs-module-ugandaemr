@@ -225,14 +225,14 @@ within the health unit service area to facilitate monitoring (defaulter tracking
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>First Dose Administered 12 to 59 Months</label>
-                                                    <obs conceptId="164941"  />
+                                                    <obs conceptId="165033" style="checkbox" class="horizontal"  />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Second Dose Administered 12 to 59 Months</label>
-                                                    <obs conceptId="165033" />
-                                                </div>
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <label>Second Dose Administered 12 to 59 Months</label>-->
+<!--                                                    <obs conceptId="165033" />-->
+<!--                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
