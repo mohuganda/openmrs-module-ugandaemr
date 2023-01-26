@@ -1273,7 +1273,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
 
         OrderService orderService = Context.getOrderService();
         for (Obs obs : obsList) {
-            if ((obs.getValueCoded() != null && (obs.getValueCoded().getConceptClass().getName().equals(DRUG_SET_CLASS))) && !orderExists(obs.getValueCoded(), obs.getEncounter())) {
+            if (!orderExists(obs.getValueCoded(), obs.getEncounter())) {
                 DrugOrder drugOrder = new DrugOrder();
                 Set<Obs> obsGroupMembers = new HashSet<>();
                 if (obs.getObsGroup() != null) {

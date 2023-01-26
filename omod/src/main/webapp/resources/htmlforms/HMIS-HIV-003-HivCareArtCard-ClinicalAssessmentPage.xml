@@ -1209,8 +1209,6 @@
                    returnDatePoc = jq('.return-date-poc').find("input[type$='text']").val();
                 }
 
-
-
                 if(getValue('provider.value')==""){
                     jq().toastmessage('showErrorToast', "Attending clinician is required");
                 }
