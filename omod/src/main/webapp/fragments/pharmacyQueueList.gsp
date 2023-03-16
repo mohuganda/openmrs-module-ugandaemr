@@ -95,7 +95,7 @@ button, input {
                     visitNumber = patientQueueListElement.visitNumber.substring(15);
                 }
 
-                if (ordersNo > 0) {
+                if (patientQueueListElement.encounterId !==null && patientQueueListElement.status !== "COMPLETED") {
                     prescriptions += "<tr>";
                     prescriptions += "<td>" + visitNumber + "</td>";
                     prescriptions += "<td>" + patientQueueListElement.patientNames + "</td>";
