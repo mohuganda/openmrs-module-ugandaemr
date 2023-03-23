@@ -417,7 +417,7 @@
     <concept  concept_id="165915"  retired="0" datatype_id="1"  class_id="5"  is_set="0"  creator="1"  date_created="2020-08-20 09:47:22"  version="1.0" uuid="66816c43-88e2-466b-9364-c09e771488f7"/>
     <concept  concept_id="165916"  retired="0" datatype_id="1"  class_id="5"  is_set="0"  creator="1"  date_created="2020-08-20 09:50:03"  version="1.0" uuid="dd4dea1a-725e-4a2f-be2c-55e11b40c35c"/>
     <concept  concept_id="165917"  retired="0" datatype_id="1"  class_id="5"  is_set="0"  creator="1"  date_created="2020-08-20 09:54:19"  version="1.0" uuid="4287fd0e-7cec-4cd3-91b4-8dc9b064b3cb"/>
-    <concept  concept_id="165918"  retired="0" datatype_id="1"  class_id="5"  is_set="0"  creator="1"  date_created="2020-08-20 09:56:33"  version="1.0" uuid="bf038497-df07-417d-9767-983e59983760"/>
+    <concept  concept_id="165918"  retired="0" datatype_id="1"  class_id="7"  is_set="0"  creator="1"  date_created="2020-08-20 09:56:33" changed_by="1"  date_changed="2023-03-23 13:51:24" uuid="bf038497-df07-417d-9767-983e59983760"/>
     <concept  concept_id="165919"  retired="0" datatype_id="3"  class_id="5"  is_set="0"  creator="1"  date_created="2020-08-20 10:07:26"  version="1.0" uuid="5b437607-eb6c-4b22-85d4-a0d96c2179ba"/>
     <concept  concept_id="165920"  retired="0" datatype_id="3"  class_id="5"  is_set="0"  creator="1"  date_created="2020-08-20 10:07:48"  version="1.0" uuid="89639df6-25a9-450b-bcb3-85ecc741a25e"/>
     <concept  concept_id="165921"  retired="0" datatype_id="3"  class_id="5"  is_set="0"  creator="1"  date_created="2020-08-20 10:08:08"  version="1.0" uuid="e12944a7-35ad-4c49-9064-dad6620d9a1a"/>
@@ -3302,7 +3302,7 @@
     <concept_description  concept_description_id="18730"  concept_id="168686"  description="Special Considerations"             locale="en"  creator="1"  date_created="2023-03-20 18:06:03"  uuid="e4856ea6-cbb3-4d00-9cbb-439f18c3b8cf"/>
     <concept_description  concept_description_id="18731"  concept_id="168687"  description="Repeat (after IAC)"                 locale="en"  creator="1"  date_created="2023-03-20 18:07:29"  uuid="e464e90f-c9c4-4f39-a09e-da455d8f8032"/>
     <concept_description  concept_description_id="18732"  concept_id="168689"  description="Indication for viral load testing"  locale="en"  creator="1"  date_created="2023-03-21 22:50:40"  uuid="c53e2fd3-abe0-4efa-b46f-6c4ee8c38dc3"/>
-
+    <concept_description  concept_description_id="18733"  concept_id="165918"  description="NUMBER OF MONTHS SINCE FIRST HIV/AIDS SYMPTOMS"  locale="en"  creator="1"  date_created="2023-03-23 13:51:24"  changed_by="1"  date_changed="2023-03-23 13:51:24"  uuid="5cfe8690-e555-4e72-8947-cfe588213b39"/>
 
 
     <!--CONCEPT NAME-->
