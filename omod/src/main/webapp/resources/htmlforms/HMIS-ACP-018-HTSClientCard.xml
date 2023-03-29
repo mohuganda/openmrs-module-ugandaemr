@@ -773,16 +773,16 @@
                                         <div class="col-md-4">
                                             <label>HIV Recency Viral Load Result</label>
                                             <obs id="856"
-                                                 conceptId="856"/>
+                                                 conceptId="168690"/>
                                         </div>
 
                                         <div class="col-md-4">
                                             <label></label>
-                                            <obs id="1305" conceptId="1305" answerConceptIds="1306" answerLabels="VL undetectable" style="radio" class="horizontal"/>
+                                            <obs id="1305" conceptId="168694" answerConceptIds="168691" answerLabels="VL undetectable" style="radio" class="horizontal"/>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Receny Sample ID</label>
-                                            <obs id="165845" conceptId="165845"/>
+                                            <label>Recency Sample ID</label>
+                                            <obs id="165845" conceptId="168692"/>
                                         </div>
 
                                     </div>
