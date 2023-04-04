@@ -718,18 +718,32 @@
             }
         });
 
+        jq('#indication-for-viral-load').hide();
+
+        jq(".investigations").find('#165412').change(function () {
+        if ( jq(".investigations").find('#165412').find(':checkbox').prop('checked')) {
+                jq('#indication-for-viral-load').show();
+        } else {
+                jq('#indication-for-viral-load').hide();
+        }
+        });
+
         disable_fields("viral-load-accession-number");
         disable_fields("viral-load-specimen-source");
+        disable_fields("indication-for-viral-load-testing");
 
         jq("#order-viral-load-test").change(function () {
             if (jq(this).find(':checkbox').prop('checked')) {
                 enable_fields("viral-load-accession-number");
                 enable_fields("viral-load-specimen-source");
+                enable_fields("indication-for-viral-load-testing");
             } else {
                 disable_fields("viral-load-accession-number");
                 disable_fields("viral-load-specimen-source");
+                disable_fields("indication-for-viral-load-testing");
             }
         });
+
 
 
         jq("#99413").change(function () {
@@ -815,7 +829,6 @@
 
             var tptStatus = "<lookup expression="fn.latestObs('165288').valueCoded"/>";
             if(tptStatus == 'Concept #160035') {
-                disable_fields("tpt-status");
                 jq("#tpt-status").find("select").val("160035");
             }
 
@@ -930,37 +943,42 @@
             jq('.tpt-without-inh').show();
         </ifMode>
 
-        disable_fields("tb-status");
-
         var tptInitiationDate = "<lookup expression="fn.latestObs('165226').valueDatetime"/>";
         if(tptInitiationDate != '' || tptInitiationDate != null || tptInitiationDate != NULL || typeof tptInitiationDate != "undefined") {
             jq("#tpt-initiation-date").find("input").val(tptInitiationDate);
         }
 
-        var tbRegNo = "<lookup expression="fn.latestObs('165826').valueText"/>";
-        if(tbRegNo != '' || tbRegNo != null || tbRegNo != NULL || typeof tbRegNo != "undefined") {
-            disable_fields("district-tb-no");
-            jq("#district-tb-no").find("input").val(tbRegNo);
+        var tbRegNoFromTB = "<lookup expression="fn.latestObs('165826').valueText"/>";
+        var tbRegNoFromArt ="<lookup expression="fn.latestObs('99031').valueText"/>";
+        if(tbRegNoFromTB != '' || tbRegNoFromTB != null || tbRegNoFromTB != NULL || typeof tbRegNoFromTB != "undefined") {
+            jq("#district-tb-no").find("input").val(tbRegNoFromTB);
+        } else if(tbRegNoFromArt != '' || tbRegNoFromArt != null || tbRegNoFromArt != NULL || typeof tbRegNoFromArt != "undefined") {
+            jq("#district-tb-no").find("input").val(tbRegNoFromArt);
         }
 
-        var tbStartDate = "<lookup expression="fn.latestObs('165838').valueDatetime"/>";
-        if(tbStartDate != '' || tbStartDate != null || tbStartDate != NULL || typeof tbStartDate != "undefined") {
-            jq("#tb-start-date").find("input").val(tbStartDate);
+        var tbStartDateFromTB = "<lookup expression="fn.latestObs('165838').valueDatetime"/>";
+        var tbStartDateFromArt = "<lookup expression="fn.latestObs('90217').valueDatetime"/>";
+        if(tbStartDateFromTB != '' || tbStartDateFromTB != null || tbStartDateFromTB != NULL || typeof tbStartDateFromTB != "undefined") {
+            jq("#tb-start-date").find("input").val(tbStartDateFromTB);
+        } else if(tbStartDateFromArt != '' || tbStartDateFromArt != null || tbStartDateFromArt != NULL || typeof tbStartDateFromArt != "undefined") {
+            jq("#tb-start-date").find("input").val(tbStartDateFromArt);
+        }
 
-            var treatmentOutcome = "<lookup expression="fn.latestObs('99423').valueCoded"/>";
-            if(treatmentOutcome) {
-                if(treatmentOutcome == 'Concept #159791' || treatmentOutcome == 'Concept #99421') {
-                    jq("#tb-status").find("select").val("99421");
-                } else {
-                    jq("#tb-status").find("select").val("90071");
-                 }
-                var tbStopDate = "<lookup expression="fn.latestObs('165872').valueDatetime"/>";
-                if(tbStopDate != '' || tbStopDate != null || tbStopDate != NULL || typeof tbStopDate != "undefined") {
-                    jq("#tb-stop-date").find("input").val(tbStopDate);
-                }
+        var treatmentOutcome = "<lookup expression="fn.latestObs('99423').valueCoded"/>";
+        if(treatmentOutcome) {
+            if(treatmentOutcome == 'Concept #159791' || treatmentOutcome == 'Concept #99421') {
+                jq("#tb-status").find("select").val("99421");
             } else {
                 jq("#tb-status").find("select").val("90071");
             }
+        }
+
+        var tbStopDateFromTB = "<lookup expression="fn.latestObs('165872').valueDatetime"/>";
+        var tbStopDateFromArt = "<lookup expression="fn.latestObs('90310').valueDatetime"/>";
+        if(tbStopDateFromTB != '' || tbStopDateFromTB != null || tbStopDateFromTB != NULL || typeof tbStopDateFromTB != "undefined") {
+            jq("#tb-stop-date").find("input").val(tbStopDateFromTB);
+        } else if(tbStopDateFromArt != '' || tbStopDateFromArt != null || tbStopDateFromArt != NULL || typeof tbStopDateFromArt != "undefined") {
+            jq("#tb-stop-date").find("input").val(tbStopDateFromArt);
         }
 
         /* enable the edd,age in months and ANC no. fields in case the client is pregnant */
@@ -1041,40 +1059,40 @@
         });
 
         //enable start date and district number if client is on TbRx
-        <!--                jq("#tb-status").change(function () {-->
-        <!--                    if (jq(this).find("select").find(":selected").val() == "90071" || jq(this).find("select").find(":selected").val() == "165295" || jq(this).find("select").find(":selected").val() == "165296" || jq(this).find("select").find(":selected").val() == "165297" || jq(this).find("select").find(":selected").val() == "165298" || jq(this).find("select").find(":selected").val() == "165299" || jq(this).find("select").find(":selected").val() == "165300" ) {-->
-        <!--                        enable_fields("tb-start-date");-->
-        <!--                        enable_fields("district-tb-no");-->
-        <!--                    } else {-->
-        <!--                        disable_fields("tb-start-date");-->
-        <!--                        disable_fields("district-tb-no");-->
-        <!--                    }-->
-        <!--                });-->
+        jq("#tb-status").change(function () {
+            if (jq(this).find("select").find(":selected").val() == "90071" || jq(this).find("select").find(":selected").val() == "165295" || jq(this).find("select").find(":selected").val() == "165296" || jq(this).find("select").find(":selected").val() == "165297" || jq(this).find("select").find(":selected").val() == "165298" || jq(this).find("select").find(":selected").val() == "165299" || jq(this).find("select").find(":selected").val() == "165300" ) {
+                enable_fields("tb-start-date");
+                enable_fields("district-tb-no");
+            } else {
+                disable_fields("tb-start-date");
+                disable_fields("district-tb-no");
+            }
+        });
 
-        <!--                jq("#tb-status").change(function () {-->
-        <!--                    if (jq(this).find("select").find(":selected").val() == "99421") {-->
-        <!--                        enable_fields("tb-stop-date");-->
-        <!--                    } else {-->
-        <!--                        disable_fields("tb-stop-date");-->
-        <!--                    }-->
-        <!--                });-->
+        jq("#tb-status").change(function () {
+            if (jq(this).find("select").find(":selected").val() == "99421") {
+                enable_fields("tb-stop-date");
+            } else {
+                disable_fields("tb-stop-date");
+            }
+        });
 
         //enable tpt treatment if patient is has no signs of TB
-        <!--                jq("#tb-status").change(function () {-->
-        <!--                    if (jq(this).find("select").find(":selected").val() == "90079") {-->
-        <!--                        jq("#tpt-status").find('select option:nth-child(3)').show();-->
-        <!--                    } else {-->
-        <!--                        jq("#tpt-status").find('select option:nth-child(3)').hide();-->
-        <!--                    }-->
-        <!--                });-->
+        jq("#tb-status").change(function () {
+            if (jq(this).find("select").find(":selected").val() == "90079") {
+                jq("#tpt-status").find('select option:nth-child(3)').show();
+            } else {
+                jq("#tpt-status").find('select option:nth-child(3)').hide();
+            }
+        });
 
-        <!--                jq("#tb-status").each(function () {-->
-        <!--                    if (jq(this).find("select").find(":selected").val() == "90079") {-->
-        <!--                        jq("#tpt-status").find('select option:nth-child(3)').show();-->
-        <!--                    } else {-->
-        <!--                        jq("#tpt-status").find('select option:nth-child(3)').hide();-->
-        <!--                    }-->
-        <!--                });-->
+        jq("#tb-status").each(function () {
+            if (jq(this).find("select").find(":selected").val() == "90079") {
+                jq("#tpt-status").find('select option:nth-child(3)').show();
+            } else {
+                jq("#tpt-status").find('select option:nth-child(3)').hide();
+            }
+        });
 
         jq("#tpt-status").change(function () {
             if (jq(this).find("select").find(":selected").val() == "90072") {
@@ -3029,6 +3047,12 @@
                                                                      answerConceptSetIds="162476"/>
                                                             </div>
                                                         </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label>Indication for viral load testing</label>
+                                                                <obs id="indication-for-viral-load-testing" conceptId="168689" style="checkbox"/>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -3703,10 +3727,16 @@
                                                                 </div>
                                                             </repeat>
                                                         </div>
+                                                        <div class="row" id="indication-for-viral-load">
+                                                            <div class="col-md-12">
+                                                                <label>Indication for viral load testing</label>
+                                                                <obs conceptId="168689" id="168689" style="checkbox"/>
+                                                            </div>
+                                                        </div>
                                                         <div class="row">
                                                             <div class="col-12">
                                                                 <div class="row investigations">
-                                                                    <repeat with="['165418','CrAg'],['165417','RPR'],['165416','TB LAM'],['165413','GeneXpert'],['165415','Microscopy'],['1019','CBC'],['657','Cd4'],['165412','VL'],['1643','Malaria RDT'],['302','URINALYSIS'],['166522','LFT'],['166529','RFT'],['647','FULL HEMOGRAM'],['652','LFTS'],['953','LIVER FUNCTION TESTS'],['1010','LIPID Panel'],['1026','DIFFERENTIAL'],['5473','SERUM ELECTROLYTES'],['99145','BASELINE CD4 PERCENTAGE'],['159645','CSF Examination'],['159981','TB Culture Construct'],['161152','Prothrombin Time (with INR)'],['161199','Cytology'],['161422','HBG With Electrophoresis'],['161424','RBC Morphology Test'],['161425','Sedimentation Test'],['161426','Malarial Parasites Smear'],['161428','Microfilaria Test'],['161429','Hemoglobin Only'],['161430','Routine Blood Panel'],['161431','Sickling Test Only'],['161432','Absolute Eosinophil Count Test'],['161434','Bleeding Time Test'],['161436','Clotting Time Test'],['161437','Anemia Panel'],['161446','Routine Urine'],['161451','Stool Test'],['161458','Vaginal Fluid Examination'],['161461','Ziehl-Neelsen Stain Test'],['161463','Skin Fungal Test'],['161464','Skin Mycobacterial Test'],['161468','Semen Analysis Test'],['161473','Blood Grouping Test'],['161474','Hepatitis C Serological Test'],['161475','Hepatitis B Serological Test'],['161476','Syphilis serological Panel'],['161477','Typhoid serological Test'],['161478','Anti-Streptolysin O Test'],['161479','Rheumatoid Factor Test'],['161480','HIV Serological Test'],['161483','Serum Chemistry Panel'],['161486','Culture Panel'],['161487','Diabetes Panel'],['161488','Renal Function Panel'],['161491','FSH Panel'],['161492','Leutinizing Hormone Panel'],['161493','Alpha Fetoprotein Test'],['161495','ANA'],['161496','Bone Marrow Test'],['161497','Cancer Marker Panel'],['161498','CPK Measurement'],['161499','Coombs Test'],['161501','C-reactive Protein Test'],['161506','Thyroid Panel'],['161508','Ceruloplasmin Test'],['161509','Serum HCG'],['161510','Carcinoembryonic Antigen'],['161512','Serum Iron Profile'],['161514','G6PD'],['161515','Lipase Test'],['161517','Prolactin Test'],['161518','Cardiac Enzyme Test'],['161520','PSA Test'],['161532','TORCH Panel'],['161533','TORCHS Panel'],['162630','Basic Metabolic Panel'],['163436','Coagulation Profile'],['163602','Arterial Blood Gas Panel'],['163625','Toxoplasma Panel'],['163628','VTC Panel'],['163631','Tuberculin skin test Panel'],['163652','Urethral fluid examination Panel'],['163679','Bacterial culture Panel'],['163697','Urine microscopy Panel'],['163700','CBC (auto)'],['163701','CBC With Manual Differential'],['163702','Clotting Panel'],['163708','GTT  (75g)'],['165419','Malaria Test'],['165824','HIVDR'],['166284','Covid test type'],['166405','Blood gas done'],['166429','ALT/SGOT'],['167178','PPG'],['163342','HIV p24 antigen'],['163610','HIV drug-resistance'],['163722','Rapid test for HIV'],['167441','HIV PCR, DBS']">
+                                                                    <repeat with="['953','LIVER FUNCTION TESTS'],['1010','LIPID Panel'],['1026','DIFFERENTIAL'],['5473','SERUM ELECTROLYTES'],['99145','BASELINE CD4 PERCENTAGE'],['159645','CSF Examination'],['159981','TB Culture Construct'],['161152','Prothrombin Time (with INR)'],['161199','Cytology'],['161422','HBG With Electrophoresis'],['161424','RBC Morphology Test'],['161425','Sedimentation Test'],['161426','Malarial Parasites Smear'],['161428','Microfilaria Test'],['161429','Hemoglobin Only'],['161430','Routine Blood Panel'],['161431','Sickling Test Only'],['161432','Absolute Eosinophil Count Test'],['161434','Bleeding Time Test'],['161436','Clotting Time Test'],['161437','Anemia Panel'],['161446','Routine Urine'],['161451','Stool Test'],['161458','Vaginal Fluid Examination'],['161461','Ziehl-Neelsen Stain Test'],['161463','Skin Fungal Test'],['161464','Skin Mycobacterial Test'],['161468','Semen Analysis Test'],['161473','Blood Grouping Test'],['161474','Hepatitis C Serological Test'],['161475','Hepatitis B Serological Test'],['161476','Syphilis serological Panel'],['161477','Typhoid serological Test'],['161478','Anti-Streptolysin O Test'],['161479','Rheumatoid Factor Test'],['161480','HIV Serological Test'],['161483','Serum Chemistry Panel'],['161486','Culture Panel'],['161487','Diabetes Panel'],['161488','Renal Function Panel'],['161491','FSH Panel'],['161492','Leutinizing Hormone Panel'],['161493','Alpha Fetoprotein Test'],['161495','ANA'],['161496','Bone Marrow Test'],['161497','Cancer Marker Panel'],['161498','CPK Measurement'],['161499','Coombs Test'],['161501','C-reactive Protein Test'],['161506','Thyroid Panel'],['161508','Ceruloplasmin Test'],['161509','Serum HCG'],['161510','Carcinoembryonic Antigen'],['161512','Serum Iron Profile'],['161514','G6PD'],['161515','Lipase Test'],['161517','Prolactin Test'],['161518','Cardiac Enzyme Test'],['161520','PSA Test'],['161532','TORCH Panel'],['161533','TORCHS Panel'],['162630','Basic Metabolic Panel'],['163436','Coagulation Profile'],['163602','Arterial Blood Gas Panel'],['163625','Toxoplasma Panel'],['163628','VTC Panel'],['163631','Tuberculin skin test Panel'],['163652','Urethral fluid examination Panel'],['163679','Bacterial culture Panel'],['163697','Urine microscopy Panel'],['163700','CBC (auto)'],['163701','CBC With Manual Differential'],['163702','Clotting Panel'],['163708','GTT  (75g)'],['165419','Malaria Test'],['165824','HIVDR'],['166284','Covid test type'],['166405','Blood gas done'],['166429','ALT/SGOT'],['167178','PPG'],['163342','HIV p24 antigen'],['163610','HIV drug-resistance'],['163722','Rapid test for HIV'],['167441','HIV PCR, DBS']">
                                                                         <div class="col-3">
                                                                             <obs id="{0}" conceptId="1271"
                                                                                  answerConceptId="{0}"
