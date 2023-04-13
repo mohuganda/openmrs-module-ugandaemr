@@ -1,0 +1,406 @@
+<htmlform formName="HMIS MCH 007: Integrated Family Planning Register"
+          formDescription="To register family planning clients and monitor the dispensing of Contraceptives"
+          formEncounterType="1668ef2e-1aca-4b5d-931d-696b272eea0f"
+          formUuid="77e3d601-6276-4472-946c-44cb1077ae1b"
+          formVersion="1.0.0"
+          formAddMetadata="yes"
+          formUILocation="patientDashboard.visitActions"
+          formOrder="36"
+          formIcon="icon-medkit"
+          formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==false;"
+          formDisplayStyle="Standard"
+          sessionLocation.uuid="e9bc61b5-69ff-414b-9cf0-0c22d6dfca2b"
+          formLabel="HMIS-MCH-007-Integrated-Family-Planning">
+    <div>
+        <div class="row">
+            <div class="col-md-8">
+                <H1>HMIS MCH 007: Integrated Family Planning Register</H1>
+            </div>
+            <div class="col-md-3"/>
+            <div>
+                <div class="col-md-1">
+                    <submit class="confirm"
+                            submitLabel="Save"
+                            submitStyle="customSubmit"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active"
+                                   data-toggle="tab"
+                                   href="#client-information-section">Client Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   data-toggle="tab"
+                                   href="#contraceptives-dispensed-section">Contraceptives Dispensed</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   data-toggle="tab"
+                                   href="#fertility-section">Fertility Awareness And Other Services</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active"
+                                 id="client-information-section">
+                                <div class="card">
+                                    <div class="card-header">Admission Information</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3 html-form-entry-disabled-field">
+                                                <label>Date of Admission</label>
+                                                <encounterDate default="today"
+                                                               disallowMultipleEncountersOnDate="block"/>
+                                                <span class="hidden">
+                                                    <encounterLocation default="629d78e9-93e5-43b0-ad8a-48313fd99117"
+                                                                       order="629d78e9-93e5-43b0-ad8a-48313fd99117"/>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>
+                                                    <span class="required">*</span>
+                                                    Serial Number
+                                                </label>
+                                                <obs conceptId="1646"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Client No.</label>
+                                                <patient field="identifier"
+                                                         identifierTypeId="a6217c17-5012-4514-b9f2-5d02d3d04c44"
+                                                         required="true"/>
+                                                <obs conceptId="1646"/>
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <label>Outpatient Type</label>-->
+<!--                                                <obs conceptId="165362"-->
+<!--                                                     answerConceptIds="99380,165361"/>-->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Previous FP Method</label>
+                                                <obs conceptId="374"
+                                                     answerConceptIds="5279,5278,5275,5277,780,90089,90088,162961,162960,162959,162963,164814,164813"
+                                                     style="dropdown"
+                                                     class="long-value-select"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>FP Counseling</label>
+                                                <obs conceptId="99368"
+                                                     answerConceptIds="99365,99367,99366"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90238"
+                                                     answerLabels="Yes,No"
+                                                     labelText="FP Given"
+                                                     class="horizontal"
+                                                     style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <label>Switching Method</label>-->
+<!--                                                <obs conceptId="1165029"-->
+<!--                                                     answerConceptId="1065"-->
+<!--                                                     style="checkbox"/>-->
+<!--                                                <obs conceptId="1165029"-->
+<!--                                                     answerConceptId="1066"-->
+<!--                                                     style="checkbox"/>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="fp-and-referral">
+                                    <div class="card">
+                                        <div class="card-header">Client Information</div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-3">
+<!--                                                    <obs conceptId="1165031"-->
+<!--                                                         answerConceptIds="1365,90045,1165030,90002"-->
+<!--                                                         answerLabels="1-SE,2-OS,3-CFI,4-Other"-->
+<!--                                                         labelText="Reasons For Switching"-->
+<!--                                                         style="dropdown"-->
+<!--                                                         id="1165031"/>-->
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <obs conceptId="163003"
+                                                         labelText="Is it a Referral?"/>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <obs conceptId="99767"
+                                                         labelText="Referral Number"/>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <obs conceptId="99770"
+                                                         labelText="Clinic Referred from"/>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <obs conceptId="161562" labelText="Clinic Referred To" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <obs conceptId="99387"
+                                                         labelText="Referral Reason"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="contraceptives-dispensed-section">
+                                <div class="card">
+                                    <div class="card-header">Oral Pills</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Lofeminal</label>
+                                                <span id="Lofeminal"/>
+                                                <obs conceptId="165004"/>
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <label>Microgynon</label>-->
+<!--                                                <obs conceptId="104625"/>-->
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <label>Ovrette</label>-->
+<!--                                                <obs conceptId="1165078" answerConcept="165004"/>-->
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <label>levonorgestrel</label>-->
+<!--                                                <obs conceptId="1165078"-->
+<!--                                                     answerConceptId="165584"/>-->
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <label>Zinnia</label>-->
+<!--                                                <obs conceptId="1165037"-->
+<!--                                                     answerClasses="Drug" style="autocomplete" />-->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+<!--                                                <label>Emergency contraceptives</label>-->
+<!--                                                <obs conceptId="160570" answerConceptIds="1165037,163145"/>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">Condoms</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+<!--                                                <label>Male Condom</label>-->
+<!--                                                <obs conceptId="1165032" answerConcept="164813"/>-->
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <label>Female Condom</label>-->
+<!--                                                <obs conceptId="1165032" answerConcept="164814"/>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">Injectables</div>
+                                    <div class="card-body">
+                                        <div class="col-md-3">
+<!--                                            <label>DPMA IM 3 Months</label>-->
+<!--                                            <obs conceptId="5279" answerConcept="165665"/>-->
+                                        </div>
+                                        <div class="col-md-3">
+<!--                                            <label>DPMA SC 3 Months</label>-->
+<!--                                            <obs conceptId="5279" answerConcept="165663"/>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">Implants</div>
+                                    <div class="card-body">
+                                        <div class="col-md-3">
+<!--                                            <label>Implant Insertion</label>-->
+<!--                                            <obs conceptId="1165085"/>-->
+                                        </div>
+                                        <div class="col-md-3">
+<!--                                            <label>How Long</label>-->
+<!--                                            <obs conceptId="1165033"/>-->
+                                        </div>
+                                        <div class="col-md-3">
+<!--                                            <label>Implant Removal</label>-->
+<!--                                            <obs conceptId="1165086"/>-->
+                                        </div>
+                                        <div class="col-md-3">
+<!--                                            <label>Implant Removal Reason</label>-->
+<!--                                            <obs conceptId="1165034" answerConceptIds="1165030,1365,99113" style="dropdown" />-->
+<!--                                            <obs conceptId="99113" />-->
+                                        </div>
+                                    </div>
+                                    <div class="card-header">Sterilization</div>
+                                    <div class="card-body">
+                                        <div class="col-md-3">
+                                            <obs conceptId="99265" answerConceptId="90089" style="checkbox" labelText="Tubal ligation" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label></label>
+                                            <obs conceptId="99265" answerConceptId="90089" style="checkbox" labelText="Vasectomy" />
+                                        </div>
+                                    </div>
+                                    <div class="card-header">Intra-uterine contraceptive devices</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>IUD Insertion ?</label>
+<!--                                                <obs conceptId="1165089"-->
+<!--                                                     answerConceptId="1065"-->
+<!--                                                     style="checkbox"/>-->
+<!--                                                <obs conceptId="1165089"-->
+<!--                                                     answerConceptId="1066"-->
+<!--                                                     style="checkbox"/>-->
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <obs conceptId="1165036" answerConceptId="90089" style="checkbox" labelText="Copper-T" />-->
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <obs conceptId="1165036" answerConceptId="5279" style="checkbox" labelText="Hormonal" />-->
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>IUD Removal ?</label>
+<!--                                                <obs conceptId="1165088"-->
+<!--                                                     answerConceptId="1065"-->
+<!--                                                     style="checkbox"/>-->
+<!--                                                <obs conceptId="1165088"-->
+<!--                                                     answerConceptId="1066"-->
+<!--                                                     style="checkbox"/>-->
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <obs conceptId="1165035" answerConceptIds="1165030,1365,99113" style="dropdown" labelText="IUD Removal Reason" />-->
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Post partum ?</label>
+<!--                                                <obs conceptId="1165084"-->
+<!--                                                     answerConceptId="1065"-->
+<!--                                                     style="checkbox"/>-->
+<!--                                                <obs conceptId="1165084"-->
+<!--                                                     answerConceptId="1066"-->
+<!--                                                     style="checkbox"/>-->
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <obs conceptId="1165083" answerLabels="1,2,3,4,5" style="dropdown" labelText="Timing Code" />-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane"
+                                 role="tabpanel"
+                                 aria-leballebdy="nav-profile-tab"
+                                 id="fertility-section">
+                                <div class="card">
+                                    <div class="card-header">Fertility Details</div>
+                                    <div class="card-body">
+<!--                                        <obsgroup groupingConceptId="1165072">-->
+<!--                                            <div class="row">-->
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <obs conceptId="1165069" labelText="Standard Days" style="checkbox" class="horizontal" />-->
+<!--                                                </div>-->
+<!--                                                <div class="col-md-4">-->
+<!--                                                    <obs conceptId="1165070" labelText="Lactational Amenorrhea Method" style="checkbox" class="horizontal" />-->
+<!--                                                </div>-->
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <obs conceptId="1165071" labelText="Two-Day Method" style="checkbox" class="horizontal" />-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </obsgroup>-->
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">Other Services</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+<!--                                                <label>Side Effects</label>-->
+<!--                                                <obs conceptId="1165074" answerConceptIds="136758,99688,1165079,90091,1165080,1165081,139084,99349,122983,90100,157544,5544,1165082,838,90227"-->
+<!--                                                     answerLabels="IB,HB,NB,NV,ISR,INSR,HE,BR,CR,SAP,WG,SP,AC,Others"-->
+<!--                                                     style="dropdown" class="long-value-select" />-->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+<!--                                                <label>Cervical Cancer Screening</label>-->
+<!--                                                <obs conceptId="165315" answerConceptIds="99348,165314,1175,1364" answerLabels="FOM - Free of malignancy,SS - Suspicious of malignancy,ND - Not screen for cancer ,NA - Male partners" style="dropdown" class="long-value-select" />-->
+                                            </div>
+                                            <div class="col-md-3">
+<!--                                                <label>Breast Cancer Screening</label>-->
+<!--                                                <obs conceptId="1165075" answerConceptIds="116026,165313,1175,1364" answerLabels="FOM - Free of malignancy,SS - Suspicious of malignancy,ND - Not screen for cancer ,NA - Male partners" style="dropdown" class="long-value-select" />-->
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>STI Screening</label>
+                                                <obs conceptId="99550"
+                                                     answerConceptId="1065"
+                                                     style="checkbox"/>
+                                                <obs conceptId="99550"
+                                                     answerConceptId="1066"
+                                                     style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>SGBV Screening</label>
+<!--                                                <obs conceptId="1165077"-->
+<!--                                                     answerConceptId="1065"-->
+<!--                                                     style="checkbox"/>-->
+<!--                                                <obs conceptId="1165077"-->
+<!--                                                     answerConceptId="1066"-->
+<!--                                                     style="checkbox"/>-->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+<!--                                                <label>HCT Code</label>-->
+<!--                                                <obs conceptId="1165076" answerConceptIds="99313, 99734, 99314, 99315, 99735, 99736, 99739, 99741"-->
+<!--                                                     answerLabels="C - Counseled but declined HIV testing,-->
+<!--                                                                               T - Counseled and tested but didn't receive results,-->
+<!--                                                                               TR - Counseled tested and results given - Client tested HIV Negative,-->
+<!--                                                                               TRR - Counseled tested and results given - Client tested HIV Positive,-->
+<!--                                                                               TR+ - Client tested HIV Negative on a re-test,-->
+<!--                                                                               TRR+ - Client tested HIV Positive on a re-test,-->
+<!--                                                                               TRK; - Clients tested previously with known HIV Negative status,-->
+<!--                                                                               TRRK; - Revisit ANC clients who were tested for HIV on a previous visit with known HIV positive status" style="dropdown" class="long-value-select" />-->
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>HIV+ First Time Use</label>
+                                                <obs conceptId="165003"
+                                                     answerConceptId="1065"
+                                                     style="checkbox"/>
+                                                <obs conceptId="165003"
+                                                     answerConceptId="1066"
+                                                     style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>ARVs</label>
+                                                <obs conceptId="90315" style="dropdown" class="long-value-select" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Comments</label>
+<!--                                                <obs conceptId="1165087" />-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</htmlform>
