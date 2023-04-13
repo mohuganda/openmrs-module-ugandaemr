@@ -1,10 +1,4 @@
-<htmlform formName="HMIS MCH 006: Integrated Maternity Register"
-		  formDescription="Admission into a clinic for a pregnant woman to give birth"
-		  formEncounterType="a9f11592-22e7-45fc-904d-dfe24cb1fc67"
-		  formUuid="0b946c41-957c-4aeb-9b1a-da3983c0d163" formVersion="3.0.0"
-		  formAddMetadata="yes" formUILocation="patientDashboard.visitActions" formOrder="6"
-		  formIcon="icon-medkit" formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==false &amp;&amp; patient.person.gender=='F' &amp;&amp;sessionLocation.uuid=='e9bc61b5-69ff-414b-9cf0-0c22d6dfca2b'"
-		  formDisplayStyle="Standard" formLabel="HMIS-MCH-006-Maternity Form">
+<htmlform formName="HMIS MCH 006: Integrated Maternity Register" formDescription="Admission into a clinic for a pregnant woman to give birth" formEncounterType="a9f11592-22e7-45fc-904d-dfe24cb1fc67" formUuid="0b946c41-957c-4aeb-9b1a-da3983c0d163" formVersion="3.0.0" formAddMetadata="yes" formUILocation="patientDashboard.visitActions" formOrder="6" formIcon="icon-medkit" formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==false &amp;&amp; patient.person.gender=='F' &amp;&amp;sessionLocation.uuid=='e9bc61b5-69ff-414b-9cf0-0c22d6dfca2b'" formDisplayStyle="Standard" formLabel="HMIS-MCH-006-Maternity Form">
 
 
 	<script type="text/javascript">
@@ -246,12 +240,6 @@
 												<span class="hidden">
 													<encounterLocation default="629d78e9-93e5-43b0-ad8a-48313fd99117" order="629d78e9-93e5-43b0-ad8a-48313fd99117" />
 												</span>
-											</div>
-											<div class="col-md-3">
-												<label>
-													Time of Admission
-												</label>
-												<obs conceptId="166898"/>
 											</div>
 											<div class="col-md-3">
 												<label>
