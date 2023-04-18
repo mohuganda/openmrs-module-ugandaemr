@@ -65,6 +65,9 @@ body {
     border-radius: 50px;
     width: 30%
 }
+#patientId{
+    width: 100%;
+}
 
 </style>
 <script type="text/javascript">
@@ -90,8 +93,8 @@ body {
 
     var handlePatientRowSelection = new handlePatientRowSelection();
     var addPatientToQueueLink = "<a  data-toggle=\"modal\" data-target=\"#add_patient_to_queue_dialog\" data-patientid=\"patientIdPlaceHolder\" data-patientnames=\"patientNamsePlaceHolder\"><i style=\"font-size: 25px;\" data-target=\"#add_patient_to_queue_dialog\" class=\"icon-share\" title=\"Check In\"></i></a>";
-    var patientDashboardURL = "<i style=\"font-size: 25px;\" class=\"icon-file-alt\" title=\"Goto Patient Dashboard\" onclick=\" location.href = '/" + OPENMRS_CONTEXT_PATH + "/coreapps/clinicianfacing/patient.page?patientId=patientIdPlaceHolder'\"></i>";
-    var editPatientLink = "<i style=\"font-size: 25px;\" class=\"icon-edit\" title=\"Edit Demographics\" onclick=\"location.href = '/" + OPENMRS_CONTEXT_PATH + "/registrationapp/registrationSummary.page?patientId=patientIdPlaceHolder&sectionId=demographics&appId=ugandaemr.registrationapp.registerPatient&returnUrl=/" + OPENMRS_CONTEXT_PATH + "/ugandaemr/findpatient/findPatient.page?app=ugandaemr.findPatient'\"></i>";
+    var patientDashboardURL = "<i style=\"font-size: 25px;\" class=\"icon-file-alt\" title=\"Goto Patient Dashboard\" onclick=\" location.href = '/"+OPENMRS_CONTEXT_PATH+"/coreapps/clinicianfacing/patient.page?patientId=patientIdPlaceHolder'\"></i>";
+    var editPatientLink = "<i style=\"font-size: 25px;\" class=\"icon-edit\" title=\"Edit Demographics\" onclick=\"location.href = '/"+OPENMRS_CONTEXT_PATH+"/registrationapp/registrationSummary.page?patientId=patientIdPlaceHolder&sectionId=demographics&appId=ugandaemr.registrationapp.registerPatient&returnUrl=/"+OPENMRS_CONTEXT_PATH+"/ugandaemr/findpatient/findPatient.page?app=ugandaemr.findPatient'\"></i>";
     var patientSearchWidget = null;
     jq(function () {
         var widgetConfig = {
@@ -162,7 +165,7 @@ body {
         } else if (message.type === "local" && message.patient !== "") {
             patientSearchWidget.searchByFingerPrint(message.patient);
         } else if (message.type === "online" && message.patient !== "" && ${searchOnline} === true) {
-            window.location = "/" + OPENMRS_CONTEXT_PATH + "/ugandaemrfingerprint/patientInOtherFacility.page?patientId=" + message.patient;
+            window.location = "/"+OPENMRS_CONTEXT_PATH+"/ugandaemrfingerprint/patientInOtherFacility.page?patientId=" + message.patient;
         } else if (message.type === null && (message.patient === null || message.patient === "") && ${searchOnline} === true) {
             var message;
             message = '{"result":"Patient Not Found at Central Server"}';
@@ -264,7 +267,6 @@ body {
     function searchOnLineFhirServer(identifier, searchConfigs, searchParams) {
         var query = "?" + searchParams;
         query = query.replace("%s", searchParams);
-        jq("#loading-model").modal("show");
         var url = searchConfigs.url + query
         jQuery.ajax({
             url: url,
@@ -279,7 +281,8 @@ body {
                 patientTransferInData = data;
                 displayFhirData(data);
             } else {
-                jq("#loading-model").modal("hide");
+                jq("#loading-model").modal('hide');
+                jq().toastmessage('showNoticeToast', "No Record found");
             }
         }).error(function (data, status, err) {
             jq("#loading-model").modal("hide");
@@ -302,8 +305,11 @@ body {
                 transferPatientIn = true;
                 jq().toastmessage('showSuccessToast', "Patient Created Successfully");
             }).error(function (data, status, err) {
+                jq.each(JSON.parse(data.responseText).issue, function (index, element) {
+                    jq().toastmessage('showErrorToast', element.diagnostics);
+                });
                 jq("#loading-model").modal("hide");
-                jq().toastmessage('showErrorToast', err);
+
             });
         });
     });
@@ -440,12 +446,10 @@ body {
 
             if (patientId !== "" && uic === "") {
                 patientSearchWidget.searchByIdentifiers(jq("#patientId").val());
-            }
-
+            }else{
             patientSearchWidget.searchByIdentifiers(uic);
-
-            patientSearchWidget.getCountAfterSearch();
-
+            }
+            
             if (patientSearchWidget.getCountAfterSearch() === 0 && patientId !== "") {
                 searchOnLineFhirServer(patientId, searchConfigs, searchParams);
             } else if (patientSearchWidget.getCountAfterSearch() === 0 && patientId === "" && uic !== "") {
@@ -667,62 +671,16 @@ body {
         <div class="collapse" id="collapseExample">
             <div class="card card-body" id="search-client-registry">
                 <div class="row">
-                    <div class="col-3">
-                        <input type="text" id="sur-name" placeholder="First Name/Surname" autocomplete="off"/>
+
+                    <div class="col-8">
+                        <input type="text" id="patientId" placeholder="Patient Unique Identifier" value="" autocomplete="off"/>
                     </div>
 
-                    <div class="col-3">
-                        <input type="text" id="given-name" placeholder="Given Name" autocomplete="off"/>
-                    </div>
-
-                    <div class="col-3">
-                        <input type="text" id="middle-name" placeholder="Middle Name" autocomplete="off"/>
-                    </div>
-
-                    <div class="col-3">
-                        <input type="text" id="patientId" placeholder="Patient Id" value="" autocomplete="off"/>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-3">
-                        <select id="search-gender">
-                            <option value="">Select Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </div>
-
-                    <div class="col-3">
-                        <input type="date" id="birthdate" placeholder="Date Of Birth" autocomplete="off"/>
-                    </div>
-
-                    <div class="col-3">
-                        <input type="text" id="age-years" placeholder="Age~Years" autocomplete="off"/>
-                    </div>
-
-                    <div class="col-3">
-                        <input type="text" id="telecom" placeholder="Phone Number" autocomplete="off"/>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-3">
-                        <input type="text" id="address-country" placeholder="Country" autocomplete="off"/>
-                    </div>
-
-                    <div class="col-3">
-                        <input type="text" id="address-sub-county" placeholder="Sub Country" autocomplete="off"/>
-                    </div>
-
-                    <div class="col-3">
-                        <input type="text" id="address-village" placeholder="Village" autocomplete="off"/>
-                    </div>
-
-                    <div class="col-3">
+                    <div class="col-4">
                         <input type="submit" value="Search" class="submit" id="advanced-search" autocomplete="off"/>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -760,13 +718,9 @@ body {
                     <div>
                         <strong>Facility Name:</strong><span id="facilityName"></span>
                     </div>
-                </div>
+                    <div id="patient_text">
 
-                <div style="margin-top: 10px">
-                    <span>Include Encounters</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"
-                                                                                        id="transfer-encounters"
-                                                                                        name="transfer-encounter"
-                                                                                        value="true"></span>
+                    </div>
                 </div>
             </div>
 
@@ -778,7 +732,7 @@ body {
     </div>
 </div>
 ${ui.includeFragment("ugandaemr", "checkIn")}
-<div class="modal fade" id="loading-model" tabindex="-1" role="dialog"
+<div class="modal fade hide" id="loading-model" tabindex="-1" role="dialog"
      aria-labelledby="loadingModelLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -790,3 +744,6 @@ ${ui.includeFragment("ugandaemr", "checkIn")}
         </div>
     </div>
 </div>
+
+
+<div id="patient-search-results"></div>
