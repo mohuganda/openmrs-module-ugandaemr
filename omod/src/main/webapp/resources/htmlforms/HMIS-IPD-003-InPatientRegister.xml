@@ -160,13 +160,11 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <span class="hidden">
                                 <div class="col-md-4">
                                     <label>Encounter Date:</label>
                                     <encounterDate disallowMultipleEncountersOnDate="block" class="long-value-select"/>
                                     <encounterLocation default="629d78e9-93e5-43b0-ad8a-48313fd99117" order="629d78e9-93e5-43b0-ad8a-48313fd99117" />
                                 </div>
-                            </span>
 
                         </div>
                         <div class="row">
@@ -360,7 +358,7 @@
                                             </td>
                                             <td>
                                                 <label>Linked to TB Clinic?</label>
-                                                <obs conceptId="164435" id="164435" style="radio" class="horizontal" answerLabels="Yes,No" />
+                                                <obs conceptId="162982" id="162982" style="radio" class="horizontal" answerLabels="Yes,No" />
                                             </td>
                                             <td>
                                                 <obs conceptId="164955" id="164955" labelText="Unit TB Number:" />
