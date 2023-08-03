@@ -78,6 +78,14 @@ public class CommonMetadataBundle extends AbstractMetadataBundle {
         install(EncounterTypes.COVID19_VACCINATION_TRACKING);
 
         install(EncounterTypes.SMS_ENROLLMENT);
+        install(EncounterTypes.FAMILY_PLANNING_ENCOUNTER);
+        install(EncounterTypes.NEW_BORN_INPATIENT_ENCOUNTER);
+        install(EncounterTypes.IN_PATIENT_ENCOUNTER);
+        install(EncounterTypes.CHILD_HEALTH_ENCOUNTER);
+
+
+
+
         install(EncounterTypes.SMC_FOLLOWUP);
         install(EncounterTypes.LAB_REQUEST_ENCOUNTER);
 
