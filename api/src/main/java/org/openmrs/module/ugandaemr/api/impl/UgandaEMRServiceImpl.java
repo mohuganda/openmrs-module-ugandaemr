@@ -643,13 +643,13 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
                 patientQueueVisitMapper.setDateChanged(patientQueue.getDateChanged().toString());
             }
 
-            List<Identifier> identifiers=new ArrayList<>();
+            List<Identifier> identifiers = new ArrayList<>();
             for (PatientIdentifier patientIdentifier : patientQueue.getPatient().getIdentifiers()) {
                 Identifier identifier = new Identifier(patientIdentifier.getIdentifier(), patientIdentifier.getIdentifierType().getName(), patientIdentifier.getIdentifierType().getUuid());
-                if(patientIdentifier.getLocation()!=null){
+                if (patientIdentifier.getLocation() != null) {
                     identifier.setIdentifierLocationUuid(patientIdentifier.getLocation().getUuid());
                 }
-               identifiers.add(identifier);
+                identifiers.add(identifier);
             }
             patientQueueVisitMapper.setPatientIdentifier(identifiers);
 
@@ -690,6 +690,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
                         for (Obs groupMemberObs : obs.getGroupMembers()) {
                             TestResultModel trm = new TestResultModel();
                             trm.setInvestigation(test.getConcept().getDisplayString());
+                            trm.setTestId(obs.getOrder().getOrderId());
                             trm.setSet(obs.getConcept().getDisplayString());
                             trm.setConcept(obs.getConcept());
                             setTestResultModelValue(groupMemberObs, trm);
@@ -699,6 +700,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
                         TestResultModel trm = new TestResultModel();
                         trm.setInvestigation(test.getConcept().getName().getName());
                         trm.setSet(test.getConcept().getDatatype().getName());
+                        trm.setTestId(obs.getOrder().getOrderId());
                         trm.setConcept(obs.getConcept());
                         setTestResultModelValue(obs, trm);
                         trms.add(trm);
@@ -817,6 +819,10 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
             orderMapper.setOrderNumber(order.getOrderNumber());
             orderMapper.setPatientId(order.getPatient().getPatientId());
             orderMapper.setInstructions(order.getInstructions());
+            orderMapper.setFulfillerComment(order.getFulfillerComment());
+            if(order.getFulfillerStatus()!=null) {
+                orderMapper.setFulfillerStatus(order.getFulfillerStatus().name());
+            }
             orderMapper.setUrgency(order.getUrgency().name());
             orderMapper.setPatient(names.replace("null", ""));
             orderMapper.setOrderId(order.getOrderId());
@@ -824,6 +830,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
             if (order.isActive()) {
                 orderMapper.setStatus(QUEUE_STATUS_ACTIVE);
             }
+
             if (testOrderHasResults(order)) {
                 orderMapper.setStatus(QUEUE_STATUS_HAS_RESULTS);
             }
@@ -1031,8 +1038,8 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
      * @param test
      */
     public void addLaboratoryTestObservation(Encounter encounter, Concept testConcept, Concept testGroupConcept, String result, Order test) {
-        log.warn("testConceptId=" + testConcept);
-        log.warn("testGroupConceptId=" + testGroupConcept);
+        log.info("testConceptId=" + testConcept);
+        log.info("testGroupConceptId=" + testGroupConcept);
         Obs obs = null;
         obs = getObs(encounter, testConcept, testGroupConcept);
         setObsAttributes(obs, encounter);
@@ -1057,7 +1064,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
                 setObsAttributes(testGroupObs, encounter);
                 encounter.addObs(testGroupObs);
             }
-            log.warn("Adding obs[concept=" + obs.getConcept() + ",uuid=" + obs.getUuid() + "] to obsgroup[concept=" + testGroupObs.getConcept() + ", uuid=" + testGroupObs.getUuid() + "]");
+            log.info("Adding obs[concept=" + obs.getConcept() + ",uuid=" + obs.getUuid() + "] to obsgroup[concept=" + testGroupObs.getConcept() + ", uuid=" + testGroupObs.getUuid() + "]");
             testGroupObs.addGroupMember(obs);
         } else {
             encounter.addObs(obs);
@@ -1097,10 +1104,10 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
                     labQueueMapper.setOrderMapper(Context.getService(UgandaEMRService.class).processOrders(patientQueue.getEncounter().getOrders(), true));
                 }
 
-                List<Identifier> identifiers=new ArrayList<>();
+                List<Identifier> identifiers = new ArrayList<>();
                 for (PatientIdentifier patientIdentifier : patientQueue.getPatient().getIdentifiers()) {
                     Identifier identifier = new Identifier(patientIdentifier.getIdentifier(), patientIdentifier.getIdentifierType().getName(), patientIdentifier.getIdentifierType().getUuid());
-                    if(patientIdentifier.getLocation()!=null){
+                    if (patientIdentifier.getLocation() != null) {
                         identifier.setIdentifierLocationUuid(patientIdentifier.getLocation().getUuid());
                     }
                     identifiers.add(identifier);
@@ -1166,10 +1173,10 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
                 }
             }
 
-            List<Identifier> identifiers=new ArrayList<>();
+            List<Identifier> identifiers = new ArrayList<>();
             for (PatientIdentifier patientIdentifier : patientQueue.getPatient().getIdentifiers()) {
                 Identifier identifier = new Identifier(patientIdentifier.getIdentifier(), patientIdentifier.getIdentifierType().getName(), patientIdentifier.getIdentifierType().getUuid());
-                if(patientIdentifier.getLocation()!=null){
+                if (patientIdentifier.getLocation() != null) {
                     identifier.setIdentifierLocationUuid(patientIdentifier.getLocation().getUuid());
                 }
                 identifiers.add(identifier);
@@ -1887,5 +1894,32 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
     @Override
     public OrderObs getOrderObsByObs(Obs obs) {
         return dao.getOrderObsByObs(obs);
+    }
+
+    /**
+     * @see org.openmrs.module.ugandaemr.api.UgandaEMRService#getAllOrderObs()
+     */
+    public List<OrderObs> getAllOrderObs() {
+        return getOrderObs(null, null, null, null, null, false);
+    }
+
+    /**
+     * @see org.openmrs.module.ugandaemr.api.UgandaEMRService#getOrderObsById(java.lang.Integer)
+     */
+    public OrderObs getOrderObsById(Integer orderObsId) {
+       return dao.getOrderObsById(orderObsId);
+    }
+
+    /**
+     * @see org.openmrs.module.ugandaemr.api.UgandaEMRService#getOrderObsByUuid(java.lang.String)
+     */
+    @Override
+    public OrderObs getOrderObsByUuid(String uuid) {
+        return dao.getOrderObsByUuid(uuid);
+    }
+
+    @Override
+    public OrderObs getOrderObsByOrder(Order order) {
+        return dao.getOrderObsByOrder(order);
     }
 }
