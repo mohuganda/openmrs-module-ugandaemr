@@ -692,6 +692,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
                             trm.setInvestigation(test.getConcept().getDisplayString());
                             trm.setTestId(obs.getOrder().getOrderId());
                             trm.setSet(obs.getConcept().getDisplayString());
+                            trm.setOrderdate(obs.getOrder().getDateActivated());
                             trm.setConcept(obs.getConcept());
                             setTestResultModelValue(groupMemberObs, trm);
                             trms.add(trm);
@@ -700,6 +701,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
                         TestResultModel trm = new TestResultModel();
                         trm.setInvestigation(test.getConcept().getName().getName());
                         trm.setSet(test.getConcept().getDatatype().getName());
+                        trm.setOrderdate(obs.getOrder().getDateActivated());
                         trm.setTestId(obs.getOrder().getOrderId());
                         trm.setConcept(obs.getConcept());
                         setTestResultModelValue(obs, trm);
@@ -762,7 +764,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
      * @param query
      * @param encounterId
      * @return
-     * @throws ParseException
+     * @throws ParseExceptionx
      * @throws IOException
      */
     public SimpleObject getOrderResultsOnEncounter(String query, int encounterId, boolean includeProccesed) throws ParseException, IOException {
@@ -817,6 +819,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
             orderMapper.setDateActivated(order.getDateActivated().toString());
             orderMapper.setOrderer(order.getOrderer().getName());
             orderMapper.setOrderNumber(order.getOrderNumber());
+            orderMapper.setOrderUuid(order.getUuid());
             orderMapper.setPatientId(order.getPatient().getPatientId());
             orderMapper.setInstructions(order.getInstructions());
             orderMapper.setFulfillerComment(order.getFulfillerComment());
