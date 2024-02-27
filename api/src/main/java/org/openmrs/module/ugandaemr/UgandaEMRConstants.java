@@ -152,4 +152,8 @@ public class UgandaEMRConstants {
     public static final String DR_TB_NUMBER_PROGRAM_ATTRIBUTE_TYPE_UUID = "1628fa4e-fda2-11ea-adc1-0242ac120002";
     public static final String CONCEPT_REASON_FOR_NEXT_APPOINTMENT = "160288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 
+
+
+    public static final String GP_DEFAULT_LOCATION = MODULE_ID + ".defaultLocation";
+
 }
