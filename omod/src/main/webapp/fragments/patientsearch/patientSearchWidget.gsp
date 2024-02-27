@@ -293,7 +293,7 @@ h5 {
         var query = "?"
         var searchObject = "Patient";
 
-        if (searchConfigs.url.indexOf(searchObject) <= -1) {
+        if (searchConfigs.searchURL.indexOf(searchObject) <= -1) {
             query = "/" + searchObject + query
         }
 
@@ -304,7 +304,7 @@ h5 {
             query = query.replace("%s", searchParams);
         }
 
-        var url = searchConfigs.url + query;
+        var url = searchConfigs.searchURL + query;
         var settings = null;
 
         if (searchConfigs.urlUserName !== null && searchConfigs.urlUserName !== "") {
@@ -416,11 +416,10 @@ h5 {
                     identifiersToKeep.push(element)
                 }
             });
-            patientResource.identifier.splice(0, numberOfIdentifiers);
+            patientResource.identifier.splice(0, patientResource.identifier.length);
             patientResource.identifier = identifiersToKeep;
         }else {
             patientResource['identifier']=identifiersToKeep;
-            patientResource.identifier.length;
         }
 
         if (patientResource.address) {
@@ -637,7 +636,7 @@ h5 {
     jq(document).ready(function () {
         jq('#fshr').hide();
         jq('#nhcr').hide();
-        var searchSource = getEnabledSearchableProfiles();
+       var searchSource = getEnabledSearchableProfiles();
 
         setSearchSource(searchSource);
 

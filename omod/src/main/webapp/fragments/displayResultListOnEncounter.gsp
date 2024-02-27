@@ -7,9 +7,8 @@
         jq.get('${ ui.actionLink("ugandaemr","displayResultListOnEncounter","getOrderWithResultForEncounter") }', {
             encounterId: ${encounterId}
         }, function (response) {
-            if (response.trim() !== "{}") {
-                var responseData = JSON.parse(response.replace("ordersList=", "\"ordersList\":").replace("order=", "\"order\":").trim());
-                displayLabResult(responseData)
+            if (response.trim()!=="{}") {
+                displayLabResult(response)
             }
         });
     }
@@ -76,8 +75,7 @@
             testId: testId
         }, function (response) {
             if (response) {
-                var responseData = JSON.parse(response.replace("data=", "\"data\":").replace("order=", "\"order\":").trim());
-                organize(responseData.data);
+                organize(response.data);
             } else if (!response) {
             }
         });

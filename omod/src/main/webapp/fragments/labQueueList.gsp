@@ -262,7 +262,7 @@
             labSearchFilter: jq("#patient-lab-search").val().trim().toLowerCase()
         }, function (response) {
             if (response) {
-                var responseData = JSON.parse(response.replace("patientLabQueueList=", "\"patientLabQueueList\":").trim());
+                var responseData = response;
                 displayLabData(responseData);
             } else if (!response) {
                 jq("#pending-queue-lab-table").append(${ ui.message("coreapps.none ") });
@@ -317,7 +317,7 @@
     function groupOrderResultsByEncounter(data) {
         const groupedData = {"ordersList": []};
         let itemNo = 0;
-        data.ordersList.forEach((item, index) => {
+        data.forEach((item, index) => {
             const key = item.encounterId;
             let keyExists = false;
 
@@ -344,8 +344,7 @@
             date: date
         }, function (response) {
             if (response) {
-                var responseData = JSON.parse(response.replace("ordersList=", "\"ordersList\":").trim());
-                displayLabOrderApproachB(groupOrderResultsByEncounter(responseData));
+                displayLabOrderApproachB(groupOrderResultsByEncounter(JSON.parse(response.ordersList)));
             }
         });
     }
@@ -368,7 +367,7 @@
         var dataToDisplay = [];
 
         if (response.patientLabQueueList.length > 0) {
-            dataToDisplay = response.patientLabQueueList.sort(function (a, b) {
+            dataToDisplay = JSON.parse(response.patientLabQueueList).sort(function (a, b) {
                 return a.patientQueueId - b.patientQueueId;
             });
         }
@@ -634,8 +633,7 @@
             orderId: orderId
         }, function (response) {
             if (response) {
-                var responseData = response.replace("{defaultSampleId=\"", "").replace("\"}", "").trim();
-                jq("#sample_id").val(responseData);
+                jq("#sample_id").val(response);
             }
         });
     }
@@ -645,8 +643,7 @@
             orderUuid: orderUuid
         }, function (response) {
             if (response) {
-                var responseData = response.replace("{defaultSampleId=\"", "").replace("\"}", "").trim();
-                jq(".accession-number").val(responseData);
+                jq(".accession-number").val(JSON.parse(response.defaultSampleId));
             }
         });
     }
@@ -799,8 +796,7 @@ ${ui.includeFragment("ugandaemr", "lab/displayResultList")}
             </div>
         </div>
     </div>
-    ${
-            ui.includeFragment ( "ugandaemr", "pickPatientFromQueue", [ provider: currentProvider, currentLocation: currentLocation ] )}
+    ${ui.includeFragment("ugandaemr", "pickPatientFromQueue", [provider: currentProvider, currentLocation: currentLocation])}
 </div>
 ${ui.includeFragment("ugandaemr", "reviewResults")}
 ${ui.includeFragment("ugandaemr", "lab/rejectTestDialogue")}
