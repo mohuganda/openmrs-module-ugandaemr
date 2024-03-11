@@ -47,7 +47,7 @@
                                             <div class="row">
                                                 <div class="col-md-3 html-form-entry-disabled-field">
                                                     <label>Date of Review</label>
-                                                    <encounterDate default="today" disallowMultipleEncountersOnDate="block" />
+                                                    <encounterDate default="today" disallowMultipleEncountersOnDate="block"/>
                                                     <span class="hidden">
                                                         <encounterLocation default="629d78e9-93e5-43b0-ad8a-48313fd99117" order="629d78e9-93e5-43b0-ad8a-48313fd99117" />
                                                     </span>
@@ -59,8 +59,15 @@
 
                                                 <div class="col-md-3">
                                                     <label>Date of Death</label>
-                                                    <obs id="90272" conceptId="90272" class="horizontal" style="autocomplete" required="true"/>
+                                                    <obs id="90272" conceptId="90272" class="horizontal"/>
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <label>Time of Death</label>
+                                                    <span class="time-box-horizontal">
+                                                        <obs conceptId="99542" id="99542"/>
+                                                    </span>
+                                                </div>
+
                                             </div>
 
                                         </div>
@@ -143,7 +150,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Date of Surgery</label>
-                                                    <obs id="175265" conceptId="175265"/>
+                                                    <obs id="175265" conceptId="175265" showTime="true"/>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Reason for Surgery</label>
