@@ -3,7 +3,7 @@
   "version": "4.0.0",
   "description": "Cervical Cancer Screening Form",
   "encounterType": "91725548-2d90-4b28-be6d-0509ba37bb0f",
-  "encounter": "Cervical cancer screening",
+  "encounter": "CaCx Screening Eligibility Log Encounter",
   "uuid": "e4c98c45-f01e-4737-a62a-baf981ae7b14",
   "processor": "EncounterFormProcessor",
   "published": true,

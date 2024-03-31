@@ -3,7 +3,7 @@
   "version": "4.0.0",
   "description": "This is the enrollment form for a DS TB patient",
   "encounterType": "334bf97e-28e2-4a27-8727-a5ce31c7cd66",
-  "encounter": "DS TB Enrollment",
+  "encounter": "TB Summary (Enrollment)",
   "uuid": "b00452b6-bb7c-11ea-b3de-0242ac130004",
   "processor": "EncounterFormProcessor",
   "published": true,
