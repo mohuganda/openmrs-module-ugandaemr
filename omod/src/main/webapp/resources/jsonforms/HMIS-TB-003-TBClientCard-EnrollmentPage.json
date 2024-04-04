@@ -46,21 +46,22 @@
           "isExpanded": "true",
           "questions": [
             {
-              "type": "patientIdentifier",
-              "label": "District TB Number",
-              "questionInfo": "",
+              "label": " District TB Number",
+              "type": "obs",
               "id": "districtRegNum",
-              "required": "true",
-              "default": "",
               "questionOptions": {
                 "rendering": "text",
-                "identifierType": "8110f2d2-1f98-4c38-aef3-11b19bb0a589"
-              }
+                "concept": "67e9ec2f-4c72-408b-8122-3706909d77ec",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
             },
             {
               "label": " Unit TB No.",
               "type": "obs",
               "id": "unit-tb-number",
+              "required": "true",
               "questionOptions": {
                 "rendering": "text",
                 "concept": "2e2ec250-f5d3-4de7-8c70-a458f42441e6",
@@ -111,7 +112,10 @@
                 "conceptMappings": [],
                 "answers": []
               },
-              "validators": []
+              "validators": [],
+              "hide" : {
+                "hideWhenExpression" : "!includes('disease-classification','fa8e6d5a-759f-4e94-b558-a81a6b3af4dc')"
+              }
             },
             {
               "label": "Patient Type",
