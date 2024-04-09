@@ -397,6 +397,15 @@
     <privilege  privilege="View Visit Types"  description="Able to view visit types"  uuid="f82294e8-57d5-4f05-9b3e-05671ad5da20"/>
     <privilege  privilege="View XForms Menu"  description="View XForms Menu in admin panel"  uuid="caa6efae-e6fc-47a0-b965-691b3a936ffe"/>
 
+    <!--Dispensing -->
+    <privilege privilege="Task: dispensing.create.dispense" description="Allows user to Dispense Medication" uuid="2a3045a7-8ba0-417a-96be-24ddb79f6904"/>
+    <privilege privilege="Task: dispensing.create.dispense.andModifyDetails" description="Allows user to modify the Quantity, Drug, Formulation and Dose Instructions (from the values specified in the Order / Medication Request) when Dispensing" uuid="f7bdafc8-6e13-4fa7-8d62-0421ab5a404e"/>
+    <privilege privilege="Task: dispensing.edit.dispense" description="Allows user to edit an existing Medication Dispense" uuid="74d95070-8586-4c73-bba9-3538a537493e"/>
+    <privilege privilege="Task: dispensing.delete.dispense" description="Allows user to delete an existing Medication Dispense" uuid="67332dff-075c-46e1-983e-29d1eac87e5d"/>
+    <privilege privilege="Task: dispensing.delete.dispense.ifCreator" description="Allows user to delete an existing Medication Dispense, but only if they created it originally" uuid="b5dee457-8c79-4ce3-bac2-04cbfc191d36"/>
+
+
+
     <!-- PRIVILEGES-->
     <!--* TASKS *-->
     <privilege  privilege="Task: HIV Clinic Access"  description="Able to access HIV patient clinic information"  uuid="7e0465e4-2119-11e8-b467-0ed5f89f718b"/>
@@ -857,6 +866,11 @@
 
     <!-- role privilege -->
     <role_privilege  role="Organizational:Pharmacy"  privilege="App: ugandaemrpoc.pharmacy"/>
+    <role_privilege role="Organizational:Pharmacy" privilege="Task: dispensing.create.dispense" />
+    <role_privilege role="Organizational:Pharmacy" privilege="Task: dispensing.create.dispense.andModifyDetails" />
+    <role_privilege role="Organizational:Pharmacy" privilege="Task: dispensing.edit.dispense" />
+    <role_privilege role="Organizational:Pharmacy" privilege="Task: dispensing.delete.dispense" />
+    <role_privilege role="Organizational:Pharmacy" privilege="Task: dispensing.delete.dispense.ifCreator" />
 
 
     <!--* DATA MANAGER ROLE *-->
