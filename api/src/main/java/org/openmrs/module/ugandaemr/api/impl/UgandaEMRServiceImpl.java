@@ -1582,32 +1582,21 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
      */
     public SimpleObject dispenseMedication(DispensingModelWrapper resultWrapper, Provider provider, Location location) {
         boolean enableStockManagement = Boolean.parseBoolean(Context.getAdministrationService().getGlobalProperty("ugandaemr.enableStockManagement"));
-
+        List<Boolean> completePatientQueue = new ArrayList<>();
         if (enableStockManagement) {
             SimpleObject simpleObject = validateStock(resultWrapper);
             if (simpleObject.get("errors") != null) {
                 return simpleObject;
             }
         }
-
         EncounterService encounterService = Context.getEncounterService();
         PatientQueueingService patientQueueingService = Context.getService(PatientQueueingService.class);
 
         Encounter previousEncounter = encounterService.getEncounter(resultWrapper.getEncounterId());
         PatientQueue patientQueue = patientQueueingService.getPatientQueueById(resultWrapper.getPatientQueueId());
-
-        Encounter encounter = new Encounter();
-        encounter.setEncounterType(encounterService.getEncounterTypeByUuid(ENCOUNTER_TYPE_DISPENSE_UUID));
-        encounter.setProvider(Context.getEncounterService().getEncounterRoleByUuid(ENCOUNTER_ROLE_PHARMACIST), provider);
-        encounter.setLocation(location);
-        encounter.setPatient(previousEncounter.getPatient());
-        encounter.setVisit(previousEncounter.getVisit());
-        encounter.setEncounterDatetime(previousEncounter.getEncounterDatetime());
-        encounter.setForm(Context.getFormService().getFormByUuid(DISPENSE_FORM_UUID));
-
+        Encounter encounter = getDispensingEncounter(previousEncounter, location, provider);
         List<DrugOrderMapper> referredOutPrescriptions = new ArrayList<>();
         Set<Obs> obs = new HashSet<>();
-
         for (DrugOrderMapper drugOrderMapper : resultWrapper.getDrugOrderMappers()) {
             DrugOrder drugOrder = (DrugOrder) Context.getOrderService().getOrder(drugOrderMapper.getOrderId());
 
@@ -1629,7 +1618,11 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
             }
 
             try {
-                Context.getOrderService().discontinueOrder(drugOrder, "Completed", new Date(), provider, previousEncounter);
+                if (!drugOrderMapper.getKeepOrder()) {
+                    Context.getOrderService().discontinueOrder(drugOrder, "Completed", new Date(), provider, previousEncounter);
+                } else {
+                    completePatientQueue.add(false);
+                }
             } catch (Exception e) {
                 log.error(e);
             }
@@ -1646,9 +1639,11 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
             }
 
             encounterService.saveEncounter(encounter);
-            patientQueue.setEncounter(encounter);
-            patientQueueingService.savePatientQue(patientQueue);
-            patientQueueingService.completePatientQueue(patientQueue);
+            if (!completePatientQueue.contains(false)) {
+                patientQueue.setEncounter(encounter);
+                patientQueueingService.savePatientQue(patientQueue);
+                patientQueueingService.completePatientQueue(patientQueue);
+            }
         } catch (Exception e) {
             log.error(e);
         }
@@ -1667,6 +1662,32 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
             simpleObject = SimpleObject.create("status", "success", "message", "Saved!");
         }
         return simpleObject;
+    }
+
+    private Encounter getDispensingEncounter(Encounter previousEncounter, Location location, Provider provider) {
+        EncounterService encounterService = Context.getEncounterService();
+        Encounter encounter = null;
+        Collection<Visit> visits = new ArrayList<>();
+        visits.add(previousEncounter.getVisit());
+        Collection<EncounterType> encounterTypes = new ArrayList<>();
+        encounterTypes.add(Context.getEncounterService().getEncounterTypeByUuid(ENCOUNTER_TYPE_DISPENSE_UUID));
+        EncounterSearchCriteria encounterSearchCriteria = new EncounterSearchCriteriaBuilder().setEncounterTypes(encounterTypes).setVisits(visits).setFromDate(OpenmrsUtil.firstSecondOfDay(previousEncounter.getVisit().getStartDatetime())).setToDate(OpenmrsUtil.getLastMomentOfDay(previousEncounter.getVisit().getStartDatetime())).createEncounterSearchCriteria();
+
+        List<Encounter> dispensingEncounter = Context.getEncounterService().getEncounters(encounterSearchCriteria);
+
+        if (dispensingEncounter.size() > 0) {
+            encounter = dispensingEncounter.get(0);
+        } else {
+            encounter = new Encounter();
+            encounter.setEncounterType(encounterService.getEncounterTypeByUuid(ENCOUNTER_TYPE_DISPENSE_UUID));
+            encounter.setProvider(Context.getEncounterService().getEncounterRoleByUuid(ENCOUNTER_ROLE_PHARMACIST), provider);
+            encounter.setLocation(location);
+            encounter.setPatient(previousEncounter.getPatient());
+            encounter.setVisit(previousEncounter.getVisit());
+            encounter.setEncounterDatetime(previousEncounter.getEncounterDatetime());
+            encounter.setForm(Context.getFormService().getFormByUuid(DISPENSE_FORM_UUID));
+        }
+        return encounter;
     }
 
     private SimpleObject validateStock(DispensingModelWrapper dispensingModelWrapper) {
