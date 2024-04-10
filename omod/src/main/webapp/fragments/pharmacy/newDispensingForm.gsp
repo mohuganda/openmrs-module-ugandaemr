@@ -47,8 +47,8 @@
 
     function getDrugOrderData(pharmacyQueueList, encounterId, position) {
         var orderedTestsRows = [];
-        var pharmacyQueueList=JSON.parse(pharmacyQueueList.patientPharmacyQueueList)
-        var dispenseAbovePrescription=getDispenseAbovePrescription();
+        var pharmacyQueueList = JSON.parse(pharmacyQueueList.patientPharmacyQueueList)
+        var dispenseAbovePrescription = getDispenseAbovePrescription();
         jq.each(pharmacyQueueList[position].orderMapper, function (index, element) {
             if (element.encounterId === encounterId && element.dispensingLocation === currentLocationUUID) {
                 let stockItemInventorys = getStockItemInventory(element.drugUUID)
@@ -60,7 +60,7 @@
                 })
 
                 Object.defineProperty(element, "maxDispenseValue", {
-                    value: getMaxDispenseValue(stockItemInventorys,element,dispenseAbovePrescription),
+                    value: getMaxDispenseValue(stockItemInventorys, element, dispenseAbovePrescription),
                     writable: false
                 })
                 orderedTestsRows.push(element);
@@ -69,7 +69,7 @@
         return orderedTestsRows;
     }
 
-    function getMaxDispenseValue(stock, prescription,dispenseAbovePrescription) {
+    function getMaxDispenseValue(stock, prescription, dispenseAbovePrescription) {
         var maxDispenseQty = 0;
         for (let i = 0; i < stock.length; i++) {
             if (stock[i].quantity > maxDispenseQty) {
@@ -91,12 +91,12 @@
             var batchNumber = "";
             if (stock[i].expiration !== null) {
                 expiryYear = new Date(stock[i].expiration).getFullYear();
-                expiryMonth = new Date(stock[i].expiration).getMonth()+1;
+                expiryMonth = new Date(stock[i].expiration).getMonth() + 1;
                 expiryDate = new Date(stock[i].expiration);
             }
 
-            if(stock[i].batchNumber!=null){
-                batchNumber=stock[i].batchNumber
+            if (stock[i].batchNumber != null) {
+                batchNumber = stock[i].batchNumber
             }
             Object.defineProperty(stock[i], "expiryYear", {
                 value: expiryYear,
@@ -123,17 +123,25 @@
 
     function getStockItemInventory(druguuid) {
         var stockIventoryItems = []
-        var url="/ws/rest/v1/stockmanagement/stockiteminventory?v=default&limit=10&totalCount=true&drugUuid=" + druguuid + "&groupBy=LocationStockItemBatchNo&dispenseLocationUuid=" + currentLocationUUID + "&includeStrength=1&includeConceptRefIds=1&emptyBatch=1&emptyBatchLocationUuid=" + currentLocationUUID + "&dispenseAtLocation=1";
-        return queryRestData(url,"GET",null).results
+        var url = "/ws/rest/v1/stockmanagement/stockiteminventory?v=default&limit=10&totalCount=true&drugUuid=" + druguuid + "&groupBy=LocationStockItemBatchNo&dispenseLocationUuid=" + currentLocationUUID + "&includeStrength=1&includeConceptRefIds=1&emptyBatch=1&emptyBatchLocationUuid=" + currentLocationUUID + "&dispenseAtLocation=1";
+        var invetoryResults = queryRestData(url, "GET", null)
+        if (invetoryResults && ("results" in invetoryResults)) {
+            invetoryResults.results.forEach((stockIventoryItem, index) => {
+                if (stockIventoryItem.quantity > 0) {
+                    stockIventoryItems.push(stockIventoryItem)
+                }
+            });
+        }
+        return stockIventoryItems
     }
 
     function getDispenseAbovePrescription() {
         var stockIventoryItems = []
-        var url="/ws/rest/v1/systemsetting?q=ugandaemr.allowDispensingMoreThanPrescribed&v=custom:(uuid,property,value)";
-        return queryRestData(url,"GET",null).results[0].value
+        var url = "/ws/rest/v1/systemsetting?q=ugandaemr.allowDispensingMoreThanPrescribed&v=custom:(uuid,property,value)";
+        return queryRestData(url, "GET", null).results[0].value
     }
 
-    function queryRestData(url,method,data) {
+    function queryRestData(url, method, data) {
         var responseData = null;
         jq.ajax({
             type: method,
@@ -142,12 +150,12 @@
             contentType: "application/json",
             accept: "application/json",
             async: false,
-            data:data,
+            data: data,
             success: function (response) {
                 responseData = response;
             },
             error: function (response) {
-                responseData=response
+                responseData = response
             }
         });
         return responseData;
@@ -158,8 +166,8 @@
             queue_id: queue_id,
             async: false
         }, function (response) {
-            if (response!==null || response!=="") {
-                if(response.patientPharmacyQueueList.length>0) {
+            if (response !== null || response !== "") {
+                if (response.patientPharmacyQueueList.length > 0) {
                     var editPrescriptionParameterOptions = getDrugOrderData(response, encounterId, 0);
                     jq.each(editPrescriptionParameterOptions, function (index, editPrescriptionParameterOption) {
                         editPrescriptionParameterOpts.editPrescriptionParameterOptions.push(editPrescriptionParameterOption);
@@ -519,7 +527,8 @@ form input {
                                         <td>Refer Out</td>
                                         <td>
                                             <div id="data" class="col-5">
-                                            <input class="prescription-checkbox" data-bind="attr : { 'type' : 'checkbox', 'name' : 'wrap.drugOrderMappers[' + \$index() + '].orderReasonNonCoded', value : 'REFERREDOUT' }">
+                                                <input class="prescription-checkbox"
+                                                       data-bind="attr : { 'type' : 'checkbox', 'name' : 'wrap.drugOrderMappers[' + \$index() + '].orderReasonNonCoded', value : 'REFERREDOUT' }">
                                             </div>
                                         </td>
                                     </tr>
@@ -527,7 +536,8 @@ form input {
                                         <td>Keep Prescription</td>
                                         <td>
                                             <div id="data" class="col-5">
-                                            <input class="prescription-checkbox" data-bind="attr : { 'type' : 'checkbox', 'name' : 'wrap.drugOrderMappers[' + \$index() + '].keepOrder', value : true }">
+                                                <input class="prescription-checkbox"
+                                                       data-bind="attr : { 'type' : 'checkbox', 'name' : 'wrap.drugOrderMappers[' + \$index() + '].keepOrder', value : true }">
                                             </div>
                                         </td>
                                     </tr>
@@ -604,7 +614,8 @@ form input {
                 </table>
             </div>
             <footer style="margin-top: 50px">
-                <div style="text-align: left;font-size: 10px"><img width="40px" src="${ui.resourceLink("ugandaemr", "images/moh_logo_large.png")}"/><span>UgandaEMR. Powered By METS Programme (www.mets.or.ug)</span>
+                <div style="text-align: left;font-size: 10px"><img width="40px"
+                                                                   src="${ui.resourceLink("ugandaemr", "images/moh_logo_large.png")}"/><span>UgandaEMR. Powered By METS Programme (www.mets.or.ug)</span>
                 </div>
             </footer>
         </div>
