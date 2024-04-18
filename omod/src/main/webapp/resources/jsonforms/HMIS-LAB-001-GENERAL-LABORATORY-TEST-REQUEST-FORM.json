@@ -1,8 +1,8 @@
 {
-  "name": "HMIS LAB 001:General Laboratory Test Request",
+  "name": "HMIS LAB 001:GENERAL LABORATORY TEST REQUEST FORM",
   "version": "4.0.0",
   "description": "A request for Lab test to Lab",
-  "encounterType": "214e27a1-606a-4b1e-a96e-d736c87069d5",
+  "encounterType": "cbf01392-ca29-11e9-a32f-2a2ae2dbcce4",
   "encounter": "LAB Encounter",
   "uuid": "14f82cc8-ca2a-11e9-a32f-2a2ae2dbcce4",
   "processor": "EncounterFormProcessor",
@@ -56,7 +56,7 @@
               "questions": [
                 {
                   "label": "Tests Ordered",
-                  "id": "order1",
+                  "id": "tests_ordered",
                   "type": "testOrder",
                   "questionOptions": {
                     "rendering": "repeating",
@@ -91,11 +91,6 @@
                       {
                         "concept": "dc824b7b-30ab-102d-86b0-7a5022ba4115",
                         "label": "Cd4",
-                        "conceptMappings": []
-                      },
-                      {
-                        "concept": "1eb05918-f50c-4cad-a827-3c78f296a10a",
-                        "label": "VL",
                         "conceptMappings": []
                       },
                       {
