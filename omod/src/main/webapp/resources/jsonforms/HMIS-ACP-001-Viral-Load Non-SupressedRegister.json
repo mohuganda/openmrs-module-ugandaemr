@@ -70,24 +70,29 @@
               }
             },
             {
-              "label": "Breast feeding",
-              "type": "obs",
-              "id": "breastFeeding",
-              "questionOptions": {
-                "rendering": "boolean",
-                "concept": "9e5ac0a8-6041-4feb-8c07-fe522ef5f9ab"
-              },
-              "validators": []
-            },
-            {
               "label": "Pregnancy",
               "type": "obs",
-              "id": "pregnancy",
+              "id": "pregnant",
               "questionOptions": {
-                "rendering": "boolean",
-                "concept": "63d67ada-bb8a-4ba0-a2a0-c60c9b7a00ce"
+                "rendering": "checkbox",
+                "concept": "cd48b900-dd21-45ce-ae6b-b38ad2a3a695",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "dcda5179-30ab-102d-86b0-7a5022ba4115",
+                    "label": "P - Pregnant",
+                    "conceptMappings": []
+                  },
+                  {
+                    "concept": "9e5ac0a8-6041-4feb-8c07-fe522ef5f9ab",
+                    "label": "BF - Breast Feeding",
+                    "conceptMappings": []
+                  }
+                ]
               },
-              "validators": []
+              "hide": {
+                "hideWhenExpression": "sex !== 'F'"
+              }
             },
             {
               "label": "Date of the sample collection",
@@ -587,63 +592,74 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Session Date",
-              "type": "obs",
-              "id": "sessionDate",
+              "label": "IAC Sessions",
+              "type": "obsGroup",
               "questionOptions": {
-                "rendering": "date",
-                "concept": "163154AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                "concept": "163153AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "repeating"
               },
-              "validators": [
+              "questions": [
                 {
-                  "type": "date",
-                  "allowFutureDates": "false"
+                  "label": "Session Date",
+                  "type": "obs",
+                  "id": "sessionDate",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "163154AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    }
+                  ]
+                },
+                {
+                  "label": "Adherence assessment score",
+                  "type": "obs",
+                  "id": "adherenceAssessmentScore",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "1134AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "Adherence Codes",
+                  "type": "obs",
+                  "id": "adherenceCodes",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "dce03b2f-30ab-102d-86b0-7a5022ba4115",
+                    "answers": [
+                      {
+                        "concept": "dcdf1b36-30ab-102d-86b0-7a5022ba4115",
+                        "label": "FAIR ADHERENCE"
+                      },
+                      {
+                        "concept": "dcdf1708-30ab-102d-86b0-7a5022ba4115",
+                        "label": "GOOD ADHERENCE"
+                      },
+                      {
+                        "concept": "dcdf1f4a-30ab-102d-86b0-7a5022ba4115",
+                        "label": "POOR ADHERENCE"
+                      }
+                    ]
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "Comment",
+                  "type": "obs",
+                  "id": "comment",
+                  "questionOptions": {
+                    "rendering": "textarea",
+                    "concept": "159395AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  "validators": []
                 }
-              ]
-            },
-            {
-              "label": "Adherence assessment score",
-              "type": "obs",
-              "id": "adherenceAssessmentScore",
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "1134AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-              },
-              "validators": []
-            },
-            {
-              "label": "Adherence Codes",
-              "type": "obs",
-              "id": "adherenceCodes",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "dce03b2f-30ab-102d-86b0-7a5022ba4115",
-                "answers": [
-                  {
-                    "concept": "dcdf1b36-30ab-102d-86b0-7a5022ba4115",
-                    "label": "FAIR ADHERENCE"
-                  },
-                  {
-                    "concept": "dcdf1708-30ab-102d-86b0-7a5022ba4115",
-                    "label": "GOOD ADHERENCE"
-                  },
-                  {
-                    "concept": "dcdf1f4a-30ab-102d-86b0-7a5022ba4115",
-                    "label": "POOR ADHERENCE"
-                  }
-                ]
-              },
-              "validators": []
-            },
-            {
-              "label": "Comment",
-              "type": "obs",
-              "id": "comment",
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "159395AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-              },
-              "validators": []
+              ],
+              "id": "__IKHospqEM"
             }
           ]
         },
