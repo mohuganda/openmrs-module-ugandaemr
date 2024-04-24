@@ -2049,12 +2049,14 @@
                                                                 <includeIf velocityTest="$transfer_out=='YES'">
                                                                     <label>Return date</label>
                                                                     <obs id="returndate" conceptId="5096"
-                                                                         allowFutureDates="true" class="return-date-poc"/>
+                                                                         allowFutureDates="true" class="return-date-poc" required="required"/>
+                                                                    <span class="required">*</span><span style="display: none;"/>
                                                                 </includeIf>
                                                                 <includeIf velocityTest="$transfer_out!='YES'">
                                                                     <label>Return date</label>
                                                                     <obs id="returndate" conceptId="5096"
-                                                                         allowFutureDates="true" class="return-date-poc"/>
+                                                                         allowFutureDates="true" class="return-date-poc" required="required"/>
+                                                                    <span class="required">*</span><span style="display: none;"/>
                                                                 </includeIf>
                                                             </ifMode>
                                                             <ifMode mode="EDIT">
@@ -2065,12 +2067,14 @@
                                                                 <includeIf velocityTest="$transfer_out=='YES'">
                                                                     <label>Return date</label>
                                                                     <obs id="returndate" conceptId="5096"
-                                                                         allowFutureDates="true" class="return-date-poc"/>
+                                                                         allowFutureDates="true" class="return-date-poc" required="required"/>
+                                                                    <span class="required">*</span><span style="display: none;"/>
                                                                 </includeIf>
                                                                 <includeIf velocityTest="$transfer_out!='YES'">
                                                                     <label>Return date</label>
                                                                     <obs id="returndate" conceptId="5096"
-                                                                         allowFutureDates="true" class="return-date-poc"/>
+                                                                         allowFutureDates="true" class="return-date-poc" required="required"/>
+                                                                    <span class="required">*</span><span style="display: none;"/>
                                                                 </includeIf>
                                                             </ifMode>
                                                         </excludeIf>
@@ -4788,13 +4792,15 @@
                                                 <includeIf velocityTest="$transfer_out=='YES'">
                                                     <label>Return date</label>
                                                     <obs class="return-date-poc" id="returndate" conceptId="5096"
-                                                         allowFutureDates="true"/>
+                                                         allowFutureDates="true" required="required"/>
+                                                    <span class="required">*</span><span style="display: none;"/>
                                                 </includeIf>
 
                                                 <includeIf velocityTest="$transfer_out!='YES'">
                                                     <label>Return date</label>
                                                     <obs class="return-date-poc" id="returndate" conceptId="5096"
-                                                         allowFutureDates="true"/>
+                                                         allowFutureDates="true" required="required"/>
+                                                    <span class="required">*</span><span style="display: none;"/>
                                                 </includeIf>
                                             </excludeIf>
                                         </div>
