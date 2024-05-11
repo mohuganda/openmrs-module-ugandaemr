@@ -904,6 +904,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
             drugOrderMapper.setStrength(getDrugStrength(drugOrder));
             drugOrderMapper.setRoute(drugOrder.getRoute().getDisplayString());
             drugOrderMapper.setAccessionNumber(drugOrder.getAccessionNumber());
+            drugOrderMapper.setDosingInstructions(drugOrder.getDosingInstructions());
             drugOrderMapper.setCareSetting(drugOrder.getCareSetting().getName());
             drugOrderMapper.setConcept(drugOrder.getConcept().getConceptId().toString());
             drugOrderMapper.setConceptName(drugOrder.getConcept().getDisplayString());
@@ -1424,6 +1425,9 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
                                 break;
                             case MEDICATION_FREQUENCY:
                                 drugOrder.setFrequency(Context.getOrderService().getOrderFrequencyByConcept(groupMember.getValueCoded()));
+                                break;
+                            case MEDICATION_DOSE_INSTRUCTION:
+                                drugOrder.setDosingInstructions(groupMember.getValueText());
                                 break;
                             default:
                         }

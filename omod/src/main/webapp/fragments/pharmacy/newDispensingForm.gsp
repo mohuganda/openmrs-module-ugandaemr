@@ -476,6 +476,10 @@ form input {
                                     <span data-bind="if:drug && drug.toUpperCase() !== 'WRITE COMMENT'">
                                         <label data-bind="text: drug+' '+strength+' - '+frequency"></label>
                                     </span>
+
+                                    <span data-bind="if:dosingInstructions!=null">
+                                        <label data-bind="text: 'Dose Instructions: '+dosingInstructions"></label>
+                                    </span>
                                 </div>
                             </td>
                             <td data-bind="">
