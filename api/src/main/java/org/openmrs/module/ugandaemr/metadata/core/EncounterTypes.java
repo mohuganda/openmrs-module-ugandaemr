@@ -594,4 +594,20 @@ public class EncounterTypes {
             return "08478ad9-ccc1-4cbe-9e55-473447984158";
         }
     };
+
+    public static EncounterTypeDescriptor TB_DOT_FOLLOW_UP_ENCOUNTER = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "TB DOT follow up encounter";
+        }
+
+        @Override
+        public String description() {
+            return "Encounter type for TB DOT follow up";
+        }
+
+        public String uuid() {
+            return "73879625-8c4e-487f-8835-202ce89659f4";
+        }
+    };
 }
