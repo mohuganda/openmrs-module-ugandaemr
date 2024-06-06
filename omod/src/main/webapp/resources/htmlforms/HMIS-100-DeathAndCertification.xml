@@ -208,6 +208,10 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
+                                                <obs conceptId="175270" answerConceptId="90001" answerLabel="Unknown" style="checkbox"/>
+                                            </div>
+
+                                            <div class="col-md-3">
                                                 <obs conceptId="175270" answerConceptId="83" answerLabel="Poison/External Causes" style="checkbox"/>
                                             </div>
                                             <div class="col-md-3">
@@ -219,6 +223,7 @@
                                                 <label>Date of Injury</label>
                                                 <obs id="175272" conceptId="175272" allowfutureDates="false"/>
                                             </div>
+
                                             <div class="col-md-3">
                                                 <label>Please describe how external cause occurred (If poisoning please specify poisoning agent)</label>
                                                 <obs id="159395" conceptId="159395"/>
@@ -307,15 +312,15 @@
                                                     <obs id="175288" conceptId="175288"  class="horizontal" />
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Medical Practioner</label>
-                                                    <encounterProvider role="Provider" type="autocomplete" />
-                                                </div>
-                                            </div>
                                         </div>
                                      </excludeIf>
                                     </includeIf>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Medical Practioner</label>
+                                            <encounterProvider role="Provider" type="autocomplete" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
