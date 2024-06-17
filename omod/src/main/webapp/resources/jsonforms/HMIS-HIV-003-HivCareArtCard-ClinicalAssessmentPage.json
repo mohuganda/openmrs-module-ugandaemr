@@ -197,7 +197,10 @@
                   {
                     "concept": "dcb2f595-30ab-102d-86b0-7a5022ba4115",
                     "label": "Intra uterine device (IUD)",
-                    "conceptMappings": []
+                    "conceptMappings": [],
+                    "hide": {
+                      "hideWhenExpression": "sex !== 'F'"
+                    }
                   },
                   {
                     "concept": "dcb30381-30ab-102d-86b0-7a5022ba4115",
@@ -205,6 +208,14 @@
                     "conceptMappings": [],
                     "hide": {
                       "hideWhenExpression": "sex !== 'F'"
+                    }
+                  },
+                  {
+                    "concept": "dcdd8d8d-30ab-102d-86b0-7a5022ba4115",
+                    "label": "Vascetomy",
+                    "conceptMappings": [],
+                    "hide": {
+                      "hideWhenExpression": "sex !== 'M'"
                     }
                   }
                 ]
