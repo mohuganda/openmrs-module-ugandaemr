@@ -4324,7 +4324,7 @@
                                                 <div id="split_regimen_container">
                                                     <repeat>
                                                         <template>
-                                                            <obsgroup groupingConceptId="160741">
+                                                            <obsgroup groupingConceptId="198843">
                                                                 <div class="row multi-arv-drug"
                                                                      id="{id}-toggleContainer1">
                                                                     <div class="col-md-4">
