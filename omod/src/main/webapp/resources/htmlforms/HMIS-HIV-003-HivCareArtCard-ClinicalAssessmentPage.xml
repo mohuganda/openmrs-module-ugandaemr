@@ -2394,6 +2394,8 @@
                                                                          answerLabel="3 - Injectable"/>
                                                                     <obs conceptId="374" answerConceptId="5277"
                                                                          answerLabel="7 - Fertility Awareness Methods"/>
+                                                                    <obs conceptId="374" answerConceptId="175402"
+                                                                                 answerLabel="Sayana Press"/>
                                                                 </excludeIf>
                                                             </span>
                                                         </div>
@@ -2825,36 +2827,47 @@
                                                     <repeat>
                                                         <template>
                                                             <obsgroup groupingConceptId="160741">
-                                                                <div class="row multi-drug" id="{id}-toggleContainer">
-                                                                    <div class="col-2">
-                                                                        <obs labelText="Drugs" id="{id}-drug"
-                                                                             conceptId="1282" answerClasses="Drug"
-                                                                             style="autocomplete" class="fullwidth"/>
+                                                                <div class="div-row multi-drug" id="{id}-toggleContainer">
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-3">
+                                                                            <obs labelText="Drugs" id="{id}-drug"
+                                                                                 conceptId="1282" answerClasses="Drug"
+                                                                                 style="autocomplete" class="fullwidth"/>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <obs labelText="Strength" conceptId="1444"/>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <obs labelText="Quantity" conceptId="160856"/>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <obs labelText="Qty unit" conceptId="165791"
+                                                                                 answerConceptSetIds="162402,162384"/>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-2">
-                                                                        <obs labelText="Quantity" conceptId="160856"/>
-                                                                    </div>
-                                                                    <div class="col-2">
-                                                                        <obs labelText="Qty unit" conceptId="165791"
-                                                                             answerConceptSetIds="162402,162384"/>
-                                                                    </div>
-                                                                    <div class="col-2 duration">
-                                                                        <label>Duration</label>
-                                                                        <obs conceptId="159368"/>
-                                                                    </div>
-                                                                    <div class="col-2">
-                                                                        <obs conceptId="1732"
-                                                                             labelText="Duration unit"/>
-                                                                    </div>
-                                                                    <div class="col-2">
-                                                                        <div class="add-entry">
-                                                                            <a href="#" id="{id}-addEntry"
-                                                                               class="addEntry add-more-link"><i
-                                                                                    class="icon-plus-sign"></i></a>
-                                                                            <a href="#"
-                                                                               class="removeEntry remove-more-link"
-                                                                               id="{id}-removeEntry"><i
-                                                                                    class="icon-minus"></i></a>
+                                                                    <div class="row">
+                                                                        <div class="col-md-3 duration">
+                                                                            <label>Duration</label>
+                                                                            <obs conceptId="159368"/>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <obs conceptId="1732"
+                                                                                 labelText="Duration unit"/>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <obs labelText="Frequency" conceptId="160855" answerConceptIds="160862,160858,160866,160870"/>  
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <div class="add-entry">
+                                                                                <a href="#" id="{id}-addEntry"
+                                                                                   class="addEntry add-more-link"><i
+                                                                                        class="icon-plus-sign"></i></a>
+                                                                                <a href="#"
+                                                                                   class="removeEntry remove-more-link"
+                                                                                   id="{id}-removeEntry"><i
+                                                                                        class="icon-minus"></i></a>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -3559,6 +3572,8 @@
 
                                                                             <obs conceptId="374" answerConceptId="5277"
                                                                                  answerLabel="Fertility Awareness Methods"/>
+                                                                            <obs conceptId="374" answerConceptId="175402"
+                                                                                 answerLabel="Sayana Press"/>
 
                                                                         </excludeIf>
                                                                         <obs conceptId="374" answerConceptId="99265"
