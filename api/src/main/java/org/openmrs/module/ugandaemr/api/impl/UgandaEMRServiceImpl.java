@@ -1802,7 +1802,11 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
         //check if issued at facility
 
         Obs dispensedAtFacility = createDispensingObs(encounter, conceptService.getConcept(MEDICATION_DISPENSE_RECEIVED_AT_VIST), null, null, order);
-        dispensedAtFacility.setValueBoolean(receivedAtFacility);
+        if(receivedAtFacility) {
+            dispensedAtFacility.setValueCoded(conceptService.getConcept(MEDICATION_DISPENSE_RECEIVED_AT_VIST_YES));
+        }else {
+            dispensedAtFacility.setValueCoded(conceptService.getConcept(MEDICATION_DISPENSE_RECEIVED_AT_VIST_NO));
+        }
         parentObs.addGroupMember(dispensedAtFacility);
         obs.add(dispensedAtFacility);
 
