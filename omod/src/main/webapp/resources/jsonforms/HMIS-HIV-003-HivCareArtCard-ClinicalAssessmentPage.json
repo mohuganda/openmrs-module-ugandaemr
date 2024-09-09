@@ -470,6 +470,9 @@
               "questionOptions": {
                 "rendering": "date",
                 "concept": "813e21e7-4ccb-4fe9-aaab-3c0e40b6e356",
+                "calculate": {
+                  "calculateExpression": "resolve(cusGetLatestObs(patient.id, '813e21e7-4ccb-4fe9-aaab-3c0e40b6e356'))"
+                },
                 "conceptMappings": [],
                 "answers": []
               },
