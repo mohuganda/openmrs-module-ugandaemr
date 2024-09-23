@@ -113,6 +113,17 @@
 			}
 			});
 
+
+			jq('#final-patient-disposition input[type="radio"]').on('change', function () {
+			if (jq(this).val() == '168758') {
+			enable_fields('refferal-facility');
+			enable_fields('ambulance-used');
+			} else {
+			disable_fields('refferal-facility');
+			disable_fields('ambulance-used');
+			}
+			});
+
 			jq('#travelDetails input[type="radio"]').on('change', function () {
 			if (jq(this).val() == '90003') {
 			jq("#secondary-screening-tab").removeClass("disabled");
@@ -373,8 +384,11 @@
 									</div>
 									<div class="card-body" >
 										<div class="row">
-											<obs conceptId="198959" answerConceptId="166313" answerLabel="Transferred to Isolation Unit in the same Facility" style="checkbox" class="col-md-12" />
-											<obs conceptId="198959" answerConceptId="168758" answerLabel="Referred to Isolation Unit in another Facility" style="checkbox" class="col-md-12" id="reffered"/>
+
+											<obs conceptId="198959" answerConceptIds="166313,168758"
+												 answerLabels="Transferred to Isolation Unit in the same Facility, Referred to Isolation Unit in another Facility"
+												 id="final-patient-disposition" style="radio" class="horizontal"/>
+
 										</div>
 										<div class="row">
 											<div class="col-md-4">
