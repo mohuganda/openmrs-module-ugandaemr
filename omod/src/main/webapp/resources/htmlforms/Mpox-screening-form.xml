@@ -104,8 +104,6 @@
 			const rashYes = jq('#has_skin_rash input[type="radio"]:checked').val() == '1065';
 
 			if (riskExpossureYes || multipleSexualPartsYes || travelDetailsYes || rashYes) {
-			if (riskExpossureYes || multipleSexualPartsYes || travelDetailsYes || rashYes) {
-
 			jq("#secondary-screening-tab").removeClass("disabled");
 			} else {
 			jq("#secondary-screening-tab").addClass("disabled");
