@@ -100,9 +100,11 @@
 			function checkSecondaryScreeningTab() {
 			const riskExpossureYes = jq('#riskExpossure input[type="radio"]:checked').val() == '90003';
 			const multipleSexualPartsYes = jq('#multipleSexualParts input[type="radio"]:checked').val() == '90003';
-			const travelDetailsYes = jq('#travelDetails input[type="radio"]:checked').val() == '90003';
+			const travelDetailsYes = jq('#travelDetails input[type="radio"]:checked').val() == '90003'; 
+			const rashYes = jq('#has_skin_rash input[type="radio"]:checked').val() == '1065';
 
-			if (riskExpossureYes || multipleSexualPartsYes || travelDetailsYes) {
+			if (riskExpossureYes || multipleSexualPartsYes || travelDetailsYes || rashYes) {
+
 			jq("#secondary-screening-tab").removeClass("disabled");
 			} else {
 			jq("#secondary-screening-tab").addClass("disabled");
@@ -112,6 +114,7 @@
 			jq('#riskExpossure input[type="radio"]').on('change', checkSecondaryScreeningTab);
 			jq('#multipleSexualParts input[type="radio"]').on('change', checkSecondaryScreeningTab);
 			jq('#travelDetails input[type="radio"]').on('change', checkSecondaryScreeningTab);
+			jq('#has_skin_rash input[type="radio"]').on('change', checkSecondaryScreeningTab);
 
 			jq('#final-patient-disposition input[type="radio"]').on('change', function () {
 			if (jq(this).val() == '168758') {
