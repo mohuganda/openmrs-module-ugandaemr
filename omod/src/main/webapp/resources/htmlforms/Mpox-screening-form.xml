@@ -190,7 +190,7 @@
 											</div>
 											<div class="row">
 												<div class="col-md-4">
-													<label>Patient has a Skin Rask?</label>
+													<label>Patient has a skin rash?</label>
 													<obs conceptId="512" answerConceptIds="1065,1066"
 														 answerLabels="Yes (Criteria A), No (Criteria B)"
 														 id="has_skin_rash" style="radio" class="horizontal" required="true"/>
