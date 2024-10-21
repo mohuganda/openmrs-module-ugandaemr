@@ -1,0 +1,136 @@
+{
+  "encounterType": "8d5b2be0-c2cc-11de-8d13-0010c6dffd0f",
+  "name": "HMIS ACP 042 INTEGRATED ADOLESCENTS AND YOUNG PEOPLE SERVICES REGISTER",
+  "referencedForms": [],
+  "processor": "EncounterFormProcessor",
+  "published": true,
+  "retired": false,
+  "uuid": "b9405c17-9183-4c92-80c5-4b2b10869b17",
+  "version": "4.0.0",
+  "description": "A form used to collect integrated adolescents and young people services",
+  "pages": [
+    {
+      "label": " INTEGRATED ADOLESCENTS AND YOUNG PEOPLE SERVICES REGISTER",
+      "sections": [
+        {
+          "label": "Client Information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "client_category_id",
+              "label": "Client Category",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "1646AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            
+              }
+            },
+            {
+              "id": "serial_no_id",
+              "label": "Serial No",
+              "type": "obs",
+               "questionOptions": {
+                "rendering": "text",
+                "concept": "1646AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              }
+            },
+            {
+              "id": "client_reg_no_id",
+              "label": "Client Reg No",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "1646AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              }
+            },
+            {
+              "id": "school_status_id",
+              "label": "School Status",
+              "type": "obs",
+             "questionOptions": {
+                "rendering": "radio",
+                "concept": "8239eb9c-5bae-4f80-88ea-5003e7d0219e",
+                "answers": [
+                  {
+                    "concept": "dcd695dc-30ab-102d-86b0-7a5022ba4115",
+                    "label": "In"
+                  },
+                  {
+                    "concept": "dcd69c06-30ab-102d-86b0-7a5022ba4115",
+                    "label": "Out"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "sexual_relationship_id",
+              "label": "In a sexual Relationship",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8239eb9c-5bae-4f80-88ea-5003e7d0219e",
+                "answers": [
+                  {
+                    "concept": "dcd695dc-30ab-102d-86b0-7a5022ba4115",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "dcd69c06-30ab-102d-86b0-7a5022ba4115",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hiv_status_at_enrollment",
+              "label": "HIV Status at enrollment",
+              "type": "obs",
+              "required": "true",
+              "questionOptions": {
+                "concept": "1f98a7e6-4d0a-4008-a6f7-4ec118f08983",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "dcdf4241-30ab-102d-86b0-7a5022ba4115",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "dcdf4653-30ab-102d-86b0-7a5022ba4115",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "4d9159a2-37a6-4115-afe3-3f70050c4df3",
+                    "label": "Inconclusive HIV Results"
+                  },
+                  {
+                    "concept": "dcd6865a-30ab-102d-86b0-7a5022ba4115",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "art_status_for_hiv",
+              "label": "ART Status (For HIV+)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a-system-defined-concept-uuid"
+              }
+            },
+            {
+              "id": "services_received_at_enrollment",
+              "label": "Services received at enrollment",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a-system-defined-concept-uuid"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
