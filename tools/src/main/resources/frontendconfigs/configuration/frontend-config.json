@@ -13,7 +13,6 @@
       ]
     }
   },
-
   "@openmrs/esm-appointments-app": {
     "Display conditions": {
       "privileges": [
@@ -33,7 +32,10 @@
     },
     "extensionSlots": {
       "visit-header-right-slot": {
-        "remove" :["start-visit-button",""]
+        "remove": [
+          "start-visit-button",
+          ""
+        ]
       },
       "patient-highlights-bar-slot": {
         "remove": [
@@ -246,7 +248,6 @@
       ]
     }
   },
-
   "@openmrs/esm-patient-programs-app": {
     "Display conditions": {
       "privileges": [
@@ -611,6 +612,14 @@
   "@ugandaemr/esm-login-app": {
     "logo": {
       "src": "/openmrs/spa/logo.svg",
+      "alt": "UgandaEMR+ logo"
+    },
+    "loginBackground": {
+      "src": "/openmrs/spa/background.png",
+      "alt": "UgandaEMR+ logo"
+    },
+    "loginBanner": {
+      "src": "/openmrs/spa/banner.svg",
       "alt": "UgandaEMR+ logo"
     }
   },
