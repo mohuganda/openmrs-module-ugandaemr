@@ -752,5 +752,24 @@
     },
     "enableStockDispense": true,
     "medicationRequestExpirationPeriodInDays": 1
+  },
+  "@openmrs/esm-patient-search-app": {
+    "extensionSlots": {
+      "patient-actions-slot": {
+        "remove": [
+          "add-past-visit-button",
+          "cancel-visit-button",
+          "start-visit-button",
+          "stop-visit-button",
+          "mark-alive-button",
+          "mark-patient-deceased-button"
+        ]
+      },
+      "start-visit-button-slot": {
+        "remove": [
+          "start-visit-button-patient-search"
+        ]
+      }
+    }
   }
 }
