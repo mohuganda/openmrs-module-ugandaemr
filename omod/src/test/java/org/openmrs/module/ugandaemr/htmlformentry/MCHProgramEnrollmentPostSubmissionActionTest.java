@@ -12,7 +12,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,7 +36,6 @@ import org.springframework.mock.web.MockHttpSession;
  * Tests patient enrollment into the MCH program
  *//*
 
-@Ignore
 public class MCHProgramEnrollmentPostSubmissionActionTest extends BaseModuleWebContextSensitiveTest {
 	
 	protected static final String UGANDAEMR_STANDARD_DATASET_XML = "org/openmrs/module/ugandaemr/include/standardTestDataset.xml";

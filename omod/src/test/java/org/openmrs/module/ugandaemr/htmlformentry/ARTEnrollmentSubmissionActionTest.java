@@ -2,7 +2,6 @@
 package org.openmrs.module.ugandaemr.htmlformentry;
 
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,7 +36,6 @@ import static org.mockito.Mockito.when;
  * Tests patient enrollment into the MCH program
  *//*
 
-@Ignore
 public class ARTEnrollmentSubmissionActionTest extends BaseModuleWebContextSensitiveTest {
 
     protected static final String UGANDAEMR_DSDM_DATASET_XML = "org/openmrs/module/ugandaemr/include/dsdmTestDataSet.xml";

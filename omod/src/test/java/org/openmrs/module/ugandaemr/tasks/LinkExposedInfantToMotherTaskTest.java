@@ -4,7 +4,6 @@ package org.openmrs.module.ugandaemr.tasks;
 import java.util.List;
 
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openmrs.Person;
@@ -18,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Tests the task to link infants to mothers, builds on @link MotherToBabyPairLinkingPostSubmissionActionTest
  *//*
 
-@Ignore
 public class LinkExposedInfantToMotherTaskTest extends BaseModuleWebContextSensitiveTest {
 	LinkExposedInfantToMotherTask task;
 	

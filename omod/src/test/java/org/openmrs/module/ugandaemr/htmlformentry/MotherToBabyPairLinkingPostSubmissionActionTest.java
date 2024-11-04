@@ -8,7 +8,6 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openmrs.Encounter;
@@ -25,7 +24,6 @@ import org.openmrs.web.test.jupiter.BaseModuleWebContextSensitiveTest;;
  * Test linking of mothers to HIV exposed infants through the mother's ART number
  *//*
 
-@Ignore
 public class MotherToBabyPairLinkingPostSubmissionActionTest extends BaseModuleWebContextSensitiveTest {
 	private FormEntrySession mockFormEntrySession;
 	
