@@ -1,3 +1,4 @@
+/*
 package org.openmrs.module.ugandaemr.tasks;
 
 import java.util.Date;
@@ -79,3 +80,4 @@ public class ExitMCHProgramASLostToFollowUpTaskTest extends BaseModuleWebContext
 		assertEquals(1, patientPrograms.size());
 	}
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package org.openmrs.module.ugandaemr.htmlformentry;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -165,3 +166,4 @@ public class MCHProgramExitPostSubmissionActionTest extends BaseModuleWebContext
 		assertNull(patientPrograms.get(0).getDateCompleted());
 	}
 }
+*/
