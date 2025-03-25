@@ -4,29 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.openmrs.CareSetting;
-import org.openmrs.Concept;
-import org.openmrs.ConceptNumeric;
-import org.openmrs.DrugOrder;
-import org.openmrs.Encounter;
-import org.openmrs.EncounterType;
-import org.openmrs.EncounterRole;
-import org.openmrs.Location;
-import org.openmrs.Obs;
-import org.openmrs.Order;
-import org.openmrs.OrderType;
-import org.openmrs.Patient;
-import org.openmrs.Provider;
-import org.openmrs.PatientIdentifier;
-import org.openmrs.PatientIdentifierType;
-import org.openmrs.PatientProgram;
-import org.openmrs.PatientProgramAttribute;
-import org.openmrs.ProgramAttributeType;
-import org.openmrs.Person;
-import org.openmrs.Relationship;
-import org.openmrs.TestOrder;
-import org.openmrs.Visit;
-import org.openmrs.User;
+import org.openmrs.*;
 import org.openmrs.api.context.Context;
 import org.openmrs.api.AdministrationService;
 import org.openmrs.api.EncounterService;
@@ -37,6 +15,7 @@ import org.openmrs.api.ConceptService;
 import org.openmrs.api.OrderService;
 import org.openmrs.api.APIException;
 import org.openmrs.api.impl.BaseOpenmrsService;
+import org.openmrs.module.emrapi.adt.AdtService;
 import org.openmrs.module.htmlformentry.FormEntrySession;
 import org.openmrs.module.patientqueueing.api.PatientQueueingService;
 import org.openmrs.module.patientqueueing.mapper.PatientQueueMapper;
@@ -1802,9 +1781,9 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
         //check if issued at facility
 
         Obs dispensedAtFacility = createDispensingObs(encounter, conceptService.getConcept(MEDICATION_DISPENSE_RECEIVED_AT_VIST), null, null, order);
-        if(receivedAtFacility) {
+        if (receivedAtFacility) {
             dispensedAtFacility.setValueCoded(conceptService.getConcept(MEDICATION_DISPENSE_RECEIVED_AT_VIST_YES));
-        }else {
+        } else {
             dispensedAtFacility.setValueCoded(conceptService.getConcept(MEDICATION_DISPENSE_RECEIVED_AT_VIST_NO));
         }
         parentObs.addGroupMember(dispensedAtFacility);
@@ -2020,7 +1999,6 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
         List<PatientQueue> fromLabQueue = new ArrayList<>();
 
 
-
         for (PatientQueue potentialQueueFromLab : patientQueueList) {
             Encounter labEncounter = potentialQueueFromLab.getEncounter();
             PatientQueue.Status labStatus = potentialQueueFromLab.getStatus();
@@ -2060,7 +2038,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
         Order order = Context.getOrderService().getOrderByUuid(orderUuid);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String date = sdf.format(new Date());
-        String defaultSampleId =  ("LAB"+"-"+order.getPatient().getPatientId()+"-"+date).replace("/","-");
+        String defaultSampleId = ("LAB" + "-" + order.getPatient().getPatientId() + "-" + date).replace("/", "-");
         return defaultSampleId;
     }
 
@@ -2088,19 +2066,95 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
             testOrder.setFulfillerStatus(Order.FulfillerStatus.IN_PROGRESS);
             testOrder.setSpecimenSource(Context.getConceptService().getConceptByUuid(specimenSourceUuid));
             orderService.saveOrder(testOrder, null);
-            orderService.updateOrderFulfillerStatus(order, Order.FulfillerStatus.IN_PROGRESS,"Order Sent to CPHHL");
+            orderService.updateOrderFulfillerStatus(order, Order.FulfillerStatus.IN_PROGRESS, "Order Sent to CPHHL");
             orderService.voidOrder(order, "REVISED with new order " + testOrder.getOrderNumber());
         } else {
             testOrder = (TestOrder) orderService.updateOrderFulfillerStatus(order, Order.FulfillerStatus.IN_PROGRESS, "To be processed", accessionNumber);
-            updateSpecimenSourceManually(order,specimenSourceUuid);
+            updateSpecimenSourceManually(order, specimenSourceUuid);
         }
         return testOrder;
     }
 
-    private void updateSpecimenSourceManually(Order order,String specimenSourceUUID){
-        Concept specimenSource=Context.getConceptService().getConceptByUuid(specimenSourceUUID);
-        if(specimenSource!=null) {
-            Context.getAdministrationService().executeSQL(String.format(SPECIMEN_MANUAL_UPDATE_QUERY,specimenSource.getConceptId(), order.getOrderId()), false);
+    private void updateSpecimenSourceManually(Order order, String specimenSourceUUID) {
+        Concept specimenSource = Context.getConceptService().getConceptByUuid(specimenSourceUUID);
+        if (specimenSource != null) {
+            Context.getAdministrationService().executeSQL(String.format(SPECIMEN_MANUAL_UPDATE_QUERY, specimenSource.getConceptId(), order.getOrderId()), false);
+        }
+    }
+
+    public PatientQueue checkInPatient(Patient patient, Location currentLocation, Location locationTo,Location queueRoom, Provider provider, String visitComment, String patientStatus, String visitTypeUuid){
+        PatientQueue patientQueue = new PatientQueue();
+        PatientQueueingService patientQueueingService = Context.getService(PatientQueueingService.class);
+
+        if (patientStatus != null && patientStatus.equals("emergency")) {
+            patientQueue.setPriority(0);
+            patientQueue.setPriorityComment(patientStatus);
+        }
+
+        if (visitComment != null) {
+            patientQueue.setComment(visitComment);
+        }
+
+        createVisitForToday(patient,currentLocation.getParentLocation(),visitTypeUuid);
+        patientQueue.setLocationFrom(currentLocation);
+        patientQueue.setPatient(patient);
+        patientQueue.setLocationTo(locationTo);
+        patientQueue.setQueueRoom(queueRoom);
+        patientQueue.setProvider(provider);
+        patientQueue.setStatus(PatientQueue.Status.PENDING);
+        patientQueue.setCreator(Context.getAuthenticatedUser());
+        patientQueue.setDateCreated(new Date());
+        patientQueueingService.assignVisitNumberForToday(patientQueue);
+        patientQueueingService.savePatientQue(patientQueue);
+        return patientQueue;
+    }
+
+    private void createVisitForToday(Patient patient, Location location, String visitTypeUuid) {
+        VisitService visitService = Context.getVisitService();
+        List<Visit> visitList = Context.getVisitService().getActiveVisitsByPatient(patient);
+
+        VisitType visitType = visitService.getVisitTypeByUuid(visitTypeUuid);
+
+        if (visitList.isEmpty()) {
+            AdtService adtService = Context.getService(AdtService.class);
+            Visit visit = adtService.ensureVisit(patient, new Date(), location);
+            if (visitType != null) {
+                visit.setVisitType(visitType);
+                try {
+                    visitService.saveVisit(visit);
+                } catch (Exception var14) {
+                    log.error(var14);
+                }
+            }
+        } else {
+            Visit todayVisit = null;
+            for (Visit visit : visitList) {
+                Date largestEncounterDate = OpenmrsUtil.getLastMomentOfDay(visit.getStartDatetime());
+                for (Encounter encounter : visit.getEncounters()) {
+                    if (encounter.getEncounterDatetime().after(largestEncounterDate)) {
+                        largestEncounterDate = encounter.getEncounterDatetime();
+                    }
+                }
+
+                if (!visit.getStartDatetime().after(OpenmrsUtil.firstSecondOfDay(new Date()))) {
+                    Context.getVisitService().endVisit(visit, largestEncounterDate);
+                } else {
+                    todayVisit = visit;
+                }
+            }
+
+            if (todayVisit == null) {
+                AdtService adtService = Context.getService(AdtService.class);
+                Visit visit = adtService.ensureVisit(patient, new Date(), location);
+                if (visitType != null) {
+                    visit.setVisitType(visitType);
+                    try {
+                        visitService.saveVisit(visit);
+                    } catch (Exception var14) {
+                        log.error(var14);
+                    }
+                }
+            }
         }
     }
 }
