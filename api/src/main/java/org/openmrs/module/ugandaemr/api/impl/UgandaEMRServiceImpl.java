@@ -46,6 +46,7 @@ import org.openmrs.module.patientqueueing.model.PatientQueue;
 import org.openmrs.module.stockmanagement.api.dto.DispenseRequest;
 import org.openmrs.module.ugandaemr.PublicHoliday;
 import org.openmrs.module.ugandaemr.UgandaEMRConstants;
+import org.openmrs.module.ugandaemr.api.queuemapper.CheckInPatient;
 import org.openmrs.module.ugandaemr.api.queuemapper.Identifier;
 import org.openmrs.module.ugandaemr.api.queuemapper.PatientQueueVisitMapper;
 import org.openmrs.module.ugandaemr.api.UgandaEMRService;
@@ -2105,7 +2106,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
         }
     }
 
-    public PatientQueue checkInPatient(Patient patient, Location currentLocation, Location locationTo,Location queueRoom, Provider provider, String visitComment, String patientStatus, String visitTypeUuid){
+    public CheckInPatient checkInPatient(Patient patient, Location currentLocation, Location locationTo, Location queueRoom, Provider provider, String visitComment, String patientStatus, String visitTypeUuid) {
         PatientQueue patientQueue = new PatientQueue();
         PatientQueueingService patientQueueingService = Context.getService(PatientQueueingService.class);
 
@@ -2118,7 +2119,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
             patientQueue.setComment(visitComment);
         }
 
-        createVisitForToday(patient,currentLocation.getParentLocation(),visitTypeUuid);
+        Visit visit = createVisitForToday(patient, currentLocation.getParentLocation(), visitTypeUuid);
         patientQueue.setLocationFrom(currentLocation);
         patientQueue.setPatient(patient);
         patientQueue.setLocationTo(locationTo);
@@ -2129,12 +2130,20 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
         patientQueue.setDateCreated(new Date());
         patientQueueingService.assignVisitNumberForToday(patientQueue);
         patientQueueingService.savePatientQue(patientQueue);
-        return patientQueue;
+
+        CheckInPatient checkInPatient = new CheckInPatient();
+
+        checkInPatient.setPatientQueue(patientQueue);
+
+        checkInPatient.setVisit(visit);
+
+        return checkInPatient;
     }
 
-    private void createVisitForToday(Patient patient, Location location, String visitTypeUuid) {
+    private Visit createVisitForToday(Patient patient, Location location, String visitTypeUuid) {
         VisitService visitService = Context.getVisitService();
         List<Visit> visitList = Context.getVisitService().getActiveVisitsByPatient(patient);
+        Visit todayVisit = null;
 
         VisitType visitType = visitService.getVisitTypeByUuid(visitTypeUuid);
 
@@ -2150,7 +2159,6 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
                 }
             }
         } else {
-            Visit todayVisit = null;
             for (Visit visit : visitList) {
                 Date largestEncounterDate = OpenmrsUtil.getLastMomentOfDay(visit.getStartDatetime());
                 for (Encounter encounter : visit.getEncounters()) {
@@ -2179,5 +2187,7 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
                 }
             }
         }
+
+        return todayVisit;
     }
 }
