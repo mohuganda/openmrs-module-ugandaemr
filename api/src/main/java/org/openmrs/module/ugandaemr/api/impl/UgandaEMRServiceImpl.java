@@ -28,24 +28,35 @@ import org.openmrs.TestOrder;
 import org.openmrs.Visit;
 import org.openmrs.VisitType;
 import org.openmrs.User;
+import org.openmrs.api.*;
 import org.openmrs.api.context.Context;
-import org.openmrs.api.AdministrationService;
-import org.openmrs.api.EncounterService;
-import org.openmrs.api.VisitService;
-import org.openmrs.api.PersonService;
-import org.openmrs.api.PatientService;
-import org.openmrs.api.ConceptService;
-import org.openmrs.api.OrderService;
-import org.openmrs.api.APIException;
 import org.openmrs.api.impl.BaseOpenmrsService;
+import org.openmrs.module.Module;
+import org.openmrs.module.ModuleFactory;
+import org.openmrs.module.appframework.service.AppFrameworkService;
+import org.openmrs.module.dataexchange.DataImporter;
+import org.openmrs.module.emrapi.EmrApiConstants;
 import org.openmrs.module.emrapi.adt.AdtService;
+import org.openmrs.module.emrapi.utils.MetadataUtil;
 import org.openmrs.module.htmlformentry.FormEntrySession;
+import org.openmrs.module.idgen.IdentifierSource;
+import org.openmrs.module.idgen.service.IdentifierSourceService;
+import org.openmrs.module.metadatadeploy.api.MetadataDeployService;
+import org.openmrs.module.metadatamapping.MetadataTermMapping;
+import org.openmrs.module.metadatamapping.api.MetadataMappingService;
 import org.openmrs.module.patientqueueing.api.PatientQueueingService;
 import org.openmrs.module.patientqueueing.mapper.PatientQueueMapper;
 import org.openmrs.module.patientqueueing.model.PatientQueue;
 import org.openmrs.module.stockmanagement.api.dto.DispenseRequest;
 import org.openmrs.module.ugandaemr.PublicHoliday;
 import org.openmrs.module.ugandaemr.UgandaEMRConstants;
+import org.openmrs.module.ugandaemr.activator.AppConfigurationInitializer;
+import org.openmrs.module.ugandaemr.activator.HtmlFormsInitializer;
+import org.openmrs.module.ugandaemr.activator.Initializer;
+import org.openmrs.module.ugandaemr.activator.JsonFormsInitializer;
+import org.openmrs.module.ugandaemr.api.deploy.bundle.CommonMetadataBundle;
+import org.openmrs.module.ugandaemr.api.deploy.bundle.UgandaAddressMetadataBundle;
+import org.openmrs.module.ugandaemr.api.deploy.bundle.UgandaEMRPatientFlagMetadataBundle;
 import org.openmrs.module.ugandaemr.api.queuemapper.CheckInPatient;
 import org.openmrs.module.ugandaemr.api.queuemapper.Identifier;
 import org.openmrs.module.ugandaemr.api.queuemapper.PatientQueueVisitMapper;
@@ -62,6 +73,7 @@ import org.openmrs.module.ugandaemr.pharmacy.DispensingModelWrapper;
 import org.openmrs.module.ugandaemr.pharmacy.mapper.DrugOrderMapper;
 import org.openmrs.module.ugandaemr.pharmacy.mapper.PharmacyMapper;
 import org.openmrs.notification.Alert;
+import org.openmrs.notification.AlertService;
 import org.openmrs.order.OrderUtil;
 import org.openmrs.parameter.EncounterSearchCriteria;
 import org.openmrs.parameter.EncounterSearchCriteriaBuilder;
@@ -2104,6 +2116,356 @@ public class UgandaEMRServiceImpl extends BaseOpenmrsService implements UgandaEM
         if (specimenSource != null) {
             Context.getAdministrationService().executeSQL(String.format(SPECIMEN_MANUAL_UPDATE_QUERY, specimenSource.getConceptId(), order.getOrderId()), false);
         }
+    }
+
+
+    public Map initializeMetaData(){
+
+        Map results=new HashMap<>();
+        AdministrationService administrationService = Context.getAdministrationService();
+
+        try {
+            String initialiseMetaDataOnStart=administrationService.getGlobalProperty("ugandaemr.initialiseMetadataOnStart");
+            log.info("Start import of Concepts,privillages,personAttribute provider attribute type etc...");
+            importMetaDataFromXMLFiles();
+            log.info("completed import of Concepts,privillages,personAttribute provider attribute type etc...");
+            // run the initialization of forms
+            for (Initializer initializer : initialiseForms()) {
+                initializer.started();
+            }
+
+            results.put("status","success");
+            results.put("message","completed initialising metadata");
+
+            return results;
+
+        } catch (Exception e) {
+            results.put("status","failed");
+            results.put("message",e.getMessage());
+            return results;
+        }
+    }
+
+    private String  getMetadataPath(String type){
+        String appDataDir = OpenmrsUtil.getApplicationDataDirectory();
+        String path="";
+
+        if(type.equals("jsonforms")){
+            path =Context.getAdministrationService().getGlobalProperty("ugandaemr.metadata.jsonFormPath");
+        }else if(type.equals("htmlforms")) {
+            path = Context.getAdministrationService().getGlobalProperty("ugandaemr.metadata.htmlnFormPath");
+        }else if(type.equals("metadata")) {
+            path = Context.getAdministrationService().getGlobalProperty("ugandaemr.metadata.path");
+        }
+        return appDataDir+path;
+    }
+
+
+
+    public void importMetaDataFromXMLFiles(){
+        DataImporter dataImporter = Context.getRegisteredComponent("dataImporter", DataImporter.class);
+        String metaDataFilePath=getMetadataPath("metadata");
+        log.info("import  to Concept Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/Concept.xml");
+        log.info("import to Concept Table  Successful");
+
+        log.info("import  to Concept Name Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/Concept_Name.xml");
+        log.info("import to Concept Name Table  Successful");
+
+        log.info("import  to Concept_Description Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/Concept_Description.xml");
+        log.info("import to Concept_Description Table  Successful");
+
+        log.info("import  to Concept_Numeric Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/Concept_Numeric.xml");
+        log.info("import to Concept_Numeric Table  Successful");
+
+        log.info("import  to Concept_Answer Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/Concept_Answer.xml");
+        log.info("import to Concept_Answer Table  Successful");
+
+        log.info("import  to Concept_Set Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/Concept_Set.xml");
+        log.info("import to Concept_Set Table  Successful");
+
+        log.info("import  to Concept_Reference Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/Concept_Reference.xml");
+        log.info("import to Concept_Reference Table  Successful");
+
+        log.info("import  of  Concept Modifications Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/Concept_Modifications.xml");
+        log.info("import to Concept Modifications Table  Successful");
+
+        log.info("import  of  Drugs  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/Drug.xml");
+        log.info("import of Drugs  Successful");
+
+        log.info("import  of  Drugs  Starting");
+        dataImporter.importData(metaDataFilePath+"appointment.xml");
+        log.info("import of Drugs  Successful");
+
+        log.info("import  of  ICD 11 concepts  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/icd_11/icd_11_import_concept.xml");
+        log.info("import of ICD 11 concepts  Successful");
+
+        log.info("import  of  ICD 11 concept_name Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/icd_11/icd_11_import_concept_name.xml");
+        log.info("import of ICD 11 concept_name  Successful");
+
+        log.info("import  of  ICD 11 concept_reference Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/icd_11/icd_11_import_concept_reference.xml");
+        log.info("import of ICD 11 concept_reference  Successful");
+
+        log.info("import  of  ICD 11 concept_map Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/icd_11/icd_11_import_concept_map.xml");
+        log.info("import of ICD 11 concept_map  Successful");
+
+        log.info("import  of  ICD 11 cause_of_death_set Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/cause_of_death_set.xml");
+        log.info("import of ICD 11 cause_of_death_set  Successful");
+
+        log.info("Move Non ICD Coded Diagnosis");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/icd_11/move_non_icd11-10-to-msc.xml");
+        log.info("Move non coded ICD 11 Diagnosis");
+
+        log.info("import  to Concept Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/tools-2024/Concept.xml");
+        log.info("import to Concept Table  Successful");
+
+        log.info("import  to Concept Name Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/tools-2024/Concept_Name.xml");
+        log.info("import to Concept Name Table  Successful");
+
+        log.info("import  to Concept_Description Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/tools-2024/Concept_Description.xml");
+        log.info("import to Concept_Description Table  Successful");
+
+        log.info("import  to Concept_Numeric Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/tools-2024/Concept_Numeric.xml");
+        log.info("import to Concept_Numeric Table  Successful");
+
+        log.info("import  to Concept_Answer Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/tools-2024/Concept_Answer.xml");
+        log.info("import to Concept_Answer Table  Successful");
+
+        log.info("import  to Concept_Set Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/tools-2024/Concept_Set.xml");
+        log.info("import to Concept_Set Table  Successful");
+
+        log.info("import  to Concept_Reference Table  Starting");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/tools-2024/Concept_Reference.xml");
+        log.info("import to Concept_Reference Table  Successful");
+
+        log.info("Retire Meta data");
+        dataImporter.importData(metaDataFilePath+"concepts_and_drugs/retire_meta_data.xml");
+        log.info("Retiring of meta data is Successful");
+
+        log.info("Start import of person attributes");
+        dataImporter.importData(metaDataFilePath+"Person_Attribute_Types.xml");
+        log.info("Person Attributes imported");
+
+        log.info("Start import of UgandaEMR Privileges");
+        dataImporter.importData(metaDataFilePath+"Role_Privilege.xml");
+        log.info("UgandaEMR Privileges Imported");
+
+        log.info("Start import of UgandaEMR Visits");
+        dataImporter.importData(metaDataFilePath+"VisitTypes.xml");
+        log.info("UgandaEMR Visits Imported");
+
+        log.info("Start import of UgandaEMR Relationship Types");
+        dataImporter.importData(metaDataFilePath+"RelationshipTypes.xml");
+        log.info("UgandaEMR Relationship Types Imported");
+
+        log.info("Start import of Program related objects");
+        dataImporter.importData(metaDataFilePath+"Programs.xml");
+        log.info(" Program related objects Imported");
+    }
+
+    /**
+     * Generate patientIdentifier for old OpenMRS Migration to the new
+     */
+
+    protected PatientIdentifier generatePatientIdentifier() {
+        IdentifierSourceService iss = Context.getService(IdentifierSourceService.class);
+        IdentifierSource idSource = iss.getIdentifierSource(1); // this is the default OpenMRS identifier source
+        PatientService patientService = Context.getPatientService();
+
+        UUID uuid = UUID.randomUUID();
+
+        PatientIdentifierType patientIdentifierType = patientService.getPatientIdentifierTypeByUuid("05a29f94-c0ed-11e2-94be-8c13b969e334");
+
+        PatientIdentifier pid = new PatientIdentifier();
+        pid.setIdentifierType(patientIdentifierType);
+        String identifier = iss.generateIdentifier(idSource, "New OpenMRS ID with CheckDigit");
+        pid.setIdentifier(identifier);
+        pid.setPreferred(true);
+        pid.setUuid(String.valueOf(uuid));
+
+        return pid;
+
+    }
+
+    /**
+     * Generate an OpenMRS ID for patients who do not have one due to a migration from an old OpenMRS ID to a new one which contains a check-digit
+     **/
+    public void generateOpenMRSIdentifierForPatientsWithout() {
+        PatientService patientService = Context.getPatientService();
+        AdministrationService as = Context.getAdministrationService();
+        AlertService alertService = Context.getAlertService();
+
+        List<List<Object>> patientIds = as.executeSQL("SELECT patient_id FROM patient_identifier WHERE patient_id NOT IN (SELECT patient_id FROM patient_identifier p INNER JOIN patient_identifier_type pt ON (p.identifier_type = pt.patient_identifier_type_id AND pt.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'))", true);
+
+        if (patientIds.size() == 0) {
+            // no patients to process
+            return;
+        }
+        // get the identifier source copied from RegistrationCoreServiceImpl
+
+        for (List<Object> row : patientIds) {
+            Patient p = patientService.getPatient((Integer) row.get(0));
+            // Create new Patient Identifier
+            PatientIdentifier pid = generatePatientIdentifier();
+            pid.setPatient(p);
+            try {
+                log.info("Adding OpenMRS ID " + pid.getIdentifier() + " to patient with id " + p.getPatientId());
+                // Save the patient Identifier
+                patientService.savePatientIdentifier(pid);
+            } catch (Exception e) {
+                // log the error to the alert service but do not rethrow the exception since the module has to start
+                log.error("Error updating OpenMRS identifier for patient #" + p.getPatientId(), e);
+            }
+        }
+        log.info("All patients updated with new OpenMRS ID");
+    }
+
+    /**
+     * Configure the global properties for the expected functionality
+     *
+     * @return
+     */
+    public void initializePrimaryIdentifierTypeMapping() {
+        // The primary identifier type now uses metadata mapping instead of a global property
+        MetadataMappingService metadataMappingService = Context.getService(MetadataMappingService.class);
+        MetadataTermMapping primaryIdentifierTypeMapping = metadataMappingService.getMetadataTermMapping(
+                EmrApiConstants.EMR_METADATA_SOURCE_NAME,
+                EmrApiConstants.PRIMARY_IDENTIFIER_TYPE
+        );
+        PatientIdentifierType openmrsIdType = Context.getPatientService()
+                .getPatientIdentifierTypeByUuid(PatientIdentifierTypes.NATIONAL_ID.uuid());
+
+        // Overwrite if not set yet
+        if (!openmrsIdType.getUuid().equals(primaryIdentifierTypeMapping.getMetadataUuid())) {
+            primaryIdentifierTypeMapping.setMappedObject(openmrsIdType);
+            metadataMappingService.saveMetadataTermMapping(primaryIdentifierTypeMapping);
+        }
+    }
+
+
+    public void installCommonMetadata(MetadataDeployService deployService) {
+        try {
+            log.info("Installing standard metadata using the packages.xml file");
+            MetadataUtil.setupStandardMetadata(getClass().getClassLoader());
+            log.info("Standard metadata installed");
+
+            log.info("Installing metadata");
+            log.info("Installing commonly used metadata");
+            deployService.installBundle(Context.getRegisteredComponents(CommonMetadataBundle.class).get(0));
+            log.info("Finished installing commonly used metadata");
+            log.info("Installing address hierarchy");
+            deployService.installBundle(Context.getRegisteredComponents(UgandaAddressMetadataBundle.class).get(0));
+            log.info("Finished installing addresshierarchy");
+
+            // install concepts
+            log.info("Installing patient flags");
+            deployService.installBundle(Context.getRegisteredComponents(UgandaEMRPatientFlagMetadataBundle.class).get(0));
+            log.info("Finished installing patient flags");
+
+        } catch (Exception e) {
+            Module mod = ModuleFactory.getModuleById("ugandaemr");
+            ModuleFactory.stopModule(mod);
+            throw new RuntimeException("failed to install the common metadata ", e);
+        }
+    }
+
+    public void removeOldChangeLocksForDataIntegrityModule() {
+        String gpVal = Context.getAdministrationService().getGlobalProperty("dataintegrity.database_version");
+        // remove data integrity locks for an version below 4
+        // some gymnastics to get the major version number from semver like 2.5.3
+        if ((gpVal == null) || new Integer(gpVal.substring(0, gpVal.indexOf("."))).intValue() < 4) {
+            AdministrationService as = Context.getAdministrationService();
+            log.warn("Removing liquibase change log locks for previously installed data integrity instance");
+            as.executeSQL("delete from liquibasechangelog WHERE ID like 'dataintegrity%';", false);
+        }
+    }
+
+    public List<Initializer> initialiseForms() {
+        String jsonFormsPath=getMetadataPath("jsonforms");
+        String htmlFormsPath=getMetadataPath("htmlforms");
+
+        List<Initializer> l = new ArrayList<Initializer>();
+        l.add(new AppConfigurationInitializer());
+        l.add(new JsonFormsInitializer(UgandaEMRConstants.MODULE_ID,jsonFormsPath));
+        l.add(new HtmlFormsInitializer(UgandaEMRConstants.MODULE_ID));
+        return l;
+    }
+
+
+    public void setHealthFacilityLocation(){
+        LocationService locationService=Context.getLocationService();
+        AdministrationService administrationService=Context.getAdministrationService();
+        Location healthCenter = locationService.getLocationByUuid("629d78e9-93e5-43b0-ad8a-48313fd99117");
+        healthCenter.setName(administrationService.getGlobalProperty(UgandaEMRConstants.GP_HEALTH_CENTER_NAME));
+        locationService.saveLocation(healthCenter);
+    }
+
+    public  void  setFlagStatus(){
+        AdministrationService administrationService=Context.getAdministrationService();
+        String flagstatus = administrationService.getGlobalProperty("ugandaemr.patientflags.disabledFlags");
+
+        if (flagstatus != null) {
+            flagstatus = ("'" + flagstatus.trim().replace(",", "','") + "'").replace(",''", "").replace("' ", "'");
+            administrationService.executeSQL("update patientflags_flag set enabled=0 where name in (" + flagstatus.trim() + ")", false);
+        }
+    }
+
+    public void disableEnableAPPS(){
+        AppFrameworkService appFrameworkService = Context.getService(AppFrameworkService.class);
+        // disable the reference app registration page
+        appFrameworkService.disableApp("referenceapplication.registrationapp.registerPatient");
+        // disable the start visit app since all data is retrospective
+        appFrameworkService.disableExtension("org.openmrs.module.coreapps.createVisit");
+        // the extension to the edit person details
+        appFrameworkService.disableExtension("org.openmrs.module.registrationapp.editPatientDemographics");
+
+        // disable apps on the Clinican facing dashboard added through coreapps 1.12.0
+        appFrameworkService.disableApp("coreapps.mostRecentVitals");
+        appFrameworkService.disableApp("coreapps.diagnoses");
+        appFrameworkService.disableApp("coreapps.latestObsForConceptList");
+        appFrameworkService.disableApp("coreapps.obsAcrossEncounters");
+        appFrameworkService.disableApp("coreapps.obsGraph");
+        appFrameworkService.enableApp("coreapps.visitByEncounterType");
+        appFrameworkService.disableApp("coreapps.dataIntegrityViolations");
+        appFrameworkService.disableApp("fingerprint.findPatient");
+        appFrameworkService.enableApp("ugandaemr.findPatient");
+        appFrameworkService.disableApp("ugandaemr.registrationapp.registerPatient");
+
+        // enable the relationships dashboard widget
+        appFrameworkService.enableApp("coreapps.relationships");
+
+        // Remove the BIRT reports app since it is no longer supported
+        appFrameworkService.disableApp("ugandaemr.referenceapplication.birtReports");
+
+        // Home page apps clean up
+        appFrameworkService.disableApp("referenceapplication.vitals"); // Capture Vitals
+        appFrameworkService.disableApp("coreapps.activeVisits"); // Active Visits
+
+        // form entry app on the home page
+        appFrameworkService.disableApp("xforms.formentry");
+        // disable the default find patient app to provide one which allows searching for patients at the footer of the search for patients page
+        appFrameworkService.disableApp("coreapps.findPatient");
+        // form entry extension in active visits
+        appFrameworkService.disableExtension("xforms.formentry.cfpd");
     }
 
     public CheckInPatient checkInPatient(Patient patient, Location currentLocation, Location locationTo, Location queueRoom, Provider provider, String visitComment, String patientStatus, String visitTypeUuid) {
