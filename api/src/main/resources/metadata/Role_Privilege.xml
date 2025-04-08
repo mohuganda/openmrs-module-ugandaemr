@@ -932,7 +932,8 @@
     <role_privilege  role="Counselor"  privilege="Manage HIV Prevention Services"/>
     <role_privilege  role="Counselor"  privilege="Manage Patient Program"/>
     <role_privilege  role="Counselor"   privilege="Manage Clinical Forms"/>
-    <role_privilege role="Counselor" privilege="View Clinical Views Divider"/>
+    <role_privilege  role="Counselor" privilege="View Clinical Views Divider"/>
+    <role_privilege  role="Counselor"  privilege="Manage Care Panel"/>
 
     <!--* LABORATORY ROLE *-->
     <!--role-role-->
@@ -1045,7 +1046,6 @@
     <role_privilege  role="HIV Clinic"  privilege="Add Conditions"/>
     <role_privilege  role="HIV Clinic"  privilege="Manage Patient Notes"/>
     <role_privilege  role="HIV Clinic"  privilege="Add Attachments"/>
-    <role_privilege  role="HIV Clinic"  privilege="Manage Care Panel"/>
     <role_privilege  role="HIV Clinic"  privilege="Manage Patient Visits"/>
     <role_privilege  role="HIV Clinic"  privilege="Access Offline Tools"/>
     <role_privilege  role="HIV Clinic"  privilege="Manage Patient Vital"/>
@@ -1092,6 +1092,7 @@
     <role_privilege  role="MCH Clinic" privilege="Manage Clinical Forms"/>
     <role_privilege  role="MCH Clinic" privilege="Manage EID Program"/>
     <role_privilege  role="MCH Clinic" privilege="View Clinical Views Divider"/>
+    <role_privilege  role="MCH Clinic"  privilege="Manage Care Panel"/>
     <!--* TB Clinic *-->
     <!--role-role-->
     <role_role  parent_role="Base Role"  child_role="TB Clinic"/>
@@ -1155,6 +1156,7 @@
     <role_privilege  role="TB Clinic"  privilege="Manage TB Program"/>
     <role_privilege  role="TB Clinic" privilege="Manage Clinical Forms"/>
     <role_privilege  role="TB Clinic" privilege="View Clinical Views Divider"/>
+    <role_privilege  role="TB Clinic" privilege="Manage Patient Program"/>
 
     <!--***** REPORTING ROLES *****-->
     <!--* Base reporting *-->
