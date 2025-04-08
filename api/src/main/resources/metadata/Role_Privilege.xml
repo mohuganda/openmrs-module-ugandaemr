@@ -802,6 +802,7 @@
     <role_privilege  role="Reception"  privilege="View Reception Menu"/>
     <role_privilege role="Reception"  privilege="Edit Patient Details Button" />
     <role_privilege  role="Reception"  privilege="View Upcoming Appointment"/>
+    <role_privilege role="Reception"  privilege="Stop Visit Button"/>
 
 
 
@@ -918,6 +919,8 @@
     <role_privilege role="Organizational: Clinician" privilege="Manage patient attachments"/>
     <role_privilege role="Organizational: Clinician" privilege="Manage Patient Appointments Link"/>
     <role_privilege role="Organizational: Clinician" privilege="Stop Visit Button"/>
+    <role_privilege role="Organizational: Clinician" privilege="Base Clinical Role"/>
+
 
 
     <!--* COUNSELOR ROLE *-->
