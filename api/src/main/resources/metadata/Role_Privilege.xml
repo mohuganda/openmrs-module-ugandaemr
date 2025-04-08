@@ -879,6 +879,8 @@
     <!--* CLINICIAN ROLE *-->
     <!--role-role-->
     <role_role  parent_role="Base Role"  child_role="Organizational: Clinician"/>
+    <role_role  parent_role="Base Clinical Role"  child_role="Organizational: Clinician"/>
+
 
     <!-- role privilege -->
     <role_privilege  role="Organizational: Clinician"  privilege="App: patientqueueing.providerDashboard"/>
@@ -919,7 +921,6 @@
     <role_privilege role="Organizational: Clinician" privilege="Manage patient attachments"/>
     <role_privilege role="Organizational: Clinician" privilege="Manage Patient Appointments Link"/>
     <role_privilege role="Organizational: Clinician" privilege="Stop Visit Button"/>
-    <role_privilege role="Organizational: Clinician" privilege="Base Clinical Role"/>
 
 
 
