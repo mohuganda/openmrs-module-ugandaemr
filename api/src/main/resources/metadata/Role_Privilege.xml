@@ -619,6 +619,8 @@
     <privilege  privilege="Manage patient attachments"  description="View Attachments on the left side nav menu"  uuid="c76f6404-a929-43ca-b181-bea65663b344"/>
     <privilege  privilege="Manage patient appointments"  description="ability manage patient appointments"  uuid="d74d019b-9221-4bec-9e12-504ff4024385"/>
     <privilege  privilege="View Test Results"  description="able to view patient results"  uuid="522792b7-2e3d-4564-90af-98713f044508"/>
+    <privilege  privilege="Add Immunizations"  description="Ability to add immunization"  uuid="b9e0e3b9-8982-4c69-86ed-677a4a566050"/>
+
 
 
     <!-- ROLES -->
