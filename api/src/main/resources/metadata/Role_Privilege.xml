@@ -546,8 +546,7 @@
 
     <!-- Administration privilege -->
     <privilege  privilege="Update Facility Code"  description="Access to the checkin work space"  uuid="4bf067e2-55fc-11ee-8c99-0242ac120002"/>
-
-
+    
     <privilege  privilege="Access Offline Tools"  description="Access Offline Tools"  uuid="bd85a79c-e34c-4314-a8ff-5f353ae9f598"/>
     <privilege  privilege="Add Attachments"  description="Add Attachments"  uuid="98b39aae-32f5-4f0a-802e-02fbc74ed3db"/>
     <privilege  privilege="Add Conditions"  description="Add Conditions"  uuid="4fd3d4ba-c2a4-4c46-acec-d242a3987cc5"/>
@@ -611,6 +610,14 @@
     <privilege  privilege="Manage TB Program"  description="Manage TB Program"  uuid="f9119a4f-db09-47c9-9371-2fc7e0e75ba4"/>
     <privilege  privilege="Manage EID Program"  description="Manage EID Program"  uuid="7494bc5c-44e8-4f45-bfa7-9b6e3f662fd0"/>
 
+    <privilege  privilege="Add Immunizations"  description="Ability to manage immunization"  uuid="b9e0e3b9-8982-4c69-86ed-677a4a566050"/>
+    <privilege  privilege="Manage allergies"  description="ability to manage allergies"  uuid="e14f9560-ffe9-48f6-9f53-69c02b8c6fa9"/>
+    <privilege  privilege="Manage conditions"  description="ability to manage conditions"  uuid="afbf178e-d3d3-465d-9273-c480f1bcc03c"/>
+    <privilege  privilege="Manage encounters"  description="c manage encounters"  uuid="827b912c-4425-48fa-8876-9d63d3f7dea8"/>
+    <privilege  privilege="Manage patient appointments"  description="ability manage patient appointments"  uuid="d74d019b-9221-4bec-9e12-504ff4024385"/>
+    <privilege  privilege="Manage Patient Appointments Link"  description="access to patient appointment link"  uuid="0752480b-c98d-4b5d-a323-351690069904"/>
+    <privilege  privilege="Manage patient attachments"  description="ability to manage attachments "  uuid="ca219c30-1681-4ab1-9e52-98007dd38834"/>
+    <privilege  privilege="View Test Results"  description="able to view patient results"  uuid="522792b7-2e3d-4564-90af-98713f044508"/>
 
     <!-- ROLES -->
     <role  role="Base Role"  description="This Role is the default Role for basic functionality with less privileges"  uuid="6ec3134b-3e0d-430b-890b-3a7ac8f31e86"/>
@@ -637,6 +644,7 @@
     <role  role="Privilege Level: Full"  description="A role that has all API privileges"  uuid="ab2160f6-0941-430c-9752-6714353fbd3c"/>
     <role  role="Privilege Level: High"  description="A role that has all API privileges except administrative privileges with security implications"  uuid="f089471c-e00b-468e-96e8-46aea1b339af"/>
     <role  role="Organizational: System Administrator"  description="System Administrator"  uuid="8534b39a-bbc8-4739-81b3-9602a382b603"/>
+    <role  role="Base Clinical Role"  description="The underlying role for all clinical providers"  uuid="068fb76b-bd5b-4a2a-bb3c-753fffcb542c"/>
 
 
 
@@ -815,6 +823,54 @@
     <role_privilege role="Triage" privilege="View Triage Menu"/>
     <role_privilege role="Triage"  privilege="Next Service Point" />
     <role_privilege role="Triage"  privilege="App: patientQueue.triage.dashboard" />
+
+
+
+    <role_privilege  role="Base Clinical Role"  privilege="Add Allergies"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Add Attachments"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Add Conditions"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Add Immunizations"/> 
+    <role_privilege  role="Base Clinical Role"  privilege="Add Patient Programs"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Add Patient To List Button"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Add Visits"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Delete Patient Programs"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Edit conditions"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Edit Patient Details Button"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Edit Patient Programs"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Get conditions"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Get Forms"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Get Patient Programs"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage allergies"/> 
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Appointment"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Appointment Services"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Appointments"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage conditions"/> 
+    <role_privilege  role="Base Clinical Role"  privilege="Manage encounters"/> 
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Immunization Summary"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Order Basket"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Patient Appointment"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Patient Appointment Orders"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage patient appointments"/> 
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Patient Appointments Link"/> 
+    <role_privilege  role="Base Clinical Role"  privilege="Manage patient attachments"/> 
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Patient Conditions"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Patient Investigation"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Patient Medication"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Patient Notes"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Patient Program"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Patient Results"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Manage Patient Vital"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Mark Dead Button"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Next Service Point"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Stop Visit Button"/>
+    <role_privilege  role="Base Clinical Role"  privilege="Task: Manage Condition Lists"/>
+    <role_privilege  role="Base Clinical Role"  privilege="View Appointment Services"/>
+    <role_privilege  role="Base Clinical Role"  privilege="View OrderTemplates"/>
+    <role_privilege  role="Base Clinical Role"  privilege="View Patient Programs"/>
+    <role_privilege  role="Base Clinical Role"  privilege="View Patient Summary"/>
+    <role_privilege  role="Base Clinical Role"  privilege="View Programs"/>
+    <role_privilege  role="Base Clinical Role"  privilege="View Test Results"/> 
+
 
 
     <!--* CLINICIAN ROLE *-->
