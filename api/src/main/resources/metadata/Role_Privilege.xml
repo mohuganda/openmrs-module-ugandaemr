@@ -932,6 +932,7 @@
     <role_privilege  role="Counselor"  privilege="Manage HIV Prevention Services"/>
     <role_privilege  role="Counselor"  privilege="Manage Patient Program"/>
     <role_privilege  role="Counselor"   privilege="Manage Clinical Forms"/>
+    <role_privilege role="Counselor" privilege="View Clinical Views Divider"/>
 
     <!--* LABORATORY ROLE *-->
     <!--role-role-->
@@ -1055,6 +1056,7 @@
     <role_privilege  role="HIV Clinic"  privilege="Manage Patient Investigation"/>
     <role_privilege  role="HIV Clinic"  privilege="Manage Clinical Forms"/>
     <role_privilege  role="HIV Clinic"  privilege="Manage HIV Care and Treatment"/>
+    <role_privilege  role="HIV Clinic" privilege="View Clinical Views Divider"/>
 
     <!--* OPD Clinic *-->
     <!--role-role-->
@@ -1086,9 +1088,10 @@
     <role_privilege  role="MCH Clinic"  privilege="Task: coreapps.markPatientDead"/>
     <role_privilege  role="MCH Clinic" privilege="Task: patientqueueing.completePatientQueue"/>
     <role_privilege  role="MCH Clinic" privilege="Task: patientqueueing.sendPatientToQueue"/>
-    <role_privilege  role="Base Clinical Role"  privilege="Manage Patient Program"/>
+    <role_privilege  role="MCH Clinic"  privilege="Manage Patient Program"/>
     <role_privilege  role="MCH Clinic" privilege="Manage Clinical Forms"/>
     <role_privilege  role="MCH Clinic" privilege="Manage EID Program"/>
+    <role_privilege  role="MCH Clinic" privilege="View Clinical Views Divider"/>
     <!--* TB Clinic *-->
     <!--role-role-->
     <role_role  parent_role="Base Role"  child_role="TB Clinic"/>
@@ -1151,6 +1154,7 @@
     <role_privilege  role="TB Clinic"  privilege="View Patient Summary"/>
     <role_privilege  role="TB Clinic"  privilege="Manage TB Program"/>
     <role_privilege  role="TB Clinic" privilege="Manage Clinical Forms"/>
+    <role_privilege  role="TB Clinic" privilege="View Clinical Views Divider"/>
 
     <!--***** REPORTING ROLES *****-->
     <!--* Base reporting *-->
