@@ -806,6 +806,9 @@
     <role_privilege role="Reception"  privilege="Edit Patient Details Button" />
     <role_privilege  role="Reception"  privilege="View Upcoming Appointment"/>
     <role_privilege role="Reception"  privilege="Stop Visit Button"/>
+    <role_privilege role="Reception"  privilege="View Appointment Services"/>
+    <role_privilege role="Reception"   privilege="Manage Appointment Services"/>
+    <role_privilege role="Reception"  privilege="Manage Patient Appointments Link" />
 
 
 
@@ -829,9 +832,6 @@
     <role_privilege role="Triage" privilege="View Triage Menu"/>
     <role_privilege role="Triage"  privilege="Next Service Point" />
     <role_privilege role="Triage"  privilege="App: patientQueue.triage.dashboard" />
-    <role_privilege role="Triage"  privilege="Manage Patient Appointments Link" />
-
-
 
     <role_privilege  role="Base Clinical Role"  privilege="Add Allergies"/>
     <role_privilege  role="Base Clinical Role"  privilege="Add Attachments"/>
