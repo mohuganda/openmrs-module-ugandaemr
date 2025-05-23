@@ -480,9 +480,7 @@
             }
           }
         }
-      },
       }
-    }
   },
   "@openmrs/esm-styleguide": {
     "Brand color #1": " #009384",
@@ -1154,6 +1152,9 @@
           },
           "searchAddressByLevel": true
         }
+      },
+      "causeOfDeath": {
+      "conceptUuid": "dca2c3f2-30ab-102d-86b0-7a5022ba4115"
       }
     },
     "registrationObs": {
